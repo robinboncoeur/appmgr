@@ -1,0 +1,229 @@
+######################
+The Tax Workbook Guide
+######################
+
+This Excel-based utility is designed to manage creating and maintaining Banking Transactions Data for Tax Purposes in spreadsheet form. The workbook contains both data inported from CSV files as well as (much less frequently) data manually entered from PDFs, such as rental property repair details.
+
+It replaces a manually-managed ledger approach to tax-data figures. The tax accountant requested an income and expenditures summary worksheet in Excel. Using the power of Excel and VBA, downloaded CSV files populate the Accounts Worksheets, which inform fields on the Summary Sheet through links: this happens  dynamically. 
+
+This Tax Workbook is a living document. At the end of the fiscal year, it is submitted to the tax accountant.
+
+
+
+
+
+********************
+How to Best Use Help
+********************
+
+This Help file pertains to TaxWkbk 2021, version 0.6 (v0.6).
+
+While Tax Workbook's use seems pretty straight-forward to the developer, he realises that his approach to running software could differ wildly to other inhabitants of the solar system run software: hence, this Help file.
+
+Why this approach to a Help file? See the footnote [#fhlp01]_.
+
+=============
+From The Menu
+=============
+
+When this workbook loads, it includes a special Menu option -- next to "Help" -- called "Tax Workbook":
+
+.. image:: ../images/tw01Codes04.png
+
+Help, much like the rest of the document is a work-in-progress, so all topics may not be covered.
+
+The same goes for the VBA code: it works 99% of the time, but every now and then, the VBA gremlins interfere.
+
+  .. rubric:: Notes
+
+  .. [#fhlp01] As Microsoft in their wisdom didn't see fit to include a means to provide a very flexible custom help documentation system without installing questionable add-ons - something most security-conscious IT departments of organisations would definitely never permit - a method of sharing help information had to be come up with that would provide that information quickly, consistently and accurately. Therefore, I have chosen HTML (think: Web) pages for documenting Help. The degree of success in finding help in these pages depends on how the user generally searches for help on a computer, but I would suggest this approach.
+
+
+
+
+
+
+
+*************************
+Tax Workbook - Worksheets
+*************************
+
+===================
+Worksheets Overview
+===================
+
+This workbook contains transaction data from primarily ANZ bank accounts. On most of the worksheets, the data is categorised through codes:
+
+.. image:: ../images/tw01Codes01.png
+
+A simple =SUMIF() tallies up Transaction Categories based on those codes in column D:
+
+.. image:: ../images/tw01Codes02.png
+
+Using the Credit Card worksheet as an example, the codes in column D are assigned via Excel 2016 Visual-Basic for Applications functions (VBA), copied from the **ClassCC Worksheet** which has an instance of the Transaction Target and the associated code:
+
+.. image:: ../images/tw01Codes03.png
+
+The software that copies the Transaction Code from the ClassCC sheet to the 568CredCard sheet is run from **Tax Workbook** menu option under the main menu option Tax Workbook:
+
+.. image:: ../images/tw01Codes04.png
+
+Much of the workbook's data is managed in this fashion.
+
+
+
+
+=====================
+How TaxWorkbook Works
+=====================
+
+When "Tax Workbook" is first opened in Excel, security settings commonly set by organisations may issue a security warning:
+   
+   * *Some active content has been disabled. Click for more details.*
+   
+Next to this warning is a button labelled **[Enable Content]**. While the spreadsheet's data can be viewed without "enabling content", the menu and other features in this workbook will only run if the content is enabled. The only needs to be done once.This workbook is made up of several worksheets which contain links to each other. The main end-point worksheets are **Summary** and **Budget**. **Summary** holds data pertinent to the Tax Accountant, and **Budget** allows analysis of personal expenses.
+
+The worksheets supporting this preceeding sheets are **InvestProp**, **568CreditCard**, **259Checking**, **822HomeLoan** and **972Savings**. Naming convention is the last three digits of the account and the description.
+
+=======
+Summary
+=======
+
+The **Summary** Worksheet is comprised of two main columns; Expenses and Income. The expenses are only those relevant to a tax accountant, such as home loan payments and professional fees and donations, while income is comprised of all income.
+
+The fields on this page are linked to specific fields on relevant account pages and update dynamically.
+
+
+===================
+Investment Property
+===================
+
+The **InvestProp** Worksheet contains mainly manually-entered investment property financial data, such as Loan Payments, Body Corprorate fees, Property Management fees, Council Rates fees and Water.
+
+Much of this is duplicated on the **259Checking** Worksheet, such as renter payments and loan repayments, and the workbook manages that particular data via that worksheet. However, Property Management information is only available via PDF and thus manually-entered in.
+
+
+===========
+Credit Card
+===========
+
+The **568CredCard** Worksheet is a date-sorted, formatted Credit Card transaction worksheet. The data is imported from a downloaded CSV file into the Import Worksheet, then sorted and formatted. It is from this Import worksheet data is copied to the **568CredCard** Worksheet.
+
+The columns are as follows::
+
+    A - Date
+    B - Transaction Amount
+    C - Transaction Target (Payee or Payor)
+    D - Transaction Code
+
+After the transactions have been copied, the Code Assignment software is invoked:
+
+.. image:: ../images/tw01Codes04.png
+
+which then compares transaction target entries to those in ClassCC, leaving the Code column [D] blank if it doesn't find that tranaction. 90% or more transactions are going to be with the same vendors, so it's a simple matter of updating ClassCC after running this software, which is usually only a matter of a few minutes.
+
+
+========
+Checking
+========
+
+The Access **259Checking** Worksheet is a date-sorted, formatted Checking Account transaction worksheet. Payroll, home-loan and investment property data, as well as key utilities transactions go through this account. The data is imported from a downloaded CSV file into the Import Worksheet, then sorted and formatted. It is from this Import worksheet data is copied to the **259Checking** Worksheet.
+
+The columns are as follows::
+
+    A - Date
+    B - Transaction Amount
+    C - Transaction Target (Payee or Payor)
+    D - Transaction Code
+
+After the transactions have been copied, the Code Assignment software is invoked:
+
+.. image:: ../images/tw01Codes06.png
+
+
+=========
+Home Loan
+=========
+
+Stub - to be updated.
+
+
+=====================
+Classes - Credit Card
+=====================
+
+Stub - to be updated.
+
+
+=========================
+Classes - Access Checking
+=========================
+
+Stub - to be updated.
+
+
+======
+Budget
+======
+
+Stub - to be updated.
+
+
+
+
+
+*****************************
+The Code Running The Workbook
+*****************************
+
+For those who might be curious as to how certain features work, I offer the following as a bit of a discussion on my apprtoach to solving these little problems. I am not a "proper" programmer, so real programmers are more than likely to wince a bit at some of the code.
+
+To view the code, press [Alt] [F11] and you will be presented with the Visual Basic Editor.
+
+
+.. _tw-corefcn:
+
+==============
+Core Functions
+==============
+
+The code for Menu Option **"Tax Workbook"** and some user-defined functions -- for example, sParseAllWords({cellnumber}) -- on the ClassCC worksheet lives on the MdlT modules page. 
+
+Here is the code for sParseAllWords({cellnumber})::
+
+
+
+
+
+Licence Agreement
+*****************
+
+=============================
+GNU General Public Licence v3
+=============================
+
+Terms of General Public Licence, version 3:
+
+This program is free software: you can redistribute it and/or modify it under the terms of the GNU General Public Licence as published by the Free Software Foundation, either version 3 of the Licence, or (at your option) any later version.
+
+This program is distributed in the hope that it will be useful, but WITHOUT ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public Licence for more details.
+
+You should have received a copy of the GNU General Public Licence along with this programme. If not, see: 
+
+`Full GNU GPL <http://www.gnu.org/licenses>`_  (you will need online access to view this document).
+
+
+============================
+How to Contact the Developer
+============================
+
+Whilst software developers endeavour to write clean, robust software with consistent, predictable behaviour, bugs do happen. The TaxWorkbook developer is committed to supporting this workbook, hence this document and a web presence on github.
+
+A number of means exist to contact the developer:
+
+   * gmail: robinseahahn@gmail.com
+   * `github issues page <https://github.com/robinboncoeur/appmgr/issues>`_
+   
+To find the most current documentation - a (probably) updated version of this document - go to:
+   
+   * `my Github TaxWorkbook page <https://robinboncoeur.github.io/appmgr/>`_ 
