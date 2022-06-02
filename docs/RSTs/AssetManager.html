@@ -1,0 +1,937 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en-English" >
+<head>
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Welcome to Asset Manager &mdash; App Manager 2.25 documentation</title>
+      <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  <!--[if lt IE 9]>
+    <script src="../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
+        <script src="../_static/jquery.js"></script>
+        <script src="../_static/underscore.js"></script>
+        <script src="../_static/_sphinx_javascript_frameworks_compat.js"></script>
+        <script src="../_static/doctools.js"></script>
+    <script src="../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Welcome to Call Sheet, version 0.3" href="CallSheetp03.html" />
+    <link rel="prev" title="Introduction" href="About.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+            <a href="../index.html" class="icon icon-home"> App Manager
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Contents:</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="About.html">Introduction</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Welcome to Asset Manager</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#introduction">Introduction</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#how-to-best-use-help">How to Best Use Help</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#conventions-and-glossary-of-terms">Conventions and Glossary of Terms</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#history-caveats-and-how-to-contact-me">History, Caveats and How to Contact Me</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#history">History</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#caveats">Caveats</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#how-to-contact-the-developer">How to Contact the Developer</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#getting-started">Getting Started</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#system-requirements">System Requirements</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#starting-asset-manager">Starting Asset Manager</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#equipment-management-the-forms">Equipment Management - The Forms</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#overview-what-asset-manager-does">Overview - What Asset Manager Does</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#the-main-equipment-form">The Main Equipment Form</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#the-edit-equipment-form">The Edit Equipment Form</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#equipment-management">Equipment Management</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#device-search">Device Search</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#device-types-and-locations">Device Types and Locations</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#button-bar">Button Bar</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#device-list">Device List</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#events-list">Events List</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#the-menu">The Menu</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#file">File</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#manage-devices">Manage Devices</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#filter">Filter</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#help">Help</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#the-image">The Image</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#developer-stuff">Developer Stuff</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#edit-equipment-information">Edit Equipment Information</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#device-name-and-type">Device Name and Type</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#device-status">Device Status</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#device-details">Device Details</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#ee-buttonbar">Button Bar</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#device-image">Device Image</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#footnotes">Footnotes</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#main-worksheets">Main Worksheets</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#device-data">Device Data</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#event-data">Event Data</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#supporting-worksheets">Supporting Worksheets</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#licence-agreement">Licence Agreement</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#gnu-general-public-licence-v3">GNU General Public Licence v3</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="CallSheetp03.html">Welcome to Call Sheet, version 0.3</a></li>
+<li class="toctree-l1"><a class="reference internal" href="CallSheetp05.html">Welcome to Call Sheet, version 0.5</a></li>
+<li class="toctree-l1"><a class="reference internal" href="CallSheetp06.html">Welcome to Call Sheet, version 0.6</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">App Manager</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../index.html" class="icon icon-home"></a> &raquo;</li>
+      <li>Welcome to Asset Manager</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="../_sources/RSTs/AssetManager.rst.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="welcome-to-asset-manager">
+<h1>Welcome to Asset Manager<a class="headerlink" href="#welcome-to-asset-manager" title="Permalink to this heading"></a></h1>
+<section id="introduction">
+<h2>Introduction<a class="headerlink" href="#introduction" title="Permalink to this heading"></a></h2>
+<p>This Excel-based utility is designed to manage non-consumable devices in Operating Theatres and Post-Op Recovery. It replaces a ledger-based approach to tracking devices. Asset Manager extends Excel through forms and code written in Visual-Basic for Applications, which is part of the Microsoft Excel product.</p>
+<p>Each device is entered as a record on the DEVDATA spreadsheet in AssetMgr. The information for this device will include: the SAID number, the name of the device, serial and model numbers, as well as original cost and date put into service. Additionally, the record should contain the device’s status (In Service, Repair, Stored, and so forth), classification, Test-n-Tag date and associated image file, if one exists.</p>
+<p>Devices in Asset Manager are identified by a number assigned to that device by the organisation: the SAID number. Searches for a device in the spreadsheet use this unique number.</p>
+<p>Asset Manager tracks devices throughout their “life” in the organisation as a series of events. An event can be “In Service”, “To Repair”, “Decommissioned”, “On Loan” and “Returned”, and “Stored”. Device repair information is recorded  to help build a history on a device.</p>
+<p>Asset Manager creates a number of reports about devices and their status.</p>
+<section id="how-to-best-use-help">
+<h3>How to Best Use Help<a class="headerlink" href="#how-to-best-use-help" title="Permalink to this heading"></a></h3>
+<p>While Asset Manager’s use seems pretty straight-forward to the developer, he realises that his approach to managing equipment may seem less than intuitive to other inhabitants of the solar system: hence, this Help file.</p>
+<p>As Microsoft in their wisdom didn’t see fit to include a means to provide a very flexible custom help documentation system without installing questionable add-ons - something most security-conscious IT departments of organisations such as Queensland Health would definitely never permit - an approach had to be come up with that would provide the information quickly and accurately. Therefore, I have chosen HTML (think: Web) pages to display documentation in, using Sphinx to provide the framework. The approach to finding help in these pages depends on how the user generally searches for help, but the following is the suggested approach.</p>
+<p>When the user clicks on the Help button, that user will be offered this help file to read. It is suggested to make use of the Quick Search feature <em>first</em>, entering the name of the button or control on the form the user has a question about. Help will display a number of context-specific help options.</p>
+<p>For example, let’s say help is needed on the purpose of this button:</p>
+<img alt="https://www.tightbytes.com/images/pubimages/appmgr/am01GettingHelp01.png" src="https://www.tightbytes.com/images/pubimages/appmgr/am01GettingHelp01.png" />
+<p>Moving the mouse cursor over the button will display the name of the control. Sometimes the tool-tip text will appear beneath the control instead of next to the cursor:</p>
+<img alt="https://www.tightbytes.com/images/pubimages/appmgr/am01GettingHelp02.png" src="https://www.tightbytes.com/images/pubimages/appmgr/am01GettingHelp02.png" />
+<p>Make a note of this name, click on the Help button, and then, in the Quick Search field:</p>
+<img alt="https://www.tightbytes.com/images/pubimages/appmgr/am01GettingHelp03a.png" src="https://www.tightbytes.com/images/pubimages/appmgr/am01GettingHelp03a.png" />
+<p>…type the name of the button or control and press &lt;Enter&gt;.</p>
+<p>If Quick Search does not produce any results, please notify the developer.</p>
+</section>
+<section id="conventions-and-glossary-of-terms">
+<h3>Conventions and Glossary of Terms<a class="headerlink" href="#conventions-and-glossary-of-terms" title="Permalink to this heading"></a></h3>
+<p>This help file assumes certain conventions:</p>
+<p><strong>Physical keys you type on</strong></p>
+<blockquote>
+<div><ul class="simple">
+<li><p>&lt;Enter&gt; - the Enter key, at the right side of the keyboard</p></li>
+<li><p>&lt;Tab&gt;   - the Tab key, above the CapsLock key, to move from field to field</p></li>
+</ul>
+</div></blockquote>
+<p><strong>Representations in the text of screen objects to click on</strong></p>
+<blockquote>
+<div><ul class="simple">
+<li><p>[ Close ] - represents a clickable button</p></li>
+<li><p>(_o_) - represents a selected radio button</p></li>
+<li><p>(___) - represents a deselected radio button</p></li>
+<li><p>[_X_] - represents a selected tick box</p></li>
+<li><p>[___] - represents a deselected tick box</p></li>
+</ul>
+</div></blockquote>
+<p><strong>Names of objects in a form</strong></p>
+<figure class="align-default" id="id11">
+<a class="reference internal image-reference" href="https://www.tightbytes.com/images/pubimages/appmgr/amEditFTextB.png"><img alt="https://www.tightbytes.com/images/pubimages/appmgr/amEditFTextB.png" src="https://www.tightbytes.com/images/pubimages/appmgr/amEditFTextB.png" /></a>
+<figcaption>
+<p><span class="caption-text">Textbox - allows entry of free text. Some text boxes automatically convert text to upper-case. <em>Example shown: the SAID field on the “Add or Edit Equipment” form.</em></span><a class="headerlink" href="#id11" title="Permalink to this image"></a></p>
+</figcaption>
+</figure>
+<figure class="align-default" id="id12">
+<a class="reference internal image-reference" href="https://www.tightbytes.com/images/pubimages/appmgr/amEditFDropB.png"><img alt="https://www.tightbytes.com/images/pubimages/appmgr/amEditFDropB.png" src="https://www.tightbytes.com/images/pubimages/appmgr/amEditFDropB.png" /></a>
+<figcaption>
+<p><span class="caption-text">Dropdown - Also known as a “Combobox”, it appears to be a textbox with a down-arrow on the right-hand side. Contains a listbox of selectable items, but will also allow keyboard entry of text. <em>Example shown: the DeviceType dropdown on the “Add or Edit Equipment” form.</em></span><a class="headerlink" href="#id12" title="Permalink to this image"></a></p>
+</figcaption>
+</figure>
+<figure class="align-default" id="id13">
+<a class="reference internal image-reference" href="https://www.tightbytes.com/images/pubimages/appmgr/amEditFTickB.png"><img alt="https://www.tightbytes.com/images/pubimages/appmgr/amEditFTickB.png" src="https://www.tightbytes.com/images/pubimages/appmgr/amEditFTickB.png" /></a>
+<figcaption>
+<p><span class="caption-text">Tickbox - acts as a toggle to turn a condition on or off. <em>Example shown: the New Event tickbox on the “Add or Edit Equipment” form.</em></span><a class="headerlink" href="#id13" title="Permalink to this image"></a></p>
+</figcaption>
+</figure>
+<figure class="align-default" id="id14">
+<a class="reference internal image-reference" href="https://www.tightbytes.com/images/pubimages/appmgr/amEditFRdioB.png"><img alt="https://www.tightbytes.com/images/pubimages/appmgr/amEditFRdioB.png" src="https://www.tightbytes.com/images/pubimages/appmgr/amEditFRdioB.png" /></a>
+<figcaption>
+<p><span class="caption-text">Radio button - used to select one - and only one - of several choices. <em>Example shown: the Device Status radio-buttons on the “Add or Edit Equipment” form.</em></span><a class="headerlink" href="#id14" title="Permalink to this image"></a></p>
+</figcaption>
+</figure>
+<figure class="align-default" id="id15">
+<a class="reference internal image-reference" href="https://www.tightbytes.com/images/pubimages/appmgr/amMainFToggle.png"><img alt="https://www.tightbytes.com/images/pubimages/appmgr/amMainFToggle.png" src="https://www.tightbytes.com/images/pubimages/appmgr/amMainFToggle.png" /></a>
+<figcaption>
+<p><span class="caption-text">Toggle - turns a condition on or off. <em>In this example from the “Equipment Management” form, the “All” toggle, when depressed, displays devices from all locations whilst displaying a Location column in the Devices List, with the Location/Owner dropdown empty and disabled. When the “All” toggle is not depressed, the Owner/Location dropdown is enabled, and a Location displays in the dropdown, with all devices of that type and in that location displaying in the Devices listbox.</em></span><a class="headerlink" href="#id15" title="Permalink to this image"></a></p>
+</figcaption>
+</figure>
+<figure class="align-default" id="id16">
+<a class="reference internal image-reference" href="https://www.tightbytes.com/images/pubimages/appmgr/amMainFListB.png"><img alt="https://www.tightbytes.com/images/pubimages/appmgr/amMainFListB.png" src="https://www.tightbytes.com/images/pubimages/appmgr/amMainFListB.png" /></a>
+<figcaption>
+<p><span class="caption-text">Listbox - contains a list of items or list of information on an item. <em>Example shown: the Devices List on the “Equipment Management” form.</em></span><a class="headerlink" href="#id16" title="Permalink to this image"></a></p>
+</figcaption>
+</figure>
+<figure class="align-default" id="id17">
+<a class="reference internal image-reference" href="https://www.tightbytes.com/images/pubimages/appmgr/amEditFSaveB.png"><img alt="https://www.tightbytes.com/images/pubimages/appmgr/amEditFSaveB.png" src="https://www.tightbytes.com/images/pubimages/appmgr/amEditFSaveB.png" /></a>
+<figcaption>
+<p><span class="caption-text">Button - also known as a “command button”, used to invoke actions, such as closing the form, opening forms, and saving information, as the above button does when clicked. <em>Example shown: the Save button on the “Add or Edit Equipment” form.</em></span><a class="headerlink" href="#id17" title="Permalink to this image"></a></p>
+</figcaption>
+</figure>
+</section>
+</section>
+<section id="history-caveats-and-how-to-contact-me">
+<h2>History, Caveats and How to Contact Me<a class="headerlink" href="#history-caveats-and-how-to-contact-me" title="Permalink to this heading"></a></h2>
+<section id="history">
+<h3>History<a class="headerlink" href="#history" title="Permalink to this heading"></a></h3>
+<p>Asset Manager was developed as a response to my accepting the Device Manager portfolio in PACU. When I asked what means were provided to track devices, I was given a ledger with paper in it: lined paper.</p>
+<p>Um, no. That wasn’t going to work.</p>
+<p>Right about the time I was given that portfolio, inventory on non-consumables was being conducted in our Operating Theatres and PACU/Day Surgery. As that inventory process was nearing completion, I asked those responsible whether I could obtain a copy of the data. I was sent a CSV file, which I imported into Excel. This provided the framework for the main DEVDATA worksheet.</p>
+</section>
+<section id="caveats">
+<h3>Caveats<a class="headerlink" href="#caveats" title="Permalink to this heading"></a></h3>
+<p>Asset Manager is all contained in a stand-alone Excel workbook. Although I would have preferred a proper database, Excel was all I had available within the organisation I was developing in, so I commandeered it to act as a flat-file database. Excel as a database is not ideal, but through the quirky magic of Visual Basic for Applications, it generally works as expected. No question it is definitely an improvement over a physical ledger.</p>
+<p>VBA itself is not the stellar language to write solutions in one could hope or wish for, and my knowledge on how it works is a bit less than comprehensive. Therefore, someone following me in trying to maintain/fix the code may wonder at some of the kludges I employed. As I learn more on how to do this all properly, the kludges are being removed/replaced, but whilst I try to be as professional as I could developing this tool, Asset Manager is pedestrian code at best.</p>
+<p>The developer of this tool makes no claims as to the accuracy or reliability of the data, nor are there any guarantees, implied or real, as to the document’s fitness for purpose. I.e., it is presented and delivered as-is. Please keep this in mind when using this tool. I ask the user’s patience with the code… it is what it is.</p>
+<p>The code supporting the use of this document - i.e., the “software” - is FOSS: free/open-source software. Please see the <a class="reference internal" href="#am-licence"><span class="std std-ref">GNU General Public Licence v3</span></a> page for the licence agreement associated with this software.</p>
+<p>If you manage to break it, you get to keep both pieces.</p>
+</section>
+<section id="how-to-contact-the-developer">
+<h3>How to Contact the Developer<a class="headerlink" href="#how-to-contact-the-developer" title="Permalink to this heading"></a></h3>
+<p>Whilst software developers endeavour to write clean, robust software with consistent, predictable behaviour, bugs do happen. The CallSheet developer is committed to supporting CallSheet, hence this document and a web presence on github.</p>
+<p>A number of means exist to contact the developer:</p>
+<blockquote>
+<div><ul class="simple">
+<li><p>gmail: <a class="reference external" href="mailto:robinseahahn&#37;&#52;&#48;gmail&#46;com">robinseahahn<span>&#64;</span>gmail<span>&#46;</span>com</a></p></li>
+<li><p><a class="reference external" href="https://github.com/robinboncoeur/xlVBA-AssetMgr/issues">Github’s Asset Manager software bugs and issues</a></p></li>
+</ul>
+</div></blockquote>
+<p>To find the most current documentation - a (probably) updated version of this document - go to:</p>
+<blockquote>
+<div><ul class="simple">
+<li><p><a class="reference external" href="https://robinboncoeur.github.io/xlVBA-AssetMgr/">my Github Asset Manager page</a></p></li>
+</ul>
+</div></blockquote>
+</section>
+</section>
+<section id="getting-started">
+<h2>Getting Started<a class="headerlink" href="#getting-started" title="Permalink to this heading"></a></h2>
+<section id="system-requirements">
+<h3>System Requirements<a class="headerlink" href="#system-requirements" title="Permalink to this heading"></a></h3>
+<p>“Asset Manager” (also known as AssetMgr) is an Excel workbook using Visual Basic for Applications (a scripting language) to facilitate managing non-consumable equipment for Operating Theatres and Post-Op Recovery. As the software was written in and runs in Excel, there is no installation required except for Excel itself, which the organisation has provided. This workbook can be opened anywhere Excel is available. This file best serves the Operating Theatre when stored on a local drive.</p>
+<p>The software makes use of images to help the user identify the device. The folder of device images (interestingly named “images”) must accompany - as in, be in the same folder - as the AssetMgrxxx file, or it will not open. The user can launch the AssetMgr file anywhere - on a local drive, on a memory stick, or on the Data8 server - but a copy of the images folder must be in that folder with it.</p>
+<p>Help, on the other hand, can be opened as long as the user opens Asset Manager on a drive that can see the Metro South network.</p>
+</section>
+<section id="starting-asset-manager">
+<h3>Starting Asset Manager<a class="headerlink" href="#starting-asset-manager" title="Permalink to this heading"></a></h3>
+<p>When you open Asset Manager in Excel 2016, security settings (set by the Metro South IT service) may issue a security warning:</p>
+<blockquote>
+<div><p><em>Some active content has been disabled. Click for more details.</em></p>
+</div></blockquote>
+<p>Next to this warning is a button labelled [Enable Content]. This button must be clicked in order for the software to work. When you click this button, another security warning may appear, asking whether you wish to make this file a Trusted Document. If you wish to no longer see these warnings, click [Yes]. If you wish to disable warnings for networked files (any files that live on the server instead of on the PC you’re working on), tick the box in the lower left-hand corner.</p>
+<p>The Asset Manager workbook will resize itself as it displays a splash screen. The workbook defaults to the “Top” worksheet:</p>
+<img alt="https://www.tightbytes.com/images/pubimages/appmgr/am01WkBk01.png" src="https://www.tightbytes.com/images/pubimages/appmgr/am01WkBk01.png" />
+<p>…which has one large button on it. This button brings up the form that facilitates managing devices.</p>
+</section>
+</section>
+<section id="equipment-management-the-forms">
+<h2>Equipment Management - The Forms<a class="headerlink" href="#equipment-management-the-forms" title="Permalink to this heading"></a></h2>
+<section id="overview-what-asset-manager-does">
+<h3>Overview - What Asset Manager Does<a class="headerlink" href="#overview-what-asset-manager-does" title="Permalink to this heading"></a></h3>
+<p>Asset Manager was developed to manage information on assetted devices in the Operating Theatres and post-op recovery.</p>
+<p>Devices are entered into Asset Manager when they first arrive in the department.</p>
+<dl class="simple">
+<dt>Note:</dt><dd><p><em>It is important to</em> <strong>confirm</strong> <em>the device has been assetted by Materiel Management and tested and tagged by BTS prior to putting the device into service. If a yellow bar-code sticker is missing or the device has no SAID number affixed to it, it is likely that the device has not been assetted.</em></p>
+</dd>
+</dl>
+<p>Asset Manager was designed to provide a means to manage non-consumables - those devices identified with yellow or white bar-code stickers. These non-consumables are termed “Devices” in Asset Manager. Devices should have been assigned a yellow (or sometimes white) bar-code sticker by the Materiel Management Department, although those stickers sometimes go walkabout. In addition to a bar-code, the sticker also displays an 8-digit number: the SAID number.</p>
+<img alt="https://www.tightbytes.com/images/pubimages/appmgr/am01AssetStkr.png" src="https://www.tightbytes.com/images/pubimages/appmgr/am01AssetStkr.png" />
+<p>These numbers identify devices in Asset Manager, as SAID numbers are unique for each device. When conducting a search for a specific device in Asset Manager, use this number.</p>
+<p>When a new device arrives, an envelope containing device information should accompany the device, containing crucial information for identification and trouble-shooting purposes. It is strongly suggested to take the time to enter key information such as model and serial number into Asset Manager as that information will help identify devices further down their service life.  Device-specific information such as name, model number and serial number need to be recorded on the DevData worksheet.</p>
+<p>To enter the device into Asset Manageris a simple process: conduct a search for the device by SAID by entering the SAID into the search field and pressing &lt;ENTER&gt;. As a new device will have an SAID that does not exist in DEVDATA, the user simply follows the prompts to enter device information and save the information into a new record.</p>
+</section>
+<section id="the-main-equipment-form">
+<h3>The Main Equipment Form<a class="headerlink" href="#the-main-equipment-form" title="Permalink to this heading"></a></h3>
+<p>The main form in Asset Manager is launched via the large button on the “Top” sheet.</p>
+<img alt="https://www.tightbytes.com/images/pubimages/appmgr/am01Launch02.png" src="https://www.tightbytes.com/images/pubimages/appmgr/am01Launch02.png" />
+<p>The main Asset Manager form…</p>
+<img alt="https://www.tightbytes.com/images/pubimages/appmgr/am02aMainForm02.png" src="https://www.tightbytes.com/images/pubimages/appmgr/am02aMainForm02.png" />
+<p>has six basic areas:</p>
+<blockquote>
+<div><ul class="simple">
+<li><p><a class="reference internal" href="#em-search"><span class="std std-ref">Device Search</span></a></p></li>
+<li><p><a class="reference internal" href="#em-dropdowns"><span class="std std-ref">Device Types and Locations</span></a></p></li>
+<li><p><a class="reference internal" href="#em-buttonbar"><span class="std std-ref">Button Bar</span></a></p></li>
+<li><p><a class="reference internal" href="#em-listboxes"><span class="std std-ref">Device List</span></a></p></li>
+<li><p><a class="reference internal" href="#em-menu"><span class="std std-ref">The Menu</span></a></p></li>
+<li><p><a class="reference internal" href="#em-image"><span class="std std-ref">The Image</span></a></p></li>
+</ul>
+</div></blockquote>
+</section>
+<section id="the-edit-equipment-form">
+<h3>The Edit Equipment Form<a class="headerlink" href="#the-edit-equipment-form" title="Permalink to this heading"></a></h3>
+<p>This form is launched by the main form when adding new equipment to the DevData sheet or editing existing equipment information on the DevData and EventData sheets. It can be launched from two buttons - to either add or edit a device - from the <a class="reference internal" href="#em-buttonbar"><span class="std std-ref">Button Bar</span></a> or from the “Manage Devices” section of <a class="reference internal" href="#em-menu"><span class="std std-ref">The Menu</span></a>.</p>
+<p>The Edit Equipment form has five basic areas:</p>
+<blockquote>
+<div><ul class="simple">
+<li><p><a class="reference internal" href="#ee-devname"><span class="std std-ref">Device Name and Type</span></a></p></li>
+<li><p><a class="reference internal" href="#ee-devstatus"><span class="std std-ref">Device Status</span></a></p></li>
+<li><p><a class="reference internal" href="#ee-devinfo"><span class="std std-ref">Device Details</span></a></p></li>
+<li><p><a class="reference internal" href="#ee-buttonbar"><span class="std std-ref">Button Bar</span></a></p></li>
+<li><p><a class="reference internal" href="#ee-image"><span class="std std-ref">Device Image</span></a></p></li>
+</ul>
+</div></blockquote>
+</section>
+</section>
+<section id="equipment-management">
+<h2>Equipment Management<a class="headerlink" href="#equipment-management" title="Permalink to this heading"></a></h2>
+<section id="device-search">
+<span id="em-search"></span><h3>Device Search<a class="headerlink" href="#device-search" title="Permalink to this heading"></a></h3>
+<p>An SAID number is made up of eight numeric digits. To find a device in the system, type the number into the search field:</p>
+<img alt="https://www.tightbytes.com/images/pubimages/appmgr/am02aSrchBox.png" src="https://www.tightbytes.com/images/pubimages/appmgr/am02aSrchBox.png" />
+<p>and either click on the Search button:</p>
+<img alt="https://www.tightbytes.com/images/pubimages/appmgr/am02bSrchBtn.png" src="https://www.tightbytes.com/images/pubimages/appmgr/am02bSrchBtn.png" />
+<p>or simply press &lt;Enter&gt; on the keyboard.</p>
+<p>Note:</p>
+<blockquote>
+<div><p><em>the entry into the search field is checked for non-numeric (alphabet letters) characters, and then that the entry is eight digits long. If the entry does not meet those conditions, the user is notified; otherwise, a search is performed.</em></p>
+</div></blockquote>
+<p>If the number was entered correctly and the corresponding SAID exists in the DevData worksheet (a record exists for the device in DEVDATA) in Asset Manager, the software will find it and display it in a list of similar devices. If the SAID number cannot not be found, the user will be prompted via a dialogue to add a new device using the entered SAID number:</p>
+<img alt="https://www.tightbytes.com/images/pubimages/appmgr/am02AddNew.png" src="https://www.tightbytes.com/images/pubimages/appmgr/am02AddNew.png" />
+<p>It’s a good idea to double-check that the SAID number was typed in correctly. If so, the user has a choice: select [ Cancel ] to cancel adding a device with that SAID number or [ Ok ] to open the Edit Device Information form to add a new device to Asset Manager.</p>
+</section>
+<section id="device-types-and-locations">
+<span id="em-dropdowns"></span><h3>Device Types and Locations<a class="headerlink" href="#device-types-and-locations" title="Permalink to this heading"></a></h3>
+<p>Next to the Search field and button is a dropdown box with a list of device types. The main devices list-box displays a list of devices that are part of a device type group. The device type dropdown box looks like a textbox, except that it has a down-pointing arrow at the right of the field:</p>
+<img alt="https://www.tightbytes.com/images/pubimages/appmgr/am03DevType.png" src="https://www.tightbytes.com/images/pubimages/appmgr/am03DevType.png" />
+<p>Select from this dropdown to display devices that correspond to the selected device type in the list below. Possible types include:</p>
+<blockquote>
+<div><ul class="simple">
+<li><p>Antithrombotic</p></li>
+<li><p>Gases-Medical</p></li>
+<li><p>Medication Delivery</p></li>
+<li><p>Patient Warming</p></li>
+<li><p>Monitoring</p></li>
+</ul>
+</div></blockquote>
+<p>and so on.</p>
+</section>
+<section id="button-bar">
+<span id="em-buttonbar"></span><h3>Button Bar<a class="headerlink" href="#button-bar" title="Permalink to this heading"></a></h3>
+<img alt="https://www.tightbytes.com/images/pubimages/appmgr/am02dButtons.png" src="https://www.tightbytes.com/images/pubimages/appmgr/am02dButtons.png" />
+<p>The button bar’s buttons provide a quick and easy way to do the most common tasks.</p>
+<figure class="align-default" id="id18">
+<a class="reference internal image-reference" href="https://www.tightbytes.com/images/pubimages/appmgr/am02dBtnNew.png"><img alt="https://www.tightbytes.com/images/pubimages/appmgr/am02dBtnNew.png" src="https://www.tightbytes.com/images/pubimages/appmgr/am02dBtnNew.png" /></a>
+<figcaption>
+<p><span class="caption-text">NewDevice - The New Device button opens the Edit Equipment form to allow entry of a new device into Asset Manager.</span><a class="headerlink" href="#id18" title="Permalink to this image"></a></p>
+</figcaption>
+</figure>
+<figure class="align-default" id="id19">
+<a class="reference internal image-reference" href="https://www.tightbytes.com/images/pubimages/appmgr/am02dBtnEdit.png"><img alt="https://www.tightbytes.com/images/pubimages/appmgr/am02dBtnEdit.png" src="https://www.tightbytes.com/images/pubimages/appmgr/am02dBtnEdit.png" /></a>
+<figcaption>
+<p><span class="caption-text">EditDevice - The Edit Device button opens the Edit Equipment form to allow entry of information on an existing device in Asset Manager. Note: if an entry in the Events Listbox is selected, that entry will be opened for editing; otherwise, it is assumed that the user wishes to enter a new Event for the selected device.</span><a class="headerlink" href="#id19" title="Permalink to this image"></a></p>
+</figcaption>
+</figure>
+<figure class="align-default" id="id20">
+<a class="reference internal image-reference" href="https://www.tightbytes.com/images/pubimages/appmgr/am02dBtnRpts.png"><img alt="https://www.tightbytes.com/images/pubimages/appmgr/am02dBtnRpts.png" src="https://www.tightbytes.com/images/pubimages/appmgr/am02dBtnRpts.png" /></a>
+<figcaption>
+<p><span class="caption-text">Reports - The Reports button opens the Reports dialogue offering a number of device reports which print on to the BYTYPE (by type) and DEVHIST (device history) worksheets.</span><a class="headerlink" href="#id20" title="Permalink to this image"></a></p>
+</figcaption>
+</figure>
+<figure class="align-default" id="id21">
+<a class="reference internal image-reference" href="https://www.tightbytes.com/images/pubimages/appmgr/am02dBtnShow.png"><img alt="https://www.tightbytes.com/images/pubimages/appmgr/am02dBtnShow.png" src="https://www.tightbytes.com/images/pubimages/appmgr/am02dBtnShow.png" /></a>
+<figcaption>
+<p><span class="caption-text">ShowSheet - The Show Sheet button closes the Manage Equipment form, makes the DEVDATA worksheet the active worksheet and drops the user onto the record in that sheet corresponding to the last selected device in the Device List.</span><a class="headerlink" href="#id21" title="Permalink to this image"></a></p>
+</figcaption>
+</figure>
+<figure class="align-default" id="id22">
+<a class="reference internal image-reference" href="https://www.tightbytes.com/images/pubimages/appmgr/am02dBtnHelp.png"><img alt="https://www.tightbytes.com/images/pubimages/appmgr/am02dBtnHelp.png" src="https://www.tightbytes.com/images/pubimages/appmgr/am02dBtnHelp.png" /></a>
+<figcaption>
+<p><span class="caption-text">Help - Opens Firefox and displays this document.</span><a class="headerlink" href="#id22" title="Permalink to this image"></a></p>
+</figcaption>
+</figure>
+<figure class="align-default" id="id23">
+<a class="reference internal image-reference" href="https://www.tightbytes.com/images/pubimages/appmgr/am02dBtnClose.png"><img alt="https://www.tightbytes.com/images/pubimages/appmgr/am02dBtnClose.png" src="https://www.tightbytes.com/images/pubimages/appmgr/am02dBtnClose.png" /></a>
+<figcaption>
+<p><span class="caption-text">Close - Closes the Manage Equipment form. Note: this button and Menu –&gt; File –&gt; Exit are the only methods to close this form. Clicking on the red ‘X’ in the upper right-hand corner of the form does nothing. This is by design.</span><a class="headerlink" href="#id23" title="Permalink to this image"></a></p>
+</figcaption>
+</figure>
+</section>
+<section id="device-list">
+<span id="em-listboxes"></span><h3>Device List<a class="headerlink" href="#device-list" title="Permalink to this heading"></a></h3>
+<p>The list of devices in the upper listbox show all devices that correspond to the device type selected in the Device Type dropdown:</p>
+<img alt="https://www.tightbytes.com/images/pubimages/appmgr/am03DevListAll.png" src="https://www.tightbytes.com/images/pubimages/appmgr/am03DevListAll.png" />
+<p>The currently selected device is the one that is highlighted. The device’s SAID number will display in the Search field.</p>
+<p>The columns in that listbox are:</p>
+<table class="docutils align-default">
+<colgroup>
+<col style="width: 22%" />
+<col style="width: 78%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Column</p></th>
+<th class="head"><p>Description</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>SAID</p></td>
+<td><p>A unique identifying number issued by Materiel Management</p></td>
+</tr>
+<tr class="row-odd"><td><p>Owner</p></td>
+<td><p>Location: OT - AN - PA <a class="footnote-reference brackets" href="#floc01" id="id1">1</a></p></td>
+</tr>
+<tr class="row-even"><td><p>Status</p></td>
+<td><p>“In Service”, “To Repairs”, and so forth</p></td>
+</tr>
+<tr class="row-odd"><td><p>Description</p></td>
+<td><p>The name of the device, conforming to Materiel Management / BTS</p></td>
+</tr>
+<tr class="row-even"><td><p>Test-n-Tag Date</p></td>
+<td><p>Date of last BTS Test-n-Tag</p></td>
+</tr>
+<tr class="row-odd"><td><p>Located-Sighted</p></td>
+<td><p>Where (or <em>if</em>) the device was last sighted</p></td>
+</tr>
+</tbody>
+</table>
+<p>The last two columns were added to help identify devices that had not been sighted - and thus may have disappeared from the unit or have through some other means gone missing. This is necessary for yearly inventory purposes.</p>
+<p>As the user can see from the above table, one of the approaches to managing devices is by assigning the device a status. No device is infinitely useful: thus, it has a lifespan and a status within that lifespan: for example, “In Service”, “To Repairs”, “Decommissioned” or “On Loan”.</p>
+<p>The second column - Owner - refers more to the most likely location the device would occupy. The view can be modified to list only devices with a specific owner. Above the list, to the right of the Device Type dropdown, is a Owner toggle button. When set to [On] (the default setting):</p>
+<img alt="https://www.tightbytes.com/images/pubimages/appmgr/am03AllTglOn.png" src="https://www.tightbytes.com/images/pubimages/appmgr/am03AllTglOn.png" />
+<p>the list view will display all devices of type. [All] toggled [On] also clears and disables the Owners dropdown. Toggling [All] to [Off]:</p>
+<img alt="https://www.tightbytes.com/images/pubimages/appmgr/am03AllTglOff.png" src="https://www.tightbytes.com/images/pubimages/appmgr/am03AllTglOff.png" />
+<p>enables the Owners dropdown: the user can then select which owner’s devices to display in the Devices List (and the owner column will no longer display in the list).</p>
+<p>The Devices List only displays devices that are active in the system and does not display devices with a status of “Decommissioned”, so as to minimise clutter. In order to see those devices, from the Filter Menu, select “All Devices” from the bottom of that dropdown. To remove “Decommissioned” devices from view, select “Active” from the Filter dropdown.</p>
+</section>
+<section id="events-list">
+<h3>Events List<a class="headerlink" href="#events-list" title="Permalink to this heading"></a></h3>
+<p>In the course of its lifespan, a device will see a number of events. By definition, when a device changes status, it is considered a new event. Recording a change of device status is done in the “Add or Edit Equipment” form.</p>
+<p>This listbox displays all events for the currently selected device in the Devices List. Changing which device is selected will change the events displayed.</p>
+</section>
+</section>
+<section id="the-menu">
+<span id="em-menu"></span><h2>The Menu<a class="headerlink" href="#the-menu" title="Permalink to this heading"></a></h2>
+<section id="file">
+<h3>File<a class="headerlink" href="#file" title="Permalink to this heading"></a></h3>
+<table class="docutils align-default">
+<colgroup>
+<col style="width: 22%" />
+<col style="width: 78%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Caption</p></th>
+<th class="head"><p>Description</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>Save</p></td>
+<td><p>Saves the workbook</p></td>
+</tr>
+<tr class="row-odd"><td><p>Reports</p></td>
+<td><p>Displays a list of reports</p></td>
+</tr>
+<tr class="row-even"><td><p>Print List</p></td>
+<td><p>Prints the currently-visible list of devices</p></td>
+</tr>
+<tr class="row-odd"><td><p>Go To Record</p></td>
+<td><p>Goes to the record on the DevData sheet</p></td>
+</tr>
+<tr class="row-even"><td><p>Exit</p></td>
+<td><p>Closes the form (does not perform a Save)</p></td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="manage-devices">
+<h3>Manage Devices<a class="headerlink" href="#manage-devices" title="Permalink to this heading"></a></h3>
+<table class="docutils align-default">
+<colgroup>
+<col style="width: 23%" />
+<col style="width: 77%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Caption</p></th>
+<th class="head"><p>Description</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>Add New Device</p></td>
+<td><p>Opens EditEquip form to add a new device</p></td>
+</tr>
+<tr class="row-odd"><td><p>Edit Device</p></td>
+<td><p>Opens EditEquip form to edit an existing device</p></td>
+</tr>
+<tr class="row-even"><td><p>BTS Website</p></td>
+<td><p>Displays the BTS website in Internet Explorer</p></td>
+</tr>
+<tr class="row-odd"><td><p>Print [To BTS]</p></td>
+<td><p>Prints on paper “To BTS”</p></td>
+</tr>
+<tr class="row-even"><td><p>Change User</p></td>
+<td><p>Allows logon of new user</p></td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="filter">
+<h3>Filter<a class="headerlink" href="#filter" title="Permalink to this heading"></a></h3>
+<table class="docutils align-default">
+<colgroup>
+<col style="width: 22%" />
+<col style="width: 78%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Caption</p></th>
+<th class="head"><p>Description</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>Active</p></td>
+<td><p>Active Devices <a class="footnote-reference brackets" href="#fstat02" id="id2">2</a></p></td>
+</tr>
+<tr class="row-odd"><td><p>In Service</p></td>
+<td><p>A Device that is currently actively in use</p></td>
+</tr>
+<tr class="row-even"><td><p>Send To Repair</p></td>
+<td><p>A Device going to repair, but not sent <a class="footnote-reference brackets" href="#fstat03" id="id3">3</a></p></td>
+</tr>
+<tr class="row-odd"><td><p>Being Repaired</p></td>
+<td><p>A Device that has been sent to BTS for repair</p></td>
+</tr>
+<tr class="row-even"><td><p>Item Retired</p></td>
+<td><p>A Decommissioned Device</p></td>
+</tr>
+<tr class="row-odd"><td><p>Item Missing</p></td>
+<td><p>A Missing Device <a class="footnote-reference brackets" href="#fstat04" id="id4">4</a></p></td>
+</tr>
+<tr class="row-even"><td><p>Item Stored</p></td>
+<td><p>A Stored Device <a class="footnote-reference brackets" href="#fstat05" id="id5">5</a></p></td>
+</tr>
+<tr class="row-odd"><td><p>On Loan</p></td>
+<td><p>A loaned Device <a class="footnote-reference brackets" href="#fstat06" id="id6">6</a></p></td>
+</tr>
+<tr class="row-even"><td><p>Returned</p></td>
+<td><p>A loaned Device, returned to the loaner</p></td>
+</tr>
+<tr class="row-odd"><td><p>All Devices</p></td>
+<td><p>View all Devices <a class="footnote-reference brackets" href="#fstat07" id="id7">7</a></p></td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="help">
+<h3>Help<a class="headerlink" href="#help" title="Permalink to this heading"></a></h3>
+<table class="docutils align-default">
+<colgroup>
+<col style="width: 29%" />
+<col style="width: 71%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Caption</p></th>
+<th class="head"><p>Description</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>Asset Manager Help</p></td>
+<td><p>Loads Firefox and this document</p></td>
+</tr>
+<tr class="row-odd"><td><p>Developer Mode On</p></td>
+<td><p>Displays prompts for debugging purposes</p></td>
+</tr>
+<tr class="row-even"><td><p>.</p></td>
+<td></td>
+</tr>
+<tr class="row-odd"><td><p>About Asset Manager</p></td>
+<td><p>A brief synopsis on Asset Manager</p></td>
+</tr>
+</tbody>
+</table>
+<p>The menu option objects on the form are really repurposed dropdowns, so selecting the first item of that menu - for example, ‘File’ in the File menu - does nothing. Also, there is some duplication of button functions in the traditional menu at the top of the main form.</p>
+</section>
+<section id="the-image">
+<span id="em-image"></span><h3>The Image<a class="headerlink" href="#the-image" title="Permalink to this heading"></a></h3>
+<p>When available, the image displayed corresponds to the currently selected device in the Device List. If no item is selected, or no picture exists for the selected item, the image is just a question mark, the default image.</p>
+</section>
+<section id="developer-stuff">
+<h3>Developer Stuff<a class="headerlink" href="#developer-stuff" title="Permalink to this heading"></a></h3>
+<p>The unmarked tickbox in the lower right-hand corner of the form - to the right of the Events Listbox - is a developer toggle. Ticking this allows messages to appear that indicate what the code is in process of doing, and associated values of that process. For most purposes, this is best left unticked. Duplicated in the menu under Help -&gt; ‘Developer Mode On’.</p>
+<blockquote>
+<div><p class="rubric">Additional Notes</p>
+<dl class="footnote brackets">
+<dt class="label" id="floc01"><span class="brackets"><a class="fn-backref" href="#id1">1</a></span></dt>
+<dd><p>OT (Operating), AN (Anaesthetics), PA (PACU) - synonymous with Location, the terms are used interchangeably. Note that the Owner column will not display in the Device List if the (“AllOwners”) toggle is toggled off (NOT greyed out or depressed) and the dropdown next to it displays an Owner/Location.</p>
+</dd>
+<dt class="label" id="fstat02"><span class="brackets"><a class="fn-backref" href="#id2">2</a></span></dt>
+<dd><p>‘All active devices’ means any Device that has not been decommissioned or been returned from the loaning organisation will display in the list. Not to be confused with ‘All Devices’ (see below <a class="footnote-reference brackets" href="#fstat07" id="id8">7</a>).</p>
+</dd>
+<dt class="label" id="fstat03"><span class="brackets"><a class="fn-backref" href="#id3">3</a></span></dt>
+<dd><p>A Device that has been identified as needing repair, and is pending being set to BTS. Use only if the item has not yet been sent. This allows the user to designate items to be repaired, taking them offline, but leaving the actual sending to BTS process for a more convenient time.</p>
+</dd>
+<dt class="label" id="fstat04"><span class="brackets"><a class="fn-backref" href="#id4">4</a></span></dt>
+<dd><p>A Device for which a record exists in Asset Manager, but has not been sighted in some time.</p>
+</dd>
+<dt class="label" id="fstat05"><span class="brackets"><a class="fn-backref" href="#id5">5</a></span></dt>
+<dd><p>A Device that is in a fully operational state but has been stored as it is not currently needed.</p>
+</dd>
+<dt class="label" id="fstat06"><span class="brackets"><a class="fn-backref" href="#id6">6</a></span></dt>
+<dd><p>A Device on loan from another organisation or department. All devices must have an SAID number. If the device is on loan from another hospital in the organisation (say, loaned from loan by QEII), the SAID will identify the unit’s original location on the BTS website.</p>
+</dd>
+<dt class="label" id="fstat07"><span class="brackets">7</span><span class="fn-backref">(<a href="#id7">1</a>,<a href="#id8">2</a>)</span></dt>
+<dd><p>Selecting ‘All Devices’ turns on viewing all Devices in the Device List, including decommissioned and loaned devices. Viewing all devices is turned off by default. Search will find the device by SAID (asset number), regardless of this setting.</p>
+</dd>
+</dl>
+</div></blockquote>
+</section>
+</section>
+<section id="edit-equipment-information">
+<h2>Edit Equipment Information<a class="headerlink" href="#edit-equipment-information" title="Permalink to this heading"></a></h2>
+<p>‘Edit Equipment’ is launched from the ‘Equipment Management’ form. The information on this form and the controls will reflect the context in which the form was launched. For example, if the user launches ‘Edit Equipment’ as a result of following the prompt to add new equipment when searching for an item not currently in the database, the SAID number will be the one typed into the search field. If the form was launched from the New Equipment button, no SAID number will be in the SAID field: the user will need to enter this or the record cannot be saved.</p>
+<section id="device-name-and-type">
+<span id="ee-devname"></span><h3>Device Name and Type<a class="headerlink" href="#device-name-and-type" title="Permalink to this heading"></a></h3>
+<p>The name of a device</p>
+<p>The main devices list-box displays a list of devices that are part of a device type group. The device types are in a special field called a “dropdown”, characterised by a textbox with a down-pointing arrow at the right of the field:</p>
+<img alt="https://www.tightbytes.com/images/pubimages/appmgr/am03DevType.png" src="https://www.tightbytes.com/images/pubimages/appmgr/am03DevType.png" />
+<p>Selecting from this dropdown will display all devices in the list below that correspond to the selected device type. Some of the possible types include: “Antithrombotic”, “Gases-Medical”, “Medication Delivery”, “Patient Warming”, “Monitoring” and so on.</p>
+</section>
+<section id="device-status">
+<span id="ee-devstatus"></span><h3>Device Status<a class="headerlink" href="#device-status" title="Permalink to this heading"></a></h3>
+<p>The list of devices in the upper listbox show all devices that correspond to the device type selected in the Device Type dropdown:</p>
+<img alt="https://www.tightbytes.com/images/pubimages/appmgr/am03DevListAll.png" src="https://www.tightbytes.com/images/pubimages/appmgr/am03DevListAll.png" />
+<p>The currently selected device is the one that is highlighted. The device’s SAID number will display in the Search field.</p>
+<p>The columns in that listbox are:</p>
+<table class="docutils align-default">
+<colgroup>
+<col style="width: 22%" />
+<col style="width: 78%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Column</p></th>
+<th class="head"><p>Description</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>SAID</p></td>
+<td><p>A unique identifying number issued by Materiel Mgmt</p></td>
+</tr>
+<tr class="row-odd"><td><p>Owner</p></td>
+<td><p>Location: OT (Operating), AN (Anaesthetics), PA (PACU) - this
+column will not display if the [Owner Toggle] is toggled off
+and the dropdown next to it displays an Owner</p></td>
+</tr>
+<tr class="row-even"><td><p>Status</p></td>
+<td><p>“In Service”, “To Repairs”, etc</p></td>
+</tr>
+<tr class="row-odd"><td><p>Description</p></td>
+<td><p>The name of the device, as recognised by Mat Mgmt and BTS</p></td>
+</tr>
+<tr class="row-even"><td><p>Test-n-Tag Date</p></td>
+<td><p>Date of last BTS Test-n-Tag</p></td>
+</tr>
+<tr class="row-odd"><td><p>Located-Sighted</p></td>
+<td><p>Where (or if) the device was last sighted</p></td>
+</tr>
+</tbody>
+</table>
+<p>The last two columns were added to help identify devices that had not been sighted - and thus may have disappeared from the unit or have through some other means gone missing. This is necessary for yearly inventory purposes.</p>
+<p>As the user can see from the above table, one of the approaches to managing devices is by assigning the device a status. No device is infinitely useful: thus, it has a lifespan and a status within that lifespan: i.e., “In Service”, “To Repairs”, “Decommissioned” or “On Loan”, for example.</p>
+<p>The second column - Owner - refers more to the most likely location the device would occupy. The view can be modified to list only devices with a specific owner. Above the list, to the right of the Device Type dropdown, is a Owner toggle button. When set to [On] (the default setting):</p>
+<img alt="https://www.tightbytes.com/images/pubimages/appmgr/am03AllTglOn.png" src="https://www.tightbytes.com/images/pubimages/appmgr/am03AllTglOn.png" />
+<p>the list view will display all devices of type. [All] toggled [On] also clears and disables the Owners dropdown. Toggling [All] to [Off]:</p>
+<img alt="https://www.tightbytes.com/images/pubimages/appmgr/am03AllTglOff.png" src="https://www.tightbytes.com/images/pubimages/appmgr/am03AllTglOff.png" />
+<p>enables the Owners dropdown: the user can then select which owner’s devices to display in the Devices List (and the owner column will no longer display in the list).</p>
+<p>The Devices List only displays devices that are active in the system and does not display devices with a status of “Decommissioned”, so as to minimise clutter. In order to see those devices, from the Filter Menu, select “All Devices” from the bottom of that dropdown. To remove “Decommissioned” devices from view, select “Active” from the Filter dropdown.</p>
+</section>
+<section id="device-details">
+<span id="ee-devinfo"></span><h3>Device Details<a class="headerlink" href="#device-details" title="Permalink to this heading"></a></h3>
+<p>In the course of its lifespan, a device will see a number of events. By definition, when a device changes status, it is considered a new event. Recording a change of device status is done in the “Add or Edit Equipment” form.</p>
+<p>This listbox displays all events for the currently selected device in the Devices List. Changing which device is selected will change the events displayed.</p>
+</section>
+<section id="ee-buttonbar">
+<span id="id9"></span><h3>Button Bar<a class="headerlink" href="#ee-buttonbar" title="Permalink to this heading"></a></h3>
+<p>There is some duplication of button functions in the traditional menu at the top of the main form.</p>
+<img alt="https://www.tightbytes.com/images/pubimages/appmgr/am02dButtons.png" src="https://www.tightbytes.com/images/pubimages/appmgr/am02dButtons.png" />
+<p>The button bar’s buttons provide a quick and easy way to do the most common tasks.</p>
+<figure class="align-default" id="id24">
+<a class="reference internal image-reference" href="https://www.tightbytes.com/images/pubimages/appmgr/am02dBtnNew.png"><img alt="https://www.tightbytes.com/images/pubimages/appmgr/am02dBtnNew.png" src="https://www.tightbytes.com/images/pubimages/appmgr/am02dBtnNew.png" /></a>
+<figcaption>
+<p><span class="caption-text">Save - The Save button saves the event information to the EventData worksheet. If this was an edit of existing information, it will save over that record.</span><a class="headerlink" href="#id24" title="Permalink to this image"></a></p>
+</figcaption>
+</figure>
+<figure class="align-default" id="id25">
+<a class="reference internal image-reference" href="https://www.tightbytes.com/images/pubimages/appmgr/am02dBtnShow.png"><img alt="https://www.tightbytes.com/images/pubimages/appmgr/am02dBtnShow.png" src="https://www.tightbytes.com/images/pubimages/appmgr/am02dBtnShow.png" /></a>
+<figcaption>
+<p><span class="caption-text">ShowSheet - The Show Sheet button closes the Manage Equipment form, makes the DEVDATA worksheet the active worksheet and drops the user onto the record in that sheet corresponding to the last selected device in the Device List.</span><a class="headerlink" href="#id25" title="Permalink to this image"></a></p>
+</figcaption>
+</figure>
+<figure class="align-default" id="id26">
+<a class="reference internal image-reference" href="https://www.tightbytes.com/images/pubimages/appmgr/am02dBtnHelp.png"><img alt="https://www.tightbytes.com/images/pubimages/appmgr/am02dBtnHelp.png" src="https://www.tightbytes.com/images/pubimages/appmgr/am02dBtnHelp.png" /></a>
+<figcaption>
+<p><span class="caption-text">Help - Opens Firefox and displays this document.</span><a class="headerlink" href="#id26" title="Permalink to this image"></a></p>
+</figcaption>
+</figure>
+<figure class="align-default" id="id27">
+<a class="reference internal image-reference" href="https://www.tightbytes.com/images/pubimages/appmgr/am02dBtnClose.png"><img alt="https://www.tightbytes.com/images/pubimages/appmgr/am02dBtnClose.png" src="https://www.tightbytes.com/images/pubimages/appmgr/am02dBtnClose.png" /></a>
+<figcaption>
+<p><span class="caption-text">Close - Closes the Manage Equipment form. Note: this button and Menu –&gt; File –&gt; Exit are the only methods to close this form. Clicking on the red ‘X’ in the upper right-hand corner of the form does nothing. This is by design.</span><a class="headerlink" href="#id27" title="Permalink to this image"></a></p>
+</figcaption>
+</figure>
+</section>
+<section id="device-image">
+<span id="ee-image"></span><h3>Device Image<a class="headerlink" href="#device-image" title="Permalink to this heading"></a></h3>
+<p>When available, the image displayed corresponds to the currently selected device in the Device List. If no item is selected, or no picture exists for the selected item, the image is just a question mark, the default image.</p>
+<p>Unlike on the Equipment Management form, the image is clickable, allowing the user to select a new image from the images folder. <a class="footnote-reference brackets" href="#putimg01" id="id10">8</a></p>
+<p>If a record for the device exists in the workbook, it will appear in …</p>
+</section>
+<section id="footnotes">
+<h3>Footnotes<a class="headerlink" href="#footnotes" title="Permalink to this heading"></a></h3>
+<blockquote>
+<div><p class="rubric">Additional notes</p>
+<dl class="footnote brackets">
+<dt class="label" id="putimg01"><span class="brackets"><a class="fn-backref" href="#id10">8</a></span></dt>
+<dd><p>Getting images to display for the given device involves either taking an image with a mobile phone or camera and publishing that or finding an image on the web. Note that web-based images may be subject to copyright, so proceed with caution.</p>
+</dd>
+</dl>
+</div></blockquote>
+</section>
+</section>
+<section id="main-worksheets">
+<h2>Main Worksheets<a class="headerlink" href="#main-worksheets" title="Permalink to this heading"></a></h2>
+<p>Asset Manager is an Excel workbook comprised of several worksheets.</p>
+<p>Two worksheets - DEVDATA and EVENTDATA - contain the actual data. The records are “linked” by a column (field) both sheets share: the SAID number field. In DEVDATA, the SAID Number field contains unique records: each SAID represents one device. While in EVENTDATA, the SAID references the device in DEVDATA, each record is a unique event for the devices, so as a device can see numerous events, the SAID number will not be a unique identifier for records in EVENTDATA.</p>
+<p>Unfortunately, Excel doesn’t support SQL, so there is no way to set up data relationships as a proper relational database would, with key fields and SELECT statements, so relationships have to be done somewhat manually with code. Which mostly works, albeit much slower.</p>
+<section id="device-data">
+<h3>Device Data<a class="headerlink" href="#device-data" title="Permalink to this heading"></a></h3>
+<p>DEVDATA contains the device information originally supplied by Materiel Management. For that reason, several of the columns have little relevance for our purposes. The columns that are used by the program are the one in italics in the following list:</p>
+<table class="docutils align-default">
+<colgroup>
+<col style="width: 20%" />
+<col style="width: 80%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Name</p></th>
+<th class="head"><p>Description</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>SAIDNumber</p></td>
+<td><p><em>Unique asset number assigned by BTS/Mat Management</em></p></td>
+</tr>
+<tr class="row-odd"><td><p>DeviceDescription</p></td>
+<td><p><em>Name of the device</em></p></td>
+</tr>
+<tr class="row-even"><td><p>Status</p></td>
+<td><p><em>In Service, To Repairs, Decommissioned, Stored, etc</em></p></td>
+</tr>
+<tr class="row-odd"><td><p>Location</p></td>
+<td><p><em>Most recent site device was sighted</em></p></td>
+</tr>
+<tr class="row-even"><td><p>Owner</p></td>
+<td><p>Used if on loan from another site</p></td>
+</tr>
+<tr class="row-odd"><td><p>Asset</p></td>
+<td><p>–Not used–</p></td>
+</tr>
+<tr class="row-even"><td><p>FuncLocation</p></td>
+<td><p>–Not used–</p></td>
+</tr>
+<tr class="row-odd"><td><p>FuncLocationDesc</p></td>
+<td><p>–Not used–</p></td>
+</tr>
+<tr class="row-even"><td><p>CostCentre</p></td>
+<td><p>Unreliable, not used</p></td>
+</tr>
+<tr class="row-odd"><td><p>Manufacturer</p></td>
+<td><p><em>All caps for consistency</em></p></td>
+</tr>
+<tr class="row-even"><td><p>ModelNumber</p></td>
+<td><p><em>Inconsistently documented in BTS, helps identify device</em></p></td>
+</tr>
+<tr class="row-odd"><td><p>SerialNumber</p></td>
+<td><p><em>Inconsistently documented in BTS, helps identify device</em></p></td>
+</tr>
+<tr class="row-even"><td><p>AcquisitionDate</p></td>
+<td><p>–Not used–</p></td>
+</tr>
+<tr class="row-odd"><td><p>AcquisitionValue</p></td>
+<td><p>–Not used–</p></td>
+</tr>
+<tr class="row-even"><td><p>CurrentAge</p></td>
+<td><p>–Not used–</p></td>
+</tr>
+<tr class="row-odd"><td><p>EquipmentType</p></td>
+<td><p><em>Classification, used to group devices within the software</em></p></td>
+</tr>
+<tr class="row-even"><td><p>DeviceImage</p></td>
+<td><p><em>Optional: image of the device, displayed in the software</em></p></td>
+</tr>
+<tr class="row-odd"><td><p>Test-n-Tag</p></td>
+<td><p><em>Date of last BTS Test-and-Tag</em></p></td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="event-data">
+<h3>Event Data<a class="headerlink" href="#event-data" title="Permalink to this heading"></a></h3>
+<p>EVENTDATA contains event  information for devices, i.e., things that have happened, like “put into service”, “sent to repair”, “retired” and so forth. This data is original to Asset Manager and is not readily available through other information outlets, such as Materiel Management or BTS. Thus, all columns have total relevance. The columns are:</p>
+<table class="docutils align-default">
+<colgroup>
+<col style="width: 15%" />
+<col style="width: 85%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Name</p></th>
+<th class="head"><p>Description</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>SAIDNumber</p></td>
+<td><p>Number assigned by BTS/Mat Management, also the key field</p></td>
+</tr>
+<tr class="row-odd"><td><p>EditedBy</p></td>
+<td><p>Name of the person preforming the documentation</p></td>
+</tr>
+<tr class="row-even"><td><p>ChangedDate</p></td>
+<td><p>Event date</p></td>
+</tr>
+<tr class="row-odd"><td><p>DatedStatus</p></td>
+<td><p>Device status on this date: In Service, To Repairs, Decommissioned, etc.</p></td>
+</tr>
+<tr class="row-even"><td><p>Notes</p></td>
+<td><p>Details regarding that status</p></td>
+</tr>
+<tr class="row-odd"><td><p>EventID</p></td>
+<td><p>Unique identifier for that event</p></td>
+</tr>
+</tbody>
+</table>
+</section>
+</section>
+<section id="supporting-worksheets">
+<h2>Supporting Worksheets<a class="headerlink" href="#supporting-worksheets" title="Permalink to this heading"></a></h2>
+<p>The rest of the tabs at the bottom of the workbook represent support worksheets:</p>
+<table class="docutils align-default">
+<colgroup>
+<col style="width: 13%" />
+<col style="width: 87%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Name</p></th>
+<th class="head"><p>Description</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>Meta</p></td>
+<td><p>Data lists used by the software - generally, not to be edited directly</p></td>
+</tr>
+<tr class="row-odd"><td><p>Contacts</p></td>
+<td><p>Vendors, suppliers and other contacts (sort-of a virtual Rolodex)</p></td>
+</tr>
+<tr class="row-even"><td><p>ByType</p></td>
+<td><p>Report</p></td>
+</tr>
+<tr class="row-odd"><td><p>DevHist</p></td>
+<td><p>Report</p></td>
+</tr>
+<tr class="row-even"><td><p>Repair</p></td>
+<td><p>Temporary report sheet</p></td>
+</tr>
+<tr class="row-odd"><td><p>Images</p></td>
+<td><p>Image list and location - its future is in doubt</p></td>
+</tr>
+</tbody>
+</table>
+<p>In short, the worksheets each serve a purpose. The main ones are summarised below:</p>
+<blockquote>
+<div><p><strong>Top</strong>: – serves only one purpose: to launch the form.</p>
+<p><strong>DevData</strong>: – A set of records of non-consummable (assetable) Devices</p>
+<p><strong>EventData</strong>: – Records of events for those devices.</p>
+<p><strong>Meta</strong>: – contains names and associated abbreviations. It also stores cross-session information, like last opened device record and details, last user and whether the form is running in debug mode or not.</p>
+<p><strong>Contacts</strong>: – is a vendor Rolodex of sorts.</p>
+<p><strong>ByType</strong>: – is a report sheet. Useful for collecting test-n-tag information.</p>
+<p><strong>DevHist</strong>: – is a report sheet, listing of a specific item type, with a history for each device.</p>
+</div></blockquote>
+</section>
+<section id="licence-agreement">
+<h2>Licence Agreement<a class="headerlink" href="#licence-agreement" title="Permalink to this heading"></a></h2>
+<section id="gnu-general-public-licence-v3">
+<span id="am-licence"></span><h3>GNU General Public Licence v3<a class="headerlink" href="#gnu-general-public-licence-v3" title="Permalink to this heading"></a></h3>
+<p>Terms of General Public Licence, version 3:</p>
+<p>This program is free software: you can redistribute it and/or modify it under the terms of the GNU General Public Licence as published by the Free Software Foundation, either version 3 of the Licence, or (at your option) any later version.</p>
+<p>This program is distributed in the hope that it will be useful, but WITHOUT ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public Licence for more details.</p>
+<p>You should have received a copy of the GNU General Public Licence along with this programme. If not, see:</p>
+<p><a class="reference external" href="http://www.gnu.org/licenses">Full GNU GPL</a>  (need online access to view this document)</p>
+</section>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="About.html" class="btn btn-neutral float-left" title="Introduction" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="CallSheetp03.html" class="btn btn-neutral float-right" title="Welcome to Call Sheet, version 0.3" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2018, Robyn Hahn.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

@@ -1,0 +1,11 @@
+##########################
+About Applications Manager
+##########################
+
+In an effort to make my own tasks easier through the use of the computer, I developed some utilities for the unit in which I worked. One was a conputerised ledger or log to monitor equipment (non-consumables) used in the care of patients in the Operating Theatres and Post-op Recovery. My knowledge of software development was and still is sketchy at best, but **Asset Manager** did, for the most part, help me log events and track location for devices.
+
+**CallSheet** was developed after I learned that it was taking personnel almost a half-hour to put a Call Sheet together manually (the after-hours coordinator had been expecting printed instead of written for legebility reasons). If the kind user takes a moment to go over the key points of this document, it shouldn't take any longer than a minute to make the selections and print the CallSheet form.
+
+Whilst **Asset Manager** never really turned out to be useful to anyone but myself, floor coordinators found **Call Sheet** compelling, and asked for additional features. Hence, multiple versions.
+
+Other VBA apps will likely end up here on this repo as well.
