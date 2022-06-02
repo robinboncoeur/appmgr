@@ -63,10 +63,10 @@
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="#the-code-running-the-workbook">The Code Running The Workbook</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="#core-functions">Core Functions</a><ul>
-<li class="toctree-l4"><a class="reference internal" href="#licence-agreement">Licence Agreement</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#core-functions">Core Functions</a></li>
 </ul>
 </li>
+<li class="toctree-l2"><a class="reference internal" href="#licence-agreement">Licence Agreement</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="#gnu-general-public-licence-v3">GNU General Public Licence v3</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#how-to-contact-the-developer">How to Contact the Developer</a></li>
 </ul>
@@ -112,7 +112,7 @@
 <section id="from-the-menu">
 <h3>From The Menu<a class="headerlink" href="#from-the-menu" title="Permalink to this heading"></a></h3>
 <p>When this workbook loads, it includes a special Menu option – next to “Help” – called “Tax Workbook”:</p>
-<img alt="images/tw01Codes04.png" src="images/tw01Codes04.png" />
+<img alt="https://www.tightbytes.com/images/pubimages/appmgr/tw01Codes04.png" src="https://www.tightbytes.com/images/pubimages/appmgr/tw01Codes04.png" />
 <p>Help, much like the rest of the document is a work-in-progress, so all topics may not be covered.</p>
 <p>The same goes for the VBA code: it works 99% of the time, but every now and then, the VBA gremlins interfere.</p>
 <blockquote>
@@ -130,13 +130,13 @@
 <section id="worksheets-overview">
 <h3>Worksheets Overview<a class="headerlink" href="#worksheets-overview" title="Permalink to this heading"></a></h3>
 <p>This workbook contains transaction data from primarily ANZ bank accounts. On most of the worksheets, the data is categorised through codes:</p>
-<img alt="images/tw01Codes01.png" src="images/tw01Codes01.png" />
+<img alt="https://www.tightbytes.com/images/pubimages/appmgr/tw01Codes01.png" src="https://www.tightbytes.com/images/pubimages/appmgr/tw01Codes01.png" />
 <p>A simple =SUMIF() tallies up Transaction Categories based on those codes in column D:</p>
-<img alt="images/tw01Codes02.png" src="images/tw01Codes02.png" />
+<img alt="https://www.tightbytes.com/images/pubimages/appmgr/tw01Codes02.png" src="https://www.tightbytes.com/images/pubimages/appmgr/tw01Codes02.png" />
 <p>Using the Credit Card worksheet as an example, the codes in column D are assigned via Excel 2016 Visual-Basic for Applications functions (VBA), copied from the <strong>ClassCC Worksheet</strong> which has an instance of the Transaction Target and the associated code:</p>
-<img alt="images/tw01Codes03.png" src="images/tw01Codes03.png" />
+<img alt="https://www.tightbytes.com/images/pubimages/appmgr/tw01Codes03.png" src="https://www.tightbytes.com/images/pubimages/appmgr/tw01Codes03.png" />
 <p>The software that copies the Transaction Code from the ClassCC sheet to the 568CredCard sheet is run from <strong>Tax Workbook</strong> menu option under the main menu option Tax Workbook:</p>
-<img alt="images/tw01Codes04.png" src="images/tw01Codes04.png" />
+<img alt="https://www.tightbytes.com/images/pubimages/appmgr/tw01Codes04.png" src="https://www.tightbytes.com/images/pubimages/appmgr/tw01Codes04.png" />
 <p>Much of the workbook’s data is managed in this fashion.</p>
 </section>
 <section id="how-taxworkbook-works">
@@ -171,7 +171,7 @@
 </pre></div>
 </div>
 <p>After the transactions have been copied, the Code Assignment software is invoked:</p>
-<img alt="images/tw01Codes04.png" src="images/tw01Codes04.png" />
+<img alt="https://www.tightbytes.com/images/pubimages/appmgr/tw01Codes04.png" src="https://www.tightbytes.com/images/pubimages/appmgr/tw01Codes04.png" />
 <p>which then compares transaction target entries to those in ClassCC, leaving the Code column [D] blank if it doesn’t find that tranaction. 90% or more transactions are going to be with the same vendors, so it’s a simple matter of updating ClassCC after running this software, which is usually only a matter of a few minutes.</p>
 </section>
 <section id="checking">
@@ -185,7 +185,7 @@
 </pre></div>
 </div>
 <p>After the transactions have been copied, the Code Assignment software is invoked:</p>
-<img alt="images/tw01Codes06.png" src="images/tw01Codes06.png" />
+<img alt="https://www.tightbytes.com/images/pubimages/appmgr/tw01Codes06.png" src="https://www.tightbytes.com/images/pubimages/appmgr/tw01Codes06.png" />
 </section>
 <section id="home-loan">
 <h3>Home Loan<a class="headerlink" href="#home-loan" title="Permalink to this heading"></a></h3>
@@ -212,10 +212,13 @@
 <span id="tw-corefcn"></span><h3>Core Functions<a class="headerlink" href="#core-functions" title="Permalink to this heading"></a></h3>
 <p>The code for Menu Option <strong>“Tax Workbook”</strong> and some user-defined functions – for example, sParseAllWords({cellnumber}) – on the ClassCC worksheet lives on the MdlT modules page.</p>
 <p>Here is the code for sParseAllWords({cellnumber}):</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">Code</span> <span class="nb">all</span> <span class="n">goes</span> <span class="n">here</span>
+</pre></div>
+</div>
+</section>
+</section>
 <section id="licence-agreement">
-<h4>Licence Agreement<a class="headerlink" href="#licence-agreement" title="Permalink to this heading"></a></h4>
-</section>
-</section>
+<h2>Licence Agreement<a class="headerlink" href="#licence-agreement" title="Permalink to this heading"></a></h2>
 <section id="gnu-general-public-licence-v3">
 <h3>GNU General Public Licence v3<a class="headerlink" href="#gnu-general-public-licence-v3" title="Permalink to this heading"></a></h3>
 <p>Terms of General Public Licence, version 3:</p>

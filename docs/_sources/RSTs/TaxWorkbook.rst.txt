@@ -28,7 +28,7 @@ From The Menu
 
 When this workbook loads, it includes a special Menu option -- next to "Help" -- called "Tax Workbook":
 
-.. image:: ../images/tw01Codes04.png
+.. image:: https://www.tightbytes.com/images/pubimages/appmgr/tw01Codes04.png
 
 Help, much like the rest of the document is a work-in-progress, so all topics may not be covered.
 
@@ -54,19 +54,19 @@ Worksheets Overview
 
 This workbook contains transaction data from primarily ANZ bank accounts. On most of the worksheets, the data is categorised through codes:
 
-.. image:: ../images/tw01Codes01.png
+.. image:: https://www.tightbytes.com/images/pubimages/appmgr/tw01Codes01.png
 
 A simple =SUMIF() tallies up Transaction Categories based on those codes in column D:
 
-.. image:: ../images/tw01Codes02.png
+.. image:: https://www.tightbytes.com/images/pubimages/appmgr/tw01Codes02.png
 
 Using the Credit Card worksheet as an example, the codes in column D are assigned via Excel 2016 Visual-Basic for Applications functions (VBA), copied from the **ClassCC Worksheet** which has an instance of the Transaction Target and the associated code:
 
-.. image:: ../images/tw01Codes03.png
+.. image:: https://www.tightbytes.com/images/pubimages/appmgr/tw01Codes03.png
 
 The software that copies the Transaction Code from the ClassCC sheet to the 568CredCard sheet is run from **Tax Workbook** menu option under the main menu option Tax Workbook:
 
-.. image:: ../images/tw01Codes04.png
+.. image:: https://www.tightbytes.com/images/pubimages/appmgr/tw01Codes04.png
 
 Much of the workbook's data is managed in this fashion.
 
@@ -118,7 +118,7 @@ The columns are as follows::
 
 After the transactions have been copied, the Code Assignment software is invoked:
 
-.. image:: ../images/tw01Codes04.png
+.. image:: https://www.tightbytes.com/images/pubimages/appmgr/tw01Codes04.png
 
 which then compares transaction target entries to those in ClassCC, leaving the Code column [D] blank if it doesn't find that tranaction. 90% or more transactions are going to be with the same vendors, so it's a simple matter of updating ClassCC after running this software, which is usually only a matter of a few minutes.
 
@@ -138,7 +138,7 @@ The columns are as follows::
 
 After the transactions have been copied, the Code Assignment software is invoked:
 
-.. image:: ../images/tw01Codes06.png
+.. image:: https://www.tightbytes.com/images/pubimages/appmgr/tw01Codes06.png
 
 
 =========
@@ -191,10 +191,12 @@ The code for Menu Option **"Tax Workbook"** and some user-defined functions -- f
 
 Here is the code for sParseAllWords({cellnumber})::
 
+   Code all goes here
 
 
 
 
+*****************
 Licence Agreement
 *****************
 
@@ -211,6 +213,7 @@ This program is distributed in the hope that it will be useful, but WITHOUT ANY 
 You should have received a copy of the GNU General Public Licence along with this programme. If not, see: 
 
 `Full GNU GPL <http://www.gnu.org/licenses>`_  (you will need online access to view this document).
+
 
 
 ============================
