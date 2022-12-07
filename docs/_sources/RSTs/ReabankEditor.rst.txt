@@ -1,0 +1,103 @@
+###############
+Reabanks Editor
+###############
+
+This Excel-based utility is designed to manage creating and maintaining Reaticulate reabanks (articulation maps) in spreadsheet form. The workbook contains data inported from existing .reabank files.
+
+This is a quick-n-dirty approach to creating and editing .reabanks: tack is developing a far more sophisticated part of Reaticulate which will make this obsolete.
+
+
+
+
+
+********************
+How to Best Use Help
+********************
+
+While Reabanks Editor's use seems pretty straight-forward to the developer, he realises that his approach to running software could differ wildly to other inhabitants of the solar system run software: hence, this Help file.
+
+Why this approach to a Help file? See the footnote [#fhlp01]_.
+
+=============
+From The Menu
+=============
+
+When this workbook loads, it includes a special Menu option -- next to "Help" -- called "Reabanks Editor":
+
+.. image:: https://www.tightbytes.com/images/pubimages/appmgr/tw01Codes04.png
+
+Help, much like the rest of the document is a work-in-progress, so all topics may not be covered.
+
+The same goes for the VBA code: it works 99% of the time, but every now and then, the VBA gremlins interfere.
+
+  .. rubric:: Notes
+
+  .. [#fhlp01] As Microsoft in their wisdom didn't see fit to include a means to provide a very flexible custom help documentation system without installing questionable add-ons - something most security-conscious IT departments of organisations would definitely never permit - a method of sharing help information had to be come up with that would provide that information quickly, consistently and accurately. Therefore, I have chosen HTML (think: Web) pages for documenting Help. The degree of success in finding help in these pages depends on how the user generally searches for help on a computer, but I would suggest this approach.
+
+
+
+
+
+
+
+****************************
+Reabanks Editor - Worksheets
+****************************
+
+===================
+Worksheets Overview
+===================
+
+This workbook contains reabanks data, quickly generated via "Select All" in the text editor, [Copy], selecting the "A1" cell and then, [Paste].
+
+
+
+
+=========================
+How Reabanks Editor Works
+=========================
+
+When "Reabanks Editor" is first opened in Excel, security settings commonly set by organisations may issue a security warning:
+   
+   * *Some active content has been disabled. Click for more details.*
+   
+Next to this warning is a button labelled **[Enable Content]**. While the spreadsheet's data can be viewed without "enabling content", the menu and other features in this workbook will only run if the content is enabled. The only needs to be done once.
+
+
+
+
+
+*****************
+Licence Agreement
+*****************
+
+=============================
+GNU General Public Licence v3
+=============================
+
+Terms of General Public Licence, version 3:
+
+This program is free software: you can redistribute it and/or modify it under the terms of the GNU General Public Licence as published by the Free Software Foundation, either version 3 of the Licence, or (at your option) any later version.
+
+This program is distributed in the hope that it will be useful, but WITHOUT ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public Licence for more details.
+
+You should have received a copy of the GNU General Public Licence along with this programme. If not, see: 
+
+`Full GNU GPL <http://www.gnu.org/licenses>`_  (you will need online access to view this document).
+
+
+
+============================
+How to Contact the Developer
+============================
+
+Whilst software developers endeavour to write clean, robust software with consistent, predictable behaviour, bugs do happen. The TaxWorkbook developer is committed to supporting this workbook, hence this document and a web presence on github.
+
+A number of means exist to contact the developer:
+
+   * gmail: robinseahahn@gmail.com
+   * `github issues page <https://github.com/robinboncoeur/appmgr/issues>`_
+   
+To find the most current documentation - a (probably) updated version of this document - go to:
+   
+   * `my Github TaxWorkbook page <https://robinboncoeur.github.io/appmgr/>`_ 

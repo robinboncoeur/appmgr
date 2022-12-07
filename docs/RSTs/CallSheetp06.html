@@ -4,7 +4,7 @@
   <meta charset="utf-8" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Welcome to Call Sheet, version 0.6 &mdash; App Manager 2.25 documentation</title>
+  <title>CallSheet ver 0.6 &mdash; App Manager 2.25 documentation</title>
       <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
       <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
   <!--[if lt IE 9]>
@@ -16,9 +16,11 @@
         <script src="../_static/underscore.js"></script>
         <script src="../_static/_sphinx_javascript_frameworks_compat.js"></script>
         <script src="../_static/doctools.js"></script>
+        <script src="../_static/sphinx_highlight.js"></script>
     <script src="../_static/js/theme.js"></script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="The Tax Workbook Guide" href="TaxWorkbook.html" />
     <link rel="prev" title="Welcome to Call Sheet, version 0.5" href="CallSheetp05.html" /> 
 </head>
 
@@ -43,12 +45,13 @@
 <li class="toctree-l1"><a class="reference internal" href="AssetManager.html">Welcome to Asset Manager</a></li>
 <li class="toctree-l1"><a class="reference internal" href="CallSheetp03.html">Welcome to Call Sheet, version 0.3</a></li>
 <li class="toctree-l1"><a class="reference internal" href="CallSheetp05.html">Welcome to Call Sheet, version 0.5</a></li>
-<li class="toctree-l1 current"><a class="current reference internal" href="#">Welcome to Call Sheet, version 0.6</a><ul>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">CallSheet ver 0.6</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="#how-to-best-use-help">How to Best Use Help</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="#conventions-used-in-this-document">Conventions used in this Document</a></li>
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="#history-caveats-and-how-to-contact-me">History, Caveats and How to Contact Me</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#background">Background</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#caveats">Caveats</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#how-to-contact-the-developer">How to Contact the Developer</a></li>
 </ul>
@@ -97,6 +100,7 @@
 </li>
 </ul>
 </li>
+<li class="toctree-l1"><a class="reference internal" href="TaxWorkbook.html">The Tax Workbook Guide</a></li>
 </ul>
 
         </div>
@@ -113,7 +117,7 @@
           <div role="navigation" aria-label="Page navigation">
   <ul class="wy-breadcrumbs">
       <li><a href="../index.html" class="icon icon-home"></a> &raquo;</li>
-      <li>Welcome to Call Sheet, version 0.6</li>
+      <li>CallSheet ver 0.6</li>
       <li class="wy-breadcrumbs-aside">
             <a href="../_sources/RSTs/CallSheetp06.rst.txt" rel="nofollow"> View page source</a>
       </li>
@@ -123,10 +127,10 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
              
-  <section id="welcome-to-call-sheet-version-0-6">
-<h1>Welcome to Call Sheet, version 0.6<a class="headerlink" href="#welcome-to-call-sheet-version-0-6" title="Permalink to this heading"></a></h1>
+  <section id="callsheet-ver-0-6">
+<h1>CallSheet ver 0.6<a class="headerlink" href="#callsheet-ver-0-6" title="Permalink to this heading"></a></h1>
 <p>CallSheet is an Excel-based utility designed to manage creating and maintaining a Staff-On-Call WorkSheet. This worksheet displays names and phone numbers for emergency callback staff in the Operating Theatre. to be submitted to the After-Hours Coordinator by the Operating Theatre’s Floor coordinator. Thus, the After-Hours Coordinator will have a list of personnel names and phone numbers to call when an after-hours emergency arises.</p>
-<p>This worksheet is created weekly by the OT Floor Coordinator, functionally replacing the manually copy-and-paste approach. CallSheet extends Excel through forms and code written in Visual-Basic for Applications, which is part of the Microsoft Excel product. In a nutshell, the way CallSheet works is this: Staff Names and Phone Numbers are alphabetically saved in the NameAndPhone worksheet, along with their roles in the Operating Theatre and Post-Op Recovery. Names are selected via dropdowns in role sections, and the corresponding staff phone number is selected by the software.</p>
+<p>This worksheet is created weekly by the OT Floor Coordinator, functionally replacing the manually copy-and-paste approach. CallSheet extends Excel through forms and code written in Visual-Basic for Applications, which is part of the Microsoft Excel product. In a nutshell, the way CallSheet works is this: Staff Names and pertinent information such as primary skill and phone numbers is saved in the NameAndPhone worksheet. Names are selected via dropdowns in role sections, and the corresponding staff phone number is selected by the software.</p>
 <p>This Help file pertains to CallSheet, version 0.6 (v6).</p>
 <section id="how-to-best-use-help">
 <h2>How to Best Use Help<a class="headerlink" href="#how-to-best-use-help" title="Permalink to this heading"></a></h2>
@@ -168,12 +172,15 @@
 </section>
 <section id="history-caveats-and-how-to-contact-me">
 <h2>History, Caveats and How to Contact Me<a class="headerlink" href="#history-caveats-and-how-to-contact-me" title="Permalink to this heading"></a></h2>
-<p>CallSheet was developed after I learned that it was taking personnel almost a half-hour to put a Call Sheet together manually (the after-hours coordinator had been expecting printed instead of written for legebility reasons). If the kind user takes a moment to go over the key points of this document, it shouldn’t take any longer than a minute to make the selections and print the CallSheet form.</p>
+<section id="background">
+<h3>Background<a class="headerlink" href="#background" title="Permalink to this heading"></a></h3>
+<p>CallSheet was developed after I learned that it was taking personnel almost a half-hour to put a Call Sheet together manually using MS Word. The after-hours coordinator expect a printed document instead of hand-written, for legibility reasons. Searching the list of names and phone numbers and copy-pasting this into another sheet was very time-intensive. Using CallSheet, this process should not take any longer than a minute or so to make the selections and print the CallSheet form.</p>
+</section>
 <section id="caveats">
 <h3>Caveats<a class="headerlink" href="#caveats" title="Permalink to this heading"></a></h3>
-<p>Call Sheet is fully contained in a stand-alone Excel workbook. Although I would have preferred a proper database, Excel was all I had available within the organisation I was developing in, so I commandeered it to act as a flat-file database. Excel as a database is not ideal, but through the quirky magic of Visual Basic for Applications, it generally works as expected. No question it is definitely an improvement over manual copy-and-paste.</p>
-<p>VBA itself is not the stellar language to write solutions in one could hope or wish for, and my knowledge on how it works is a bit less than comprehensive. Therefore, someone following me in trying to maintain/fix the code may wonder at some of the kludges I employed. As I learn more on how to do this all properly, the kludges have been removed. Whilst I tried to be as professional as I could developing this tool, Call Sheet is pedestrian code at best.</p>
-<p>The developer of this tool makes no claims as to the accuracy or reliability of the data, nor are there any guarantees, implied or real, as to the document’s fitness for purpose. I.e., it is presented and delivered as-is. Please keep this in mind when using this tool. I ask the user’s patience with the code… it is what it is. If you manage to break it, you get to keep both pieces.</p>
+<p>CallSheet is fully contained in a stand-alone Excel workbook. Excel as a database is not ideal, but through the quirky magic of Visual Basic for Applications, it generally works as expected. No question it is definitely an improvement over manual copy-and-paste.</p>
+<p>VBA itself is not the stellar language to write solutions in one could hope or wish for, and my knowledge on how it works is a bit less than comprehensive. Therefore, someone following me in trying to maintain/fix the code may wonder at some of the kludges I employed. As I learn more on how to do this all properly, the kludges have been removed. Whilst I tried to be as professional as I could developing this tool, CallSheet is pedestrian code at best.</p>
+<p>The developer of this utility makes no claims as to the accuracy or reliability of the data, nor are there any guarantees, implied or real, as to the document’s fitness for purpose. I.e., it is presented and delivered as-is. Please keep this in mind when using this utility. I ask the user’s patience with the code… it is what it is. If you manage to break it, you get to keep both pieces.</p>
 <p>While the language it is written in - VBA - is proprietary, the code supporting the use of this document - i.e., the “software” - is FOSS: free/open-source software. Please see the Licence Page for the licence agreement associated with this software.</p>
 </section>
 <section id="how-to-contact-the-developer">
@@ -196,12 +203,12 @@
 </section>
 <section id="the-worksheets">
 <h2>The Worksheets<a class="headerlink" href="#the-worksheets" title="Permalink to this heading"></a></h2>
-<p>Call Sheet is an Excel workbook comprised of several worksheets.</p>
+<p>CallSheet is an Excel workbook comprised of several worksheets.</p>
 <section id="callsheet">
 <h3>CallSheet<a class="headerlink" href="#callsheet" title="Permalink to this heading"></a></h3>
 <p>The first worksheet - called CallSheet - contains the form to be printed. It follows the original paper version in terms of structure, with regions to fill in extra staff and after-hours cases. These features are currently not used, but they are available.</p>
 <p>The staff and phone number fields can be filled out manually, but it is faster to use the “On-Call” form, which was the whole point of creating this workbook.</p>
-<p>The actual print area starts on row 110, <em>well down the sheet, out of sight</em>: this is by design, as it is important not to type into this area. The fields have special formulas which link them to corresponding fields at the top of the worksheet, so typing into the print region would remove the formulae and the sheet can not work as designed.</p>
+<p>The actual “print area” - what the printer actually prints out - starts on row 110, <em>well down the sheet, out of sight</em>: this is by design, as it is important not to type into this area. The fields have special formulas which link them to corresponding fields at the top of the worksheet, so typing into the print region would remove the formulae and the sheet can not work as designed.</p>
 </section>
 <section id="namesphones">
 <h3>NamesPhones<a class="headerlink" href="#namesphones" title="Permalink to this heading"></a></h3>
@@ -432,6 +439,7 @@ Note: <em>there is a number at the end of the field, but it normally won’t be 
 </ul>
 </div></blockquote>
 <p>In order to make the product truly useful, the developer has decided to make all aspects of how it all works as transparent to the end user as possible. With that end in mind, this page will endeavour to clarify what does what and how on different parts of the document.</p>
+<p>One issue that has made developing this product challenging has been the Microsoft “feature” of auto-triggering certain events, such as &lt;Object&gt;_Click methods through changes in the value of other objects. This is therefore the purpose of the form properties: boolean bNoRun and bnRR. Thus, when you select a name in the Combobox StaffNames which runs the bPopFields() method, the bnRR is set to True, preventing the _Click() methods of the Role checkboxes (ChkAN, ChkPA and ChkSS). They check the value of bnRR: if True, they will not run as they would by default.</p>
 <section id="editing-the-ribbon">
 <span id="cd-launchv6"></span><h3>Editing “The Ribbon”<a class="headerlink" href="#editing-the-ribbon" title="Permalink to this heading"></a></h3>
 <p>Between the    and the   menu tabs at the top of this form is the “MSH-CallSheet” menu tab. The options in the menu [Staff], [About], [Help] and [   ] are all driven by code. It is therefore important to keep in mind that almost nothing will work unless “Enable Content” is clicked (enabled).</p>
@@ -545,6 +553,7 @@ Note: <em>there is a number at the end of the field, but it normally won’t be 
           </div>
           <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
         <a href="CallSheetp05.html" class="btn btn-neutral float-left" title="Welcome to Call Sheet, version 0.5" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="TaxWorkbook.html" class="btn btn-neutral float-right" title="The Tax Workbook Guide" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
     </div>
 
   <hr/>

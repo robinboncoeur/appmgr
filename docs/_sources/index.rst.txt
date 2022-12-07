@@ -17,6 +17,7 @@ Welcome to Applications Manager
    RSTs/CallSheetp05.rst
    RSTs/CallSheetp06.rst
    RSTs/TaxWorkbook.rst
+   RSTs/ReabankEditor.rst
 
 
 
