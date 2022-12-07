@@ -1,6 +1,6 @@
-#################
-CallSheet ver 0.6
-#################
+#####################
+CallSheet version 0.6
+#####################
 
 CallSheet is an Excel-based utility designed to manage creating and maintaining a Staff-On-Call WorkSheet. This worksheet displays names and phone numbers for emergency callback staff in the Operating Theatre. to be submitted to the After-Hours Coordinator by the Operating Theatre's Floor coordinator. Thus, the After-Hours Coordinator will have a list of personnel names and phone numbers to call when an after-hours emergency arises.
 

@@ -1,6 +1,6 @@
-##################################
-Welcome to Call Sheet, version 0.5
-##################################
+######################
+Call Sheet version 0.5
+######################
 
 This Excel-based utility is designed to manage creating and maintaining a Staff-On-Call WorkSheet displaying names and phone numbers for emergency callback staff in the Operating Theatre. It is designed to be printed and submitted to the After-Hours Coordinator, who will need to know personnel names and phone numbers on call for emergencies. The sheet is created weekly.
 

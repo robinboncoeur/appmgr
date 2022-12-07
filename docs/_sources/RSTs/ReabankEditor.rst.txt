@@ -24,7 +24,7 @@ From The Menu
 
 When this workbook loads, it includes a special Menu option -- next to "Help" -- called "Reabanks Editor":
 
-.. image:: https://www.tightbytes.com/images/pubimages/appmgr/tw01Codes04.png
+.. image:: https://www.tightbytes.com/images/pubimages/appmgr/re_Interface01.png
 
 Help, much like the rest of the document is a work-in-progress, so all topics may not be covered.
 
