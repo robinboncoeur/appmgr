@@ -1,6 +1,6 @@
 # App Manager
 
-Help files and test Excel files for my VBA appsHelp files and test Excel files for my VBA apps
+Help files and test Excel files for my VBA appsHelp files and test Excel files for my VBA apps, available here: https://robinboncoeur.github.io/appmgr/
 
 This repository is to replace repos for all Excel-type (VBA) programmes, including the help files.
 
