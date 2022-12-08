@@ -6,7 +6,7 @@ This Excel-based utility is designed to manage creating and maintaining Reaticul
 
 This is a quick-n-dirty approach to creating and editing .reabanks: tack is developing a far more sophisticated part of Reaticulate which will make this obsolete.
 
-
+Note: **This document is still very rough - just a stub, really.**
 
 
 
