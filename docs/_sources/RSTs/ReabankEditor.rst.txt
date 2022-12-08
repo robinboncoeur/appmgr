@@ -100,4 +100,4 @@ A number of means exist to contact the developer:
    
 To find the most current documentation - a (probably) updated version of this document - go to:
    
-   * `my Github Reabanks Editor page <https://robinboncoeur.github.io/appmgr/ReabankEditor.html>`_ 
+   * `my Github Reabanks Editor page <https://robinboncoeur.github.io/appmgr/RSTs/ReabankEditor.html>`_ 
