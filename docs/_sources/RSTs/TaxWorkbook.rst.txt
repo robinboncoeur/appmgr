@@ -9,6 +9,22 @@ It replaces a manually-managed ledger approach to tax-data figures. The tax acco
 This Tax Workbook is a living document. At the end of the fiscal year, it is submitted to the tax accountant.
 
 
+========================
+Quick Note on 972Savings
+========================
+
+**New for version 0.8**
+
+Many transactions happen through Paypal. To identify the transaction prior to running the script to assign categories involves opening GMail and Ebay -> Purchases. Column F holds a 2-character code to identify the purchase as being of the following categories and assigns a suffix to the description:
+
+  * do -Donations
+  * en -Entertain
+  * hh -HouseHold
+  * it -ITExpense
+  * ra -RobAttire
+  * ri -Reimburse
+  * rh -RobHobbys
+  * rm -AlMedical
 
 
 
