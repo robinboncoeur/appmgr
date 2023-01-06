@@ -52,8 +52,7 @@ This Excel-based utility is designed to manage creating and maintaining Banking 
 
 It replaces a manually-managed ledger approach to tax-data figures. The tax accountant requested an income and expenditures summary worksheet in Excel. Using the power of Excel and VBA, downloaded CSV files populate the Accounts Worksheets, which inform fields on the Summary Sheet through links: this happens  dynamically. 
 
-This Tax Workbook is a living document. At the end of the fiscal year, it is submitted to the tax accountant.
-
+This Tax Workbook is a living document. As our income-and-expenses picture has dramatically changed since last year, this document - version 0.8 - is a much simplified version to 0.7. Accounts have been closed, and a greater emphasis has been placed on creating a working, viable budget. Still, we intend it to continue to serve its original purpose, so at the end of the fiscal year, it will be submitted to our tax accountant.
 
 .. raw:: html
    
@@ -70,7 +69,19 @@ Tax Workbook - Worksheets
 Worksheets Overview
 ===================
 
-This workbook contains transaction data from primarily ANZ bank accounts.The data is categorised through codes:
+When "Tax Workbook" is first opened in Excel, security settings - commonly set by organisations to prevent malicious code from being executed - may issue a security warning:
+   
+   * *Some active content has been disabled. Click for more details.*
+   
+Next to this warning is a button labelled **[Enable Content]**. While the spreadsheet's data can be viewed without "enabling content", the menu and other features in this workbook will only run if the content is enabled.
+
+This only needs to be done once.
+
+The workbook is made up of several worksheets which contain links to each other. The main end-point worksheets are **Summary** and the **Budget** series, separated into Quarters. **Summary** holds data pertinent to the Tax Accountant, and **Budget** allows analysis of personal expenses to help manage a budget.
+
+The worksheets supporting these preceding sheets are **568CreditCard**, **259Checking**, **972Savings** and **647Beyond** - the latter, soon to be closed. The naming convention for the worksheets is the last three digits of the account and the description.
+
+This workbook contains transaction data from bank accounts. The data is categorised through codes:
 
 .. image:: https://www.tightbytes.com/images/pubimages/appmgr/tw01Codes01.png
 
@@ -78,27 +89,17 @@ Transaction amounts are tallied based on these Transaction Category Codes, a cop
 
 	=ABS(SUMIF('568CreditCard'!$D165:$D399,"HSHPHO",'568CreditCard'!$B165:$B399))
 
-Using the Credit Card worksheet as an example, the codes in column D are assigned via Excel 2019 Visual-Basic for Applications functions (VBA), copied from the **Classes Worksheet** which has an instance of the Transaction Target and the associated code:
+Note: *the use of SUMIF() has been largely replaced with a User-Defined Function (UDF) called calcABS, particularly on the Budget worksheets. See* :ref:`tw8-calcABS` *for how this works*.
+
+Using the Credit Card worksheet as an example, the codes in column D are assigned via Excel 2019 Visual-Basic for Applications functions (VBA), copied from the **Classes Worksheet** which has an instance of the Transaction Target and an associated code:
 
 .. image:: https://www.tightbytes.com/images/pubimages/appmgr/tw01Codes03.png
 
-The software that copies the Transaction Code from the Classes sheet to the 568CreditCard sheet is run from **Tax Workbook** menu option under the main menu, i.e., the 'Ribbon':
+The script that copies the Transaction Code from the Classes sheet to the **568CreditCard** sheet is run from **Tax Workbook** menu option under the main menu, i.e., the 'Ribbon':
 
 .. image:: https://www.tightbytes.com/images/pubimages/appmgr/tw08Codes04.png
 
 Much of the workbook's data is managed in this fashion.
-
-Note: *the use of SUMIF() has been largely replaced with a User-Defined Function (UDF) called* calcABS. See :ref:`tw8-calcABS` for how this works.
-
-When "Tax Workbook" is first opened in Excel, security settings commonly set by organisations may issue a security warning:
-   
-   * *Some active content has been disabled. Click for more details.*
-   
-Next to this warning is a button labelled **[Enable Content]**. While the spreadsheet's data can be viewed without "enabling content", the menu and other features in this workbook will only run if the content is enabled. This only needs to be done once.
-
-The workbook is made up of several worksheets which contain links to each other. The main end-point worksheets are **Summary** and **Budget**. **Summary** holds data pertinent to the Tax Accountant, and **Budget** allows analysis of personal expenses.
-
-The worksheets supporting these preceding sheets are **InvestProp**, **568CreditCard**, **259Checking**, **822HomeLoan** and **972Savings**, where the naming convention for the worksheets is the last three digits of the account and the description.
 
 
 
@@ -112,13 +113,27 @@ The fields on this page are linked to specific fields on relevant account pages 
 
 
 
-===================
-Investment Property
-===================
+========
+Checking
+========
 
-The **InvestProp** Worksheet contains mainly manually-entered investment property financial data, such as Loan Payments, Body Corporate fees, Property Management fees, Council Rates fees and Water.
+The Access **259Checking** Worksheet is a date-sorted, formatted Checking Account transaction worksheet. Payroll, home-loan and investment property data, as well as certain utilities transactions go through this account. The data is imported from a CSV file downloaded from the bank's website. The data is sorted oldest to newest and the most recent records are appended to the existing data. Prior to processing, the Transaction Target entries are moved to column G.
 
-Much of this data is also available on the **259Checking** Worksheet, such as renter payments and loan repayments, and the workbook manages that particular data via that worksheet. However, Property Management information is only available via PDF and thus manually-entered in.
+The columns are as follows::
+
+	A - Date
+	B - Transaction Amount
+	C - Processed Transaction Target (Payee or Payor)
+	D - Transaction Code
+	E - Description
+	F - (Empty)
+	G - Original Transaction Target (moved from column C)
+
+After the transactions have been copied, the Code Assignment software is invoked:
+
+.. image:: https://www.tightbytes.com/images/pubimages/appmgr/tw08Codes06.png
+
+During processing, non-useful text is removed from the transaction target, leaving either a 'FROM' or 'TO' prefix, making transaction identification vastly easier to do visually.
 
 
 
@@ -179,35 +194,11 @@ After the codes are assigned:
 
 
 
-========
-Checking
-========
+=======
+Savings
+=======
 
-The Access **259Checking** Worksheet is a date-sorted, formatted Checking Account transaction worksheet. Payroll, home-loan and investment property data, as well as certain utilities transactions go through this account. The data is imported from a CSV file downloaded from the bank's website. The data is sorted oldest to newest and the most recent records are appended to the existing data. Prior to processing, the Transaction Target entries are moved to column G.
-
-The columns are as follows::
-
-	A - Date
-	B - Transaction Amount
-	C - Processed Transaction Target (Payee or Payor)
-	D - Transaction Code
-	E - Description
-	F - (Empty)
-	G - Original Transaction Target (moved from column C)
-
-After the transactions have been copied, the Code Assignment software is invoked:
-
-.. image:: https://www.tightbytes.com/images/pubimages/appmgr/tw08Codes06.png
-
-During processing, non-useful text is removed from the transaction target, leaving either a 'FROM' or 'TO' prefix, making transaction identification vastly easier to do visually.
-
-
-
-=========
-Home Loan
-=========
-
-The Access **822HomeLoan** Worksheet is a date-sorted, formatted Home Loan Account transaction worksheet. Seabrae - primary residence - home-loan data goes through this account. The data is imported from a CSV file downloaded from the bank's website. The data is sorted oldest to newest and the most recent records are appended to the existing data. Prior to processing, the Transaction Target entries are moved to column G.
+The **972Savings** Worksheet is a date-sorted, formatted Home Loan Account transaction worksheet. This account was mainly for personal transactions, historically. The data is imported from a CSV file downloaded from the bank's website. The data is sorted oldest to newest and the most recent records are appended to the existing data. Prior to processing, the Transaction Target entries are moved to column G.
 
 The columns are as follows::
 
@@ -218,6 +209,7 @@ The columns are as follows::
 	E - Description
 	F - (Empty)
 	G - Original Transaction Target (moved from column C)
+	H - Item or service purchase (aid in identifying PayPal transaction)
 
 After the transactions have been copied, the Code Assignment software is invoked:
 
@@ -238,11 +230,11 @@ This is still under refinement.
 
 
 
-======
-Budget
-======
+=================
+Budget Worksheets
+=================
 
-Stub - to be updated.
+See :REF:`tw8-calcABS` for an insight as to how quarterly budget sheets are maintained.
 
 .. raw:: html
    

@@ -52,12 +52,11 @@
 <li class="toctree-l2"><a class="reference internal" href="#tax-workbook-worksheets">Tax Workbook - Worksheets</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="#worksheets-overview">Worksheets Overview</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#the-summary-worksheet">The Summary Worksheet</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#investment-property">Investment Property</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#credit-card">Credit Card</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#checking">Checking</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#home-loan">Home Loan</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#credit-card">Credit Card</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#savings">Savings</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#classes">Classes</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#budget">Budget</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#budget-worksheets">Budget Worksheets</a></li>
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="#the-code-running-the-workbook">The Code Running The Workbook</a><ul>
@@ -171,43 +170,56 @@
 <h2>Introduction<a class="headerlink" href="#introduction" title="Permalink to this heading"></a></h2>
 <p>This Excel-based utility is designed to manage creating and maintaining Banking Transactions Data for Tax Purposes and Budget Management in spreadsheet form. The workbook contains both data inported from CSV files as well as (much less frequently) data manually entered from PDFs, such as rental property repair details.</p>
 <p>It replaces a manually-managed ledger approach to tax-data figures. The tax accountant requested an income and expenditures summary worksheet in Excel. Using the power of Excel and VBA, downloaded CSV files populate the Accounts Worksheets, which inform fields on the Summary Sheet through links: this happens  dynamically.</p>
-<p>This Tax Workbook is a living document. At the end of the fiscal year, it is submitted to the tax accountant.</p>
+<p>This Tax Workbook is a living document. As our income-and-expenses picture has dramatically changed since last year, this document - version 0.8 - is a much simplified version to 0.7. Accounts have been closed, and a greater emphasis has been placed on creating a working, viable budget. Still, we intend it to continue to serve its original purpose, so at the end of the fiscal year, it will be submitted to our tax accountant.</p>
 <hr style="height:4px;border-width:0;color:gray;background-color:gray"></section>
 <section id="tax-workbook-worksheets">
 <h2>Tax Workbook - Worksheets<a class="headerlink" href="#tax-workbook-worksheets" title="Permalink to this heading"></a></h2>
 <section id="worksheets-overview">
 <h3>Worksheets Overview<a class="headerlink" href="#worksheets-overview" title="Permalink to this heading"></a></h3>
-<p>This workbook contains transaction data from primarily ANZ bank accounts.The data is categorised through codes:</p>
-<img alt="https://www.tightbytes.com/images/pubimages/appmgr/tw01Codes01.png" src="https://www.tightbytes.com/images/pubimages/appmgr/tw01Codes01.png" />
-<p>Transaction amounts are tallied based on these Transaction Category Codes, a copy of which is saved in the ‘Classes’ worksheet. The tallies are SUMIF()s of transaction amounts based on the codes in column D:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>=ABS(SUMIF(&#39;568CreditCard&#39;!$D165:$D399,&quot;HSHPHO&quot;,&#39;568CreditCard&#39;!$B165:$B399))
-</pre></div>
-</div>
-<p>Using the Credit Card worksheet as an example, the codes in column D are assigned via Excel 2019 Visual-Basic for Applications functions (VBA), copied from the <strong>Classes Worksheet</strong> which has an instance of the Transaction Target and the associated code:</p>
-<img alt="https://www.tightbytes.com/images/pubimages/appmgr/tw01Codes03.png" src="https://www.tightbytes.com/images/pubimages/appmgr/tw01Codes03.png" />
-<p>The software that copies the Transaction Code from the Classes sheet to the 568CreditCard sheet is run from <strong>Tax Workbook</strong> menu option under the main menu, i.e., the ‘Ribbon’:</p>
-<img alt="https://www.tightbytes.com/images/pubimages/appmgr/tw08Codes04.png" src="https://www.tightbytes.com/images/pubimages/appmgr/tw08Codes04.png" />
-<p>Much of the workbook’s data is managed in this fashion.</p>
-<p>Note: <em>the use of SUMIF() has been largely replaced with a User-Defined Function (UDF) called</em> calcABS. See <a class="reference internal" href="#tw8-calcabs"><span class="std std-ref">calcABS</span></a> for how this works.</p>
-<p>When “Tax Workbook” is first opened in Excel, security settings commonly set by organisations may issue a security warning:</p>
+<p>When “Tax Workbook” is first opened in Excel, security settings - commonly set by organisations to prevent malicious code from being executed - may issue a security warning:</p>
 <blockquote>
 <div><ul class="simple">
 <li><p><em>Some active content has been disabled. Click for more details.</em></p></li>
 </ul>
 </div></blockquote>
-<p>Next to this warning is a button labelled <strong>[Enable Content]</strong>. While the spreadsheet’s data can be viewed without “enabling content”, the menu and other features in this workbook will only run if the content is enabled. This only needs to be done once.</p>
-<p>The workbook is made up of several worksheets which contain links to each other. The main end-point worksheets are <strong>Summary</strong> and <strong>Budget</strong>. <strong>Summary</strong> holds data pertinent to the Tax Accountant, and <strong>Budget</strong> allows analysis of personal expenses.</p>
-<p>The worksheets supporting these preceding sheets are <strong>InvestProp</strong>, <strong>568CreditCard</strong>, <strong>259Checking</strong>, <strong>822HomeLoan</strong> and <strong>972Savings</strong>, where the naming convention for the worksheets is the last three digits of the account and the description.</p>
+<p>Next to this warning is a button labelled <strong>[Enable Content]</strong>. While the spreadsheet’s data can be viewed without “enabling content”, the menu and other features in this workbook will only run if the content is enabled.</p>
+<p>This only needs to be done once.</p>
+<p>The workbook is made up of several worksheets which contain links to each other. The main end-point worksheets are <strong>Summary</strong> and the <strong>Budget</strong> series, separated into Quarters. <strong>Summary</strong> holds data pertinent to the Tax Accountant, and <strong>Budget</strong> allows analysis of personal expenses to help manage a budget.</p>
+<p>The worksheets supporting these preceding sheets are <strong>568CreditCard</strong>, <strong>259Checking</strong>, <strong>972Savings</strong> and <strong>647Beyond</strong> - the latter, soon to be closed. The naming convention for the worksheets is the last three digits of the account and the description.</p>
+<p>This workbook contains transaction data from bank accounts. The data is categorised through codes:</p>
+<img alt="https://www.tightbytes.com/images/pubimages/appmgr/tw01Codes01.png" src="https://www.tightbytes.com/images/pubimages/appmgr/tw01Codes01.png" />
+<p>Transaction amounts are tallied based on these Transaction Category Codes, a copy of which is saved in the ‘Classes’ worksheet. The tallies are SUMIF()s of transaction amounts based on the codes in column D:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>=ABS(SUMIF(&#39;568CreditCard&#39;!$D165:$D399,&quot;HSHPHO&quot;,&#39;568CreditCard&#39;!$B165:$B399))
+</pre></div>
+</div>
+<p>Note: <em>the use of SUMIF() has been largely replaced with a User-Defined Function (UDF) called calcABS, particularly on the Budget worksheets. See</em> <a class="reference internal" href="#tw8-calcabs"><span class="std std-ref">calcABS</span></a> <em>for how this works</em>.</p>
+<p>Using the Credit Card worksheet as an example, the codes in column D are assigned via Excel 2019 Visual-Basic for Applications functions (VBA), copied from the <strong>Classes Worksheet</strong> which has an instance of the Transaction Target and an associated code:</p>
+<img alt="https://www.tightbytes.com/images/pubimages/appmgr/tw01Codes03.png" src="https://www.tightbytes.com/images/pubimages/appmgr/tw01Codes03.png" />
+<p>The script that copies the Transaction Code from the Classes sheet to the <strong>568CreditCard</strong> sheet is run from <strong>Tax Workbook</strong> menu option under the main menu, i.e., the ‘Ribbon’:</p>
+<img alt="https://www.tightbytes.com/images/pubimages/appmgr/tw08Codes04.png" src="https://www.tightbytes.com/images/pubimages/appmgr/tw08Codes04.png" />
+<p>Much of the workbook’s data is managed in this fashion.</p>
 </section>
 <section id="the-summary-worksheet">
 <h3>The Summary Worksheet<a class="headerlink" href="#the-summary-worksheet" title="Permalink to this heading"></a></h3>
 <p>The <strong>Summary</strong> Worksheet is comprised of two main columns; Expenses and Revenue. The expenses are only those relevant to a tax accountant, such as home loan payments and professional fees and donations, while revenue is comprised of all income.</p>
 <p>The fields on this page are linked to specific fields on relevant account pages and update dynamically.</p>
 </section>
-<section id="investment-property">
-<h3>Investment Property<a class="headerlink" href="#investment-property" title="Permalink to this heading"></a></h3>
-<p>The <strong>InvestProp</strong> Worksheet contains mainly manually-entered investment property financial data, such as Loan Payments, Body Corporate fees, Property Management fees, Council Rates fees and Water.</p>
-<p>Much of this data is also available on the <strong>259Checking</strong> Worksheet, such as renter payments and loan repayments, and the workbook manages that particular data via that worksheet. However, Property Management information is only available via PDF and thus manually-entered in.</p>
+<section id="checking">
+<h3>Checking<a class="headerlink" href="#checking" title="Permalink to this heading"></a></h3>
+<p>The Access <strong>259Checking</strong> Worksheet is a date-sorted, formatted Checking Account transaction worksheet. Payroll, home-loan and investment property data, as well as certain utilities transactions go through this account. The data is imported from a CSV file downloaded from the bank’s website. The data is sorted oldest to newest and the most recent records are appended to the existing data. Prior to processing, the Transaction Target entries are moved to column G.</p>
+<p>The columns are as follows:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">A</span> <span class="o">-</span> <span class="n">Date</span>
+<span class="n">B</span> <span class="o">-</span> <span class="n">Transaction</span> <span class="n">Amount</span>
+<span class="n">C</span> <span class="o">-</span> <span class="n">Processed</span> <span class="n">Transaction</span> <span class="n">Target</span> <span class="p">(</span><span class="n">Payee</span> <span class="ow">or</span> <span class="n">Payor</span><span class="p">)</span>
+<span class="n">D</span> <span class="o">-</span> <span class="n">Transaction</span> <span class="n">Code</span>
+<span class="n">E</span> <span class="o">-</span> <span class="n">Description</span>
+<span class="n">F</span> <span class="o">-</span> <span class="p">(</span><span class="n">Empty</span><span class="p">)</span>
+<span class="n">G</span> <span class="o">-</span> <span class="n">Original</span> <span class="n">Transaction</span> <span class="n">Target</span> <span class="p">(</span><span class="n">moved</span> <span class="kn">from</span> <span class="nn">column</span> <span class="n">C</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>After the transactions have been copied, the Code Assignment software is invoked:</p>
+<img alt="https://www.tightbytes.com/images/pubimages/appmgr/tw08Codes06.png" src="https://www.tightbytes.com/images/pubimages/appmgr/tw08Codes06.png" />
+<p>During processing, non-useful text is removed from the transaction target, leaving either a ‘FROM’ or ‘TO’ prefix, making transaction identification vastly easier to do visually.</p>
 </section>
 <section id="credit-card">
 <h3>Credit Card<a class="headerlink" href="#credit-card" title="Permalink to this heading"></a></h3>
@@ -313,9 +325,9 @@
 </tbody>
 </table>
 </section>
-<section id="checking">
-<h3>Checking<a class="headerlink" href="#checking" title="Permalink to this heading"></a></h3>
-<p>The Access <strong>259Checking</strong> Worksheet is a date-sorted, formatted Checking Account transaction worksheet. Payroll, home-loan and investment property data, as well as certain utilities transactions go through this account. The data is imported from a CSV file downloaded from the bank’s website. The data is sorted oldest to newest and the most recent records are appended to the existing data. Prior to processing, the Transaction Target entries are moved to column G.</p>
+<section id="savings">
+<h3>Savings<a class="headerlink" href="#savings" title="Permalink to this heading"></a></h3>
+<p>The <strong>972Savings</strong> Worksheet is a date-sorted, formatted Home Loan Account transaction worksheet. This account was mainly for personal transactions, historically. The data is imported from a CSV file downloaded from the bank’s website. The data is sorted oldest to newest and the most recent records are appended to the existing data. Prior to processing, the Transaction Target entries are moved to column G.</p>
 <p>The columns are as follows:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">A</span> <span class="o">-</span> <span class="n">Date</span>
 <span class="n">B</span> <span class="o">-</span> <span class="n">Transaction</span> <span class="n">Amount</span>
@@ -324,23 +336,7 @@
 <span class="n">E</span> <span class="o">-</span> <span class="n">Description</span>
 <span class="n">F</span> <span class="o">-</span> <span class="p">(</span><span class="n">Empty</span><span class="p">)</span>
 <span class="n">G</span> <span class="o">-</span> <span class="n">Original</span> <span class="n">Transaction</span> <span class="n">Target</span> <span class="p">(</span><span class="n">moved</span> <span class="kn">from</span> <span class="nn">column</span> <span class="n">C</span><span class="p">)</span>
-</pre></div>
-</div>
-<p>After the transactions have been copied, the Code Assignment software is invoked:</p>
-<img alt="https://www.tightbytes.com/images/pubimages/appmgr/tw08Codes06.png" src="https://www.tightbytes.com/images/pubimages/appmgr/tw08Codes06.png" />
-<p>During processing, non-useful text is removed from the transaction target, leaving either a ‘FROM’ or ‘TO’ prefix, making transaction identification vastly easier to do visually.</p>
-</section>
-<section id="home-loan">
-<h3>Home Loan<a class="headerlink" href="#home-loan" title="Permalink to this heading"></a></h3>
-<p>The Access <strong>822HomeLoan</strong> Worksheet is a date-sorted, formatted Home Loan Account transaction worksheet. Seabrae - primary residence - home-loan data goes through this account. The data is imported from a CSV file downloaded from the bank’s website. The data is sorted oldest to newest and the most recent records are appended to the existing data. Prior to processing, the Transaction Target entries are moved to column G.</p>
-<p>The columns are as follows:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">A</span> <span class="o">-</span> <span class="n">Date</span>
-<span class="n">B</span> <span class="o">-</span> <span class="n">Transaction</span> <span class="n">Amount</span>
-<span class="n">C</span> <span class="o">-</span> <span class="n">Processed</span> <span class="n">Transaction</span> <span class="n">Target</span> <span class="p">(</span><span class="n">Payee</span> <span class="ow">or</span> <span class="n">Payor</span><span class="p">)</span>
-<span class="n">D</span> <span class="o">-</span> <span class="n">Transaction</span> <span class="n">Code</span>
-<span class="n">E</span> <span class="o">-</span> <span class="n">Description</span>
-<span class="n">F</span> <span class="o">-</span> <span class="p">(</span><span class="n">Empty</span><span class="p">)</span>
-<span class="n">G</span> <span class="o">-</span> <span class="n">Original</span> <span class="n">Transaction</span> <span class="n">Target</span> <span class="p">(</span><span class="n">moved</span> <span class="kn">from</span> <span class="nn">column</span> <span class="n">C</span><span class="p">)</span>
+<span class="n">H</span> <span class="o">-</span> <span class="n">Item</span> <span class="ow">or</span> <span class="n">service</span> <span class="n">purchase</span> <span class="p">(</span><span class="n">aid</span> <span class="ow">in</span> <span class="n">identifying</span> <span class="n">PayPal</span> <span class="n">transaction</span><span class="p">)</span>
 </pre></div>
 </div>
 <p>After the transactions have been copied, the Code Assignment software is invoked:</p>
@@ -352,9 +348,9 @@
 <p>The <strong>Classes</strong> Worksheet is sorted by Column B - the codes column - and then column A - the transactions column. All worksheets that do processing refer to this sheet in order to assign codes to traansactions.</p>
 <p>This is still under refinement.</p>
 </section>
-<section id="budget">
-<h3>Budget<a class="headerlink" href="#budget" title="Permalink to this heading"></a></h3>
-<p>Stub - to be updated.</p>
+<section id="budget-worksheets">
+<h3>Budget Worksheets<a class="headerlink" href="#budget-worksheets" title="Permalink to this heading"></a></h3>
+<p>See <a class="reference internal" href="#tw8-calcabs"><span class="std std-ref">calcABS</span></a> for an insight as to how quarterly budget sheets are maintained.</p>
 <hr style="height:4px;border-width:0;color:gray;background-color:gray"></section>
 </section>
 <section id="the-code-running-the-workbook">
