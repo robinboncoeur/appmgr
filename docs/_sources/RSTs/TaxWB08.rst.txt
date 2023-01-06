@@ -243,6 +243,17 @@ See :REF:`tw8-calcABS` for an insight as to how quarterly budget sheets are main
 
 
 
+**************
+The About Form
+**************
+
+In an effort be be somewhat cross-platform friendly, I only have one form: the "About". 
+
+.. raw:: html
+   
+   <hr style="height:4px;border-width:0;color:gray;background-color:gray">
+
+
 
 .. _tw8-corefcn:
 
@@ -447,6 +458,15 @@ Many transactions happen through Paypal. These are extremely difficult to keep t
 	PAYMENT TO PAYPAL AUSTRALIA 1021851015462
 
 To identify the transaction prior to running the script to assign categories involves opening GMail and Ebay -> Purchases. Once it has been established who the payment went to and what for, I typically copy/paste the item - or service - purchased into column H. Column F receivs a 2-character code to identify the purchase as being of the following categories: the script then trims off the transaction number suffix and assigns a suffix to the Transaction Target based on the code I enter prior to processing in Column F:
+
+
+=====================
+Additional Discussion
+=====================
+
+With v.8, I have endeavoured to be somewhat cross-platform. I do most of what I do on a computer on a Macbook Pro (2015), running Windows 10 in a VM. Development of anything VBA occurs in this VM environment. However, I do need to get to the data at times on the Mac, so I load these workbooks in Excel 2016 for Mac. Help is a challenge: I can't invoke a browser within Excel Mac like I can in Windows (to my knowledge, anyway). So, I just display the link in a MsgBox and have the Mac user copy/paste that into the browser.
+
+Yeah, a kludge, but it works.
 
 .. raw:: html
    

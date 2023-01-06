@@ -59,6 +59,7 @@
 <li class="toctree-l3"><a class="reference internal" href="#budget-worksheets">Budget Worksheets</a></li>
 </ul>
 </li>
+<li class="toctree-l2"><a class="reference internal" href="#the-about-form">The About Form</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#the-code-running-the-workbook">The Code Running The Workbook</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="#menu-options">Menu Options</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#worksheet-functions">Worksheet Functions</a><ul>
@@ -71,6 +72,7 @@
 </li>
 <li class="toctree-l2"><a class="reference internal" href="#additional-notes">Additional Notes</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="#quick-note-on-972savings">Quick Note on 972Savings</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#additional-discussion">Additional Discussion</a></li>
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="#licence-agreement">Licence Agreement</a><ul>
@@ -353,6 +355,10 @@
 <p>See <a class="reference internal" href="#tw8-calcabs"><span class="std std-ref">calcABS</span></a> for an insight as to how quarterly budget sheets are maintained.</p>
 <hr style="height:4px;border-width:0;color:gray;background-color:gray"></section>
 </section>
+<section id="the-about-form">
+<h2>The About Form<a class="headerlink" href="#the-about-form" title="Permalink to this heading"></a></h2>
+<p>In an effort be be somewhat cross-platform friendly, I only have one form: the “About”.</p>
+<hr style="height:4px;border-width:0;color:gray;background-color:gray"></section>
 <section id="the-code-running-the-workbook">
 <span id="tw8-corefcn"></span><h2>The Code Running The Workbook<a class="headerlink" href="#the-code-running-the-workbook" title="Permalink to this heading"></a></h2>
 <p>For those who might be curious as to how certain features work, I offer the following as a bit of a discussion on my approach to solving these little problems.</p>
@@ -542,6 +548,11 @@
 </pre></div>
 </div>
 <p>To identify the transaction prior to running the script to assign categories involves opening GMail and Ebay -&gt; Purchases. Once it has been established who the payment went to and what for, I typically copy/paste the item - or service - purchased into column H. Column F receivs a 2-character code to identify the purchase as being of the following categories: the script then trims off the transaction number suffix and assigns a suffix to the Transaction Target based on the code I enter prior to processing in Column F:</p>
+</section>
+<section id="additional-discussion">
+<h3>Additional Discussion<a class="headerlink" href="#additional-discussion" title="Permalink to this heading"></a></h3>
+<p>With v.8, I have endeavoured to be somewhat cross-platform. I do most of what I do on a computer on a Macbook Pro (2015), running Windows 10 in a VM. Development of anything VBA occurs in this VM environment. However, I do need to get to the data at times on the Mac, so I load these workbooks in Excel 2016 for Mac. Help is a challenge: I can’t invoke a browser within Excel Mac like I can in Windows (to my knowledge, anyway). So, I just display the link in a MsgBox and have the Mac user copy/paste that into the browser.</p>
+<p>Yeah, a kludge, but it works.</p>
 <hr style="height:4px;border-width:0;color:gray;background-color:gray"></section>
 </section>
 <section id="licence-agreement">
