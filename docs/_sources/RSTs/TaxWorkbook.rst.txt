@@ -326,8 +326,7 @@ This function is mostly used on the Quarterly budget sheets (Qtr1, Qtr2, etc).
 .. code-block:: vbnet
 
 	Public Function calcABS(sSht As String, tCode As String, _
-							nRangeS As Integer, nRangeE As Integer) As Double
-	Dim dVal As Double
+	                        nRangeS As Integer, nRangeE As Integer) As Double
 	Dim sRangeD As String, sRangeB As String
 
 		sRangeD = "D" & stp(nRangeS) & ":D" & stp(nRangeE)
@@ -343,7 +342,7 @@ This function is mostly used on the Quarterly budget sheets (Qtr1, Qtr2, etc).
 		End Select
 	End Function
 
-On the Qtr1 worksheet, the typical way this is called is (e.g., for 'Phone/Internet'::
+On the Qtr1 worksheet, the typical way this is called is (e.g., for 'Phone/Internet')::
 
 	=calcABS("ch","HSHPHO",E13,E14) + calcABS("cc","HSHPHO",E15,E16) + calcABS("sv","HSHPHO",E17,E18)
 
@@ -369,6 +368,8 @@ This approach expects the following table on the Qtr1 (and subsequent quarters) 
 | Savings End       |  66  |
 +-------------------+------+
 
+The 'Start' and 'End' numbers are references to the beginning and end of that quarter's date range on that particular worksheet.
+
 The following quarter, a copy is made of the current worksheet (using the name 'Qtr2') and the table is updated thus:
 
 +--------------------------+
@@ -387,18 +388,19 @@ The following quarter, a copy is made of the current worksheet (using the name '
 | Savings End       | 529  |
 +-------------------+------+
 
-The end numbers are just arbitrarily assigned until the end of the last month of the quarter, when the actual worksheet's last cell row number is entered. Then, a copy is made of that worksheet and the process is repeated. 
+The end numbers for the last quarter's date range - (e.g., 509, 519, 529) - are just arbitrarily assigned until the end of the last month of the quarter, when the actual worksheet's last cell row number is entered. Then, a copy is made of that worksheet and the process is repeated. 
 
 The advantage to this approach is that formula errors are avoided, or far more easily identifed and fixed. It also removes the tedium of having to go into each formula::
 
 	=ABS(SUMIF('568CreditCard'!$D165:$D399,"HSHPHO",'568CreditCard'!$B165:$B399)
 
-...and changing range values; again, another frequent source of error.
-
+and changing range values manually; again, another frequent source of error.
 
 
 sParseAllWords({cellnumber})
 ----------------------------
+
+Note, *as of 2203-01-06, this function is being reviewed and revised*.
 
 .. code-block:: vbnet
 
