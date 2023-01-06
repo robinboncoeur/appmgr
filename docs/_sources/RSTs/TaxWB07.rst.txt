@@ -1,48 +1,6 @@
-######################
-The Tax Workbook Guide
-######################
-
-**Savings and C-Card codes**
-
-See :REF:`tw-SavingsCodes` for full explanation on the following codes:
-
-+--------------------------+
-| Codes and Suffixes       |
-+======+===================+
-|  do  |  -Donations       |
-+------+-------------------+
-|  en  |  -Entertain       |
-+------+-------------------+
-|  hh  |  -HouseHold       |
-+------+-------------------+
-|  it  |  -ITExpense       |
-+------+-------------------+
-|  ra  |  -RobAttire       |
-+------+-------------------+
-|  rh  |  -RobHobbys       |
-+------+-------------------+
-|  ri  |  -Reimburse       |
-+------+-------------------+
-|  rm  |  -AlMedical       |
-+------+-------------------+
-
-For Creditcard Payments:
-
-+-------------------------------------+
-| CreditCard Codes and Suffixes       |
-+======+==============================+
-|  cc  |  Creditcard repayment        |
-+------+------------------------------+
-|  ri  |  Reimbursement for purchase  |
-+------+------------------------------+
-
-
-   
-.. raw:: html
-   
-   <hr style="height:4px;border-width:0;color:gray;background-color:gray">
-
-
+################
+Tax Workbook v.7
+################
 
 ************
 Introduction
@@ -74,7 +32,7 @@ This workbook contains transaction data from primarily ANZ bank accounts.The dat
 
 .. image:: https://www.tightbytes.com/images/pubimages/appmgr/tw01Codes01.png
 
-Transaction amounts are tallied based on these Transaction Category Codes, a copy of which is saved in the 'Classes' worksheet. The tallies were originally SUMIF()s based on the codes in column D::
+Transaction amounts are tallied based on these Transaction Category Codes, a copy of which is saved in the 'Classes' worksheet. The tallies are SUMIF()s of transaction amounts based on the codes in column D::
 
 	=ABS(SUMIF('568CreditCard'!$D165:$D399,"HSHPHO",'568CreditCard'!$B165:$B399))
 
@@ -87,8 +45,6 @@ The software that copies the Transaction Code from the Classes sheet to the 568C
 .. image:: https://www.tightbytes.com/images/pubimages/appmgr/tw01Codes04.png
 
 Much of the workbook's data is managed in this fashion.
-
-Note: *the use of SUMIF() has been largely replaced with a User-Defined Function (UDF) called* calcABS. See :ref:`tw-calcABS` for how this works.
 
 When "Tax Workbook" is first opened in Excel, security settings commonly set by organisations may issue a security warning:
    
@@ -135,7 +91,7 @@ The columns are as follows::
     C - Transaction Target (Payee or Payor)
     D - Transaction Code
 
-After the transactions have been appended and the PAYMENT transaction categorised (see :REF:`tw-ccpayment`), the Code Assignment software is invoked:
+After the transactions have been appended and the PAYMENT transaction categorised (see :REF:`tw7-ccpayment`), the Code Assignment software is invoked:
 
 .. image:: https://www.tightbytes.com/images/pubimages/appmgr/tw01Codes04.png
 
@@ -252,7 +208,7 @@ Stub - to be updated.
 
 
 
-.. _tw-corefcn:
+.. _tw7-corefcn:
 
 *****************************
 The Code Running The Workbook
@@ -313,88 +269,6 @@ The MsgBox() function actually calls (launches) the script (e.g., 'CreditcardCod
 Worksheet Functions
 ===================
 
-Note: the first function mentioned here, **calcABS()**, has much simplified maintaining and updating the budget worksheets. The second - sParseAllWords({cellnumber}) - needs work.
-
-
-.. _tw-calcABS:
-
-calcABS
--------
-
-This function is mostly used on the Quarterly budget sheets (Qtr1, Qtr2, etc).
-
-.. code-block:: vbnet
-
-	Public Function calcABS(sSht As String, tCode As String, _
-	                        nRangeS As Integer, nRangeE As Integer) As Double
-	Dim sRangeD As String, sRangeB As String
-
-		sRangeD = "D" & stp(nRangeS) & ":D" & stp(nRangeE)
-		sRangeB = "B" & stp(nRangeS) & ":B" & stp(nRangeE)
-
-		Select Case sSht
-			Case Is = "ch"
-				calcABS = Abs(WorksheetFunction.SumIf(sh259.Range(sRangeD), tCode, sh259.Range(sRangeB)))
-			Case Is = "cc"
-				calcABS = Abs(WorksheetFunction.SumIf(sh568.Range(sRangeD), tCode, sh568.Range(sRangeB)))
-			Case Is = "sv"
-				calcABS = Abs(WorksheetFunction.SumIf(sh972.Range(sRangeD), tCode, sh972.Range(sRangeB)))
-		End Select
-	End Function
-
-On the Qtr1 worksheet, the typical way this is called is (e.g., for 'Phone/Internet')::
-
-	=calcABS("ch","HSHPHO",E13,E14) + calcABS("cc","HSHPHO",E15,E16) + calcABS("sv","HSHPHO",E17,E18)
-
-which before was the following formula::
-
-	=ABS(SUMIF('568CreditCard'!$D165:$D399,"HSHPHO",'568CreditCard'!$B165:$B399) + SUMIF('259Checking'!$D$65:$D159,"HSHPHO",'259Checking'!$B$65:$B159))
-
-This approach expects the following table on the Qtr1 (and subsequent quarters) worksheet:
-
-+--------------------------+
-|      Field Ranges        |
-+===================+======+
-| Checking Start    |   2  |
-+-------------------+------+
-| Checking End      |  64  |
-+-------------------+------+
-| CreditCard Start  |   2  |
-+-------------------+------+
-| CCreditCard End   | 164  |
-+-------------------+------+
-| Savings Start     |   2  |
-+-------------------+------+
-| Savings End       |  66  |
-+-------------------+------+
-
-The 'Start' and 'End' numbers are references to the beginning and end of that quarter's date range on that particular worksheet.
-
-The following quarter, a copy is made of the current worksheet (using the name 'Qtr2') and the table is updated thus:
-
-+--------------------------+
-|      Field Ranges        |
-+===================+======+
-| Checking Start    |  65  |
-+-------------------+------+
-| Checking End      | 509  |
-+-------------------+------+
-| CreditCard Start  | 165  |
-+-------------------+------+
-| CCreditCard End   | 519  |
-+-------------------+------+
-| Savings Start     |  67  |
-+-------------------+------+
-| Savings End       | 529  |
-+-------------------+------+
-
-The end numbers for the last quarter's date range - (e.g., 509, 519, 529) - are just arbitrarily assigned until the end of the last month of the quarter, when the actual worksheet's last cell row number is entered. Then, a copy is made of that worksheet and the process is repeated. 
-
-The advantage to this approach is that formula errors are avoided, or far more easily identifed and fixed. It also removes the tedium of having to go into each formula::
-
-	=ABS(SUMIF('568CreditCard'!$D165:$D399,"HSHPHO",'568CreditCard'!$B165:$B399)
-
-and changing range values manually; again, another frequent source of error.
 
 
 sParseAllWords({cellnumber})
@@ -415,7 +289,7 @@ Note, *as of 2203-01-06, this function is being reviewed and revised*.
 	End Function
 
 
-.. _tw-ccpayment:
+.. _tw7-ccpayment:
 
 Creditcard Payments
 -------------------
@@ -427,8 +301,7 @@ For the credit card, the app looks at the entry for "PAYMENT" - the only fairly 
 +======+==============================+
 |  cc  |  Creditcard repayment        |
 +------+------------------------------+
-|  ri  |  Reimbursement for purchase  |
-+------+------------------------------+
+
 
 .. raw:: html
    
@@ -442,7 +315,7 @@ For the credit card, the app looks at the entry for "PAYMENT" - the only fairly 
 Additional Notes
 ****************
 
-.. _tw-SavingsCodes:
+.. _tw7-SavingsCodes:
 
 ========================
 Quick Note on 972Savings

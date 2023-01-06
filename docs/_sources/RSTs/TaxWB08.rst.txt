@@ -1,10 +1,10 @@
-######################
-The Tax Workbook Guide
-######################
+################
+Tax Workbook v.8
+################
 
 **Savings and C-Card codes**
 
-See :REF:`tw-SavingsCodes` for full explanation on the following codes:
+See :REF:`tw8-SavingsCodes` for full explanation on the following codes:
 
 +--------------------------+
 | Codes and Suffixes       |
@@ -74,7 +74,7 @@ This workbook contains transaction data from primarily ANZ bank accounts.The dat
 
 .. image:: https://www.tightbytes.com/images/pubimages/appmgr/tw01Codes01.png
 
-Transaction amounts are tallied based on these Transaction Category Codes, a copy of which is saved in the 'Classes' worksheet. The tallies were originally SUMIF()s based on the codes in column D::
+Transaction amounts are tallied based on these Transaction Category Codes, a copy of which is saved in the 'Classes' worksheet. The tallies are SUMIF()s of transaction amounts based on the codes in column D::
 
 	=ABS(SUMIF('568CreditCard'!$D165:$D399,"HSHPHO",'568CreditCard'!$B165:$B399))
 
@@ -84,11 +84,11 @@ Using the Credit Card worksheet as an example, the codes in column D are assigne
 
 The software that copies the Transaction Code from the Classes sheet to the 568CreditCard sheet is run from **Tax Workbook** menu option under the main menu, i.e., the 'Ribbon':
 
-.. image:: https://www.tightbytes.com/images/pubimages/appmgr/tw01Codes04.png
+.. image:: https://www.tightbytes.com/images/pubimages/appmgr/tw08Codes04.png
 
 Much of the workbook's data is managed in this fashion.
 
-Note: *the use of SUMIF() has been largely replaced with a User-Defined Function (UDF) called* calcABS. See :ref:`tw-calcABS` for how this works.
+Note: *the use of SUMIF() has been largely replaced with a User-Defined Function (UDF) called* calcABS. See :ref:`tw8-calcABS` for how this works.
 
 When "Tax Workbook" is first opened in Excel, security settings commonly set by organisations may issue a security warning:
    
@@ -135,9 +135,9 @@ The columns are as follows::
     C - Transaction Target (Payee or Payor)
     D - Transaction Code
 
-After the transactions have been appended and the PAYMENT transaction categorised (see :REF:`tw-ccpayment`), the Code Assignment software is invoked:
+After the transactions have been appended and the PAYMENT transaction categorised (see :REF:`tw8-ccpayment`), the Code Assignment software is invoked:
 
-.. image:: https://www.tightbytes.com/images/pubimages/appmgr/tw01Codes04.png
+.. image:: https://www.tightbytes.com/images/pubimages/appmgr/tw08Codes04.png
 
 The script compares transaction target entries to those in the 'Classes' worksheet, leaving the Code column [D] blank if it doesn't find that tranaction. 90% or more transactions are going to be with the same vendors, so it's a simple matter of updating 'Classes' with the transactions missing a code.
 
@@ -197,7 +197,7 @@ The columns are as follows::
 
 After the transactions have been copied, the Code Assignment software is invoked:
 
-.. image:: https://www.tightbytes.com/images/pubimages/appmgr/tw01Codes06.png
+.. image:: https://www.tightbytes.com/images/pubimages/appmgr/tw08Codes06.png
 
 During processing, non-useful text is removed from the transaction target, leaving either a 'FROM' or 'TO' prefix, making transaction identification vastly easier to do visually.
 
@@ -221,7 +221,7 @@ The columns are as follows::
 
 After the transactions have been copied, the Code Assignment software is invoked:
 
-.. image:: https://www.tightbytes.com/images/pubimages/appmgr/tw01Codes06.png
+.. image:: https://www.tightbytes.com/images/pubimages/appmgr/tw08Codes06.png
 
 During processing, non-useful text is removed from the transaction target, leaving either a 'FROM' or 'TO' prefix if one existed in the original transaction target entry.
 
@@ -252,7 +252,7 @@ Stub - to be updated.
 
 
 
-.. _tw-corefcn:
+.. _tw8-corefcn:
 
 *****************************
 The Code Running The Workbook
@@ -270,7 +270,7 @@ Menu Options
 
 Using the menu option "CreditCard" in the ribbon under **Tax Workbook** as an example:
 
-.. image:: https://www.tightbytes.com/images/pubimages/appmgr/tw01Codes04.png
+.. image:: https://www.tightbytes.com/images/pubimages/appmgr/tw08Codes04.png
 
 invokes the _Click() event for that button, which runs the following code:
 
@@ -316,7 +316,7 @@ Worksheet Functions
 Note: the first function mentioned here, **calcABS()**, has much simplified maintaining and updating the budget worksheets. The second - sParseAllWords({cellnumber}) - needs work.
 
 
-.. _tw-calcABS:
+.. _tw8-calcABS:
 
 calcABS
 -------
@@ -415,7 +415,7 @@ Note, *as of 2203-01-06, this function is being reviewed and revised*.
 	End Function
 
 
-.. _tw-ccpayment:
+.. _tw8-ccpayment:
 
 Creditcard Payments
 -------------------
@@ -442,7 +442,7 @@ For the credit card, the app looks at the entry for "PAYMENT" - the only fairly 
 Additional Notes
 ****************
 
-.. _tw-SavingsCodes:
+.. _tw8-SavingsCodes:
 
 ========================
 Quick Note on 972Savings

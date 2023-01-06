@@ -1,6 +1,6 @@
-######################
-Call Sheet version 0.3
-######################
+##############
+Call Sheet v.3
+##############
 
 This Excel-based utility is designed to manage creating a Call Sheet for printing, to submit to the After-Hours Coordinator. It replaces a manually copy-and-paste approach to filling out this document. Call Sheet extends Excel through forms and code written in Visual-Basic for Applications, which is part of the Microsoft Excel product.
 

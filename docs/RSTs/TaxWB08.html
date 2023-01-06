@@ -4,7 +4,7 @@
   <meta charset="utf-8" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>The Tax Workbook Guide &mdash; App Manager 2.25 documentation</title>
+  <title>Tax Workbook v.8 &mdash; App Manager 2.25 documentation</title>
       <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
       <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
   <!--[if lt IE 9]>
@@ -21,7 +21,7 @@
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
     <link rel="next" title="Reabanks Editor" href="ReabankEditor.html" />
-    <link rel="prev" title="CallSheet version 0.6" href="CallSheetp06.html" /> 
+    <link rel="prev" title="Tax Workbook v.7" href="TaxWB07.html" /> 
 </head>
 
 <body class="wy-body-for-nav"> 
@@ -43,10 +43,11 @@
 <ul class="current">
 <li class="toctree-l1"><a class="reference internal" href="About.html">About Applications Manager</a></li>
 <li class="toctree-l1"><a class="reference internal" href="AssetManager.html">Welcome to Asset Manager</a></li>
-<li class="toctree-l1"><a class="reference internal" href="CallSheetp03.html">Call Sheet version 0.3</a></li>
-<li class="toctree-l1"><a class="reference internal" href="CallSheetp05.html">Call Sheet version 0.5</a></li>
-<li class="toctree-l1"><a class="reference internal" href="CallSheetp06.html">CallSheet version 0.6</a></li>
-<li class="toctree-l1 current"><a class="current reference internal" href="#">The Tax Workbook Guide</a><ul>
+<li class="toctree-l1"><a class="reference internal" href="CallSheetp03.html">Call Sheet v.3</a></li>
+<li class="toctree-l1"><a class="reference internal" href="CallSheetp05.html">Call Sheet v.5</a></li>
+<li class="toctree-l1"><a class="reference internal" href="CallSheetp06.html">CallSheet v.6</a></li>
+<li class="toctree-l1"><a class="reference internal" href="TaxWB07.html">Tax Workbook v.7</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Tax Workbook v.8</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="#introduction">Introduction</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#tax-workbook-worksheets">Tax Workbook - Worksheets</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="#worksheets-overview">Worksheets Overview</a></li>
@@ -97,9 +98,9 @@
           <div role="navigation" aria-label="Page navigation">
   <ul class="wy-breadcrumbs">
       <li><a href="../index.html" class="icon icon-home"></a> &raquo;</li>
-      <li>The Tax Workbook Guide</li>
+      <li>Tax Workbook v.8</li>
       <li class="wy-breadcrumbs-aside">
-            <a href="../_sources/RSTs/TaxWorkbook.rst.txt" rel="nofollow"> View page source</a>
+            <a href="../_sources/RSTs/TaxWB08.rst.txt" rel="nofollow"> View page source</a>
       </li>
   </ul>
   <hr/>
@@ -107,10 +108,10 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
              
-  <section id="the-tax-workbook-guide">
-<h1>The Tax Workbook Guide<a class="headerlink" href="#the-tax-workbook-guide" title="Permalink to this heading"></a></h1>
+  <section id="tax-workbook-v-8">
+<h1>Tax Workbook v.8<a class="headerlink" href="#tax-workbook-v-8" title="Permalink to this heading"></a></h1>
 <p><strong>Savings and C-Card codes</strong></p>
-<p>See <a class="reference internal" href="#tw-savingscodes"><span class="std std-ref">Quick Note on 972Savings</span></a> for full explanation on the following codes:</p>
+<p>See <a class="reference internal" href="#tw8-savingscodes"><span class="std std-ref">Quick Note on 972Savings</span></a> for full explanation on the following codes:</p>
 <table class="docutils align-default">
 <colgroup>
 <col style="width: 24%" />
@@ -178,16 +179,16 @@
 <h3>Worksheets Overview<a class="headerlink" href="#worksheets-overview" title="Permalink to this heading"></a></h3>
 <p>This workbook contains transaction data from primarily ANZ bank accounts.The data is categorised through codes:</p>
 <img alt="https://www.tightbytes.com/images/pubimages/appmgr/tw01Codes01.png" src="https://www.tightbytes.com/images/pubimages/appmgr/tw01Codes01.png" />
-<p>Transaction amounts are tallied based on these Transaction Category Codes, a copy of which is saved in the ‘Classes’ worksheet. The tallies were originally SUMIF()s based on the codes in column D:</p>
+<p>Transaction amounts are tallied based on these Transaction Category Codes, a copy of which is saved in the ‘Classes’ worksheet. The tallies are SUMIF()s of transaction amounts based on the codes in column D:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span>=ABS(SUMIF(&#39;568CreditCard&#39;!$D165:$D399,&quot;HSHPHO&quot;,&#39;568CreditCard&#39;!$B165:$B399))
 </pre></div>
 </div>
 <p>Using the Credit Card worksheet as an example, the codes in column D are assigned via Excel 2019 Visual-Basic for Applications functions (VBA), copied from the <strong>Classes Worksheet</strong> which has an instance of the Transaction Target and the associated code:</p>
 <img alt="https://www.tightbytes.com/images/pubimages/appmgr/tw01Codes03.png" src="https://www.tightbytes.com/images/pubimages/appmgr/tw01Codes03.png" />
 <p>The software that copies the Transaction Code from the Classes sheet to the 568CreditCard sheet is run from <strong>Tax Workbook</strong> menu option under the main menu, i.e., the ‘Ribbon’:</p>
-<img alt="https://www.tightbytes.com/images/pubimages/appmgr/tw01Codes04.png" src="https://www.tightbytes.com/images/pubimages/appmgr/tw01Codes04.png" />
+<img alt="https://www.tightbytes.com/images/pubimages/appmgr/tw08Codes04.png" src="https://www.tightbytes.com/images/pubimages/appmgr/tw08Codes04.png" />
 <p>Much of the workbook’s data is managed in this fashion.</p>
-<p>Note: <em>the use of SUMIF() has been largely replaced with a User-Defined Function (UDF) called</em> calcABS. See <a class="reference internal" href="#tw-calcabs"><span class="std std-ref">calcABS</span></a> for how this works.</p>
+<p>Note: <em>the use of SUMIF() has been largely replaced with a User-Defined Function (UDF) called</em> calcABS. See <a class="reference internal" href="#tw8-calcabs"><span class="std std-ref">calcABS</span></a> for how this works.</p>
 <p>When “Tax Workbook” is first opened in Excel, security settings commonly set by organisations may issue a security warning:</p>
 <blockquote>
 <div><ul class="simple">
@@ -218,8 +219,8 @@
 <span class="n">D</span> <span class="o">-</span> <span class="n">Transaction</span> <span class="n">Code</span>
 </pre></div>
 </div>
-<p>After the transactions have been appended and the PAYMENT transaction categorised (see <a class="reference internal" href="#tw-ccpayment"><span class="std std-ref">Creditcard Payments</span></a>), the Code Assignment software is invoked:</p>
-<img alt="https://www.tightbytes.com/images/pubimages/appmgr/tw01Codes04.png" src="https://www.tightbytes.com/images/pubimages/appmgr/tw01Codes04.png" />
+<p>After the transactions have been appended and the PAYMENT transaction categorised (see <a class="reference internal" href="#tw8-ccpayment"><span class="std std-ref">Creditcard Payments</span></a>), the Code Assignment software is invoked:</p>
+<img alt="https://www.tightbytes.com/images/pubimages/appmgr/tw08Codes04.png" src="https://www.tightbytes.com/images/pubimages/appmgr/tw08Codes04.png" />
 <p>The script compares transaction target entries to those in the ‘Classes’ worksheet, leaving the Code column [D] blank if it doesn’t find that tranaction. 90% or more transactions are going to be with the same vendors, so it’s a simple matter of updating ‘Classes’ with the transactions missing a code.</p>
 <p>For example, this is a typical credit card transaction listing:</p>
 <table class="docutils align-default">
@@ -326,7 +327,7 @@
 </pre></div>
 </div>
 <p>After the transactions have been copied, the Code Assignment software is invoked:</p>
-<img alt="https://www.tightbytes.com/images/pubimages/appmgr/tw01Codes06.png" src="https://www.tightbytes.com/images/pubimages/appmgr/tw01Codes06.png" />
+<img alt="https://www.tightbytes.com/images/pubimages/appmgr/tw08Codes06.png" src="https://www.tightbytes.com/images/pubimages/appmgr/tw08Codes06.png" />
 <p>During processing, non-useful text is removed from the transaction target, leaving either a ‘FROM’ or ‘TO’ prefix, making transaction identification vastly easier to do visually.</p>
 </section>
 <section id="home-loan">
@@ -343,7 +344,7 @@
 </pre></div>
 </div>
 <p>After the transactions have been copied, the Code Assignment software is invoked:</p>
-<img alt="https://www.tightbytes.com/images/pubimages/appmgr/tw01Codes06.png" src="https://www.tightbytes.com/images/pubimages/appmgr/tw01Codes06.png" />
+<img alt="https://www.tightbytes.com/images/pubimages/appmgr/tw08Codes06.png" src="https://www.tightbytes.com/images/pubimages/appmgr/tw08Codes06.png" />
 <p>During processing, non-useful text is removed from the transaction target, leaving either a ‘FROM’ or ‘TO’ prefix if one existed in the original transaction target entry.</p>
 </section>
 <section id="classes">
@@ -357,13 +358,13 @@
 <hr style="height:4px;border-width:0;color:gray;background-color:gray"></section>
 </section>
 <section id="the-code-running-the-workbook">
-<span id="tw-corefcn"></span><h2>The Code Running The Workbook<a class="headerlink" href="#the-code-running-the-workbook" title="Permalink to this heading"></a></h2>
+<span id="tw8-corefcn"></span><h2>The Code Running The Workbook<a class="headerlink" href="#the-code-running-the-workbook" title="Permalink to this heading"></a></h2>
 <p>For those who might be curious as to how certain features work, I offer the following as a bit of a discussion on my approach to solving these little problems.</p>
 <p>To view the code, press [Alt] [F11] and you will be presented with the Visual Basic Editor. These user-defined functions and sub-routines are stored in the MdlT modules page. The Tax Workbook ribbon buttons code is stored here.</p>
 <section id="menu-options">
 <h3>Menu Options<a class="headerlink" href="#menu-options" title="Permalink to this heading"></a></h3>
 <p>Using the menu option “CreditCard” in the ribbon under <strong>Tax Workbook</strong> as an example:</p>
-<img alt="https://www.tightbytes.com/images/pubimages/appmgr/tw01Codes04.png" src="https://www.tightbytes.com/images/pubimages/appmgr/tw01Codes04.png" />
+<img alt="https://www.tightbytes.com/images/pubimages/appmgr/tw08Codes04.png" src="https://www.tightbytes.com/images/pubimages/appmgr/tw08Codes04.png" />
 <p>invokes the _Click() event for that button, which runs the following code:</p>
 <div class="highlight-vbnet notranslate"><div class="highlight"><pre><span></span><span class="k">Sub</span><span class="w"> </span><span class="nf">btnCC_Click</span><span class="p">(</span><span class="n">control</span><span class="w"> </span><span class="ow">As</span><span class="w"> </span><span class="n">IRibbonControl</span><span class="p">)</span><span class="w"></span>
 <span class="w">  </span><span class="k">Call</span><span class="w"> </span><span class="n">RunScript</span><span class="p">(</span><span class="n">CheckFilterMode</span><span class="p">(</span><span class="s">&quot;s568&quot;</span><span class="p">),</span><span class="w"> </span><span class="s">&quot;s568&quot;</span><span class="p">)</span><span class="w"></span>
@@ -398,7 +399,7 @@
 <h3>Worksheet Functions<a class="headerlink" href="#worksheet-functions" title="Permalink to this heading"></a></h3>
 <p>Note: the first function mentioned here, <strong>calcABS()</strong>, has much simplified maintaining and updating the budget worksheets. The second - sParseAllWords({cellnumber}) - needs work.</p>
 <section id="calcabs">
-<span id="tw-calcabs"></span><h4>calcABS<a class="headerlink" href="#calcabs" title="Permalink to this heading"></a></h4>
+<span id="tw8-calcabs"></span><h4>calcABS<a class="headerlink" href="#calcabs" title="Permalink to this heading"></a></h4>
 <p>This function is mostly used on the Quarterly budget sheets (Qtr1, Qtr2, etc).</p>
 <div class="highlight-vbnet notranslate"><div class="highlight"><pre><span></span><span class="k">Public</span><span class="w"> </span><span class="k">Function</span><span class="w"> </span><span class="nf">calcABS</span><span class="p">(</span><span class="n">sSht</span><span class="w"> </span><span class="ow">As</span><span class="w"> </span><span class="kt">String</span><span class="p">,</span><span class="w"> </span><span class="n">tCode</span><span class="w"> </span><span class="ow">As</span><span class="w"> </span><span class="kt">String</span><span class="p">,</span><span class="w"> </span>_<span class="w"></span>
 <span class="w">                        </span><span class="n">nRangeS</span><span class="w"> </span><span class="ow">As</span><span class="w"> </span><span class="kt">Integer</span><span class="p">,</span><span class="w"> </span><span class="n">nRangeE</span><span class="w"> </span><span class="ow">As</span><span class="w"> </span><span class="kt">Integer</span><span class="p">)</span><span class="w"> </span><span class="ow">As</span><span class="w"> </span><span class="kt">Double</span><span class="w"></span>
@@ -512,7 +513,7 @@
 </div>
 </section>
 <section id="creditcard-payments">
-<span id="tw-ccpayment"></span><h4>Creditcard Payments<a class="headerlink" href="#creditcard-payments" title="Permalink to this heading"></a></h4>
+<span id="tw8-ccpayment"></span><h4>Creditcard Payments<a class="headerlink" href="#creditcard-payments" title="Permalink to this heading"></a></h4>
 <p>For the credit card, the app looks at the entry for “PAYMENT” - the only fairly ambiguous entries in this worksheet - and then checks the two-character code after the word “THANKYOU”… this code is entered prior to processing:</p>
 <table class="docutils align-default">
 <colgroup>
@@ -538,7 +539,7 @@
 <section id="additional-notes">
 <h2>Additional Notes<a class="headerlink" href="#additional-notes" title="Permalink to this heading"></a></h2>
 <section id="quick-note-on-972savings">
-<span id="tw-savingscodes"></span><h3>Quick Note on 972Savings<a class="headerlink" href="#quick-note-on-972savings" title="Permalink to this heading"></a></h3>
+<span id="tw8-savingscodes"></span><h3>Quick Note on 972Savings<a class="headerlink" href="#quick-note-on-972savings" title="Permalink to this heading"></a></h3>
 <p><em>New for version 0.8</em></p>
 <p>Many transactions happen through Paypal. These are extremely difficult to keep tabs on, as the entry in the worksheet is a mere:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">PAYMENT</span> <span class="n">TO</span> <span class="n">PAYPAL</span> <span class="n">AUSTRALIA</span> <span class="mi">1021851015462</span>
@@ -581,7 +582,7 @@
            </div>
           </div>
           <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
-        <a href="CallSheetp06.html" class="btn btn-neutral float-left" title="CallSheet version 0.6" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="TaxWB07.html" class="btn btn-neutral float-left" title="Tax Workbook v.7" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
         <a href="ReabankEditor.html" class="btn btn-neutral float-right" title="Reabanks Editor" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
     </div>
 
