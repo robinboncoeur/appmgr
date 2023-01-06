@@ -2,60 +2,62 @@
 The Tax Workbook Guide
 ######################
 
-This Excel-based utility is designed to manage creating and maintaining Banking Transactions Data for Tax Purposes in spreadsheet form. The workbook contains both data inported from CSV files as well as (much less frequently) data manually entered from PDFs, such as rental property repair details.
+**Savings and C-Card codes**
+
+See :REF:`tw-SavingsCodes` for full explanation on the following codes:
+
++--------------------------+
+| Codes and Suffixes       |
++======+===================+
+|  do  |  -Donations       |
++------+-------------------+
+|  en  |  -Entertain       |
++------+-------------------+
+|  hh  |  -HouseHold       |
++------+-------------------+
+|  it  |  -ITExpense       |
++------+-------------------+
+|  ra  |  -RobAttire       |
++------+-------------------+
+|  rh  |  -RobHobbys       |
++------+-------------------+
+|  ri  |  -Reimburse       |
++------+-------------------+
+|  rm  |  -AlMedical       |
++------+-------------------+
+
+For Creditcard Payments:
+
++-------------------------------------+
+| CreditCard Codes and Suffixes       |
++======+==============================+
+|  cc  |  Creditcard repayment        |
++------+------------------------------+
+|  ri  |  Reimbursement for purchase  |
++------+------------------------------+
+
+
+   
+.. raw:: html
+   
+   <hr style="height:4px;border-width:0;color:gray;background-color:gray">
+
+
+
+************
+Introduction
+************
+
+This Excel-based utility is designed to manage creating and maintaining Banking Transactions Data for Tax Purposes and Budget Management in spreadsheet form. The workbook contains both data inported from CSV files as well as (much less frequently) data manually entered from PDFs, such as rental property repair details.
 
 It replaces a manually-managed ledger approach to tax-data figures. The tax accountant requested an income and expenditures summary worksheet in Excel. Using the power of Excel and VBA, downloaded CSV files populate the Accounts Worksheets, which inform fields on the Summary Sheet through links: this happens  dynamically. 
 
 This Tax Workbook is a living document. At the end of the fiscal year, it is submitted to the tax accountant.
 
 
-========================
-Quick Note on 972Savings
-========================
-
-**New for version 0.8**
-
-Many transactions happen through Paypal. To identify the transaction prior to running the script to assign categories involves opening GMail and Ebay -> Purchases. Column F holds a 2-character code to identify the purchase as being of the following categories and assigns a suffix to the description:
-
-  * do -Donations
-  * en -Entertain
-  * hh -HouseHold
-  * it -ITExpense
-  * ra -RobAttire
-  * ri -Reimburse
-  * rh -RobHobbys
-  * rm -AlMedical
-
-
-
-********************
-How to Best Use Help
-********************
-
-This Help file pertains to TaxWkbk 2021, version 0.6 (v0.6).
-
-While Tax Workbook's use seems pretty straight-forward to the developer, he realises that his approach to running software could differ wildly to other inhabitants of the solar system run software: hence, this Help file.
-
-Why this approach to a Help file? See the footnote [#fhlp01]_.
-
-=============
-From The Menu
-=============
-
-When this workbook loads, it includes a special Menu option -- next to "Help" -- called "Tax Workbook":
-
-.. image:: https://www.tightbytes.com/images/pubimages/appmgr/tw01Codes04.png
-
-Help, much like the rest of the document is a work-in-progress, so all topics may not be covered.
-
-The same goes for the VBA code: it works 99% of the time, but every now and then, the VBA gremlins interfere.
-
-  .. rubric:: Notes
-
-  .. [#fhlp01] As Microsoft in their wisdom didn't see fit to include a means to provide a very flexible custom help documentation system without installing questionable add-ons - something most security-conscious IT departments of organisations would definitely never permit - a method of sharing help information had to be come up with that would provide that information quickly, consistently and accurately. Therefore, I have chosen HTML (think: Web) pages for documenting Help. The degree of success in finding help in these pages depends on how the user generally searches for help on a computer, but I would suggest this approach.
-
-
-
+.. raw:: html
+   
+   <hr style="height:4px;border-width:0;color:gray;background-color:gray">
 
 
 
@@ -68,62 +70,63 @@ Tax Workbook - Worksheets
 Worksheets Overview
 ===================
 
-This workbook contains transaction data from primarily ANZ bank accounts. On most of the worksheets, the data is categorised through codes:
+This workbook contains transaction data from primarily ANZ bank accounts.The data is categorised through codes:
 
 .. image:: https://www.tightbytes.com/images/pubimages/appmgr/tw01Codes01.png
 
-A simple =SUMIF() tallies up Transaction Categories based on those codes in column D:
+Transaction amounts are tallied based on these Transaction Category Codes, a copy of which is saved in the 'Classes' worksheet. The tallies were originally SUMIF()s based on the codes in column D::
 
-.. image:: https://www.tightbytes.com/images/pubimages/appmgr/tw01Codes02.png
+	=ABS(SUMIF('568CreditCard'!$D165:$D399,"HSHPHO",'568CreditCard'!$B165:$B399))
 
-Using the Credit Card worksheet as an example, the codes in column D are assigned via Excel 2016 Visual-Basic for Applications functions (VBA), copied from the **ClassCC Worksheet** which has an instance of the Transaction Target and the associated code:
+Using the Credit Card worksheet as an example, the codes in column D are assigned via Excel 2019 Visual-Basic for Applications functions (VBA), copied from the **Classes Worksheet** which has an instance of the Transaction Target and the associated code:
 
 .. image:: https://www.tightbytes.com/images/pubimages/appmgr/tw01Codes03.png
 
-The software that copies the Transaction Code from the ClassCC sheet to the 568CredCard sheet is run from **Tax Workbook** menu option under the main menu option Tax Workbook:
+The software that copies the Transaction Code from the Classes sheet to the 568CreditCard sheet is run from **Tax Workbook** menu option under the main menu, i.e., the 'Ribbon':
 
 .. image:: https://www.tightbytes.com/images/pubimages/appmgr/tw01Codes04.png
 
 Much of the workbook's data is managed in this fashion.
 
-
-
-
-=====================
-How TaxWorkbook Works
-=====================
+Note: *the use of SUMIF() has been largely replaced with a User-Defined Function (UDF) called* calcABS. See :ref:`tw-calcABS` for how this works.
 
 When "Tax Workbook" is first opened in Excel, security settings commonly set by organisations may issue a security warning:
    
    * *Some active content has been disabled. Click for more details.*
    
-Next to this warning is a button labelled **[Enable Content]**. While the spreadsheet's data can be viewed without "enabling content", the menu and other features in this workbook will only run if the content is enabled. The only needs to be done once.This workbook is made up of several worksheets which contain links to each other. The main end-point worksheets are **Summary** and **Budget**. **Summary** holds data pertinent to the Tax Accountant, and **Budget** allows analysis of personal expenses.
+Next to this warning is a button labelled **[Enable Content]**. While the spreadsheet's data can be viewed without "enabling content", the menu and other features in this workbook will only run if the content is enabled. This only needs to be done once.
 
-The worksheets supporting this preceeding sheets are **InvestProp**, **568CreditCard**, **259Checking**, **822HomeLoan** and **972Savings**. Naming convention is the last three digits of the account and the description.
+The workbook is made up of several worksheets which contain links to each other. The main end-point worksheets are **Summary** and **Budget**. **Summary** holds data pertinent to the Tax Accountant, and **Budget** allows analysis of personal expenses.
 
-=======
-Summary
-=======
+The worksheets supporting these preceding sheets are **InvestProp**, **568CreditCard**, **259Checking**, **822HomeLoan** and **972Savings**, where the naming convention for the worksheets is the last three digits of the account and the description.
 
-The **Summary** Worksheet is comprised of two main columns; Expenses and Income. The expenses are only those relevant to a tax accountant, such as home loan payments and professional fees and donations, while income is comprised of all income.
+
+
+=====================
+The Summary Worksheet
+=====================
+
+The **Summary** Worksheet is comprised of two main columns; Expenses and Revenue. The expenses are only those relevant to a tax accountant, such as home loan payments and professional fees and donations, while revenue is comprised of all income.
 
 The fields on this page are linked to specific fields on relevant account pages and update dynamically.
+
 
 
 ===================
 Investment Property
 ===================
 
-The **InvestProp** Worksheet contains mainly manually-entered investment property financial data, such as Loan Payments, Body Corprorate fees, Property Management fees, Council Rates fees and Water.
+The **InvestProp** Worksheet contains mainly manually-entered investment property financial data, such as Loan Payments, Body Corporate fees, Property Management fees, Council Rates fees and Water.
 
-Much of this is duplicated on the **259Checking** Worksheet, such as renter payments and loan repayments, and the workbook manages that particular data via that worksheet. However, Property Management information is only available via PDF and thus manually-entered in.
+Much of this data is also available on the **259Checking** Worksheet, such as renter payments and loan repayments, and the workbook manages that particular data via that worksheet. However, Property Management information is only available via PDF and thus manually-entered in.
+
 
 
 ===========
 Credit Card
 ===========
 
-The **568CredCard** Worksheet is a date-sorted, formatted Credit Card transaction worksheet. The data is imported from a downloaded CSV file into the Import Worksheet, then sorted and formatted. It is from this Import worksheet data is copied to the **568CredCard** Worksheet.
+The **568CreditCard** Worksheet is a date-sorted, formatted Credit Card transaction worksheet. The data is imported from a CSV file downloaded from the bank's website. The data is sorted oldest to newest and the most recent records are appended to the existing data.
 
 The columns are as follows::
 
@@ -132,50 +135,107 @@ The columns are as follows::
     C - Transaction Target (Payee or Payor)
     D - Transaction Code
 
-After the transactions have been copied, the Code Assignment software is invoked:
+After the transactions have been appended and the PAYMENT transaction categorised (see :REF:`tw-ccpayment`), the Code Assignment software is invoked:
 
 .. image:: https://www.tightbytes.com/images/pubimages/appmgr/tw01Codes04.png
 
-which then compares transaction target entries to those in ClassCC, leaving the Code column [D] blank if it doesn't find that tranaction. 90% or more transactions are going to be with the same vendors, so it's a simple matter of updating ClassCC after running this software, which is usually only a matter of a few minutes.
+The script compares transaction target entries to those in the 'Classes' worksheet, leaving the Code column [D] blank if it doesn't find that tranaction. 90% or more transactions are going to be with the same vendors, so it's a simple matter of updating 'Classes' with the transactions missing a code.
+
+For example, this is a typical credit card transaction listing:
+
++-----------------------------------------------------------------------------+
+| Listing without codes                                                       |
++=============+===========+========================================+==========+
+| 06/12/2022  |  -$80.35  | 7-ELEVEN 4203 VICTORIA POIN            |          |
++-------------+-----------+----------------------------------------+----------+
+| 06/12/2022  |  -$11.00  | 7 ELEVEN 4297 REDLAND BAY              |          |
++-------------+-----------+----------------------------------------+----------+
+| 06/12/2022  |  -$22.45  | REDLAND BAY NEWS REDLAND BAY           |          |
++-------------+-----------+----------------------------------------+----------+
+| 07/12/2022  |  -$51.25  | WOOLWORTHS/CNR COLBURNE A VICTORIA PNT |          |
++-------------+-----------+----------------------------------------+----------+
+| 07/12/2022  |  -$21.50  | SQ  VILLAGE CREATIVE S Wellington Po   |          |
++-------------+-----------+----------------------------------------+----------+
+| 07/12/2022  |  -$45.65  | LINCRAFT AUSTRALIA PTY VICTORIA POIN   |          |
++-------------+-----------+----------------------------------------+----------+
+
+After the codes are assigned:
+
++-----------------------------------------------------------------------------+
+| Listing with codes                                                          |
++=============+===========+========================================+==========+
+| 06/12/2022  |  -$80.35  | 7-ELEVEN 4203 VICTORIA POIN            | DLXALI   |
++-------------+-----------+----------------------------------------+----------+
+| 06/12/2022  |  -$11.00  | 7 ELEVEN 4297 REDLAND BAY              | DLXALI   |
++-------------+-----------+----------------------------------------+----------+
+| 06/12/2022  |  -$22.45  | REDLAND BAY NEWS REDLAND BAY           | HSHOTH   |
++-------------+-----------+----------------------------------------+----------+
+| 07/12/2022  |  -$51.25  | WOOLWORTHS/CNR COLBURNE A VICTORIA PNT | DLXALI   |
++-------------+-----------+----------------------------------------+----------+
+| 07/12/2022  |  -$21.50  | SQ  VILLAGE CREATIVE S Wellington Po   | OTHHOJ   |
++-------------+-----------+----------------------------------------+----------+
+| 07/12/2022  |  -$45.65  | LINCRAFT AUSTRALIA PTY VICTORIA POIN   | OTHHOJ   |
++-------------+-----------+----------------------------------------+----------+
+
 
 
 ========
 Checking
 ========
 
-The Access **259Checking** Worksheet is a date-sorted, formatted Checking Account transaction worksheet. Payroll, home-loan and investment property data, as well as key utilities transactions go through this account. The data is imported from a downloaded CSV file into the Import Worksheet, then sorted and formatted. It is from this Import worksheet data is copied to the **259Checking** Worksheet.
+The Access **259Checking** Worksheet is a date-sorted, formatted Checking Account transaction worksheet. Payroll, home-loan and investment property data, as well as certain utilities transactions go through this account. The data is imported from a CSV file downloaded from the bank's website. The data is sorted oldest to newest and the most recent records are appended to the existing data. Prior to processing, the Transaction Target entries are moved to column G.
 
 The columns are as follows::
 
     A - Date
     B - Transaction Amount
-    C - Transaction Target (Payee or Payor)
+    C - Processed Transaction Target (Payee or Payor)
     D - Transaction Code
+	E - Description
+	F - (Empty)
+	G - Original Transaction Target (moved from column C)
 
 After the transactions have been copied, the Code Assignment software is invoked:
 
 .. image:: https://www.tightbytes.com/images/pubimages/appmgr/tw01Codes06.png
+
+During processing, non-useful text is removed from the transaction target, leaving either a 'FROM' or 'TO' prefix, making transaction identification vastly easier to do visually.
+
 
 
 =========
 Home Loan
 =========
 
-Stub - to be updated.
+The Access **822HomeLoan** Worksheet is a date-sorted, formatted Home Loan Account transaction worksheet. Seabrae - primary residence - home-loan data goes through this account. The data is imported from a CSV file downloaded from the bank's website. The data is sorted oldest to newest and the most recent records are appended to the existing data. Prior to processing, the Transaction Target entries are moved to column G.
+
+The columns are as follows::
+
+    A - Date
+    B - Transaction Amount
+    C - Processed Transaction Target (Payee or Payor)
+    D - Transaction Code
+	E - Description
+	F - (Empty)
+	G - Original Transaction Target (moved from column C)
+
+After the transactions have been copied, the Code Assignment software is invoked:
+
+.. image:: https://www.tightbytes.com/images/pubimages/appmgr/tw01Codes06.png
+
+During processing, non-useful text is removed from the transaction target, leaving either a 'FROM' or 'TO' prefix if one existed in the original transaction target entry.
 
 
-=====================
-Classes - Credit Card
-=====================
-
-Stub - to be updated.
 
 
-=========================
-Classes - Access Checking
-=========================
+=======
+Classes
+=======
 
-Stub - to be updated.
+The **Classes** Worksheet is sorted by Column B - the codes column - and then column A - the transactions column. All worksheets that do processing refer to this sheet in order to assign codes to traansactions.
+
+This is still under refinement.
+
 
 
 ======
@@ -184,30 +244,219 @@ Budget
 
 Stub - to be updated.
 
+.. raw:: html
+   
+   <hr style="height:4px;border-width:0;color:gray;background-color:gray">
 
 
 
+
+
+.. _tw-corefcn:
 
 *****************************
 The Code Running The Workbook
 *****************************
 
-For those who might be curious as to how certain features work, I offer the following as a bit of a discussion on my apprtoach to solving these little problems. I am not a "proper" programmer, so real programmers are more than likely to wince a bit at some of the code.
+For those who might be curious as to how certain features work, I offer the following as a bit of a discussion on my approach to solving these little problems.
 
-To view the code, press [Alt] [F11] and you will be presented with the Visual Basic Editor.
+To view the code, press [Alt] [F11] and you will be presented with the Visual Basic Editor. These user-defined functions and sub-routines are stored in the MdlT modules page. The Tax Workbook ribbon buttons code is stored here.
 
 
-.. _tw-corefcn:
 
-==============
-Core Functions
-==============
+============
+Menu Options
+============
 
-The code for Menu Option **"Tax Workbook"** and some user-defined functions -- for example, sParseAllWords({cellnumber}) -- on the ClassCC worksheet lives on the MdlT modules page. 
+Using the menu option "CreditCard" in the ribbon under **Tax Workbook** as an example:
 
-Here is the code for sParseAllWords({cellnumber})::
+.. image:: https://www.tightbytes.com/images/pubimages/appmgr/tw01Codes04.png
 
-   Code all goes here
+invokes the _Click() event for that button, which runs the following code:
+
+.. code-block:: vbnet
+
+	Sub btnCC_Click(control As IRibbonControl)
+	  Call RunScript(CheckFilterMode("s568"), "s568")
+	End Sub
+
+If a filter was set on the worksheet to be processed, the app notifies the user and processing is aborted. 
+
+Otherwise, RunScript calls the routine refered to  ("s568", "s259" or "s972", for example - where 's' stands for 'sheet, and the numbers represent the last three digits of the account).
+
+.. code-block:: vbnet
+
+	Public Sub RunScript(FilterSet As Boolean, ScriptToRun As String)
+	  If FilterSet Then
+		'Debug.Print FilterSet
+		MsgBox ("Cannot run whilst a filter is set...")
+	  Else
+
+	  ' The name of the function (e.g., HomeloanCodes() but without the "()")
+	  '  placed within a Messagebox calls that function (i.e., runs the code
+	  '  of that function)
+		Select Case ScriptToRun
+		  Case Is = "s568": MsgBox (CreditcardCodes)
+		  Case Is = "s259": MsgBox (CheckingCodes)
+		  Case Is = "s972": MsgBox (PersonalACodes)
+		  Case Is = "s647": MsgBox (BeyondBankCodes)
+		  Case Is = "About": MsgBox "under Development"
+		End Select
+	  End If
+	End Sub
+
+The MsgBox() function actually calls (launches) the script (e.g., 'CreditcardCodes()'). 
+
+
+
+===================
+Worksheet Functions
+===================
+
+Note: the first function mentioned here, **calcABS()**, has much simplified maintaining and updating the budget worksheets. The second - sParseAllWords({cellnumber}) - needs work.
+
+
+.. _tw-calcABS:
+
+calcABS
+-------
+
+This function is mostly used on the Quarterly budget sheets (Qtr1, Qtr2, etc).
+
+.. code-block:: vbnet
+
+	Public Function calcABS(sSht As String, tCode As String, _
+							nRangeS As Integer, nRangeE As Integer) As Double
+	Dim dVal As Double
+	Dim sRangeD As String, sRangeB As String
+
+		sRangeD = "D" & stp(nRangeS) & ":D" & stp(nRangeE)
+		sRangeB = "B" & stp(nRangeS) & ":B" & stp(nRangeE)
+
+		Select Case sSht
+			Case Is = "ch"
+				calcABS = Abs(WorksheetFunction.SumIf(sh259.Range(sRangeD), tCode, sh259.Range(sRangeB)))
+			Case Is = "cc"
+				calcABS = Abs(WorksheetFunction.SumIf(sh568.Range(sRangeD), tCode, sh568.Range(sRangeB)))
+			Case Is = "sv"
+				calcABS = Abs(WorksheetFunction.SumIf(sh972.Range(sRangeD), tCode, sh972.Range(sRangeB)))
+		End Select
+	End Function
+
+On the Qtr1 worksheet, the typical way this is called is (e.g., for 'Phone/Internet'::
+
+	=calcABS("ch","HSHPHO",E13,E14) + calcABS("cc","HSHPHO",E15,E16) + calcABS("sv","HSHPHO",E17,E18)
+
+which before was the following formula::
+
+	=ABS(SUMIF('568CreditCard'!$D165:$D399,"HSHPHO",'568CreditCard'!$B165:$B399) + SUMIF('259Checking'!$D$65:$D159,"HSHPHO",'259Checking'!$B$65:$B159))
+
+This approach expects the following table on the Qtr1 (and subsequent quarters) worksheet:
+
++--------------------------+
+|      Field Ranges        |
++===================+======+
+| Checking Start    |   2  |
++-------------------+------+
+| Checking End      |  64  |
++-------------------+------+
+| CreditCard Start  |   2  |
++-------------------+------+
+| CCreditCard End   | 164  |
++-------------------+------+
+| Savings Start     |   2  |
++-------------------+------+
+| Savings End       |  66  |
++-------------------+------+
+
+The following quarter, a copy is made of the current worksheet (using the name 'Qtr2') and the table is updated thus:
+
++--------------------------+
+|      Field Ranges        |
++===================+======+
+| Checking Start    |  65  |
++-------------------+------+
+| Checking End      | 509  |
++-------------------+------+
+| CreditCard Start  | 165  |
++-------------------+------+
+| CCreditCard End   | 519  |
++-------------------+------+
+| Savings Start     |  67  |
++-------------------+------+
+| Savings End       | 529  |
++-------------------+------+
+
+The end numbers are just arbitrarily assigned until the end of the last month of the quarter, when the actual worksheet's last cell row number is entered. Then, a copy is made of that worksheet and the process is repeated. 
+
+The advantage to this approach is that formula errors are avoided, or far more easily identifed and fixed. It also removes the tedium of having to go into each formula::
+
+	=ABS(SUMIF('568CreditCard'!$D165:$D399,"HSHPHO",'568CreditCard'!$B165:$B399)
+
+...and changing range values; again, another frequent source of error.
+
+
+
+sParseAllWords({cellnumber})
+----------------------------
+
+.. code-block:: vbnet
+
+	Public Function ParseAllWords(StringToParse As String) As String
+		If Len(StringToParse & vbNullString) = 0 Then Exit Function
+
+		If Trim(InStr(1, StringToParse, " ")) = 0 Then
+			ParseAllWords = Trim(StringToParse)
+		Else
+			ParseAllWords = WorksheetFunction.Trim(StringToParse)
+		End If
+	End Function
+
+
+.. _tw-ccpayment:
+
+Creditcard Payments
+-------------------
+
+For the credit card, the app looks at the entry for "PAYMENT" - the only fairly ambiguous entries in this worksheet - and then checks the two-character code after the word "THANKYOU"... this code is entered prior to processing:
+
++-------------------------------------+
+| Codes and Suffixes                  |
++======+==============================+
+|  cc  |  Creditcard repayment        |
++------+------------------------------+
+|  ri  |  Reimbursement for purchase  |
++------+------------------------------+
+
+.. raw:: html
+   
+   <hr style="height:4px;border-width:0;color:gray;background-color:gray">
+
+
+
+
+
+****************
+Additional Notes
+****************
+
+.. _tw-SavingsCodes:
+
+========================
+Quick Note on 972Savings
+========================
+
+*New for version 0.8*
+
+Many transactions happen through Paypal. These are extremely difficult to keep tabs on, as the entry in the worksheet is a mere::
+
+	PAYMENT TO PAYPAL AUSTRALIA 1021851015462
+
+To identify the transaction prior to running the script to assign categories involves opening GMail and Ebay -> Purchases. Once it has been established who the payment went to and what for, I typically copy/paste the item - or service - purchased into column H. Column F receivs a 2-character code to identify the purchase as being of the following categories: the script then trims off the transaction number suffix and assigns a suffix to the Transaction Target based on the code I enter prior to processing in Column F:
+
+.. raw:: html
+   
+   <hr style="height:4px;border-width:0;color:gray;background-color:gray">
 
 
 
@@ -243,6 +492,6 @@ A number of means exist to contact the developer:
    * gmail: robinseahahn@gmail.com
    * `github issues page <https://github.com/robinboncoeur/appmgr/issues>`_
    
-To find the most current documentation - a (probably) updated version of this document - go to:
+To find the most current documentation - a (probably) updated version of this document which is most likely this one - go to:
    
    * `my Github TaxWorkbook page <https://robinboncoeur.github.io/appmgr/>`_ 
