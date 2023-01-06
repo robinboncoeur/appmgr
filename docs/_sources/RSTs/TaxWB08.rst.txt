@@ -224,9 +224,9 @@ During processing, non-useful text is removed from the transaction target, leavi
 Classes
 =======
 
-The **Classes** Worksheet is sorted by Column B - the codes column - and then column A - the transactions column. All worksheets that do processing refer to this sheet in order to assign codes to traansactions.
+The **Classes** Worksheet is sorted by Column B - the codes column - and then column A - the transactions column. All worksheets that do processing refer to this sheet in order to assign codes to transactions.
 
-This is still under refinement.
+This sheet and the associated processes are being reviewed for refinement and streamlining.
 
 
 
@@ -313,7 +313,7 @@ Note: the first function mentioned here, **calcABS()**, has much simplified main
 calcABS
 -------
 
-This function is mostly used on the Quarterly budget sheets (Qtr1, Qtr2, etc).
+This function is used on the **TypeSummary** worksheet as well as the Quarterly budget sheets (Qtr1, Qtr2, etc).
 
 .. code-block:: vbnet
 
@@ -334,15 +334,15 @@ This function is mostly used on the Quarterly budget sheets (Qtr1, Qtr2, etc).
 		End Select
 	End Function
 
-On the Qtr1 worksheet, the typical way this is called is (e.g., for 'Phone/Internet')::
+This is typically called thus (e.g., for 'Phone/Internet')::
 
 	=calcABS("ch","HSHPHO",E13,E14) + calcABS("cc","HSHPHO",E15,E16) + calcABS("sv","HSHPHO",E17,E18)
 
-which before was the following formula::
+calcABS() replaced the following formulae::
 
 	=ABS(SUMIF('568CreditCard'!$D165:$D399,"HSHPHO",'568CreditCard'!$B165:$B399) + SUMIF('259Checking'!$D$65:$D159,"HSHPHO",'259Checking'!$B$65:$B159))
 
-This approach expects the following table on the Qtr1 (and subsequent quarters) worksheet:
+This approach expects the following table on the Qtr1 (and subsequent quarters) worksheet in a specific range - D13:E18 - and formatted in this manner:
 
 +--------------------------+
 |      Field Ranges        |
@@ -362,7 +362,7 @@ This approach expects the following table on the Qtr1 (and subsequent quarters) 
 
 The 'Start' and 'End' numbers are references to the beginning and end of that quarter's date range on that particular worksheet.
 
-The following quarter, a copy is made of the current worksheet (using the name 'Qtr2') and the table is updated thus:
+Maintenance is easy: the following quarter, a copy is made of the current worksheet, the copy is renamed using 'Qtr' and {number of quarter}, i.e., **Qtr2**, and the table is updated thus:
 
 +--------------------------+
 |      Field Ranges        |
@@ -380,7 +380,7 @@ The following quarter, a copy is made of the current worksheet (using the name '
 | Savings End       | 529  |
 +-------------------+------+
 
-The end numbers for the last quarter's date range - (e.g., 509, 519, 529) - are just arbitrarily assigned until the end of the last month of the quarter, when the actual worksheet's last cell row number is entered. Then, a copy is made of that worksheet and the process is repeated. 
+The start numbers are, of course, last quarter's end number incremented by 1, and the end numbers for the last quarter's date range - (e.g., 509, 519, 529) - are just arbitrarily assigned. At the end of the last month of the quarter, when the actual worksheet's last cell row number is known, that number is entered. Then, a copy is made of that worksheet and the process is repeated. 
 
 The advantage to this approach is that formula errors are avoided, or far more easily identifed and fixed. It also removes the tedium of having to go into each formula::
 
