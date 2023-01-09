@@ -92,6 +92,10 @@
 <li class="toctree-l3"><a class="reference internal" href="#editing-the-ribbon">Editing “The Ribbon”</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#staff-names-dropdown">Staff Names Dropdown</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#phone-number-selection">Phone Number Selection</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#developer-s-notes-on-v0-6">Developer’s Notes on v0.6</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#older-notes">Older Notes</a></li>
+</ul>
+</li>
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="#licence-agreement">Licence Agreement</a><ul>
@@ -534,7 +538,15 @@ Note: <em>there is a number at the end of the field, but it normally won’t be 
 <span class="k">End</span><span class="w"> </span><span class="k">Sub</span><span class="w"></span>
 </pre></div>
 </div>
-<p>TODO:===&gt; [Full Disclosure]</p>
+</section>
+<section id="developer-s-notes-on-v0-6">
+<h3>Developer’s Notes on v0.6<a class="headerlink" href="#developer-s-notes-on-v0-6" title="Permalink to this heading"></a></h3>
+<p>2023-01-10 TODO: When editing a name, particularly a surname, searching in an array of an existing table is useless. Have added a global var sCurrRecno, but will need to add a recno for entries in the subspecialty sheet(s). These are populated during the PopFields() function.</p>
+<p>In the DoSave(), edit the record in each affected table and Sort that table. Also need to update the main sheet at the end.</p>
+<section id="older-notes">
+<h4>Older Notes<a class="headerlink" href="#older-notes" title="Permalink to this heading"></a></h4>
+<p>2019-06-29 Completed: a de-identified copy of this app (artificial data).</p>
+</section>
 </section>
 </section>
 <section id="licence-agreement">

@@ -641,8 +641,19 @@ The method then calls the AssocPhone() procedure which finds and puts the phone 
 	  Set rFound = Nothing
 	End Sub
 
-TODO:===> [Full Disclosure]
+=========================
+Developer's Notes on v0.6
+=========================
 
+2023-01-10 TODO: When editing a name, particularly a surname, searching in an array of an existing table is useless. Have added a global var sCurrRecno, but will need to add a recno for entries in the subspecialty sheet(s). These are populated during the PopFields() function.
+
+In the DoSave(), edit the record in each affected table and Sort that table. Also need to update the main sheet at the end.
+
+
+Older Notes
+-----------
+
+2019-06-29 Completed: a de-identified copy of this app (artificial data).
 
 
 
