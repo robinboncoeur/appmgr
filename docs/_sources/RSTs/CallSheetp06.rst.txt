@@ -641,6 +641,63 @@ The method then calls the AssocPhone() procedure which finds and puts the phone 
 	  Set rFound = Nothing
 	End Sub
 
+
+============================
+Dealing with Multiple Sheets
+============================
+
+Added: 2023-01-10. Currently - probably needs to be set up differently - staff names are sorted alphabetically on separate worksheets (named SS-Scrub/Scout; AN-Anaesthetics;PA-PACU) in the following format: [LastName, GivenName]. Updating last names caused searching for the record to fail, as it was searching for [LastName, GivenName].
+
+The solution was to save to form-level properties (global variables, essentially) record numbers of all the instances - on all relevant sheets - of [LastName, GivenName] in the PopFields() function.
+
+The sheets are second, third, fourth and fifth and are referenced with **With Worksheets(nIdx)**. This function returns sNpR (string: Name phone RecordNumber) which, if the name had been manually typed into the combobox, the PopFields() function is aborted, as rFound will not have found a record for the entered name. In that instance, sSaveRecnos returns a "0".
+
+Interesting in this the use of **Worksheets(nIdx)**.
+
+.. code-block:: VB.net
+
+	Public Function sSaveRecnos(sLFName As String) As String
+	Dim nIdx As Integer
+	Dim rRange As Range, rFound As Range
+
+	  For nIdx = 2 To 5
+		' 2-> S02Names, 3-> S03SS, 4-> S04AN, 5-> S05PA
+		With Worksheets(nIdx)
+		  Set rRange = .Range("A1").CurrentRegion
+		  Set rFound = rRange.Find(What:=sLFName, _
+						  LookIn:=xlValues, _
+						  SearchOrder:=xlColumns)
+		  On Error GoTo 0
+		  If Not rFound Is Nothing Then
+			' psNpR, psSsR, psAnR, psPaR
+			Select Case nIdx
+			  Case Is = 2: Me.sNpR = Trim(Str(rFound.Row))
+			  Case Is = 3: Me.sSsR = Trim(Str(rFound.Row))
+			  Case Is = 4: Me.sAnR = Trim(Str(rFound.Row))
+			  Case Is = 5: Me.sPaR = Trim(Str(rFound.Row))
+			End Select
+		  End If
+		End With
+	  Next
+
+	  If Len(psNpR & vbNullString) = 0 Then psNpR = "0"
+	  sSaveRecnos = psNpR
+
+	  Set rRange = Nothing
+	  Set rFound = Nothing
+	End Function
+
+This function loops through worksheets. Referencing the worksheetc is done by:
+
+	1. making sure the worksheets are contiguous and
+	2. each sheet is identified with an index number (which are also contiguous)
+	3. Use the "With Worksheets([Index number])" statement, e.g., With Worksheets(2)
+
+
+
+
+
+
 =========================
 Developer's Notes on v0.6
 =========================

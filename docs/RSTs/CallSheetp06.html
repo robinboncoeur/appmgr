@@ -92,6 +92,7 @@
 <li class="toctree-l3"><a class="reference internal" href="#editing-the-ribbon">Editing “The Ribbon”</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#staff-names-dropdown">Staff Names Dropdown</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#phone-number-selection">Phone Number Selection</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#dealing-with-multiple-sheets">Dealing with Multiple Sheets</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#developer-s-notes-on-v0-6">Developer’s Notes on v0.6</a><ul>
 <li class="toctree-l4"><a class="reference internal" href="#older-notes">Older Notes</a></li>
 </ul>
@@ -538,6 +539,53 @@ Note: <em>there is a number at the end of the field, but it normally won’t be 
 <span class="k">End</span><span class="w"> </span><span class="k">Sub</span><span class="w"></span>
 </pre></div>
 </div>
+</section>
+<section id="dealing-with-multiple-sheets">
+<h3>Dealing with Multiple Sheets<a class="headerlink" href="#dealing-with-multiple-sheets" title="Permalink to this heading"></a></h3>
+<p>Added: 2023-01-10. Currently - probably needs to be set up differently - staff names are sorted alphabetically on separate worksheets (named SS-Scrub/Scout; AN-Anaesthetics;PA-PACU) in the following format: [LastName, GivenName]. Updating last names caused searching for the record to fail, as it was searching for [LastName, GivenName].</p>
+<p>The solution was to save to form-level properties (global variables, essentially) record numbers of all the instances - on all relevant sheets - of [LastName, GivenName] in the PopFields() function.</p>
+<p>The sheets are second, third, fourth and fifth and are referenced with <strong>With Worksheets(nIdx)</strong>. This function returns sNpR (string: Name phone RecordNumber) which, if the name had been manually typed into the combobox, the PopFields() function is aborted, as rFound will not have found a record for the entered name. In that instance, sSaveRecnos returns a “0”.</p>
+<p>Interesting in this the use of <strong>Worksheets(nIdx)</strong>.</p>
+<div class="highlight-VB.net notranslate"><div class="highlight"><pre><span></span><span class="k">Public</span><span class="w"> </span><span class="k">Function</span><span class="w"> </span><span class="nf">sSaveRecnos</span><span class="p">(</span><span class="n">sLFName</span><span class="w"> </span><span class="ow">As</span><span class="w"> </span><span class="kt">String</span><span class="p">)</span><span class="w"> </span><span class="ow">As</span><span class="w"> </span><span class="kt">String</span><span class="w"></span>
+<span class="k">Dim</span><span class="w"> </span><span class="n">nIdx</span><span class="w"> </span><span class="ow">As</span><span class="w"> </span><span class="kt">Integer</span><span class="w"></span>
+<span class="k">Dim</span><span class="w"> </span><span class="n">rRange</span><span class="w"> </span><span class="ow">As</span><span class="w"> </span><span class="n">Range</span><span class="p">,</span><span class="w"> </span><span class="n">rFound</span><span class="w"> </span><span class="ow">As</span><span class="w"> </span><span class="n">Range</span><span class="w"></span>
+
+<span class="w">  </span><span class="k">For</span><span class="w"> </span><span class="n">nIdx</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">2</span><span class="w"> </span><span class="k">To</span><span class="w"> </span><span class="mi">5</span><span class="w"></span>
+<span class="w">        </span><span class="c">&#39; 2-&gt; S02Names, 3-&gt; S03SS, 4-&gt; S04AN, 5-&gt; S05PA</span><span class="w"></span>
+<span class="w">        </span><span class="k">With</span><span class="w"> </span><span class="n">Worksheets</span><span class="p">(</span><span class="n">nIdx</span><span class="p">)</span><span class="w"></span>
+<span class="w">          </span><span class="k">Set</span><span class="w"> </span><span class="n">rRange</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">.</span><span class="n">Range</span><span class="p">(</span><span class="s">&quot;A1&quot;</span><span class="p">).</span><span class="n">CurrentRegion</span><span class="w"></span>
+<span class="w">          </span><span class="k">Set</span><span class="w"> </span><span class="n">rFound</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">rRange</span><span class="p">.</span><span class="n">Find</span><span class="p">(</span><span class="n">What</span><span class="p">:</span><span class="o">=</span><span class="n">sLFName</span><span class="p">,</span><span class="w"> </span>_<span class="w"></span>
+<span class="w">                                          </span><span class="n">LookIn</span><span class="p">:</span><span class="o">=</span><span class="n">xlValues</span><span class="p">,</span><span class="w"> </span>_<span class="w"></span>
+<span class="w">                                          </span><span class="n">SearchOrder</span><span class="p">:</span><span class="o">=</span><span class="n">xlColumns</span><span class="p">)</span><span class="w"></span>
+<span class="w">          </span><span class="k">On</span><span class="w"> </span><span class="k">Error</span><span class="w"> </span><span class="k">GoTo</span><span class="w"> </span><span class="mi">0</span><span class="w"></span>
+<span class="w">          </span><span class="k">If</span><span class="w"> </span><span class="k">Not</span><span class="w"> </span><span class="n">rFound</span><span class="w"> </span><span class="ow">Is</span><span class="w"> </span><span class="k">Nothing</span><span class="w"> </span><span class="k">Then</span><span class="w"></span>
+<span class="w">                </span><span class="c">&#39; psNpR, psSsR, psAnR, psPaR</span><span class="w"></span>
+<span class="w">                </span><span class="k">Select</span><span class="w"> </span><span class="k">Case</span><span class="w"> </span><span class="n">nIdx</span><span class="w"></span>
+<span class="w">                  </span><span class="k">Case</span><span class="w"> </span><span class="ow">Is</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">2</span><span class="p">:</span><span class="w"> </span><span class="k">Me</span><span class="p">.</span><span class="n">sNpR</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">Trim</span><span class="p">(</span><span class="n">Str</span><span class="p">(</span><span class="n">rFound</span><span class="p">.</span><span class="n">Row</span><span class="p">))</span><span class="w"></span>
+<span class="w">                  </span><span class="k">Case</span><span class="w"> </span><span class="ow">Is</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">3</span><span class="p">:</span><span class="w"> </span><span class="k">Me</span><span class="p">.</span><span class="n">sSsR</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">Trim</span><span class="p">(</span><span class="n">Str</span><span class="p">(</span><span class="n">rFound</span><span class="p">.</span><span class="n">Row</span><span class="p">))</span><span class="w"></span>
+<span class="w">                  </span><span class="k">Case</span><span class="w"> </span><span class="ow">Is</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">4</span><span class="p">:</span><span class="w"> </span><span class="k">Me</span><span class="p">.</span><span class="n">sAnR</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">Trim</span><span class="p">(</span><span class="n">Str</span><span class="p">(</span><span class="n">rFound</span><span class="p">.</span><span class="n">Row</span><span class="p">))</span><span class="w"></span>
+<span class="w">                  </span><span class="k">Case</span><span class="w"> </span><span class="ow">Is</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">5</span><span class="p">:</span><span class="w"> </span><span class="k">Me</span><span class="p">.</span><span class="n">sPaR</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">Trim</span><span class="p">(</span><span class="n">Str</span><span class="p">(</span><span class="n">rFound</span><span class="p">.</span><span class="n">Row</span><span class="p">))</span><span class="w"></span>
+<span class="w">                </span><span class="k">End</span><span class="w"> </span><span class="k">Select</span><span class="w"></span>
+<span class="w">          </span><span class="k">End</span><span class="w"> </span><span class="k">If</span><span class="w"></span>
+<span class="w">        </span><span class="k">End</span><span class="w"> </span><span class="k">With</span><span class="w"></span>
+<span class="w">  </span><span class="k">Next</span><span class="w"></span>
+
+<span class="w">  </span><span class="k">If</span><span class="w"> </span><span class="n">Len</span><span class="p">(</span><span class="n">psNpR</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="n">vbNullString</span><span class="p">)</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="w"> </span><span class="k">Then</span><span class="w"> </span><span class="n">psNpR</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;0&quot;</span><span class="w"></span>
+<span class="w">  </span><span class="n">sSaveRecnos</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">psNpR</span><span class="w"></span>
+
+<span class="w">  </span><span class="k">Set</span><span class="w"> </span><span class="n">rRange</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">Nothing</span><span class="w"></span>
+<span class="w">  </span><span class="k">Set</span><span class="w"> </span><span class="n">rFound</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">Nothing</span><span class="w"></span>
+<span class="k">End</span><span class="w"> </span><span class="k">Function</span><span class="w"></span>
+</pre></div>
+</div>
+<p>This function loops through worksheets. Referencing the worksheetc is done by:</p>
+<blockquote>
+<div><ol class="arabic simple">
+<li><p>making sure the worksheets are contiguous and</p></li>
+<li><p>each sheet is identified with an index number (which are also contiguous)</p></li>
+<li><p>Use the “With Worksheets([Index number])” statement, e.g., With Worksheets(2)</p></li>
+</ol>
+</div></blockquote>
 </section>
 <section id="developer-s-notes-on-v0-6">
 <h3>Developer’s Notes on v0.6<a class="headerlink" href="#developer-s-notes-on-v0-6" title="Permalink to this heading"></a></h3>
