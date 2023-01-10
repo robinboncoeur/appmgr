@@ -545,7 +545,7 @@ Note: <em>there is a number at the end of the field, but it normally won’t be 
 <p>Added: 2023-01-10. Currently - probably needs to be set up differently - staff names are sorted alphabetically on separate worksheets (named SS-Scrub/Scout; AN-Anaesthetics;PA-PACU) in the following format: [LastName, GivenName]. Updating last names caused searching for the record to fail, as it was searching for [LastName, GivenName].</p>
 <p>The solution was to save to form-level properties (global variables, essentially) record numbers of all the instances - on all relevant sheets - of [LastName, GivenName] in the PopFields() function.</p>
 <p>The sheets are second, third, fourth and fifth and are referenced with <strong>With Worksheets(nIdx)</strong>. This function returns sNpR (string: Name phone RecordNumber) which, if the name had been manually typed into the combobox, the PopFields() function is aborted, as rFound will not have found a record for the entered name. In that instance, sSaveRecnos returns a “0”.</p>
-<p>Interesting in this the use of <strong>Worksheets(nIdx)</strong>.</p>
+<p>Interesting in this the use of <strong>With Worksheets(nIdx)</strong>.</p>
 <div class="highlight-VB.net notranslate"><div class="highlight"><pre><span></span><span class="k">Public</span><span class="w"> </span><span class="k">Function</span><span class="w"> </span><span class="nf">sSaveRecnos</span><span class="p">(</span><span class="n">sLFName</span><span class="w"> </span><span class="ow">As</span><span class="w"> </span><span class="kt">String</span><span class="p">)</span><span class="w"> </span><span class="ow">As</span><span class="w"> </span><span class="kt">String</span><span class="w"></span>
 <span class="k">Dim</span><span class="w"> </span><span class="n">nIdx</span><span class="w"> </span><span class="ow">As</span><span class="w"> </span><span class="kt">Integer</span><span class="w"></span>
 <span class="k">Dim</span><span class="w"> </span><span class="n">rRange</span><span class="w"> </span><span class="ow">As</span><span class="w"> </span><span class="n">Range</span><span class="p">,</span><span class="w"> </span><span class="n">rFound</span><span class="w"> </span><span class="ow">As</span><span class="w"> </span><span class="n">Range</span><span class="w"></span>
@@ -578,7 +578,7 @@ Note: <em>there is a number at the end of the field, but it normally won’t be 
 <span class="k">End</span><span class="w"> </span><span class="k">Function</span><span class="w"></span>
 </pre></div>
 </div>
-<p>This function loops through worksheets. Referencing the worksheetc is done by:</p>
+<p>This function loops through worksheets. Referencing the worksheets is done by:</p>
 <blockquote>
 <div><ol class="arabic simple">
 <li><p>making sure the worksheets are contiguous and</p></li>

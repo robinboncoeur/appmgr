@@ -652,7 +652,7 @@ The solution was to save to form-level properties (global variables, essentially
 
 The sheets are second, third, fourth and fifth and are referenced with **With Worksheets(nIdx)**. This function returns sNpR (string: Name phone RecordNumber) which, if the name had been manually typed into the combobox, the PopFields() function is aborted, as rFound will not have found a record for the entered name. In that instance, sSaveRecnos returns a "0".
 
-Interesting in this the use of **Worksheets(nIdx)**.
+Interesting in this the use of **With Worksheets(nIdx)**.
 
 .. code-block:: VB.net
 
@@ -687,7 +687,7 @@ Interesting in this the use of **Worksheets(nIdx)**.
 	  Set rFound = Nothing
 	End Function
 
-This function loops through worksheets. Referencing the worksheetc is done by:
+This function loops through worksheets. Referencing the worksheets is done by:
 
 	1. making sure the worksheets are contiguous and
 	2. each sheet is identified with an index number (which are also contiguous)
