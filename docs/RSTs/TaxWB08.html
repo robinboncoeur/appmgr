@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html class="writer-html5" lang="en-English" >
 <head>
-  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Tax Workbook v.8 &mdash; App Manager 2.25 documentation</title>
@@ -11,16 +11,14 @@
     <script src="../_static/js/html5shiv.min.js"></script>
   <![endif]-->
   
-        <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
         <script src="../_static/jquery.js"></script>
-        <script src="../_static/underscore.js"></script>
         <script src="../_static/_sphinx_javascript_frameworks_compat.js"></script>
+        <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
         <script src="../_static/doctools.js"></script>
         <script src="../_static/sphinx_highlight.js"></script>
     <script src="../_static/js/theme.js"></script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="Reabanks Editor" href="ReabankEditor.html" />
     <link rel="prev" title="Tax Workbook v.7" href="TaxWB07.html" /> 
 </head>
 
@@ -29,11 +27,15 @@
     <nav data-toggle="wy-nav-shift" class="wy-nav-side">
       <div class="wy-side-scroll">
         <div class="wy-side-nav-search" >
-            <a href="../index.html" class="icon icon-home"> App Manager
+
+          
+          
+          <a href="../index.html" class="icon icon-home">
+            App Manager
           </a>
 <div role="search">
   <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
-    <input type="text" name="q" placeholder="Search docs" />
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
     <input type="hidden" name="check_keywords" value="yes" />
     <input type="hidden" name="area" value="default" />
   </form>
@@ -42,10 +44,12 @@
               <p class="caption" role="heading"><span class="caption-text">Contents:</span></p>
 <ul class="current">
 <li class="toctree-l1"><a class="reference internal" href="About.html">About Applications Manager</a></li>
-<li class="toctree-l1"><a class="reference internal" href="AssetManager.html">Welcome to Asset Manager</a></li>
+<li class="toctree-l1"><a class="reference internal" href="AssetManager.html">OT-PACU Asset Manager</a></li>
 <li class="toctree-l1"><a class="reference internal" href="CallSheetp03.html">Call Sheet v.3</a></li>
 <li class="toctree-l1"><a class="reference internal" href="CallSheetp05.html">Call Sheet v.5</a></li>
 <li class="toctree-l1"><a class="reference internal" href="CallSheetp06.html">CallSheet v.6</a></li>
+<li class="toctree-l1"><a class="reference internal" href="HomeInventory.html">OT-PACU Asset Manager</a></li>
+<li class="toctree-l1"><a class="reference internal" href="ReabankEditor.html">Reabanks Editor</a></li>
 <li class="toctree-l1"><a class="reference internal" href="TaxWB07.html">Tax Workbook v.7</a></li>
 <li class="toctree-l1 current"><a class="current reference internal" href="#">Tax Workbook v.8</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="#introduction">Introduction</a></li>
@@ -78,11 +82,11 @@
 <li class="toctree-l2"><a class="reference internal" href="#licence-agreement">Licence Agreement</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="#gnu-general-public-licence-v3">GNU General Public Licence v3</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#how-to-contact-the-developer">How to Contact the Developer</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#currently-working-on">Currently Working on</a></li>
 </ul>
 </li>
 </ul>
 </li>
-<li class="toctree-l1"><a class="reference internal" href="ReabankEditor.html">Reabanks Editor</a></li>
 </ul>
 
         </div>
@@ -98,8 +102,8 @@
         <div class="rst-content">
           <div role="navigation" aria-label="Page navigation">
   <ul class="wy-breadcrumbs">
-      <li><a href="../index.html" class="icon icon-home"></a> &raquo;</li>
-      <li>Tax Workbook v.8</li>
+      <li><a href="../index.html" class="icon icon-home" aria-label="Home"></a></li>
+      <li class="breadcrumb-item active">Tax Workbook v.8</li>
       <li class="wy-breadcrumbs-aside">
             <a href="../_sources/RSTs/TaxWB08.rst.txt" rel="nofollow"> View page source</a>
       </li>
@@ -114,47 +118,42 @@
 <p><strong>Savings and C-Card codes</strong></p>
 <p>See <a class="reference internal" href="#tw8-savingscodes"><span class="std std-ref">Quick Note on 972Savings</span></a> for full explanation on the following codes:</p>
 <table class="docutils align-default">
-<colgroup>
-<col style="width: 24%" />
-<col style="width: 76%" />
-</colgroup>
 <thead>
 <tr class="row-odd"><th class="head" colspan="2"><p>Codes and Suffixes</p></th>
 </tr>
 </thead>
 <tbody>
-<tr class="row-even"><td><p>do</p></td>
+<tr class="row-even"><td><p>di</p></td>
+<td><p>-DiningOut</p></td>
+</tr>
+<tr class="row-odd"><td><p>do</p></td>
 <td><p>-Donations</p></td>
 </tr>
-<tr class="row-odd"><td><p>en</p></td>
+<tr class="row-even"><td><p>en</p></td>
 <td><p>-Entertain</p></td>
 </tr>
-<tr class="row-even"><td><p>hh</p></td>
+<tr class="row-odd"><td><p>hh</p></td>
 <td><p>-HouseHold</p></td>
 </tr>
-<tr class="row-odd"><td><p>it</p></td>
+<tr class="row-even"><td><p>it</p></td>
 <td><p>-ITExpense</p></td>
 </tr>
-<tr class="row-even"><td><p>ra</p></td>
+<tr class="row-odd"><td><p>ra</p></td>
 <td><p>-RobAttire</p></td>
 </tr>
-<tr class="row-odd"><td><p>rh</p></td>
+<tr class="row-even"><td><p>rh</p></td>
 <td><p>-RobHobbys</p></td>
 </tr>
-<tr class="row-even"><td><p>ri</p></td>
+<tr class="row-odd"><td><p>ri</p></td>
 <td><p>-Reimburse</p></td>
 </tr>
-<tr class="row-odd"><td><p>rm</p></td>
+<tr class="row-even"><td><p>rm</p></td>
 <td><p>-AlMedical</p></td>
 </tr>
 </tbody>
 </table>
 <p>For Creditcard Payments:</p>
 <table class="docutils align-default">
-<colgroup>
-<col style="width: 17%" />
-<col style="width: 83%" />
-</colgroup>
 <thead>
 <tr class="row-odd"><th class="head" colspan="2"><p>CreditCard Codes and Suffixes</p></th>
 </tr>
@@ -238,12 +237,6 @@
 <p>The script compares transaction target entries to those in the ‘Classes’ worksheet, leaving the Code column [D] blank if it doesn’t find that tranaction. 90% or more transactions are going to be with the same vendors, so it’s a simple matter of updating ‘Classes’ with the transactions missing a code.</p>
 <p>For example, this is a typical credit card transaction listing:</p>
 <table class="docutils align-default">
-<colgroup>
-<col style="width: 18%" />
-<col style="width: 15%" />
-<col style="width: 54%" />
-<col style="width: 14%" />
-</colgroup>
 <thead>
 <tr class="row-odd"><th class="head" colspan="4"><p>Listing without codes</p></th>
 </tr>
@@ -283,12 +276,6 @@
 </table>
 <p>After the codes are assigned:</p>
 <table class="docutils align-default">
-<colgroup>
-<col style="width: 18%" />
-<col style="width: 15%" />
-<col style="width: 54%" />
-<col style="width: 14%" />
-</colgroup>
 <thead>
 <tr class="row-odd"><th class="head" colspan="4"><p>Listing with codes</p></th>
 </tr>
@@ -368,31 +355,31 @@
 <p>Using the menu option “CreditCard” in the ribbon under <strong>Tax Workbook</strong> as an example:</p>
 <img alt="https://www.tightbytes.com/images/pubimages/appmgr/tw08Codes04.png" src="https://www.tightbytes.com/images/pubimages/appmgr/tw08Codes04.png" />
 <p>invokes the _Click() event for that button, which runs the following code:</p>
-<div class="highlight-vbnet notranslate"><div class="highlight"><pre><span></span><span class="k">Sub</span><span class="w"> </span><span class="nf">btnCC_Click</span><span class="p">(</span><span class="n">control</span><span class="w"> </span><span class="ow">As</span><span class="w"> </span><span class="n">IRibbonControl</span><span class="p">)</span><span class="w"></span>
-<span class="w">  </span><span class="k">Call</span><span class="w"> </span><span class="n">RunScript</span><span class="p">(</span><span class="n">CheckFilterMode</span><span class="p">(</span><span class="s">&quot;s568&quot;</span><span class="p">),</span><span class="w"> </span><span class="s">&quot;s568&quot;</span><span class="p">)</span><span class="w"></span>
-<span class="k">End</span><span class="w"> </span><span class="k">Sub</span><span class="w"></span>
+<div class="highlight-vbnet notranslate"><div class="highlight"><pre><span></span><span class="k">Sub</span><span class="w"> </span><span class="nf">btnCC_Click</span><span class="p">(</span><span class="n">control</span><span class="w"> </span><span class="ow">As</span><span class="w"> </span><span class="n">IRibbonControl</span><span class="p">)</span>
+<span class="w">  </span><span class="k">Call</span><span class="w"> </span><span class="n">RunScript</span><span class="p">(</span><span class="n">CheckFilterMode</span><span class="p">(</span><span class="s">&quot;s568&quot;</span><span class="p">),</span><span class="w"> </span><span class="s">&quot;s568&quot;</span><span class="p">)</span>
+<span class="k">End</span><span class="w"> </span><span class="k">Sub</span>
 </pre></div>
 </div>
 <p>If a filter was set on the worksheet to be processed, the app notifies the user and processing is aborted.</p>
 <p>Otherwise, RunScript calls the routine refered to  (“s568”, “s259” or “s972”, for example - where ‘s’ stands for ‘sheet, and the numbers represent the last three digits of the account).</p>
-<div class="highlight-vbnet notranslate"><div class="highlight"><pre><span></span><span class="k">Public</span><span class="w"> </span><span class="k">Sub</span><span class="w"> </span><span class="nf">RunScript</span><span class="p">(</span><span class="n">FilterSet</span><span class="w"> </span><span class="ow">As</span><span class="w"> </span><span class="kt">Boolean</span><span class="p">,</span><span class="w"> </span><span class="n">ScriptToRun</span><span class="w"> </span><span class="ow">As</span><span class="w"> </span><span class="kt">String</span><span class="p">)</span><span class="w"></span>
-<span class="w">  </span><span class="k">If</span><span class="w"> </span><span class="n">FilterSet</span><span class="w"> </span><span class="k">Then</span><span class="w"></span>
-<span class="w">        </span><span class="c">&#39;Debug.Print FilterSet</span><span class="w"></span>
-<span class="w">        </span><span class="n">MsgBox</span><span class="w"> </span><span class="p">(</span><span class="s">&quot;Cannot run whilst a filter is set...&quot;</span><span class="p">)</span><span class="w"></span>
-<span class="w">  </span><span class="k">Else</span><span class="w"></span>
+<div class="highlight-vbnet notranslate"><div class="highlight"><pre><span></span><span class="k">Public</span><span class="w"> </span><span class="k">Sub</span><span class="w"> </span><span class="nf">RunScript</span><span class="p">(</span><span class="n">FilterSet</span><span class="w"> </span><span class="ow">As</span><span class="w"> </span><span class="kt">Boolean</span><span class="p">,</span><span class="w"> </span><span class="n">ScriptToRun</span><span class="w"> </span><span class="ow">As</span><span class="w"> </span><span class="kt">String</span><span class="p">)</span>
+<span class="w">  </span><span class="k">If</span><span class="w"> </span><span class="n">FilterSet</span><span class="w"> </span><span class="k">Then</span>
+<span class="w">        </span><span class="c">&#39;Debug.Print FilterSet</span>
+<span class="w">        </span><span class="n">MsgBox</span><span class="w"> </span><span class="p">(</span><span class="s">&quot;Cannot run whilst a filter is set...&quot;</span><span class="p">)</span>
+<span class="w">  </span><span class="k">Else</span>
 
-<span class="w">  </span><span class="c">&#39; The name of the function (e.g., HomeloanCodes() but without the &quot;()&quot;)</span><span class="w"></span>
-<span class="w">  </span><span class="c">&#39;  placed within a Messagebox calls that function (i.e., runs the code</span><span class="w"></span>
-<span class="w">  </span><span class="c">&#39;  of that function)</span><span class="w"></span>
-<span class="w">        </span><span class="k">Select</span><span class="w"> </span><span class="k">Case</span><span class="w"> </span><span class="n">ScriptToRun</span><span class="w"></span>
-<span class="w">          </span><span class="k">Case</span><span class="w"> </span><span class="ow">Is</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;s568&quot;</span><span class="p">:</span><span class="w"> </span><span class="n">MsgBox</span><span class="w"> </span><span class="p">(</span><span class="n">CreditcardCodes</span><span class="p">)</span><span class="w"></span>
-<span class="w">          </span><span class="k">Case</span><span class="w"> </span><span class="ow">Is</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;s259&quot;</span><span class="p">:</span><span class="w"> </span><span class="n">MsgBox</span><span class="w"> </span><span class="p">(</span><span class="n">CheckingCodes</span><span class="p">)</span><span class="w"></span>
-<span class="w">          </span><span class="k">Case</span><span class="w"> </span><span class="ow">Is</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;s972&quot;</span><span class="p">:</span><span class="w"> </span><span class="n">MsgBox</span><span class="w"> </span><span class="p">(</span><span class="n">PersonalACodes</span><span class="p">)</span><span class="w"></span>
-<span class="w">          </span><span class="k">Case</span><span class="w"> </span><span class="ow">Is</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;s647&quot;</span><span class="p">:</span><span class="w"> </span><span class="n">MsgBox</span><span class="w"> </span><span class="p">(</span><span class="n">BeyondBankCodes</span><span class="p">)</span><span class="w"></span>
-<span class="w">          </span><span class="k">Case</span><span class="w"> </span><span class="ow">Is</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;About&quot;</span><span class="p">:</span><span class="w"> </span><span class="n">MsgBox</span><span class="w"> </span><span class="s">&quot;under Development&quot;</span><span class="w"></span>
-<span class="w">        </span><span class="k">End</span><span class="w"> </span><span class="k">Select</span><span class="w"></span>
-<span class="w">  </span><span class="k">End</span><span class="w"> </span><span class="k">If</span><span class="w"></span>
-<span class="k">End</span><span class="w"> </span><span class="k">Sub</span><span class="w"></span>
+<span class="w">  </span><span class="c">&#39; The name of the function (e.g., HomeloanCodes() but without the &quot;()&quot;)</span>
+<span class="w">  </span><span class="c">&#39;  placed within a Messagebox calls that function (i.e., runs the code</span>
+<span class="w">  </span><span class="c">&#39;  of that function)</span>
+<span class="w">        </span><span class="k">Select</span><span class="w"> </span><span class="k">Case</span><span class="w"> </span><span class="n">ScriptToRun</span>
+<span class="w">          </span><span class="k">Case</span><span class="w"> </span><span class="ow">Is</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;s568&quot;</span><span class="p">:</span><span class="w"> </span><span class="n">MsgBox</span><span class="w"> </span><span class="p">(</span><span class="n">CreditcardCodes</span><span class="p">)</span>
+<span class="w">          </span><span class="k">Case</span><span class="w"> </span><span class="ow">Is</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;s259&quot;</span><span class="p">:</span><span class="w"> </span><span class="n">MsgBox</span><span class="w"> </span><span class="p">(</span><span class="n">CheckingCodes</span><span class="p">)</span>
+<span class="w">          </span><span class="k">Case</span><span class="w"> </span><span class="ow">Is</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;s972&quot;</span><span class="p">:</span><span class="w"> </span><span class="n">MsgBox</span><span class="w"> </span><span class="p">(</span><span class="n">PersonalACodes</span><span class="p">)</span>
+<span class="w">          </span><span class="k">Case</span><span class="w"> </span><span class="ow">Is</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;s647&quot;</span><span class="p">:</span><span class="w"> </span><span class="n">MsgBox</span><span class="w"> </span><span class="p">(</span><span class="n">BeyondBankCodes</span><span class="p">)</span>
+<span class="w">          </span><span class="k">Case</span><span class="w"> </span><span class="ow">Is</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;About&quot;</span><span class="p">:</span><span class="w"> </span><span class="n">MsgBox</span><span class="w"> </span><span class="s">&quot;under Development&quot;</span>
+<span class="w">        </span><span class="k">End</span><span class="w"> </span><span class="k">Select</span>
+<span class="w">  </span><span class="k">End</span><span class="w"> </span><span class="k">If</span>
+<span class="k">End</span><span class="w"> </span><span class="k">Sub</span>
 </pre></div>
 </div>
 <p>The MsgBox() function actually calls (launches) the script (e.g., ‘CreditcardCodes()’).</p>
@@ -403,22 +390,22 @@
 <section id="calcabs">
 <span id="tw8-calcabs"></span><h4>calcABS<a class="headerlink" href="#calcabs" title="Permalink to this heading"></a></h4>
 <p>This function is used on the <strong>TypeSummary</strong> worksheet as well as the Quarterly budget sheets (Qtr1, Qtr2, etc).</p>
-<div class="highlight-vbnet notranslate"><div class="highlight"><pre><span></span><span class="k">Public</span><span class="w"> </span><span class="k">Function</span><span class="w"> </span><span class="nf">calcABS</span><span class="p">(</span><span class="n">sSht</span><span class="w"> </span><span class="ow">As</span><span class="w"> </span><span class="kt">String</span><span class="p">,</span><span class="w"> </span><span class="n">tCode</span><span class="w"> </span><span class="ow">As</span><span class="w"> </span><span class="kt">String</span><span class="p">,</span><span class="w"> </span>_<span class="w"></span>
-<span class="w">                        </span><span class="n">nRangeS</span><span class="w"> </span><span class="ow">As</span><span class="w"> </span><span class="kt">Integer</span><span class="p">,</span><span class="w"> </span><span class="n">nRangeE</span><span class="w"> </span><span class="ow">As</span><span class="w"> </span><span class="kt">Integer</span><span class="p">)</span><span class="w"> </span><span class="ow">As</span><span class="w"> </span><span class="kt">Double</span><span class="w"></span>
-<span class="k">Dim</span><span class="w"> </span><span class="n">sRangeD</span><span class="w"> </span><span class="ow">As</span><span class="w"> </span><span class="kt">String</span><span class="p">,</span><span class="w"> </span><span class="n">sRangeB</span><span class="w"> </span><span class="ow">As</span><span class="w"> </span><span class="kt">String</span><span class="w"></span>
+<div class="highlight-vbnet notranslate"><div class="highlight"><pre><span></span><span class="k">Public</span><span class="w"> </span><span class="k">Function</span><span class="w"> </span><span class="nf">calcABS</span><span class="p">(</span><span class="n">sSht</span><span class="w"> </span><span class="ow">As</span><span class="w"> </span><span class="kt">String</span><span class="p">,</span><span class="w"> </span><span class="n">tCode</span><span class="w"> </span><span class="ow">As</span><span class="w"> </span><span class="kt">String</span><span class="p">,</span><span class="w"> </span>_
+<span class="w">                        </span><span class="n">nRangeS</span><span class="w"> </span><span class="ow">As</span><span class="w"> </span><span class="kt">Integer</span><span class="p">,</span><span class="w"> </span><span class="n">nRangeE</span><span class="w"> </span><span class="ow">As</span><span class="w"> </span><span class="kt">Integer</span><span class="p">)</span><span class="w"> </span><span class="ow">As</span><span class="w"> </span><span class="kt">Double</span>
+<span class="k">Dim</span><span class="w"> </span><span class="n">sRangeD</span><span class="w"> </span><span class="ow">As</span><span class="w"> </span><span class="kt">String</span><span class="p">,</span><span class="w"> </span><span class="n">sRangeB</span><span class="w"> </span><span class="ow">As</span><span class="w"> </span><span class="kt">String</span>
 
-<span class="w">        </span><span class="n">sRangeD</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;D&quot;</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="n">stp</span><span class="p">(</span><span class="n">nRangeS</span><span class="p">)</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="s">&quot;:D&quot;</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="n">stp</span><span class="p">(</span><span class="n">nRangeE</span><span class="p">)</span><span class="w"></span>
-<span class="w">        </span><span class="n">sRangeB</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;B&quot;</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="n">stp</span><span class="p">(</span><span class="n">nRangeS</span><span class="p">)</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="s">&quot;:B&quot;</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="n">stp</span><span class="p">(</span><span class="n">nRangeE</span><span class="p">)</span><span class="w"></span>
+<span class="w">        </span><span class="n">sRangeD</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;D&quot;</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="n">stp</span><span class="p">(</span><span class="n">nRangeS</span><span class="p">)</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="s">&quot;:D&quot;</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="n">stp</span><span class="p">(</span><span class="n">nRangeE</span><span class="p">)</span>
+<span class="w">        </span><span class="n">sRangeB</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;B&quot;</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="n">stp</span><span class="p">(</span><span class="n">nRangeS</span><span class="p">)</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="s">&quot;:B&quot;</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="n">stp</span><span class="p">(</span><span class="n">nRangeE</span><span class="p">)</span>
 
-<span class="w">        </span><span class="k">Select</span><span class="w"> </span><span class="k">Case</span><span class="w"> </span><span class="n">sSht</span><span class="w"></span>
-<span class="w">                </span><span class="k">Case</span><span class="w"> </span><span class="ow">Is</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;ch&quot;</span><span class="w"></span>
-<span class="w">                        </span><span class="n">calcABS</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">Abs</span><span class="p">(</span><span class="n">WorksheetFunction</span><span class="p">.</span><span class="n">SumIf</span><span class="p">(</span><span class="n">sh259</span><span class="p">.</span><span class="n">Range</span><span class="p">(</span><span class="n">sRangeD</span><span class="p">),</span><span class="w"> </span><span class="n">tCode</span><span class="p">,</span><span class="w"> </span><span class="n">sh259</span><span class="p">.</span><span class="n">Range</span><span class="p">(</span><span class="n">sRangeB</span><span class="p">)))</span><span class="w"></span>
-<span class="w">                </span><span class="k">Case</span><span class="w"> </span><span class="ow">Is</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;cc&quot;</span><span class="w"></span>
-<span class="w">                        </span><span class="n">calcABS</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">Abs</span><span class="p">(</span><span class="n">WorksheetFunction</span><span class="p">.</span><span class="n">SumIf</span><span class="p">(</span><span class="n">sh568</span><span class="p">.</span><span class="n">Range</span><span class="p">(</span><span class="n">sRangeD</span><span class="p">),</span><span class="w"> </span><span class="n">tCode</span><span class="p">,</span><span class="w"> </span><span class="n">sh568</span><span class="p">.</span><span class="n">Range</span><span class="p">(</span><span class="n">sRangeB</span><span class="p">)))</span><span class="w"></span>
-<span class="w">                </span><span class="k">Case</span><span class="w"> </span><span class="ow">Is</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;sv&quot;</span><span class="w"></span>
-<span class="w">                        </span><span class="n">calcABS</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">Abs</span><span class="p">(</span><span class="n">WorksheetFunction</span><span class="p">.</span><span class="n">SumIf</span><span class="p">(</span><span class="n">sh972</span><span class="p">.</span><span class="n">Range</span><span class="p">(</span><span class="n">sRangeD</span><span class="p">),</span><span class="w"> </span><span class="n">tCode</span><span class="p">,</span><span class="w"> </span><span class="n">sh972</span><span class="p">.</span><span class="n">Range</span><span class="p">(</span><span class="n">sRangeB</span><span class="p">)))</span><span class="w"></span>
-<span class="w">        </span><span class="k">End</span><span class="w"> </span><span class="k">Select</span><span class="w"></span>
-<span class="k">End</span><span class="w"> </span><span class="k">Function</span><span class="w"></span>
+<span class="w">        </span><span class="k">Select</span><span class="w"> </span><span class="k">Case</span><span class="w"> </span><span class="n">sSht</span>
+<span class="w">                </span><span class="k">Case</span><span class="w"> </span><span class="ow">Is</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;ch&quot;</span>
+<span class="w">                        </span><span class="n">calcABS</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">Abs</span><span class="p">(</span><span class="n">WorksheetFunction</span><span class="p">.</span><span class="n">SumIf</span><span class="p">(</span><span class="n">sh259</span><span class="p">.</span><span class="n">Range</span><span class="p">(</span><span class="n">sRangeD</span><span class="p">),</span><span class="w"> </span><span class="n">tCode</span><span class="p">,</span><span class="w"> </span><span class="n">sh259</span><span class="p">.</span><span class="n">Range</span><span class="p">(</span><span class="n">sRangeB</span><span class="p">)))</span>
+<span class="w">                </span><span class="k">Case</span><span class="w"> </span><span class="ow">Is</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;cc&quot;</span>
+<span class="w">                        </span><span class="n">calcABS</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">Abs</span><span class="p">(</span><span class="n">WorksheetFunction</span><span class="p">.</span><span class="n">SumIf</span><span class="p">(</span><span class="n">sh568</span><span class="p">.</span><span class="n">Range</span><span class="p">(</span><span class="n">sRangeD</span><span class="p">),</span><span class="w"> </span><span class="n">tCode</span><span class="p">,</span><span class="w"> </span><span class="n">sh568</span><span class="p">.</span><span class="n">Range</span><span class="p">(</span><span class="n">sRangeB</span><span class="p">)))</span>
+<span class="w">                </span><span class="k">Case</span><span class="w"> </span><span class="ow">Is</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;sv&quot;</span>
+<span class="w">                        </span><span class="n">calcABS</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">Abs</span><span class="p">(</span><span class="n">WorksheetFunction</span><span class="p">.</span><span class="n">SumIf</span><span class="p">(</span><span class="n">sh972</span><span class="p">.</span><span class="n">Range</span><span class="p">(</span><span class="n">sRangeD</span><span class="p">),</span><span class="w"> </span><span class="n">tCode</span><span class="p">,</span><span class="w"> </span><span class="n">sh972</span><span class="p">.</span><span class="n">Range</span><span class="p">(</span><span class="n">sRangeB</span><span class="p">)))</span>
+<span class="w">        </span><span class="k">End</span><span class="w"> </span><span class="k">Select</span>
+<span class="k">End</span><span class="w"> </span><span class="k">Function</span>
 </pre></div>
 </div>
 <p>This is typically called thus (e.g., for ‘Phone/Internet’):</p>
@@ -431,10 +418,6 @@
 </div>
 <p>This approach expects the following table on the Qtr1 (and subsequent quarters) worksheet in a specific range - D13:E18 - and formatted in this manner:</p>
 <table class="docutils align-default">
-<colgroup>
-<col style="width: 76%" />
-<col style="width: 24%" />
-</colgroup>
 <thead>
 <tr class="row-odd"><th class="head" colspan="2"><p>Field Ranges</p></th>
 </tr>
@@ -463,10 +446,6 @@
 <p>The ‘Start’ and ‘End’ numbers are references to the beginning and end of that quarter’s date range on that particular worksheet.</p>
 <p>Maintenance is easy: the following quarter, a copy is made of the current worksheet, the copy is renamed using ‘Qtr’ and {number of quarter}, i.e., <strong>Qtr2</strong>, and the table is updated thus:</p>
 <table class="docutils align-default">
-<colgroup>
-<col style="width: 76%" />
-<col style="width: 24%" />
-</colgroup>
 <thead>
 <tr class="row-odd"><th class="head" colspan="2"><p>Field Ranges</p></th>
 </tr>
@@ -502,15 +481,15 @@
 <section id="sparseallwords-cellnumber">
 <h4>sParseAllWords({cellnumber})<a class="headerlink" href="#sparseallwords-cellnumber" title="Permalink to this heading"></a></h4>
 <p>Note, <em>as of 2203-01-06, this function is being reviewed and revised</em>.</p>
-<div class="highlight-vbnet notranslate"><div class="highlight"><pre><span></span><span class="k">Public</span><span class="w"> </span><span class="k">Function</span><span class="w"> </span><span class="nf">ParseAllWords</span><span class="p">(</span><span class="n">StringToParse</span><span class="w"> </span><span class="ow">As</span><span class="w"> </span><span class="kt">String</span><span class="p">)</span><span class="w"> </span><span class="ow">As</span><span class="w"> </span><span class="kt">String</span><span class="w"></span>
-<span class="w">        </span><span class="k">If</span><span class="w"> </span><span class="n">Len</span><span class="p">(</span><span class="n">StringToParse</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="n">vbNullString</span><span class="p">)</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="w"> </span><span class="k">Then</span><span class="w"> </span><span class="k">Exit</span><span class="w"> </span><span class="k">Function</span><span class="w"></span>
+<div class="highlight-vbnet notranslate"><div class="highlight"><pre><span></span><span class="k">Public</span><span class="w"> </span><span class="k">Function</span><span class="w"> </span><span class="nf">ParseAllWords</span><span class="p">(</span><span class="n">StringToParse</span><span class="w"> </span><span class="ow">As</span><span class="w"> </span><span class="kt">String</span><span class="p">)</span><span class="w"> </span><span class="ow">As</span><span class="w"> </span><span class="kt">String</span>
+<span class="w">        </span><span class="k">If</span><span class="w"> </span><span class="n">Len</span><span class="p">(</span><span class="n">StringToParse</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="n">vbNullString</span><span class="p">)</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="w"> </span><span class="k">Then</span><span class="w"> </span><span class="k">Exit</span><span class="w"> </span><span class="k">Function</span>
 
-<span class="w">        </span><span class="nf">If</span><span class="w"> </span><span class="n">Trim</span><span class="p">(</span><span class="n">InStr</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="n">StringToParse</span><span class="p">,</span><span class="w"> </span><span class="s">&quot; &quot;</span><span class="p">))</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="w"> </span><span class="k">Then</span><span class="w"></span>
-<span class="w">                </span><span class="n">ParseAllWords</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">Trim</span><span class="p">(</span><span class="n">StringToParse</span><span class="p">)</span><span class="w"></span>
-<span class="w">        </span><span class="k">Else</span><span class="w"></span>
-<span class="w">                </span><span class="n">ParseAllWords</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">WorksheetFunction</span><span class="p">.</span><span class="n">Trim</span><span class="p">(</span><span class="n">StringToParse</span><span class="p">)</span><span class="w"></span>
-<span class="w">        </span><span class="k">End</span><span class="w"> </span><span class="k">If</span><span class="w"></span>
-<span class="k">End</span><span class="w"> </span><span class="k">Function</span><span class="w"></span>
+<span class="w">        </span><span class="nf">If</span><span class="w"> </span><span class="n">Trim</span><span class="p">(</span><span class="n">InStr</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="n">StringToParse</span><span class="p">,</span><span class="w"> </span><span class="s">&quot; &quot;</span><span class="p">))</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="w"> </span><span class="k">Then</span>
+<span class="w">                </span><span class="n">ParseAllWords</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">Trim</span><span class="p">(</span><span class="n">StringToParse</span><span class="p">)</span>
+<span class="w">        </span><span class="k">Else</span>
+<span class="w">                </span><span class="n">ParseAllWords</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">WorksheetFunction</span><span class="p">.</span><span class="n">Trim</span><span class="p">(</span><span class="n">StringToParse</span><span class="p">)</span>
+<span class="w">        </span><span class="k">End</span><span class="w"> </span><span class="k">If</span>
+<span class="k">End</span><span class="w"> </span><span class="k">Function</span>
 </pre></div>
 </div>
 </section>
@@ -518,10 +497,6 @@
 <span id="tw8-ccpayment"></span><h4>Creditcard Payments<a class="headerlink" href="#creditcard-payments" title="Permalink to this heading"></a></h4>
 <p>For the credit card, the app looks at the entry for “PAYMENT” - the only fairly ambiguous entries in this worksheet - and then checks the two-character code after the word “THANKYOU”… this code is entered prior to processing:</p>
 <table class="docutils align-default">
-<colgroup>
-<col style="width: 17%" />
-<col style="width: 83%" />
-</colgroup>
 <thead>
 <tr class="row-odd"><th class="head" colspan="2"><p>Codes and Suffixes</p></th>
 </tr>
@@ -582,6 +557,32 @@
 </ul>
 </div></blockquote>
 </section>
+<section id="currently-working-on">
+<h3>Currently Working on<a class="headerlink" href="#currently-working-on" title="Permalink to this heading"></a></h3>
+<dl class="simple">
+<dt>FROM</dt><dd><p>“FROM RURAL A”: TruncSuffix = Mid(Tstr, 1, 29)
+“FROM QLD DEP”: TruncSuffix = Mid(Tstr, 1, 28)
+“FROM KHAD PT”: TruncSuffix = Mid(Tstr, 1, 28)
+“FROM REMITTE”: TruncSuffix = Mid(Tstr, 1, 28)
+“FROM PAYPAL “: TruncSuffix = Mid(Tstr, 1, 22)
+“FROM HANNAH “: TruncSuffix = Mid(Tstr, 1, 21)
+“FROM ONEPATH”: TruncSuffix = Mid(Tstr, 1, 21)
+“FROM       5”: TruncSuffix = Mid(Tstr, 1, 20)
+“FROM SPP TRU”: TruncSuffix = Mid(Tstr, 1, 18)
+“FROM US Covi”: TruncSuffix = Mid(Tstr, 1, 16)
+“FROM E338163”: TruncSuffix = Mid(Tstr, 1, 15)
+“FROM ATO    “: TruncSuffix = Mid(Tstr, 1, 8)
+“PYPL PAYIN4 “: TruncSuffix = Mid(Tstr, 1, 12)
+“PAYPAL AUSTR”: TruncSuffix = Mid(Tstr, 1, 17)</p>
+</dd>
+<dt>TO</dt><dd><p>“TO TELSTRA S”: TruncSuffix = Mid(Tstr, 1, 19)
+“TO TMR-PRODU”: TruncSuffix = Mid(Tstr, 1, 19)
+“TO ANZ INSUR”: TruncSuffix = Mid(Tstr, 1, 20)
+“TO NRMA INSU”: TruncSuffix = Mid(Tstr, 1, 21)
+“TO AMBERELEC”: TruncSuffix = Mid(Tstr, 1, 21)</p>
+</dd>
+</dl>
+</section>
 </section>
 </section>
 
@@ -590,7 +591,6 @@
           </div>
           <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
         <a href="TaxWB07.html" class="btn btn-neutral float-left" title="Tax Workbook v.7" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
-        <a href="ReabankEditor.html" class="btn btn-neutral float-right" title="Reabanks Editor" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
     </div>
 
   <hr/>

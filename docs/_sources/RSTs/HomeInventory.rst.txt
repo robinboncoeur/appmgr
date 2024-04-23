@@ -1,6 +1,6 @@
-#####################
-OT-PACU Asset Manager
-#####################
+##############
+Home Inventory
+##############
 
 ************
 Introduction
@@ -248,17 +248,17 @@ The main Asset Manager form...
 
 has six basic areas:
  
-   * :ref:`em-search`
+   * :ref:`hi-search`
    
-   * :ref:`em-dropdowns`
+   * :ref:`hi-dropdowns`
    
-   * :ref:`em-buttonbar`
+   * :ref:`hi-buttonbar`
    
-   * :ref:`em-listboxes`
+   * :ref:`hi-listboxes`
    
-   * :ref:`em-menu`
+   * :ref:`hi-menu`
    
-   * :ref:`em-image`
+   * :ref:`hi-image`
 
  
 
@@ -266,7 +266,7 @@ has six basic areas:
 The Edit Equipment Form
 =======================
 
-This form is launched by the main form when adding new equipment to the DevData sheet or editing existing equipment information on the DevData and EventData sheets. It can be launched from two buttons - to either add or edit a device - from the :ref:`em-buttonbar` or from the "Manage Devices" section of :ref:`em-menu`.
+This form is launched by the main form when adding new equipment to the DevData sheet or editing existing equipment information on the DevData and EventData sheets. It can be launched from two buttons - to either add or edit a device - from the :ref:`hi-buttonbar` or from the "Manage Devices" section of :ref:`hi-menu`.
 
 The Edit Equipment form has five basic areas:
 
@@ -292,7 +292,7 @@ Equipment Management
 ********************
 
 
-.. _em-search:
+.. _hi-search:
 
 ==========================
 Device Search
@@ -321,7 +321,7 @@ It's a good idea to double-check that the SAID number was typed in correctly. If
 
 
 
-.. _em-dropdowns:
+.. _hi-dropdowns:
 
 ==========================
 Device Types and Locations
@@ -343,7 +343,7 @@ and so on.
 
 
 
-.. _em-buttonbar:
+.. _hi-buttonbar:
 
 ==========
 Button Bar
@@ -386,7 +386,7 @@ Close - Closes the Manage Equipment form. Note: this button and Menu --> File --
 
 
 
-.. _em-listboxes:
+.. _hi-listboxes:
 
 ===========
 Device List
@@ -440,7 +440,7 @@ This listbox displays all events for the currently selected device in the Device
 
 
 
-.. _em-menu:
+.. _hi-menu:
 
 ********
 The Menu
@@ -518,7 +518,7 @@ The menu option objects on the form are really repurposed dropdowns, so selectin
 
 
 
-.. _em-image:
+.. _hi-image:
 
 =========
 The Image

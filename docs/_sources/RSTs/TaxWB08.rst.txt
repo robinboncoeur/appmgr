@@ -9,6 +9,8 @@ See :REF:`tw8-SavingsCodes` for full explanation on the following codes:
 +--------------------------+
 | Codes and Suffixes       |
 +======+===================+
+|  di  |  -DiningOut       |
++------+-------------------+
 |  do  |  -Donations       |
 +------+-------------------+
 |  en  |  -Entertain       |
@@ -509,3 +511,31 @@ A number of means exist to contact the developer:
 To find the most current documentation - a (probably) updated version of this document which is most likely this one - go to:
    
    * `my Github TaxWorkbook page <https://robinboncoeur.github.io/appmgr/>`_ 
+	 
+
+
+====================
+Currently Working on
+====================
+
+FROM
+   "FROM RURAL A": TruncSuffix = Mid(Tstr, 1, 29)
+   "FROM QLD DEP": TruncSuffix = Mid(Tstr, 1, 28)
+   "FROM KHAD PT": TruncSuffix = Mid(Tstr, 1, 28)
+   "FROM REMITTE": TruncSuffix = Mid(Tstr, 1, 28)
+   "FROM PAYPAL ": TruncSuffix = Mid(Tstr, 1, 22)
+   "FROM HANNAH ": TruncSuffix = Mid(Tstr, 1, 21)
+   "FROM ONEPATH": TruncSuffix = Mid(Tstr, 1, 21)
+   "FROM       5": TruncSuffix = Mid(Tstr, 1, 20)
+   "FROM SPP TRU": TruncSuffix = Mid(Tstr, 1, 18)
+   "FROM US Covi": TruncSuffix = Mid(Tstr, 1, 16)
+   "FROM E338163": TruncSuffix = Mid(Tstr, 1, 15)
+   "FROM ATO    ": TruncSuffix = Mid(Tstr, 1, 8)
+   "PYPL PAYIN4 ": TruncSuffix = Mid(Tstr, 1, 12)
+   "PAYPAL AUSTR": TruncSuffix = Mid(Tstr, 1, 17)
+TO
+   "TO TELSTRA S": TruncSuffix = Mid(Tstr, 1, 19)
+   "TO TMR-PRODU": TruncSuffix = Mid(Tstr, 1, 19)
+   "TO ANZ INSUR": TruncSuffix = Mid(Tstr, 1, 20)
+   "TO NRMA INSU": TruncSuffix = Mid(Tstr, 1, 21)
+   "TO AMBERELEC": TruncSuffix = Mid(Tstr, 1, 21)

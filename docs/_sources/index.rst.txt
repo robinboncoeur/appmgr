@@ -3,8 +3,8 @@
    You can adapt this file completely to your liking, but it should at least
    contain the root `toctree` directive.
 
-Welcome to Applications Manager
-===============================
+My Applications-Help Manager
+============================
 
 .. toctree::
    :maxdepth: 3
@@ -16,9 +16,10 @@ Welcome to Applications Manager
    RSTs/CallSheetp03.rst
    RSTs/CallSheetp05.rst
    RSTs/CallSheetp06.rst
+   RSTs/HomeInventory.rst
+   RSTs/ReabankEditor.rst
    RSTs/TaxWB07.rst
    RSTs/TaxWB08.rst
-   RSTs/ReabankEditor.rst
 
 
 
