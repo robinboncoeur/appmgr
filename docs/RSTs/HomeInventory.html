@@ -63,11 +63,11 @@
 </li>
 <li class="toctree-l2"><a class="reference internal" href="#getting-started">Getting Started</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="#system-requirements">System Requirements</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#starting-asset-manager">Starting Asset Manager</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#starting-home-inventory">Starting Home Inventory</a></li>
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="#equipment-management-the-forms">Equipment Management - The Forms</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="#overview-what-asset-manager-does">Overview - What Asset Manager Does</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#overview-what-home-inventory-does">Overview - What Home Inventory Does</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#the-main-equipment-form">The Main Equipment Form</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#the-edit-equipment-form">The Edit Equipment Form</a></li>
 </ul>
@@ -143,14 +143,14 @@
 <h1>Home Inventory<a class="headerlink" href="#home-inventory" title="Permalink to this heading"></a></h1>
 <section id="introduction">
 <h2>Introduction<a class="headerlink" href="#introduction" title="Permalink to this heading"></a></h2>
-<p>This Excel-based utility is designed to manage non-consumable devices in Operating Theatres and Post-Op Recovery. It replaces a ledger-based approach to tracking devices. Asset Manager extends Excel through forms and code written in Visual-Basic for Applications, which is part of the Microsoft Excel product.</p>
+<p>This Excel-based utility is designed to catalogue devices and sundry in the home environment. It replaces trying to find stuff when you need it by looking through boxes. Home Inventory extends Excel through forms and code written in Visual-Basic for Applications, which is part of the Microsoft Excel product.</p>
 <p>Each device is entered as a record on the DEVDATA spreadsheet in AssetMgr. The information for this device will include: the SAID number, the name of the device, serial and model numbers, as well as original cost and date put into service. Additionally, the record should contain the device’s status (In Service, Repair, Stored, and so forth), classification, Test-n-Tag date and associated image file, if one exists.</p>
-<p>Devices in Asset Manager are identified by a number assigned to that device by the organisation: the SAID number. Searches for a device in the spreadsheet use this unique number.</p>
-<p>Asset Manager tracks devices throughout their “life” in the organisation as a series of events. An event can be “In Service”, “To Repair”, “Decommissioned”, “On Loan” and “Returned”, and “Stored”. Device repair information is recorded  to help build a history on a device.</p>
-<p>Asset Manager creates a number of reports about devices and their status.</p>
+<p>Devices in Home Inventory are identified by a number assigned to that device by the organisation: the SAID number. Searches for a device in the spreadsheet use this unique number.</p>
+<p>Home Inventory tracks devices throughout their “life” in the organisation as a series of events. An event can be “In Service”, “To Repair”, “Decommissioned”, “On Loan” and “Returned”, and “Stored”. Device repair information is recorded  to help build a history on a device.</p>
+<p>Home Inventory creates a number of reports about devices and their status.</p>
 <section id="how-to-best-use-help">
 <h3>How to Best Use Help<a class="headerlink" href="#how-to-best-use-help" title="Permalink to this heading"></a></h3>
-<p>While Asset Manager’s use seems pretty straight-forward to the developer, he realises that his approach to managing equipment may seem less than intuitive to other inhabitants of the solar system: hence, this Help file.</p>
+<p>While Home Inventory’s use seems pretty straight-forward to the developer, he realises that his approach to managing equipment may seem less than intuitive to other inhabitants of the solar system: hence, this Help file.</p>
 <p>As Microsoft in their wisdom didn’t see fit to include a means to provide a very flexible custom help documentation system without installing questionable add-ons - something most security-conscious IT departments of organisations such as Queensland Health would definitely never permit - an approach had to be come up with that would provide the information quickly and accurately. Therefore, I have chosen HTML (think: Web) pages to display documentation in, using Sphinx to provide the framework. The approach to finding help in these pages depends on how the user generally searches for help, but the following is the suggested approach.</p>
 <p>When the user clicks on the Help button, that user will be offered this help file to read. It is suggested to make use of the Quick Search feature <em>first</em>, entering the name of the button or control on the form the user has a question about. Help will display a number of context-specific help options.</p>
 <p>For example, let’s say help is needed on the purpose of this button:</p>
@@ -203,14 +203,14 @@
 <h2>History, Caveats and How to Contact Me<a class="headerlink" href="#history-caveats-and-how-to-contact-me" title="Permalink to this heading"></a></h2>
 <section id="history">
 <h3>History<a class="headerlink" href="#history" title="Permalink to this heading"></a></h3>
-<p>Asset Manager was developed as a response to my accepting the Device Manager portfolio in PACU. When I asked what means were provided to track devices, I was given a ledger with paper in it: lined paper.</p>
+<p>Home Inventory was developed as a response to my accepting the Device Manager portfolio in PACU. When I asked what means were provided to track devices, I was given a ledger with paper in it: lined paper.</p>
 <p>Um, no. That wasn’t going to work.</p>
 <p>Right about the time I was given that portfolio, inventory on non-consumables was being conducted in our Operating Theatres and PACU/Day Surgery. As that inventory process was nearing completion, I asked those responsible whether I could obtain a copy of the data. I was sent a CSV file, which I imported into Excel. This provided the framework for the main DEVDATA worksheet.</p>
 </section>
 <section id="caveats">
 <h3>Caveats<a class="headerlink" href="#caveats" title="Permalink to this heading"></a></h3>
-<p>Asset Manager is all contained in a stand-alone Excel workbook. Although I would have preferred a proper database, Excel was all I had available within the organisation I was developing in, so I commandeered it to act as a flat-file database. Excel as a database is not ideal, but through the quirky magic of Visual Basic for Applications, it generally works as expected. No question it is definitely an improvement over a physical ledger.</p>
-<p>VBA itself is not the stellar language to write solutions in one could hope or wish for, and my knowledge on how it works is a bit less than comprehensive. Therefore, someone following me in trying to maintain/fix the code may wonder at some of the kludges I employed. As I learn more on how to do this all properly, the kludges are being removed/replaced, but whilst I try to be as professional as I could developing this tool, Asset Manager is pedestrian code at best.</p>
+<p>Home Inventory is all contained in a stand-alone Excel workbook. Although I would have preferred a proper database, Excel was all I had available within the organisation I was developing in, so I commandeered it to act as a flat-file database. Excel as a database is not ideal, but through the quirky magic of Visual Basic for Applications, it generally works as expected. No question it is definitely an improvement over a physical ledger.</p>
+<p>VBA itself is not the stellar language to write solutions in one could hope or wish for, and my knowledge on how it works is a bit less than comprehensive. Therefore, someone following me in trying to maintain/fix the code may wonder at some of the kludges I employed. As I learn more on how to do this all properly, the kludges are being removed/replaced, but whilst I try to be as professional as I could developing this tool, Home Inventory is pedestrian code at best.</p>
 <p>The developer of this tool makes no claims as to the accuracy or reliability of the data, nor are there any guarantees, implied or real, as to the document’s fitness for purpose. I.e., it is presented and delivered as-is. Please keep this in mind when using this tool. I ask the user’s patience with the code… it is what it is.</p>
 <p>The code supporting the use of this document - i.e., the “software” - is FOSS: free/open-source software. Please see the <a class="reference internal" href="#am-licence"><span class="std std-ref">GNU General Public Licence v3</span></a> page for the licence agreement associated with this software.</p>
 <p>If you manage to break it, you get to keep both pieces.</p>
@@ -222,13 +222,13 @@
 <blockquote>
 <div><ul class="simple">
 <li><p>gmail: <a class="reference external" href="mailto:robinseahahn&#37;&#52;&#48;gmail&#46;com">robinseahahn<span>&#64;</span>gmail<span>&#46;</span>com</a></p></li>
-<li><p><a class="reference external" href="https://github.com/robinboncoeur/appmgr/issues">Github’s Asset Manager software bugs and issues</a></p></li>
+<li><p><a class="reference external" href="https://github.com/robinboncoeur/appmgr/issues">Github’s Home Inventory software bugs and issues</a></p></li>
 </ul>
 </div></blockquote>
 <p>To find the most current documentation - a (probably) updated version of this document - go to:</p>
 <blockquote>
 <div><ul class="simple">
-<li><p><a class="reference external" href="https://robinboncoeur.github.io/appmgr/">my Github Asset Manager page</a></p></li>
+<li><p><a class="reference external" href="https://robinboncoeur.github.io/appmgr/">my Github Home Inventory page</a></p></li>
 </ul>
 </div></blockquote>
 </section>
@@ -237,43 +237,43 @@
 <h2>Getting Started<a class="headerlink" href="#getting-started" title="Permalink to this heading"></a></h2>
 <section id="system-requirements">
 <h3>System Requirements<a class="headerlink" href="#system-requirements" title="Permalink to this heading"></a></h3>
-<p>“Asset Manager” (also known as AssetMgr) is an Excel workbook using Visual Basic for Applications (a scripting language) to facilitate managing non-consumable equipment for Operating Theatres and Post-Op Recovery. As the software was written in and runs in Excel, there is no installation required except for Excel itself, which the organisation has provided. This workbook can be opened anywhere Excel is available. This file best serves the Operating Theatre when stored on a local drive.</p>
+<p>“Home Inventory” (also known as AssetMgr) is an Excel workbook using Visual Basic for Applications (a scripting language) to facilitate managing non-consumable equipment for Operating Theatres and Post-Op Recovery. As the software was written in and runs in Excel, there is no installation required except for Excel itself, which the organisation has provided. This workbook can be opened anywhere Excel is available. This file best serves the Operating Theatre when stored on a local drive.</p>
 <p>The software makes use of images to help the user identify the device. The folder of device images (interestingly named “images”) must accompany - as in, be in the same folder - as the AssetMgrxxx file, or it will not open. The user can launch the AssetMgr file anywhere - on a local drive, on a memory stick, or on the Data8 server - but a copy of the images folder must be in that folder with it.</p>
-<p>Help, on the other hand, can be opened as long as the user opens Asset Manager on a drive that can see the Metro South network.</p>
+<p>Help, on the other hand, can be opened as long as the user opens Home Inventory on a drive that can see the Metro South network.</p>
 </section>
-<section id="starting-asset-manager">
-<h3>Starting Asset Manager<a class="headerlink" href="#starting-asset-manager" title="Permalink to this heading"></a></h3>
-<p>When you open Asset Manager in Excel 2016, security settings (set by the Metro South IT service) may issue a security warning:</p>
+<section id="starting-home-inventory">
+<h3>Starting Home Inventory<a class="headerlink" href="#starting-home-inventory" title="Permalink to this heading"></a></h3>
+<p>When you open Home Inventory in Excel, security settings (set by the Metro South IT service) may issue a security warning:</p>
 <blockquote>
 <div><p><em>Some active content has been disabled. Click for more details.</em></p>
 </div></blockquote>
 <p>Next to this warning is a button labelled [Enable Content]. This button must be clicked in order for the software to work. When you click this button, another security warning may appear, asking whether you wish to make this file a Trusted Document. If you wish to no longer see these warnings, click [Yes]. If you wish to disable warnings for networked files (any files that live on the server instead of on the PC you’re working on), tick the box in the lower left-hand corner.</p>
-<p>The Asset Manager workbook will resize itself as it displays a splash screen. The workbook defaults to the “Top” worksheet:</p>
+<p>The Home Inventory workbook will resize itself as it displays a splash screen. The workbook defaults to the “Top” worksheet:</p>
 <img alt="https://www.tightbytes.com/images/pubimages/appmgr/am01WkBk01.png" src="https://www.tightbytes.com/images/pubimages/appmgr/am01WkBk01.png" />
 <p>…which has one large button on it. This button brings up the form that facilitates managing devices.</p>
 </section>
 </section>
 <section id="equipment-management-the-forms">
 <h2>Equipment Management - The Forms<a class="headerlink" href="#equipment-management-the-forms" title="Permalink to this heading"></a></h2>
-<section id="overview-what-asset-manager-does">
-<h3>Overview - What Asset Manager Does<a class="headerlink" href="#overview-what-asset-manager-does" title="Permalink to this heading"></a></h3>
-<p>Asset Manager was developed to manage information on assetted devices in the Operating Theatres and post-op recovery.</p>
-<p>Devices are entered into Asset Manager when they first arrive in the department.</p>
+<section id="overview-what-home-inventory-does">
+<h3>Overview - What Home Inventory Does<a class="headerlink" href="#overview-what-home-inventory-does" title="Permalink to this heading"></a></h3>
+<p>Home Inventory was developed to manage information on assetted devices in the Operating Theatres and post-op recovery.</p>
+<p>Devices are entered into Home Inventory when they first arrive in the department.</p>
 <dl class="simple">
 <dt>Note:</dt><dd><p><em>It is important to</em> <strong>confirm</strong> <em>the device has been assetted by Materiel Management and tested and tagged by BTS prior to putting the device into service. If a yellow bar-code sticker is missing or the device has no SAID number affixed to it, it is likely that the device has not been assetted.</em></p>
 </dd>
 </dl>
-<p>Asset Manager was designed to provide a means to manage non-consumables - those devices identified with yellow or white bar-code stickers. These non-consumables are termed “Devices” in Asset Manager. Devices should have been assigned a yellow (or sometimes white) bar-code sticker by the Materiel Management Department, although those stickers sometimes go walkabout. In addition to a bar-code, the sticker also displays an 8-digit number: the SAID number.</p>
+<p>Home Inventory was designed to provide a means to manage non-consumables - those devices identified with yellow or white bar-code stickers. These non-consumables are termed “Devices” in Home Inventory. Devices should have been assigned a yellow (or sometimes white) bar-code sticker by the Materiel Management Department, although those stickers sometimes go walkabout. In addition to a bar-code, the sticker also displays an 8-digit number: the SAID number.</p>
 <img alt="https://www.tightbytes.com/images/pubimages/appmgr/am01AssetStkr.png" src="https://www.tightbytes.com/images/pubimages/appmgr/am01AssetStkr.png" />
-<p>These numbers identify devices in Asset Manager, as SAID numbers are unique for each device. When conducting a search for a specific device in Asset Manager, use this number.</p>
-<p>When a new device arrives, an envelope containing device information should accompany the device, containing crucial information for identification and trouble-shooting purposes. It is strongly suggested to take the time to enter key information such as model and serial number into Asset Manager as that information will help identify devices further down their service life.  Device-specific information such as name, model number and serial number need to be recorded on the DevData worksheet.</p>
-<p>To enter the device into Asset Manageris a simple process: conduct a search for the device by SAID by entering the SAID into the search field and pressing &lt;ENTER&gt;. As a new device will have an SAID that does not exist in DEVDATA, the user simply follows the prompts to enter device information and save the information into a new record.</p>
+<p>These numbers identify devices in Home Inventory, as SAID numbers are unique for each device. When conducting a search for a specific device in Home Inventory, use this number.</p>
+<p>When a new device arrives, an envelope containing device information should accompany the device, containing crucial information for identification and trouble-shooting purposes. It is strongly suggested to take the time to enter key information such as model and serial number into Home Inventory as that information will help identify devices further down their service life.  Device-specific information such as name, model number and serial number need to be recorded on the DevData worksheet.</p>
+<p>To enter the device into Home Inventoryis a simple process: conduct a search for the device by SAID by entering the SAID into the search field and pressing &lt;ENTER&gt;. As a new device will have an SAID that does not exist in DEVDATA, the user simply follows the prompts to enter device information and save the information into a new record.</p>
 </section>
 <section id="the-main-equipment-form">
 <h3>The Main Equipment Form<a class="headerlink" href="#the-main-equipment-form" title="Permalink to this heading"></a></h3>
-<p>The main form in Asset Manager is launched via the large button on the “Top” sheet.</p>
+<p>The main form in Home Inventory is launched via the large button on the “Top” sheet.</p>
 <img alt="https://www.tightbytes.com/images/pubimages/appmgr/am01Launch02.png" src="https://www.tightbytes.com/images/pubimages/appmgr/am01Launch02.png" />
-<p>The main Asset Manager form…</p>
+<p>The main Home Inventory form…</p>
 <img alt="https://www.tightbytes.com/images/pubimages/appmgr/am02aMainForm02.png" src="https://www.tightbytes.com/images/pubimages/appmgr/am02aMainForm02.png" />
 <p>has six basic areas:</p>
 <blockquote>
@@ -315,9 +315,9 @@
 <blockquote>
 <div><p><em>the entry into the search field is checked for non-numeric (alphabet letters) characters, and then that the entry is eight digits long. If the entry does not meet those conditions, the user is notified; otherwise, a search is performed.</em></p>
 </div></blockquote>
-<p>If the number was entered correctly and the corresponding SAID exists in the DevData worksheet (a record exists for the device in DEVDATA) in Asset Manager, the software will find it and display it in a list of similar devices. If the SAID number cannot not be found, the user will be prompted via a dialogue to add a new device using the entered SAID number:</p>
+<p>If the number was entered correctly and the corresponding SAID exists in the DevData worksheet (a record exists for the device in DEVDATA) in Home Inventory, the software will find it and display it in a list of similar devices. If the SAID number cannot not be found, the user will be prompted via a dialogue to add a new device using the entered SAID number:</p>
 <img alt="https://www.tightbytes.com/images/pubimages/appmgr/am02AddNew.png" src="https://www.tightbytes.com/images/pubimages/appmgr/am02AddNew.png" />
-<p>It’s a good idea to double-check that the SAID number was typed in correctly. If so, the user has a choice: select [ Cancel ] to cancel adding a device with that SAID number or [ Ok ] to open the Edit Device Information form to add a new device to Asset Manager.</p>
+<p>It’s a good idea to double-check that the SAID number was typed in correctly. If so, the user has a choice: select [ Cancel ] to cancel adding a device with that SAID number or [ Ok ] to open the Edit Device Information form to add a new device to Home Inventory.</p>
 </section>
 <section id="device-types-and-locations">
 <span id="hi-dropdowns"></span><h3>Device Types and Locations<a class="headerlink" href="#device-types-and-locations" title="Permalink to this heading"></a></h3>
@@ -339,9 +339,9 @@
 <span id="hi-buttonbar"></span><h3>Button Bar<a class="headerlink" href="#button-bar" title="Permalink to this heading"></a></h3>
 <p>The button bar’s buttons provide a quick and easy way to do the most common tasks.</p>
 <img alt="https://www.tightbytes.com/images/pubimages/appmgr/am02dButtons.png" src="https://www.tightbytes.com/images/pubimages/appmgr/am02dButtons.png" />
-<p>NewDevice - The New Device button opens the Edit Equipment form to allow entry of a new device into Asset Manager.</p>
+<p>NewDevice - The New Device button opens the Edit Equipment form to allow entry of a new device into Home Inventory.</p>
 <img alt="https://www.tightbytes.com/images/pubimages/appmgr/am02dBtnNew.png" src="https://www.tightbytes.com/images/pubimages/appmgr/am02dBtnNew.png" />
-<p>EditDevice - The Edit Device button opens the Edit Equipment form to allow entry of information on an existing device in Asset Manager. Note: if an entry in the Events Listbox is selected, that entry will be opened for editing; otherwise, it is assumed that the user wishes to enter a new Event for the selected device.</p>
+<p>EditDevice - The Edit Device button opens the Edit Equipment form to allow entry of information on an existing device in Home Inventory. Note: if an entry in the Events Listbox is selected, that entry will be opened for editing; otherwise, it is assumed that the user wishes to enter a new Event for the selected device.</p>
 <img alt="https://www.tightbytes.com/images/pubimages/appmgr/am02dBtnEdit.png" src="https://www.tightbytes.com/images/pubimages/appmgr/am02dBtnEdit.png" />
 <p>Reports - The Reports button opens the Reports dialogue offering a number of device reports which print on to the BYTYPE (by type) and DEVHIST (device history) worksheets.</p>
 <img alt="https://www.tightbytes.com/images/pubimages/appmgr/am02dBtnRpts.png" src="https://www.tightbytes.com/images/pubimages/appmgr/am02dBtnRpts.png" />
@@ -507,7 +507,7 @@
 </tr>
 </thead>
 <tbody>
-<tr class="row-even"><td><p>Asset Manager Help</p></td>
+<tr class="row-even"><td><p>Home Inventory Help</p></td>
 <td><p>Loads Firefox and this document</p></td>
 </tr>
 <tr class="row-odd"><td><p>Developer Mode On</p></td>
@@ -516,8 +516,8 @@
 <tr class="row-even"><td><p>.</p></td>
 <td></td>
 </tr>
-<tr class="row-odd"><td><p>About Asset Manager</p></td>
-<td><p>A brief synopsis on Asset Manager</p></td>
+<tr class="row-odd"><td><p>About Home Inventory</p></td>
+<td><p>A brief synopsis on Home Inventory</p></td>
 </tr>
 </tbody>
 </table>
@@ -547,7 +547,7 @@
 </aside>
 <aside class="footnote brackets" id="fstat04" role="note">
 <span class="label"><span class="fn-bracket">[</span><a role="doc-backlink" href="#id4">4</a><span class="fn-bracket">]</span></span>
-<p>A Device for which a record exists in Asset Manager, but has not been sighted in some time.</p>
+<p>A Device for which a record exists in Home Inventory, but has not been sighted in some time.</p>
 </aside>
 <aside class="footnote brackets" id="fstat05" role="note">
 <span class="label"><span class="fn-bracket">[</span><a role="doc-backlink" href="#id5">5</a><span class="fn-bracket">]</span></span>
@@ -660,7 +660,7 @@ and the dropdown next to it displays an Owner</p></td>
 </section>
 <section id="main-worksheets">
 <h2>Main Worksheets<a class="headerlink" href="#main-worksheets" title="Permalink to this heading"></a></h2>
-<p>Asset Manager is an Excel workbook comprised of several worksheets.</p>
+<p>Home Inventory is an Excel workbook comprised of several worksheets.</p>
 <p>Two worksheets - DEVDATA and EVENTDATA - contain the actual data. The records are “linked” by a column (field) both sheets share: the SAID number field. In DEVDATA, the SAID Number field contains unique records: each SAID represents one device. While in EVENTDATA, the SAID references the device in DEVDATA, each record is a unique event for the devices, so as a device can see numerous events, the SAID number will not be a unique identifier for records in EVENTDATA.</p>
 <p>Unfortunately, Excel doesn’t support SQL, so there is no way to set up data relationships as a proper relational database would, with key fields and SELECT statements, so relationships have to be done somewhat manually with code. Which mostly works, albeit much slower.</p>
 <section id="device-data">
@@ -732,7 +732,7 @@ and the dropdown next to it displays an Owner</p></td>
 </section>
 <section id="event-data">
 <h3>Event Data<a class="headerlink" href="#event-data" title="Permalink to this heading"></a></h3>
-<p>EVENTDATA contains event  information for devices, i.e., things that have happened, like “put into service”, “sent to repair”, “retired” and so forth. This data is original to Asset Manager and is not readily available through other information outlets, such as Materiel Management or BTS. Thus, all columns have total relevance. The columns are:</p>
+<p>EVENTDATA contains event  information for devices, i.e., things that have happened, like “put into service”, “sent to repair”, “retired” and so forth. This data is original to Home Inventory and is not readily available through other information outlets, such as Materiel Management or BTS. Thus, all columns have total relevance. The columns are:</p>
 <table class="docutils align-default">
 <thead>
 <tr class="row-odd"><th class="head"><p>Name</p></th>

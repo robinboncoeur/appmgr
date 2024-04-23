@@ -6,15 +6,15 @@ Home Inventory
 Introduction
 ************
 
-This Excel-based utility is designed to manage non-consumable devices in Operating Theatres and Post-Op Recovery. It replaces a ledger-based approach to tracking devices. Asset Manager extends Excel through forms and code written in Visual-Basic for Applications, which is part of the Microsoft Excel product. 
+This Excel-based utility is designed to catalogue devices and sundry in the home environment. It replaces trying to find stuff when you need it by looking through boxes. Home Inventory extends Excel through forms and code written in Visual-Basic for Applications, which is part of the Microsoft Excel product. 
 
 Each device is entered as a record on the DEVDATA spreadsheet in AssetMgr. The information for this device will include: the SAID number, the name of the device, serial and model numbers, as well as original cost and date put into service. Additionally, the record should contain the device's status (In Service, Repair, Stored, and so forth), classification, Test-n-Tag date and associated image file, if one exists.
 
-Devices in Asset Manager are identified by a number assigned to that device by the organisation: the SAID number. Searches for a device in the spreadsheet use this unique number.
+Devices in Home Inventory are identified by a number assigned to that device by the organisation: the SAID number. Searches for a device in the spreadsheet use this unique number.
 
-Asset Manager tracks devices throughout their "life" in the organisation as a series of events. An event can be "In Service", "To Repair", "Decommissioned", "On Loan" and "Returned", and "Stored". Device repair information is recorded  to help build a history on a device.
+Home Inventory tracks devices throughout their "life" in the organisation as a series of events. An event can be "In Service", "To Repair", "Decommissioned", "On Loan" and "Returned", and "Stored". Device repair information is recorded  to help build a history on a device.
 
-Asset Manager creates a number of reports about devices and their status.
+Home Inventory creates a number of reports about devices and their status.
 
 
 
@@ -22,7 +22,7 @@ Asset Manager creates a number of reports about devices and their status.
 How to Best Use Help
 ====================
 
-While Asset Manager's use seems pretty straight-forward to the developer, he realises that his approach to managing equipment may seem less than intuitive to other inhabitants of the solar system: hence, this Help file.
+While Home Inventory's use seems pretty straight-forward to the developer, he realises that his approach to managing equipment may seem less than intuitive to other inhabitants of the solar system: hence, this Help file.
 
 As Microsoft in their wisdom didn't see fit to include a means to provide a very flexible custom help documentation system without installing questionable add-ons - something most security-conscious IT departments of organisations such as Queensland Health would definitely never permit - an approach had to be come up with that would provide the information quickly and accurately. Therefore, I have chosen HTML (think: Web) pages to display documentation in, using Sphinx to provide the framework. The approach to finding help in these pages depends on how the user generally searches for help, but the following is the suggested approach.
 
@@ -120,7 +120,7 @@ History, Caveats and How to Contact Me
 History
 =======
 
-Asset Manager was developed as a response to my accepting the Device Manager portfolio in PACU. When I asked what means were provided to track devices, I was given a ledger with paper in it: lined paper.
+Home Inventory was developed as a response to my accepting the Device Manager portfolio in PACU. When I asked what means were provided to track devices, I was given a ledger with paper in it: lined paper.
 
 Um, no. That wasn't going to work.
 
@@ -132,9 +132,9 @@ Right about the time I was given that portfolio, inventory on non-consumables wa
 Caveats
 =======
 
-Asset Manager is all contained in a stand-alone Excel workbook. Although I would have preferred a proper database, Excel was all I had available within the organisation I was developing in, so I commandeered it to act as a flat-file database. Excel as a database is not ideal, but through the quirky magic of Visual Basic for Applications, it generally works as expected. No question it is definitely an improvement over a physical ledger.
+Home Inventory is all contained in a stand-alone Excel workbook. Although I would have preferred a proper database, Excel was all I had available within the organisation I was developing in, so I commandeered it to act as a flat-file database. Excel as a database is not ideal, but through the quirky magic of Visual Basic for Applications, it generally works as expected. No question it is definitely an improvement over a physical ledger.
 
-VBA itself is not the stellar language to write solutions in one could hope or wish for, and my knowledge on how it works is a bit less than comprehensive. Therefore, someone following me in trying to maintain/fix the code may wonder at some of the kludges I employed. As I learn more on how to do this all properly, the kludges are being removed/replaced, but whilst I try to be as professional as I could developing this tool, Asset Manager is pedestrian code at best.
+VBA itself is not the stellar language to write solutions in one could hope or wish for, and my knowledge on how it works is a bit less than comprehensive. Therefore, someone following me in trying to maintain/fix the code may wonder at some of the kludges I employed. As I learn more on how to do this all properly, the kludges are being removed/replaced, but whilst I try to be as professional as I could developing this tool, Home Inventory is pedestrian code at best.
 
 The developer of this tool makes no claims as to the accuracy or reliability of the data, nor are there any guarantees, implied or real, as to the document's fitness for purpose. I.e., it is presented and delivered as-is. Please keep this in mind when using this tool. I ask the user's patience with the code... it is what it is.
 
@@ -153,11 +153,11 @@ Whilst software developers endeavour to write clean, robust software with consis
 A number of means exist to contact the developer:
 
    * gmail: robinseahahn@gmail.com
-   * `Github's Asset Manager software bugs and issues <https://github.com/robinboncoeur/appmgr/issues>`_
+   * `Github's Home Inventory software bugs and issues <https://github.com/robinboncoeur/appmgr/issues>`_
 
 To find the most current documentation - a (probably) updated version of this document - go to:
    
-   * `my Github Asset Manager page <https://robinboncoeur.github.io/appmgr/>`_ 
+   * `my Github Home Inventory page <https://robinboncoeur.github.io/appmgr/>`_ 
 
 
 
@@ -174,25 +174,25 @@ Getting Started
 System Requirements
 ===================
 
-"Asset Manager" (also known as AssetMgr) is an Excel workbook using Visual Basic for Applications (a scripting language) to facilitate managing non-consumable equipment for Operating Theatres and Post-Op Recovery. As the software was written in and runs in Excel, there is no installation required except for Excel itself, which the organisation has provided. This workbook can be opened anywhere Excel is available. This file best serves the Operating Theatre when stored on a local drive.
+"Home Inventory" (also known as AssetMgr) is an Excel workbook using Visual Basic for Applications (a scripting language) to facilitate managing non-consumable equipment for Operating Theatres and Post-Op Recovery. As the software was written in and runs in Excel, there is no installation required except for Excel itself, which the organisation has provided. This workbook can be opened anywhere Excel is available. This file best serves the Operating Theatre when stored on a local drive.
 
 The software makes use of images to help the user identify the device. The folder of device images (interestingly named "images") must accompany - as in, be in the same folder - as the AssetMgrxxx file, or it will not open. The user can launch the AssetMgr file anywhere - on a local drive, on a memory stick, or on the Data8 server - but a copy of the images folder must be in that folder with it.
 
-Help, on the other hand, can be opened as long as the user opens Asset Manager on a drive that can see the Metro South network.
+Help, on the other hand, can be opened as long as the user opens Home Inventory on a drive that can see the Metro South network.
 
 
 
-======================
-Starting Asset Manager
-======================
+=======================
+Starting Home Inventory
+=======================
 
-When you open Asset Manager in Excel 2016, security settings (set by the Metro South IT service) may issue a security warning:
+When you open Home Inventory in Excel, security settings (set by the Metro South IT service) may issue a security warning:
    
    *Some active content has been disabled. Click for more details.*
    
 Next to this warning is a button labelled [Enable Content]. This button must be clicked in order for the software to work. When you click this button, another security warning may appear, asking whether you wish to make this file a Trusted Document. If you wish to no longer see these warnings, click [Yes]. If you wish to disable warnings for networked files (any files that live on the server instead of on the PC you're working on), tick the box in the lower left-hand corner.
 
-The Asset Manager workbook will resize itself as it displays a splash screen. The workbook defaults to the "Top" worksheet:
+The Home Inventory workbook will resize itself as it displays a splash screen. The workbook defaults to the "Top" worksheet:
 
 .. image:: https://www.tightbytes.com/images/pubimages/appmgr/am01WkBk01.png
 
@@ -212,37 +212,37 @@ The Asset Manager workbook will resize itself as it displays a splash screen. Th
 Equipment Management - The Forms
 ********************************
 
-==================================
-Overview - What Asset Manager Does
-==================================
+===================================
+Overview - What Home Inventory Does
+===================================
 
-Asset Manager was developed to manage information on assetted devices in the Operating Theatres and post-op recovery.
+Home Inventory was developed to manage information on assetted devices in the Operating Theatres and post-op recovery.
 
-Devices are entered into Asset Manager when they first arrive in the department. 
+Devices are entered into Home Inventory when they first arrive in the department. 
 
 Note:
    *It is important to* **confirm** *the device has been assetted by Materiel Management and tested and tagged by BTS prior to putting the device into service. If a yellow bar-code sticker is missing or the device has no SAID number affixed to it, it is likely that the device has not been assetted.*
 
-Asset Manager was designed to provide a means to manage non-consumables - those devices identified with yellow or white bar-code stickers. These non-consumables are termed "Devices" in Asset Manager. Devices should have been assigned a yellow (or sometimes white) bar-code sticker by the Materiel Management Department, although those stickers sometimes go walkabout. In addition to a bar-code, the sticker also displays an 8-digit number: the SAID number.
+Home Inventory was designed to provide a means to manage non-consumables - those devices identified with yellow or white bar-code stickers. These non-consumables are termed "Devices" in Home Inventory. Devices should have been assigned a yellow (or sometimes white) bar-code sticker by the Materiel Management Department, although those stickers sometimes go walkabout. In addition to a bar-code, the sticker also displays an 8-digit number: the SAID number.
 
 .. image:: https://www.tightbytes.com/images/pubimages/appmgr/am01AssetStkr.png
 
-These numbers identify devices in Asset Manager, as SAID numbers are unique for each device. When conducting a search for a specific device in Asset Manager, use this number.
+These numbers identify devices in Home Inventory, as SAID numbers are unique for each device. When conducting a search for a specific device in Home Inventory, use this number.
 
-When a new device arrives, an envelope containing device information should accompany the device, containing crucial information for identification and trouble-shooting purposes. It is strongly suggested to take the time to enter key information such as model and serial number into Asset Manager as that information will help identify devices further down their service life.  Device-specific information such as name, model number and serial number need to be recorded on the DevData worksheet.
+When a new device arrives, an envelope containing device information should accompany the device, containing crucial information for identification and trouble-shooting purposes. It is strongly suggested to take the time to enter key information such as model and serial number into Home Inventory as that information will help identify devices further down their service life.  Device-specific information such as name, model number and serial number need to be recorded on the DevData worksheet.
 
-To enter the device into Asset Manageris a simple process: conduct a search for the device by SAID by entering the SAID into the search field and pressing <ENTER>. As a new device will have an SAID that does not exist in DEVDATA, the user simply follows the prompts to enter device information and save the information into a new record.
+To enter the device into Home Inventoryis a simple process: conduct a search for the device by SAID by entering the SAID into the search field and pressing <ENTER>. As a new device will have an SAID that does not exist in DEVDATA, the user simply follows the prompts to enter device information and save the information into a new record.
 
 
 =======================
 The Main Equipment Form
 =======================
 
-The main form in Asset Manager is launched via the large button on the "Top" sheet.
+The main form in Home Inventory is launched via the large button on the "Top" sheet.
 
 .. image:: https://www.tightbytes.com/images/pubimages/appmgr/am01Launch02.png
 
-The main Asset Manager form...
+The main Home Inventory form...
 
 .. image:: https://www.tightbytes.com/images/pubimages/appmgr/am02aMainForm02.png
 
@@ -312,11 +312,11 @@ Note:
 
    *the entry into the search field is checked for non-numeric (alphabet letters) characters, and then that the entry is eight digits long. If the entry does not meet those conditions, the user is notified; otherwise, a search is performed.*
 
-If the number was entered correctly and the corresponding SAID exists in the DevData worksheet (a record exists for the device in DEVDATA) in Asset Manager, the software will find it and display it in a list of similar devices. If the SAID number cannot not be found, the user will be prompted via a dialogue to add a new device using the entered SAID number:
+If the number was entered correctly and the corresponding SAID exists in the DevData worksheet (a record exists for the device in DEVDATA) in Home Inventory, the software will find it and display it in a list of similar devices. If the SAID number cannot not be found, the user will be prompted via a dialogue to add a new device using the entered SAID number:
 
 .. image:: https://www.tightbytes.com/images/pubimages/appmgr/am02AddNew.png
 
-It's a good idea to double-check that the SAID number was typed in correctly. If so, the user has a choice: select [ Cancel ] to cancel adding a device with that SAID number or [ Ok ] to open the Edit Device Information form to add a new device to Asset Manager. 
+It's a good idea to double-check that the SAID number was typed in correctly. If so, the user has a choice: select [ Cancel ] to cancel adding a device with that SAID number or [ Ok ] to open the Edit Device Information form to add a new device to Home Inventory. 
 
 
 
@@ -355,12 +355,12 @@ The button bar's buttons provide a quick and easy way to do the most common task
 .. image:: https://www.tightbytes.com/images/pubimages/appmgr/am02dButtons.png
     
 
-NewDevice - The New Device button opens the Edit Equipment form to allow entry of a new device into Asset Manager.
+NewDevice - The New Device button opens the Edit Equipment form to allow entry of a new device into Home Inventory.
 
 .. image:: https://www.tightbytes.com/images/pubimages/appmgr/am02dBtnNew.png
     
    
-EditDevice - The Edit Device button opens the Edit Equipment form to allow entry of information on an existing device in Asset Manager. Note: if an entry in the Events Listbox is selected, that entry will be opened for editing; otherwise, it is assumed that the user wishes to enter a new Event for the selected device.
+EditDevice - The Edit Device button opens the Edit Equipment form to allow entry of information on an existing device in Home Inventory. Note: if an entry in the Events Listbox is selected, that entry will be opened for editing; otherwise, it is assumed that the user wishes to enter a new Event for the selected device.
 
 .. image:: https://www.tightbytes.com/images/pubimages/appmgr/am02dBtnEdit.png
     
@@ -504,14 +504,14 @@ All Devices     View all Devices [#fstat07]_
 Help
 ====
 
-===================  ===============================================
-Caption              Description
-===================  ===============================================
-Asset Manager Help   Loads Firefox and this document
-Developer Mode On    Displays prompts for debugging purposes
+====================  ===============================================
+Caption               Description
+====================  ===============================================
+Home Inventory Help   Loads Firefox and this document
+Developer Mode On     Displays prompts for debugging purposes
 .
-About Asset Manager  A brief synopsis on Asset Manager
-===================  ===============================================
+About Home Inventory  A brief synopsis on Home Inventory
+====================  ===============================================
 
 The menu option objects on the form are really repurposed dropdowns, so selecting the first item of that menu - for example, 'File' in the File menu - does nothing. Also, there is some duplication of button functions in the traditional menu at the top of the main form.
 
@@ -543,7 +543,7 @@ The unmarked tickbox in the lower right-hand corner of the form - to the right o
   
   .. [#fstat03] A Device that has been identified as needing repair, and is pending being set to BTS. Use only if the item has not yet been sent. This allows the user to designate items to be repaired, taking them offline, but leaving the actual sending to BTS process for a more convenient time.
   
-  .. [#fstat04] A Device for which a record exists in Asset Manager, but has not been sighted in some time.
+  .. [#fstat04] A Device for which a record exists in Home Inventory, but has not been sighted in some time.
   
   .. [#fstat05] A Device that is in a fully operational state but has been stored as it is not currently needed.
   
@@ -714,7 +714,7 @@ Footnotes
 Main Worksheets
 ***************
 
-Asset Manager is an Excel workbook comprised of several worksheets. 
+Home Inventory is an Excel workbook comprised of several worksheets. 
 
 Two worksheets - DEVDATA and EVENTDATA - contain the actual data. The records are "linked" by a column (field) both sheets share: the SAID number field. In DEVDATA, the SAID Number field contains unique records: each SAID represents one device. While in EVENTDATA, the SAID references the device in DEVDATA, each record is a unique event for the devices, so as a device can see numerous events, the SAID number will not be a unique identifier for records in EVENTDATA.
 
@@ -757,7 +757,7 @@ Test-n-Tag         *Date of last BTS Test-and-Tag*
 Event Data
 ==========
 
-EVENTDATA contains event  information for devices, i.e., things that have happened, like "put into service", "sent to repair", "retired" and so forth. This data is original to Asset Manager and is not readily available through other information outlets, such as Materiel Management or BTS. Thus, all columns have total relevance. The columns are:
+EVENTDATA contains event  information for devices, i.e., things that have happened, like "put into service", "sent to repair", "retired" and so forth. This data is original to Home Inventory and is not readily available through other information outlets, such as Materiel Management or BTS. Thus, all columns have total relevance. The columns are:
 
 ============= ==========================================================================
       Name                                      Description
