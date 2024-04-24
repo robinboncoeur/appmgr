@@ -6,11 +6,9 @@ Home Inventory
 Introduction
 ************
 
-Updating Home Inventory
-
 This Excel-based utility is designed to catalogue items and other sundry items in the home environment. It replaces trying to find stuff when you need it by looking through boxes. The data lives on two main sheets: "BOXDATA" and "ITEMDATA".
 
-Everything is entered as a record on the ITEMDATA spreadsheet in the workbook. The information for item will include: the item number, the name of the item, which box the item is in (if applicable), as well as a link to an online image. Additionally, the record will contain the item's status: Active, Repair, Restock, and so forth.
+Everything is entered as a record on the ITEMDATA spreadsheet in the workbook. The information for item will include: an 8-digit item number, the name of the item, which box the item is in (if applicable), as well as a link to an online image. Additionally, the record will contain the item's status: Active, Repair, Restock, and so forth.
 
 Items in Home Inventory are identified by a number assigned to that item by the organisation: the Item number. Searches for a item in the spreadsheet use this unique number.
 
@@ -24,11 +22,11 @@ Home Inventory extends Excel through forms and code written in Visual-Basic for 
 How to Best Use Help
 ====================
 
-While Home Inventory's use seems pretty straight-forward to the developer, he realises that his approach to managing equipment may seem less than intuitive to other inhabitants of the solar system: hence, this Help file.
+While Home Inventory's use seems pretty straight-forward to the developer, he realises that his approach to managing a home inventory may seem less than intuitive to other inhabitants of the solar system: hence, this Help file.
 
-As Microsoft in their wisdom didn't see fit to include a means to provide a very flexible custom help documentation system without installing questionable add-ons - something most security-conscious IT departments of organisations such as Queensland Health would definitely never permit - an approach had to be come up with that would provide the information quickly and accurately. Therefore, I have chosen HTML (think: Web) pages to display documentation in, using Sphinx to provide the framework. The approach to finding help in these pages depends on how the user generally searches for help, but the following is the suggested approach.
+As Microsoft in their wisdom didn't see fit to include a means to provide a very flexible custom help documentation system without installing questionable add-ons  an approach had to be come up with that would provide the information quickly and accurately. Therefore, I have chosen HTML (think: Web) pages to display documentation.
 
-When the user clicks on the Help button, that user will be offered this help file to read. It is suggested to make use of the Quick Search feature *first*, entering the name of the button or control on the form the user has a question about. Help will display a number of context-specific help options.
+When the user clicks on the Help button, that user will be offered this help file to read. It is suggested to make use of the Quick Search feature *first*, entering the name of the button or control on the form the user has a question about. Help should display a number of context-specific help options.
 
 For example, let's say help is needed on the purpose of this button:
 
@@ -150,9 +148,7 @@ If you manage to break it, you get to keep both pieces.
 How to Contact the Developer
 ============================
 
-Whilst software developers endeavour to write clean, robust software with consistent, predictable behaviour, bugs do happen. The CallSheet developer is committed to supporting CallSheet, hence this document and a web presence on github.
-
-A number of means exist to contact the developer:
+Whilst software developers endeavour to write clean, robust software with consistent, predictable behaviour, bugs do happen. A number of means exist to contact the developer:
 
    * gmail: robinseahahn@gmail.com
    * `Github's Home Inventory software bugs and issues <https://github.com/robinboncoeur/appmgr/issues>`_
@@ -176,11 +172,9 @@ Getting Started
 System Requirements
 ===================
 
-"Home Inventory" (also known as AssetMgr) is an Excel workbook using Visual Basic for Applications (a scripting language) to facilitate managing non-consumable equipment for Operating Theatres and Post-Op Recovery. As the software was written in and runs in Excel, there is no installation required except for Excel itself, which the organisation has provided. This workbook can be opened anywhere Excel is available. This file best serves the Operating Theatre when stored on a local drive.
+"Home Inventory" (also known as AssetMgr) is an Excel workbook using Visual Basic for Applications (a scripting language) to facilitate managing home inventory items, as well as cataloguing the location in the home of sundry items. As the software was written in and runs in Excel, there is no installation required except for Excel itself, which the organisation has provided. This workbook can be opened anywhere Excel is available.
 
-The software makes use of images to help the user identify the item. The folder of item images (interestingly named "images") must accompany - as in, be in the same folder - as the AssetMgrxxx file, or it will not open. The user can launch the AssetMgr file anywhere - on a local drive, on a memory stick, or on the Data8 server - but a copy of the images folder must be in that folder with it.
-
-Help, on the other hand, can be opened as long as the user opens Home Inventory on a drive that can see the Metro South network.
+The software makes use of images to help the user identify the item. These are stored online. Help can be opened as long as the user opens Home Inventory on a computer connected to the Internet.
 
 
 
@@ -188,27 +182,33 @@ Help, on the other hand, can be opened as long as the user opens Home Inventory 
 Starting Home Inventory
 =======================
 
-When you open Home Inventory in Excel, security settings (set by the Metro South IT service) may issue a security warning:
+When you open Home Inventory the first time in Excel, security settings on your computer may issue a security warning:
    
    *Some active content has been disabled. Click for more details.*
    
-Next to this warning is a button labelled [Enable Content]. This button must be clicked in order for the software to work. When you click this button, another security warning may appear, asking whether you wish to make this file a Trusted Document. If you wish to no longer see these warnings, click [Yes]. If you wish to disable warnings for networked files (any files that live on the server instead of on the PC you're working on), tick the box in the lower left-hand corner.
+Next to this warning is a button labelled [Enable Content]. This button must be clicked in order for the forms to appear and the macros (scripts) to work. When you click this button, another security warning may appear, asking whether you wish to make this file a Trusted Document. If you wish to no longer see these warnings, click [Yes]. If you wish to disable warnings for networked files (any files that live on the server instead of on the PC you're working on), tick the box in the lower left-hand corner.
 
-The Home Inventory workbook will resize itself as it displays a splash screen. The workbook defaults to the "Top" worksheet:
+You should see a new Menu tab in the Excel Menu: Home Inventory. This tab contains a number of buttons:
 
-.. image:: https://www.tightbytes.com/images/pubimages/appmgr/am01WkBk01.png
+    * ByBoxes
+    * ByItems
+    
+and:
 
-...which has one large button on it. This button brings up the form that facilitates managing items.
+    * About Home Inventory
+    * Help
 
-
-
-
-
-
-
-
+Click on the button will bring up the relevant form, or this Help file in your browser.
 
 
+
+
+
+
+
+
+
+Updating Home Inventory
 
 ***************************
 Item Management - The Forms
@@ -218,14 +218,9 @@ Item Management - The Forms
 Overview - What Home Inventory Does
 ===================================
 
-Home Inventory was developed to manage information on assetted items in the Operating Theatres and post-op recovery.
+Home Inventory was developed to manage all the information you need - location, desciption and pictures - of items in your home.
 
-Items are entered into Home Inventory when they first arrive in the department. 
-
-Note:
-   *It is important to* **confirm** *the item has been assetted by Materiel Management and tested and tagged by BTS prior to putting the item into service. If a yellow bar-code sticker is missing or the item has no Item number affixed to it, it is likely that the item has not been assetted.*
-
-Home Inventory was designed to provide a means to manage non-consumables - those items identified with yellow or white bar-code stickers. These non-consumables are termed "Items" in Home Inventory. Items should have been assigned a yellow (or sometimes white) bar-code sticker by the Materiel Management Department, although those stickers sometimes go walkabout. In addition to a bar-code, the sticker also displays an 8-digit number: the Item number.
+Ideally, items are entered into Home Inventory when they are purchased. The item will be assigned an 8-digit number: the Item Number.
 
 .. image:: https://www.tightbytes.com/images/pubimages/appmgr/am01AssetStkr.png
 
