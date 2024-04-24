@@ -6,15 +6,17 @@ Home Inventory
 Introduction
 ************
 
-This Excel-based utility is designed to catalogue devices and sundry in the home environment. It replaces trying to find stuff when you need it by looking through boxes. Home Inventory extends Excel through forms and code written in Visual-Basic for Applications, which is part of the Microsoft Excel product. 
+Updating Home Inventory
 
-Each device is entered as a record on the DEVDATA spreadsheet in AssetMgr. The information for this device will include: the SAID number, the name of the device, serial and model numbers, as well as original cost and date put into service. Additionally, the record should contain the device's status (In Service, Repair, Stored, and so forth), classification, Test-n-Tag date and associated image file, if one exists.
+This Excel-based utility is designed to catalogue items and other sundry items in the home environment. It replaces trying to find stuff when you need it by looking through boxes. The data lives on two main sheets: "BOXDATA" and "ITEMDATA".
 
-Devices in Home Inventory are identified by a number assigned to that device by the organisation: the SAID number. Searches for a device in the spreadsheet use this unique number.
+Everything is entered as a record on the ITEMDATA spreadsheet in the workbook. The information for item will include: the item number, the name of the item, which box the item is in (if applicable), as well as a link to an online image. Additionally, the record will contain the item's status: Active, Repair, Restock, and so forth.
 
-Home Inventory tracks devices throughout their "life" in the organisation as a series of events. An event can be "In Service", "To Repair", "Decommissioned", "On Loan" and "Returned", and "Stored". Device repair information is recorded  to help build a history on a device.
+Items in Home Inventory are identified by a number assigned to that item by the organisation: the Item number. Searches for a item in the spreadsheet use this unique number.
 
-Home Inventory creates a number of reports about devices and their status.
+Home Inventory tracks items throughout their "life" in the organisation as a series of events. An event can be "In Service", "To Repair", "Decommissioned", "On Loan" and "Returned", and "Stored". Item repair information is recorded  to help build a history on a item.
+
+Home Inventory extends Excel through forms and code written in Visual-Basic for Applications, which is part of the Microsoft Excel product.
 
 
 
@@ -72,36 +74,36 @@ This help file assumes certain conventions:
 
 **Names of objects in a form**
 
-Textbox - allows entry of free text. Some text boxes automatically convert text to upper-case. *Example shown: the SAID field on the "Add or Edit Equipment" form.*
+Textbox - allows entry of free text. Some text boxes automatically convert text to upper-case. *Example shown: the Item field on the "Add or Edit Item" form.*
 
 .. image:: https://www.tightbytes.com/images/pubimages/appmgr/amEditFTextB.png
    
-Dropdown - Also known as a "Combobox", it appears to be a textbox with a down-arrow on the right-hand side. Contains a listbox of selectable items, but will also allow keyboard entry of text. *Example shown: the DeviceType dropdown on the "Add or Edit Equipment" form.*
+Dropdown - Also known as a "Combobox", it appears to be a textbox with a down-arrow on the right-hand side. Contains a listbox of selectable items, but will also allow keyboard entry of text. *Example shown: the ItemType dropdown on the "Add or Edit Item" form.*
       
 .. image:: https://www.tightbytes.com/images/pubimages/appmgr/amEditFDropB.png
 
    
-Tickbox - acts as a toggle to turn a condition on or off. *Example shown: the New Event tickbox on the "Add or Edit Equipment" form.*
+Tickbox - acts as a toggle to turn a condition on or off. *Example shown: the New Event tickbox on the "Add or Edit Item" form.*
 
 .. image:: https://www.tightbytes.com/images/pubimages/appmgr/amEditFTickB.png
     
    
-Radio button - used to select one - and only one - of several choices. *Example shown: the Device Status radio-buttons on the "Add or Edit Equipment" form.*  
+Radio button - used to select one - and only one - of several choices. *Example shown: the Item Status radio-buttons on the "Add or Edit Item" form.*  
    
 .. image:: https://www.tightbytes.com/images/pubimages/appmgr/amEditFRdioB.png
     
    
-Toggle - turns a condition on or off. *In this example from the "Equipment Management" form, the "All" toggle, when depressed, displays devices from all locations whilst displaying a Location column in the Devices List, with the Location/Owner dropdown empty and disabled. When the "All" toggle is not depressed, the Owner/Location dropdown is enabled, and a Location displays in the dropdown, with all devices of that type and in that location displaying in the Devices listbox.*  
+Toggle - turns a condition on or off. *In this example from the "Item Management" form, the "All" toggle, when depressed, displays items from all locations whilst displaying a Location column in the Items List, with the Location/Owner dropdown empty and disabled. When the "All" toggle is not depressed, the Owner/Location dropdown is enabled, and a Location displays in the dropdown, with all items of that type and in that location displaying in the Items listbox.*  
    
 .. image:: https://www.tightbytes.com/images/pubimages/appmgr/amMainFToggle.png
     
    
-Listbox - contains a list of items or list of information on an item. *Example shown: the Devices List on the "Equipment Management" form.*  
+Listbox - contains a list of items or list of information on an item. *Example shown: the Items List on the "Item Management" form.*  
    
 .. image:: https://www.tightbytes.com/images/pubimages/appmgr/amMainFListB.png
 
 
-Button - also known as a "command button", used to invoke actions, such as closing the form, opening forms, and saving information, as the above button does when clicked. *Example shown: the Save button on the "Add or Edit Equipment" form.*
+Button - also known as a "command button", used to invoke actions, such as closing the form, opening forms, and saving information, as the above button does when clicked. *Example shown: the Save button on the "Add or Edit Item" form.*
 
 .. image:: https://www.tightbytes.com/images/pubimages/appmgr/amEditFSaveB.png
     
@@ -120,7 +122,7 @@ History, Caveats and How to Contact Me
 History
 =======
 
-Home Inventory was developed as a response to my accepting the Device Manager portfolio in PACU. When I asked what means were provided to track devices, I was given a ledger with paper in it: lined paper.
+Home Inventory was developed as a response to my accepting the Item Manager portfolio in PACU. When I asked what means were provided to track items, I was given a ledger with paper in it: lined paper.
 
 Um, no. That wasn't going to work.
 
@@ -176,7 +178,7 @@ System Requirements
 
 "Home Inventory" (also known as AssetMgr) is an Excel workbook using Visual Basic for Applications (a scripting language) to facilitate managing non-consumable equipment for Operating Theatres and Post-Op Recovery. As the software was written in and runs in Excel, there is no installation required except for Excel itself, which the organisation has provided. This workbook can be opened anywhere Excel is available. This file best serves the Operating Theatre when stored on a local drive.
 
-The software makes use of images to help the user identify the device. The folder of device images (interestingly named "images") must accompany - as in, be in the same folder - as the AssetMgrxxx file, or it will not open. The user can launch the AssetMgr file anywhere - on a local drive, on a memory stick, or on the Data8 server - but a copy of the images folder must be in that folder with it.
+The software makes use of images to help the user identify the item. The folder of item images (interestingly named "images") must accompany - as in, be in the same folder - as the AssetMgrxxx file, or it will not open. The user can launch the AssetMgr file anywhere - on a local drive, on a memory stick, or on the Data8 server - but a copy of the images folder must be in that folder with it.
 
 Help, on the other hand, can be opened as long as the user opens Home Inventory on a drive that can see the Metro South network.
 
@@ -196,7 +198,7 @@ The Home Inventory workbook will resize itself as it displays a splash screen. T
 
 .. image:: https://www.tightbytes.com/images/pubimages/appmgr/am01WkBk01.png
 
-...which has one large button on it. This button brings up the form that facilitates managing devices.
+...which has one large button on it. This button brings up the form that facilitates managing items.
 
 
 
@@ -208,35 +210,35 @@ The Home Inventory workbook will resize itself as it displays a splash screen. T
 
 
 
-********************************
-Equipment Management - The Forms
-********************************
+***************************
+Item Management - The Forms
+***************************
 
 ===================================
 Overview - What Home Inventory Does
 ===================================
 
-Home Inventory was developed to manage information on assetted devices in the Operating Theatres and post-op recovery.
+Home Inventory was developed to manage information on assetted items in the Operating Theatres and post-op recovery.
 
-Devices are entered into Home Inventory when they first arrive in the department. 
+Items are entered into Home Inventory when they first arrive in the department. 
 
 Note:
-   *It is important to* **confirm** *the device has been assetted by Materiel Management and tested and tagged by BTS prior to putting the device into service. If a yellow bar-code sticker is missing or the device has no SAID number affixed to it, it is likely that the device has not been assetted.*
+   *It is important to* **confirm** *the item has been assetted by Materiel Management and tested and tagged by BTS prior to putting the item into service. If a yellow bar-code sticker is missing or the item has no Item number affixed to it, it is likely that the item has not been assetted.*
 
-Home Inventory was designed to provide a means to manage non-consumables - those devices identified with yellow or white bar-code stickers. These non-consumables are termed "Devices" in Home Inventory. Devices should have been assigned a yellow (or sometimes white) bar-code sticker by the Materiel Management Department, although those stickers sometimes go walkabout. In addition to a bar-code, the sticker also displays an 8-digit number: the SAID number.
+Home Inventory was designed to provide a means to manage non-consumables - those items identified with yellow or white bar-code stickers. These non-consumables are termed "Items" in Home Inventory. Items should have been assigned a yellow (or sometimes white) bar-code sticker by the Materiel Management Department, although those stickers sometimes go walkabout. In addition to a bar-code, the sticker also displays an 8-digit number: the Item number.
 
 .. image:: https://www.tightbytes.com/images/pubimages/appmgr/am01AssetStkr.png
 
-These numbers identify devices in Home Inventory, as SAID numbers are unique for each device. When conducting a search for a specific device in Home Inventory, use this number.
+These numbers identify items in Home Inventory, as Item numbers are unique for each item. When conducting a search for a specific item in Home Inventory, use this number.
 
-When a new device arrives, an envelope containing device information should accompany the device, containing crucial information for identification and trouble-shooting purposes. It is strongly suggested to take the time to enter key information such as model and serial number into Home Inventory as that information will help identify devices further down their service life.  Device-specific information such as name, model number and serial number need to be recorded on the DevData worksheet.
+When a new item arrives, an envelope containing item information should accompany the item, containing crucial information for identification and trouble-shooting purposes. It is strongly suggested to take the time to enter key information such as model and serial number into Home Inventory as that information will help identify items further down their service life.  Item-specific information such as name, model number and serial number need to be recorded on the DevData worksheet.
 
-To enter the device into Home Inventoryis a simple process: conduct a search for the device by SAID by entering the SAID into the search field and pressing <ENTER>. As a new device will have an SAID that does not exist in DEVDATA, the user simply follows the prompts to enter device information and save the information into a new record.
+To enter the item into Home Inventoryis a simple process: conduct a search for the item by Item by entering the Item into the search field and pressing <ENTER>. As a new item will have an Item that does not exist in DEVDATA, the user simply follows the prompts to enter item information and save the information into a new record.
 
 
-=======================
-The Main Equipment Form
-=======================
+==================
+The Main Item Form
+==================
 
 The main form in Home Inventory is launched via the large button on the "Top" sheet.
 
@@ -262,13 +264,13 @@ has six basic areas:
 
  
 
-=======================
-The Edit Equipment Form
-=======================
+==================
+The Edit Item Form
+==================
 
-This form is launched by the main form when adding new equipment to the DevData sheet or editing existing equipment information on the DevData and EventData sheets. It can be launched from two buttons - to either add or edit a device - from the :ref:`hi-buttonbar` or from the "Manage Devices" section of :ref:`hi-menu`.
+This form is launched by the main form when adding new equipment to the DevData sheet or editing existing equipment information on the DevData and EventData sheets. It can be launched from two buttons - to either add or edit a item - from the :ref:`hi-buttonbar` or from the "Manage Items" section of :ref:`hi-menu`.
 
-The Edit Equipment form has five basic areas:
+The Edit Item form has five basic areas:
 
    * :ref:`ee-devname`
    
@@ -287,18 +289,18 @@ The Edit Equipment form has five basic areas:
 
 
 
-********************
-Equipment Management
-********************
+***************
+Item Management
+***************
 
 
 .. _hi-search:
 
-==========================
-Device Search
-==========================
+===========
+Item Search
+===========
 
-An SAID number is made up of eight numeric digits. To find a device in the system, type the number into the search field:
+An Item number is made up of eight numeric digits. To find a item in the system, type the number into the search field:
 
 .. image:: https://www.tightbytes.com/images/pubimages/appmgr/am02aSrchBox.png
 
@@ -312,26 +314,26 @@ Note:
 
    *the entry into the search field is checked for non-numeric (alphabet letters) characters, and then that the entry is eight digits long. If the entry does not meet those conditions, the user is notified; otherwise, a search is performed.*
 
-If the number was entered correctly and the corresponding SAID exists in the DevData worksheet (a record exists for the device in DEVDATA) in Home Inventory, the software will find it and display it in a list of similar devices. If the SAID number cannot not be found, the user will be prompted via a dialogue to add a new device using the entered SAID number:
+If the number was entered correctly and the corresponding Item exists in the DevData worksheet (a record exists for the item in DEVDATA) in Home Inventory, the software will find it and display it in a list of similar items. If the Item number cannot not be found, the user will be prompted via a dialogue to add a new item using the entered Item number:
 
 .. image:: https://www.tightbytes.com/images/pubimages/appmgr/am02AddNew.png
 
-It's a good idea to double-check that the SAID number was typed in correctly. If so, the user has a choice: select [ Cancel ] to cancel adding a device with that SAID number or [ Ok ] to open the Edit Device Information form to add a new device to Home Inventory. 
+It's a good idea to double-check that the Item number was typed in correctly. If so, the user has a choice: select [ Cancel ] to cancel adding a item with that Item number or [ Ok ] to open the Edit Item Information form to add a new item to Home Inventory. 
 
 
 
 
 .. _hi-dropdowns:
 
-==========================
-Device Types and Locations
-==========================
+========================
+Item Types and Locations
+========================
 
-Next to the Search field and button is a dropdown box with a list of device types. The main devices list-box displays a list of devices that are part of a device type group. The device type dropdown box looks like a textbox, except that it has a down-pointing arrow at the right of the field: 
+Next to the Search field and button is a dropdown box with a list of item types. The main items list-box displays a list of items that are part of a item type group. The item type dropdown box looks like a textbox, except that it has a down-pointing arrow at the right of the field: 
 
 .. image:: https://www.tightbytes.com/images/pubimages/appmgr/am03DevType.png
 
-Select from this dropdown to display devices that correspond to the selected device type in the list below. Possible types include: 
+Select from this dropdown to display items that correspond to the selected item type in the list below. Possible types include: 
 
    * Antithrombotic
    * Gases-Medical
@@ -355,22 +357,22 @@ The button bar's buttons provide a quick and easy way to do the most common task
 .. image:: https://www.tightbytes.com/images/pubimages/appmgr/am02dButtons.png
     
 
-NewDevice - The New Device button opens the Edit Equipment form to allow entry of a new device into Home Inventory.
+NewItem - The New Item button opens the Edit Item form to allow entry of a new item into Home Inventory.
 
 .. image:: https://www.tightbytes.com/images/pubimages/appmgr/am02dBtnNew.png
     
    
-EditDevice - The Edit Device button opens the Edit Equipment form to allow entry of information on an existing device in Home Inventory. Note: if an entry in the Events Listbox is selected, that entry will be opened for editing; otherwise, it is assumed that the user wishes to enter a new Event for the selected device.
+EditItem - The Edit Item button opens the Edit Item form to allow entry of information on an existing item in Home Inventory. Note: if an entry in the Events Listbox is selected, that entry will be opened for editing; otherwise, it is assumed that the user wishes to enter a new Event for the selected item.
 
 .. image:: https://www.tightbytes.com/images/pubimages/appmgr/am02dBtnEdit.png
     
    
-Reports - The Reports button opens the Reports dialogue offering a number of device reports which print on to the BYTYPE (by type) and DEVHIST (device history) worksheets.
+Reports - The Reports button opens the Reports dialogue offering a number of item reports which print on to the BYTYPE (by type) and DEVHIST (item history) worksheets.
    
 .. image:: https://www.tightbytes.com/images/pubimages/appmgr/am02dBtnRpts.png
     
    
-ShowSheet - The Show Sheet button closes the Manage Equipment form, makes the DEVDATA worksheet the active worksheet and drops the user onto the record in that sheet corresponding to the last selected device in the Device List.
+ShowSheet - The Show Sheet button closes the Manage Item form, makes the DEVDATA worksheet the active worksheet and drops the user onto the record in that sheet corresponding to the last selected item in the Item List.
    
 .. image:: https://www.tightbytes.com/images/pubimages/appmgr/am02dBtnShow.png
     
@@ -380,7 +382,7 @@ Help - Opens Firefox and displays this document.
 .. image:: https://www.tightbytes.com/images/pubimages/appmgr/am02dBtnHelp.png
     
    
-Close - Closes the Manage Equipment form. Note: this button and Menu --> File --> Exit are the only methods to close this form. Clicking on the red 'X' in the upper right-hand corner of the form does nothing. This is by design.
+Close - Closes the Manage Item form. Note: this button and Menu --> File --> Exit are the only methods to close this form. Clicking on the red 'X' in the upper right-hand corner of the form does nothing. This is by design.
 
 .. image:: https://www.tightbytes.com/images/pubimages/appmgr/am02dBtnClose.png
 
@@ -388,54 +390,54 @@ Close - Closes the Manage Equipment form. Note: this button and Menu --> File --
 
 .. _hi-listboxes:
 
-===========
-Device List
-===========
+=========
+Item List
+=========
 
-The list of devices in the upper listbox show all devices that correspond to the device type selected in the Device Type dropdown:
+The list of items in the upper listbox show all items that correspond to the item type selected in the Item Type dropdown:
 
 .. image:: https://www.tightbytes.com/images/pubimages/appmgr/am03DevListAll.png
 
-The currently selected device is the one that is highlighted. The device's SAID number will display in the Search field.
+The currently selected item is the one that is highlighted. The item's Item number will display in the Search field.
 
 The columns in that listbox are:
 
 ==================  ================================================================
  Column              Description
 ==================  ================================================================
-SAID                 A unique identifying number issued by Materiel Management
+Item                 A unique identifying number issued by Materiel Management
 Owner                Location: OT - AN - PA [#floc01]_
 Status               "In Service", "To Repairs", and so forth
-Description          The name of the device, conforming to Materiel Management / BTS
+Description          The name of the item, conforming to Materiel Management / BTS
 Test-n-Tag Date      Date of last BTS Test-n-Tag
-Located-Sighted      Where (or *if*) the device was last sighted
+Located-Sighted      Where (or *if*) the item was last sighted
 ==================  ================================================================
 
-The last two columns were added to help identify devices that had not been sighted - and thus may have disappeared from the unit or have through some other means gone missing. This is necessary for yearly inventory purposes.
+The last two columns were added to help identify items that had not been sighted - and thus may have disappeared from the unit or have through some other means gone missing. This is necessary for yearly inventory purposes.
 
-As the user can see from the above table, one of the approaches to managing devices is by assigning the device a status. No device is infinitely useful: thus, it has a lifespan and a status within that lifespan: for example, "In Service", "To Repairs", "Decommissioned" or "On Loan".
+As the user can see from the above table, one of the approaches to managing items is by assigning the item a status. No item is infinitely useful: thus, it has a lifespan and a status within that lifespan: for example, "In Service", "To Repairs", "Decommissioned" or "On Loan".
 
-The second column - Owner - refers more to the most likely location the device would occupy. The view can be modified to list only devices with a specific owner. Above the list, to the right of the Device Type dropdown, is a Owner toggle button. When set to [On] (the default setting):
+The second column - Owner - refers more to the most likely location the item would occupy. The view can be modified to list only items with a specific owner. Above the list, to the right of the Item Type dropdown, is a Owner toggle button. When set to [On] (the default setting):
 
 .. image:: https://www.tightbytes.com/images/pubimages/appmgr/am03AllTglOn.png
 
-the list view will display all devices of type. [All] toggled [On] also clears and disables the Owners dropdown. Toggling [All] to [Off]:
+the list view will display all items of type. [All] toggled [On] also clears and disables the Owners dropdown. Toggling [All] to [Off]:
 
 .. image:: https://www.tightbytes.com/images/pubimages/appmgr/am03AllTglOff.png
 
-enables the Owners dropdown: the user can then select which owner's devices to display in the Devices List (and the owner column will no longer display in the list).
+enables the Owners dropdown: the user can then select which owner's items to display in the Items List (and the owner column will no longer display in the list).
 
-The Devices List only displays devices that are active in the system and does not display devices with a status of "Decommissioned", so as to minimise clutter. In order to see those devices, from the Filter Menu, select "All Devices" from the bottom of that dropdown. To remove "Decommissioned" devices from view, select "Active" from the Filter dropdown.
+The Items List only displays items that are active in the system and does not display items with a status of "Decommissioned", so as to minimise clutter. In order to see those items, from the Filter Menu, select "All Items" from the bottom of that dropdown. To remove "Decommissioned" items from view, select "Active" from the Filter dropdown.
 
 
 
-===========
-Events List
-===========
+========
+Box List
+========
 
-In the course of its lifespan, a device will see a number of events. By definition, when a device changes status, it is considered a new event. Recording a change of device status is done in the "Add or Edit Equipment" form.
+In the course of its lifespan, a item will see a number of events. By definition, when a item changes status, it is considered a new event. Recording a change of item status is done in the "Add or Edit Item" form.
 
-This listbox displays all events for the currently selected device in the Devices List. Changing which device is selected will change the events displayed.
+This listbox displays all events for the currently selected item in the Items List. Changing which item is selected will change the events displayed.
 
 
 
@@ -456,22 +458,22 @@ Caption         Description
 ==============  =================================================
 Save            Saves the workbook 
 Reports         Displays a list of reports 
-Print List      Prints the currently-visible list of devices 
+Print List      Prints the currently-visible list of items 
 Go To Record    Goes to the record on the DevData sheet 
 Exit            Closes the form (does not perform a Save) 
 ==============  =================================================
 
 
 
-==============
-Manage Devices
-==============
+============
+Manage Items
+============
 
 ==============  ===============================================
 Caption         Description
 ==============  ===============================================
-Add New Device  Opens EditEquip form to add a new device
-Edit Device     Opens EditEquip form to edit an existing device
+Add New Item    Opens EditEquip form to add a new item
+Edit Item       Opens EditEquip form to edit an existing item
 BTS Website     Displays the BTS website in Internet Explorer
 Print [To BTS]  Prints on paper "To BTS"
 Change User     Allows logon of new user
@@ -486,16 +488,16 @@ Filter
 ==============  ===============================================
 Caption         Description
 ==============  ===============================================
-Active          Active Devices [#fstat02]_
-In Service      A Device that is currently actively in use
-Send To Repair  A Device going to repair, but not sent [#fstat03]_
-Being Repaired  A Device that has been sent to BTS for repair
-Item Retired    A Decommissioned Device
-Item Missing    A Missing Device [#fstat04]_
-Item Stored     A Stored Device [#fstat05]_
-On Loan         A loaned Device [#fstat06]_
-Returned        A loaned Device, returned to the loaner
-All Devices     View all Devices [#fstat07]_
+Active          Active Items [#fstat02]_
+In Service      A Item that is currently actively in use
+Send To Repair  A Item going to repair, but not sent [#fstat03]_
+Being Repaired  A Item that has been sent to BTS for repair
+Item Retired    A Decommissioned Item
+Item Missing    A Missing Item [#fstat04]_
+Item Stored     A Stored Item [#fstat05]_
+On Loan         A loaned Item [#fstat06]_
+Returned        A loaned Item, returned to the loaner
+All Items       View all Items [#fstat07]_
 ==============  ===============================================
 
 
@@ -524,7 +526,7 @@ The menu option objects on the form are really repurposed dropdowns, so selectin
 The Image
 =========
 
-When available, the image displayed corresponds to the currently selected device in the Device List. If no item is selected, or no picture exists for the selected item, the image is just a question mark, the default image.
+When available, the image displayed corresponds to the currently selected item in the Item List. If no item is selected, or no picture exists for the selected item, the image is just a question mark, the default image.
 
 
 
@@ -537,19 +539,19 @@ The unmarked tickbox in the lower right-hand corner of the form - to the right o
 
   .. rubric:: Additional Notes
 
-  .. [#floc01] OT (Operating), AN (Anaesthetics), PA (PACU) - synonymous with Location, the terms are used interchangeably. Note that the Owner column will not display in the Device List if the ("AllOwners") toggle is toggled off (NOT greyed out or depressed) and the dropdown next to it displays an Owner/Location.
+  .. [#floc01] OT (Operating), AN (Anaesthetics), PA (PACU) - synonymous with Location, the terms are used interchangeably. Note that the Owner column will not display in the Item List if the ("AllOwners") toggle is toggled off (NOT greyed out or depressed) and the dropdown next to it displays an Owner/Location.
 
-  .. [#fstat02] 'All active devices' means any Device that has not been decommissioned or been returned from the loaning organisation will display in the list. Not to be confused with 'All Devices' (see below [#fstat07]_). 
+  .. [#fstat02] 'All active items' means any Item that has not been decommissioned or been returned from the loaning organisation will display in the list. Not to be confused with 'All Items' (see below [#fstat07]_). 
   
-  .. [#fstat03] A Device that has been identified as needing repair, and is pending being set to BTS. Use only if the item has not yet been sent. This allows the user to designate items to be repaired, taking them offline, but leaving the actual sending to BTS process for a more convenient time.
+  .. [#fstat03] A Item that has been identified as needing repair, and is pending being set to BTS. Use only if the item has not yet been sent. This allows the user to designate items to be repaired, taking them offline, but leaving the actual sending to BTS process for a more convenient time.
   
-  .. [#fstat04] A Device for which a record exists in Home Inventory, but has not been sighted in some time.
+  .. [#fstat04] A Item for which a record exists in Home Inventory, but has not been sighted in some time.
   
-  .. [#fstat05] A Device that is in a fully operational state but has been stored as it is not currently needed.
+  .. [#fstat05] A Item that is in a fully operational state but has been stored as it is not currently needed.
   
-  .. [#fstat06] A Device on loan from another organisation or department. All devices must have an SAID number. If the device is on loan from another hospital in the organisation (say, loaned from loan by QEII), the SAID will identify the unit's original location on the BTS website.
+  .. [#fstat06] A Item on loan from another organisation or department. All items must have an Item number. If the item is on loan from another hospital in the organisation (say, loaned from loan by QEII), the Item will identify the unit's original location on the BTS website.
   
-  .. [#fstat07] Selecting 'All Devices' turns on viewing all Devices in the Device List, including decommissioned and loaned devices. Viewing all devices is turned off by default. Search will find the device by SAID (asset number), regardless of this setting.
+  .. [#fstat07] Selecting 'All Items' turns on viewing all Items in the Item List, including decommissioned and loaned items. Viewing all items is turned off by default. Search will find the item by Item (asset number), regardless of this setting.
 
 
 
@@ -558,87 +560,87 @@ The unmarked tickbox in the lower right-hand corner of the form - to the right o
 
 
 
-**************************
-Edit Equipment Information
-**************************
+*********************
+Edit Item Information
+*********************
 
-'Edit Equipment' is launched from the 'Equipment Management' form. The information on this form and the controls will reflect the context in which the form was launched. For example, if the user launches 'Edit Equipment' as a result of following the prompt to add new equipment when searching for an item not currently in the database, the SAID number will be the one typed into the search field. If the form was launched from the New Equipment button, no SAID number will be in the SAID field: the user will need to enter this or the record cannot be saved. 
+'Edit Item' is launched from the 'Item Management' form. The information on this form and the controls will reflect the context in which the form was launched. For example, if the user launches 'Edit Item' as a result of following the prompt to add new equipment when searching for an item not currently in the database, the Item number will be the one typed into the search field. If the form was launched from the New Item button, no Item number will be in the Item field: the user will need to enter this or the record cannot be saved. 
 
 
 
 
 .. _ee-devname:
 
-====================
-Device Name and Type
-====================
+==================
+Item Name and Type
+==================
 
-The name of a device
+The name of a item
 
-The main devices list-box displays a list of devices that are part of a device type group. The device types are in a special field called a "dropdown", characterised by a textbox with a down-pointing arrow at the right of the field: 
+The main items list-box displays a list of items that are part of a item type group. The item types are in a special field called a "dropdown", characterised by a textbox with a down-pointing arrow at the right of the field: 
 
 .. image:: https://www.tightbytes.com/images/pubimages/appmgr/am03DevType.png
 
-Selecting from this dropdown will display all devices in the list below that correspond to the selected device type. Some of the possible types include: "Antithrombotic", "Gases-Medical", "Medication Delivery", "Patient Warming", "Monitoring" and so on.
+Selecting from this dropdown will display all items in the list below that correspond to the selected item type. Some of the possible types include: "Antithrombotic", "Gases-Medical", "Medication Delivery", "Patient Warming", "Monitoring" and so on.
 
 
 
 
 .. _ee-devstatus:
 
-=============
-Device Status
-=============
+===========
+Item Status
+===========
 
-The list of devices in the upper listbox show all devices that correspond to the device type selected in the Device Type dropdown:
+The list of items in the upper listbox show all items that correspond to the item type selected in the Item Type dropdown:
 
 .. image:: https://www.tightbytes.com/images/pubimages/appmgr/am03DevListAll.png
 
-The currently selected device is the one that is highlighted. The device's SAID number will display in the Search field.
+The currently selected item is the one that is highlighted. The item's Item number will display in the Search field.
 
 The columns in that listbox are:
 
 ==================  ================================================================
  Column              Description
 ==================  ================================================================
-SAID                 A unique identifying number issued by Materiel Mgmt
+Item                 A unique identifying number issued by Materiel Mgmt
 Owner                Location: OT (Operating), AN (Anaesthetics), PA (PACU) - this 
                      column will not display if the [Owner Toggle] is toggled off   
                      and the dropdown next to it displays an Owner 
 Status               "In Service", "To Repairs", etc
-Description          The name of the device, as recognised by Mat Mgmt and BTS
+Description          The name of the item, as recognised by Mat Mgmt and BTS
 Test-n-Tag Date      Date of last BTS Test-n-Tag
-Located-Sighted      Where (or if) the device was last sighted
+Located-Sighted      Where (or if) the item was last sighted
 ==================  ================================================================
 
-The last two columns were added to help identify devices that had not been sighted - and thus may have disappeared from the unit or have through some other means gone missing. This is necessary for yearly inventory purposes.
+The last two columns were added to help identify items that had not been sighted - and thus may have disappeared from the unit or have through some other means gone missing. This is necessary for yearly inventory purposes.
 
-As the user can see from the above table, one of the approaches to managing devices is by assigning the device a status. No device is infinitely useful: thus, it has a lifespan and a status within that lifespan: i.e., "In Service", "To Repairs", "Decommissioned" or "On Loan", for example.
+As the user can see from the above table, one of the approaches to managing items is by assigning the item a status. No item is infinitely useful: thus, it has a lifespan and a status within that lifespan: i.e., "In Service", "To Repairs", "Decommissioned" or "On Loan", for example.
 
-The second column - Owner - refers more to the most likely location the device would occupy. The view can be modified to list only devices with a specific owner. Above the list, to the right of the Device Type dropdown, is a Owner toggle button. When set to [On] (the default setting):
+The second column - Owner - refers more to the most likely location the item would occupy. The view can be modified to list only items with a specific owner. Above the list, to the right of the Item Type dropdown, is a Owner toggle button. When set to [On] (the default setting):
 
 .. image:: https://www.tightbytes.com/images/pubimages/appmgr/am03AllTglOn.png
 
-the list view will display all devices of type. [All] toggled [On] also clears and disables the Owners dropdown. Toggling [All] to [Off]:
+the list view will display all items of type. [All] toggled [On] also clears and disables the Owners dropdown. Toggling [All] to [Off]:
 
 .. image:: https://www.tightbytes.com/images/pubimages/appmgr/am03AllTglOff.png
 
-enables the Owners dropdown: the user can then select which owner's devices to display in the Devices List (and the owner column will no longer display in the list).
+enables the Owners dropdown: the user can then select which owner's items to display in the Items List (and the owner column will no longer display in the list).
 
-The Devices List only displays devices that are active in the system and does not display devices with a status of "Decommissioned", so as to minimise clutter. In order to see those devices, from the Filter Menu, select "All Devices" from the bottom of that dropdown. To remove "Decommissioned" devices from view, select "Active" from the Filter dropdown.
+The Items List only displays items that are active in the system and does not display items with a status of "Decommissioned", so as to minimise clutter. In order to see those items, from the Filter Menu, select "All Items" from the bottom of that dropdown. To remove "Decommissioned" items from view, select "Active" from the Filter dropdown.
 
 
 
 
 .. _ee-devinfo:
 
-==============
-Device Details
-==============
+============
+Item Details
+============
 
-In the course of its lifespan, a device will see a number of events. By definition, when a device changes status, it is considered a new event. Recording a change of device status is done in the "Add or Edit Equipment" form.
+In the course of its lifespan, a item will see a number of events. By definition, when a item changes status, it is considered a new event. Recording a change of item status is done in the "Add or Edit Item" form.
 
-This listbox displays all events for the currently selected device in the Devices List. Changing which device is selected will change the events displayed.
+This listbox displays all events for the currently selected item in the Items List. Changing which item is selected will change the events displayed.
 
 
 
@@ -662,7 +664,7 @@ Save - The Save button saves the event information to the EventData worksheet. I
 .. image:: https://www.tightbytes.com/images/pubimages/appmgr/am02dBtnNew.png
     
    
-ShowSheet - The Show Sheet button closes the Manage Equipment form, makes the DEVDATA worksheet the active worksheet and drops the user onto the record in that sheet corresponding to the last selected device in the Device List.
+ShowSheet - The Show Sheet button closes the Manage Item form, makes the DEVDATA worksheet the active worksheet and drops the user onto the record in that sheet corresponding to the last selected item in the Item List.
    
 .. image:: https://www.tightbytes.com/images/pubimages/appmgr/am02dBtnShow.png
     
@@ -672,7 +674,7 @@ Help - Opens Firefox and displays this document.
 .. image:: https://www.tightbytes.com/images/pubimages/appmgr/am02dBtnHelp.png
     
    
-Close - Closes the Manage Equipment form. Note: this button and Menu --> File --> Exit are the only methods to close this form. Clicking on the red 'X' in the upper right-hand corner of the form does nothing. This is by design.
+Close - Closes the Manage Item form. Note: this button and Menu --> File --> Exit are the only methods to close this form. Clicking on the red 'X' in the upper right-hand corner of the form does nothing. This is by design.
 
 .. image:: https://www.tightbytes.com/images/pubimages/appmgr/am02dBtnClose.png
 
@@ -680,15 +682,15 @@ Close - Closes the Manage Equipment form. Note: this button and Menu --> File --
 
 .. _ee-image:
 
-============
-Device Image
-============
+==========
+Item Image
+==========
 
-When available, the image displayed corresponds to the currently selected device in the Device List. If no item is selected, or no picture exists for the selected item, the image is just a question mark, the default image.
+When available, the image displayed corresponds to the currently selected item in the Item List. If no item is selected, or no picture exists for the selected item, the image is just a question mark, the default image.
 
-Unlike on the Equipment Management form, the image is clickable, allowing the user to select a new image from the images folder. [#putimg01]_
+Unlike on the Item Management form, the image is clickable, allowing the user to select a new image from the images folder. [#putimg01]_
 
-If a record for the device exists in the workbook, it will appear in ...
+If a record for the item exists in the workbook, it will appear in ...
 
 
 
@@ -698,7 +700,7 @@ Footnotes
 
   .. rubric:: Additional notes
 
-  .. [#putimg01] Getting images to display for the given device involves either taking an image with a mobile phone or camera and publishing that or finding an image on the web. Note that web-based images may be subject to copyright, so proceed with caution.
+  .. [#putimg01] Getting images to display for the given item involves either taking an image with a mobile phone or camera and publishing that or finding an image on the web. Note that web-based images may be subject to copyright, so proceed with caution.
 
 
 
@@ -716,38 +718,38 @@ Main Worksheets
 
 Home Inventory is an Excel workbook comprised of several worksheets. 
 
-Two worksheets - DEVDATA and EVENTDATA - contain the actual data. The records are "linked" by a column (field) both sheets share: the SAID number field. In DEVDATA, the SAID Number field contains unique records: each SAID represents one device. While in EVENTDATA, the SAID references the device in DEVDATA, each record is a unique event for the devices, so as a device can see numerous events, the SAID number will not be a unique identifier for records in EVENTDATA.
+Two worksheets - DEVDATA and EVENTDATA - contain the actual data. The records are "linked" by a column (field) both sheets share: the Item number field. In DEVDATA, the Item Number field contains unique records: each Item represents one item. While in EVENTDATA, the Item references the item in DEVDATA, each record is a unique event for the items, so as a item can see numerous events, the Item number will not be a unique identifier for records in EVENTDATA.
 
 Unfortunately, Excel doesn't support SQL, so there is no way to set up data relationships as a proper relational database would, with key fields and SELECT statements, so relationships have to be done somewhat manually with code. Which mostly works, albeit much slower.
 
 
 
-===========
-Device Data
-===========
+=========
+Item Data
+=========
 
-DEVDATA contains the device information originally supplied by Materiel Management. For that reason, several of the columns have little relevance for our purposes. The columns that are used by the program are the one in italics in the following list:
+DEVDATA contains the item information originally supplied by Materiel Management. For that reason, several of the columns have little relevance for our purposes. The columns that are used by the program are the one in italics in the following list:
 
 ================== ======================================================================
       Name                                      Description
 ================== ======================================================================
-SAIDNumber         *Unique asset number assigned by BTS/Mat Management*
-DeviceDescription  *Name of the device*
+ItemNumber         *Unique asset number assigned by BTS/Mat Management*
+ItemDescription    *Name of the item*
 Status             *In Service, To Repairs, Decommissioned, Stored, etc*
-Location           *Most recent site device was sighted*
+Location           *Most recent site item was sighted*
 Owner              Used if on loan from another site
 Asset              --Not used--
 FuncLocation       --Not used--
 FuncLocationDesc   --Not used--
 CostCentre         Unreliable, not used
 Manufacturer       *All caps for consistency*
-ModelNumber        *Inconsistently documented in BTS, helps identify device*
-SerialNumber       *Inconsistently documented in BTS, helps identify device*
+ModelNumber        *Inconsistently documented in BTS, helps identify item*
+SerialNumber       *Inconsistently documented in BTS, helps identify item*
 AcquisitionDate    --Not used--
 AcquisitionValue   --Not used--
 CurrentAge         --Not used--
-EquipmentType      *Classification, used to group devices within the software*
-DeviceImage        *Optional: image of the device, displayed in the software*
+ItemType           *Classification, used to group items within the software*
+ItemImage          *Optional: image of the item, displayed in the software*
 Test-n-Tag         *Date of last BTS Test-and-Tag*
 ================== ======================================================================
 
@@ -757,15 +759,15 @@ Test-n-Tag         *Date of last BTS Test-and-Tag*
 Event Data
 ==========
 
-EVENTDATA contains event  information for devices, i.e., things that have happened, like "put into service", "sent to repair", "retired" and so forth. This data is original to Home Inventory and is not readily available through other information outlets, such as Materiel Management or BTS. Thus, all columns have total relevance. The columns are:
+EVENTDATA contains event  information for items, i.e., things that have happened, like "put into service", "sent to repair", "retired" and so forth. This data is original to Home Inventory and is not readily available through other information outlets, such as Materiel Management or BTS. Thus, all columns have total relevance. The columns are:
 
 ============= ==========================================================================
       Name                                      Description
 ============= ==========================================================================
-SAIDNumber    Number assigned by BTS/Mat Management, also the key field
+ItemNumber    Number assigned by BTS/Mat Management, also the key field
 EditedBy      Name of the person preforming the documentation
 ChangedDate   Event date
-DatedStatus   Device status on this date: In Service, To Repairs, Decommissioned, etc.
+DatedStatus   Item status on this date: In Service, To Repairs, Decommissioned, etc.
 Notes         Details regarding that status
 EventID       Unique identifier for that event
 ============= ==========================================================================
@@ -791,19 +793,14 @@ Images      Image list and location - its future is in doubt
 
 In short, the worksheets each serve a purpose. The main ones are summarised below:
 
-   **Top**: -- serves only one purpose: to launch the form.
+   **BoxData**: -- A set of records of non-consummable (assetable) Items
 
-   **DevData**: -- A set of records of non-consummable (assetable) Devices
+   **ItemData**: -- Records of events for those items.
 
-   **EventData**: -- Records of events for those devices.
+   **Meta**: -- contains names and associated abbreviations. It also stores cross-session information, like last opened item record and details, last user and whether the form is running in debug mode or not.
 
-   **Meta**: -- contains names and associated abbreviations. It also stores cross-session information, like last opened device record and details, last user and whether the form is running in debug mode or not.
+   **Images**: -- URL for image of item 
 
-   **Contacts**: -- is a vendor Rolodex of sorts.
-
-   **ByType**: -- is a report sheet. Useful for collecting test-n-tag information.
-
-   **DevHist**: -- is a report sheet, listing of a specific item type, with a history for each device.
 
 
 
