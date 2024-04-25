@@ -6,13 +6,11 @@ Home Inventory
 Introduction
 ************
 
-This Excel-based utility is designed to catalogue items and other sundry items in the home environment. It replaces trying to find stuff when you need it by looking through boxes. The data lives on two main sheets: "BOXDATA" and "ITEMDATA".
+This Excel-based utility is designed to catalogue items and other sundry items in the home environment. It replaces trying to find stuff when you need it by looking through boxes. The data lives on one main sheet: "ITEMDATA".
 
-Everything is entered as a record on the ITEMDATA spreadsheet in the workbook. The information for item will include: an 8-digit item number, the name of the item, which box the item is in (if applicable), as well as a link to an online image. Additionally, the record will contain the item's status: Active, Repair, Restock, and so forth.
+Everything is entered as a record on the ITEMDATA spreadsheet in the workbook. The information for item will include: an 8-digit item number, the name of the item, which box the item is in (if applicable), as well as be linked to an image. Additionally, the record will contain the item's status: Active, Repair, Restock, and so forth.
 
-Items in Home Inventory are identified by a number assigned to that item by the organisation: the Item number. Searches for a item in the spreadsheet use this unique number.
-
-Home Inventory tracks items throughout their "life" in the organisation as a series of events. An event can be "In Service", "To Repair", "Decommissioned", "On Loan" and "Returned", and "Stored". Item repair information is recorded  to help build a history on a item.
+Items in Home Inventory are identified by a number assigned to that item by the organisation: the Item number. Searches for a item in the spreadsheet use this unique number, but searches can also be done on the name and other parameters.
 
 Home Inventory extends Excel through forms and code written in Visual-Basic for Applications, which is part of the Microsoft Excel product.
 
@@ -22,11 +20,14 @@ Home Inventory extends Excel through forms and code written in Visual-Basic for 
 How to Best Use Help
 ====================
 
-While Home Inventory's use seems pretty straight-forward to the developer, he realises that his approach to managing a home inventory may seem less than intuitive to other inhabitants of the solar system: hence, this Help file.
+While Home Inventory's use seems pretty straight-forward to the developer, the realisation that any approach to managing a home inventory may seem less than intuitive to other inhabitants of the solar system: hence, this Help file.
 
 As Microsoft in their wisdom didn't see fit to include a means to provide a very flexible custom help documentation system without installing questionable add-ons  an approach had to be come up with that would provide the information quickly and accurately. Therefore, I have chosen HTML (think: Web) pages to display documentation.
 
 When the user clicks on the Help button, that user will be offered this help file to read. It is suggested to make use of the Quick Search feature *first*, entering the name of the button or control on the form the user has a question about. Help should display a number of context-specific help options.
+
+
+**TO REVIEW**
 
 For example, let's say help is needed on the purpose of this button:
 
@@ -43,6 +44,8 @@ Make a note of this name, click on the Help button, and then, in the Quick Searc
 ...type the name of the button or control and press <Enter>.
 
 If Quick Search does not produce any results, please notify the developer.
+
+**END REVIEW**
 
 
 
@@ -172,9 +175,9 @@ Getting Started
 System Requirements
 ===================
 
-"Home Inventory" (also known as AssetMgr) is an Excel workbook using Visual Basic for Applications (a scripting language) to facilitate managing home inventory items, as well as cataloguing the location in the home of sundry items. As the software was written in and runs in Excel, there is no installation required except for Excel itself, which the organisation has provided. This workbook can be opened anywhere Excel is available.
+"Home Inventory" is an Excel workbook using Visual Basic for Applications (a scripting language) to facilitate managing home inventory items, as well as cataloguing the location in the home of pretty much everything the is inedible. As the software was written in and runs in Excel, there is no installation required except for Excel itself. This workbook can be opened anywhere Excel is available.
 
-The software makes use of images to help the user identify the item. These are stored online. Help can be opened as long as the user opens Home Inventory on a computer connected to the Internet.
+The software makes use of images to help the user identify items. Help can be opened as long as the user opens "Home Inventory" on a computer connected to the Internet.
 
 
 
@@ -182,7 +185,7 @@ The software makes use of images to help the user identify the item. These are s
 Starting Home Inventory
 =======================
 
-When you open Home Inventory the first time in Excel, security settings on your computer may issue a security warning:
+When you open "Home Inventory" the first time in Excel, security settings on your computer may issue a security warning:
    
    *Some active content has been disabled. Click for more details.*
    
@@ -190,15 +193,14 @@ Next to this warning is a button labelled [Enable Content]. This button must be 
 
 You should see a new Menu tab in the Excel Menu: Home Inventory. This tab contains a number of buttons:
 
-    * ByBoxes
-    * ByItems
+    * View Inventory
     
 and:
 
-    * About Home Inventory
+    * About
     * Help
 
-Click on the button will bring up the relevant form, or this Help file in your browser.
+Clicking on the button will bring up the relevant form, or this Help file in your browser.
 
 
 
@@ -208,7 +210,6 @@ Click on the button will bring up the relevant form, or this Help file in your b
 
 
 
-Updating Home Inventory
 
 ***************************
 Item Management - The Forms
@@ -218,15 +219,13 @@ Item Management - The Forms
 Overview - What Home Inventory Does
 ===================================
 
-Home Inventory was developed to manage all the information you need - location, desciption and pictures - of items in your home.
-
-Ideally, items are entered into Home Inventory when they are purchased. The item will be assigned an 8-digit number: the Item Number.
+Home Inventory was developed to manage all the information you need - location, desciption and pictures - to keep track of items in your home. Ideally, items are entered into Home Inventory when they are purchased. The item will be assigned an 8-digit number: the Item Number.
 
 .. image:: https://www.tightbytes.com/images/pubimages/appmgr/am01AssetStkr.png
 
-These numbers identify items in Home Inventory, as Item numbers are unique for each item. When conducting a search for a specific item in Home Inventory, use this number.
+These numbers identify items in Home Inventory, as Item numbers are unique for each item. When conducting a search for a specific item in Home Inventory, you can use this number, although other means to search are available.
 
-When a new item arrives, an envelope containing item information should accompany the item, containing crucial information for identification and trouble-shooting purposes. It is strongly suggested to take the time to enter key information such as model and serial number into Home Inventory as that information will help identify items further down their service life.  Item-specific information such as name, model number and serial number need to be recorded on the DevData worksheet.
+**Updating Home Inventory--Reviewing**
 
 To enter the item into Home Inventoryis a simple process: conduct a search for the item by Item by entering the Item into the search field and pressing <ENTER>. As a new item will have an Item that does not exist in DEVDATA, the user simply follows the prompts to enter item information and save the information into a new record.
 
