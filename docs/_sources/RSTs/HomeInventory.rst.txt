@@ -6,13 +6,18 @@ Home Inventory
 Introduction
 ************
 
-This Excel-based utility is designed to catalogue items and other sundry items in the home environment. It replaces trying to find stuff when you need it by looking through boxes. The data lives on one main sheet: "ITEMDATA".
+Home Inventory ia an Excel-based utility, designed to catalogue items in boxes you keedp in the shed or your office, as well as things like furniture and electronics. In short: everything you own in your home. It is designed to help you find stuff you need without having to look through a lot of boxes. The information lives on a main sheet: "Items", and a secondary sheet: "Boxes".
 
-Everything is entered as a record on the ITEMDATA spreadsheet in the workbook. The information for item will include: an 8-digit item number, the name of the item, which box the item is in (if applicable), as well as be linked to an image. Additionally, the record will contain the item's status: Active, Repair, Restock, and so forth.
+Home Inventory extends Excel through forms and code written in Visual-Basic for Applications, which is part of the Microsoft Excel product - it includes a form for easy cataloguing of your items.
 
-Items in Home Inventory are identified by a number assigned to that item by the organisation: the Item number. Searches for a item in the spreadsheet use this unique number, but searches can also be done on the name and other parameters.
+Items are recorded on the Items worksheet. The information for items includes:
 
-Home Inventory extends Excel through forms and code written in Visual-Basic for Applications, which is part of the Microsoft Excel product.
+    * an 8-digit item number
+    * the name of the item
+    * the box the item is in (if applicable)
+    * the name of the picture of the item
+    * the item's status: Sighted, Repairing, Restock, and so forth.
+
 
 
 
@@ -84,7 +89,7 @@ Dropdown - Also known as a "Combobox", it appears to be a textbox with a down-ar
 .. image:: https://www.tightbytes.com/images/pubimages/appmgr/amEditFDropB.png
 
    
-Tickbox - acts as a toggle to turn a condition on or off. *Example shown: the New Event tickbox on the "Add or Edit Item" form.*
+Tickbox - acts as a toggle to turn a condition on or off. *Example shown: the New Item tickbox on the "Add or Edit Item" form.*
 
 .. image:: https://www.tightbytes.com/images/pubimages/appmgr/amEditFTickB.png
     
@@ -94,7 +99,7 @@ Radio button - used to select one - and only one - of several choices. *Example 
 .. image:: https://www.tightbytes.com/images/pubimages/appmgr/amEditFRdioB.png
     
    
-Toggle - turns a condition on or off. *In this example from the "Item Management" form, the "All" toggle, when depressed, displays items from all locations whilst displaying a Location column in the Items List, with the Location/Owner dropdown empty and disabled. When the "All" toggle is not depressed, the Owner/Location dropdown is enabled, and a Location displays in the dropdown, with all items of that type and in that location displaying in the Items listbox.*  
+Toggle - turns a condition on or off. *In this example from the "Item Management" form, the "All" toggle, when depressed, displays items from all locations whilst displaying a Location column in the Items List, with the Location dropdown empty and disabled. When the "All" toggle is not depressed, the Location dropdown is enabled, and a Location displays in the dropdown, with all items of that type and in that location displaying in the Items listbox.*  
    
 .. image:: https://www.tightbytes.com/images/pubimages/appmgr/amMainFToggle.png
     
@@ -123,11 +128,13 @@ History, Caveats and How to Contact Me
 History
 =======
 
-Home Inventory was developed as a response to my accepting the Item Manager portfolio in PACU. When I asked what means were provided to track items, I was given a ledger with paper in it: lined paper.
+Home Inventory is a tweaked (read: improved) version of an Asset Manager tool I developed as a response to my accepting the Item Manager portfolio in PACU at QEII Hospital near Brisbane, Queensland. At the time, when I asked what means were provided to track items, I was given a ledger with paper in it: lined paper.
 
 Um, no. That wasn't going to work.
 
-Right about the time I was given that portfolio, inventory on non-consumables was being conducted in our Operating Theatres and PACU/Day Surgery. As that inventory process was nearing completion, I asked those responsible whether I could obtain a copy of the data. I was sent a CSV file, which I imported into Excel. This provided the framework for the main DEVDATA worksheet.
+Right about the time I was given that portfolio, inventory on non-consumables was being conducted in our Operating Theatres and PACU/Day Surgery by the Materiel Management Department. As that inventory process was nearing completion, I asked those responsible whether I could obtain a copy of the data. I was sent a CSV file, which I imported into Excel. This provided the framework for the main Items worksheet.
+
+The overall structure of this workbook is based on that tool. However, much if not most of the code has been optimised and simplified to suit a Home Inventory purpose.
 
 
 
@@ -139,7 +146,7 @@ Home Inventory is all contained in a stand-alone Excel workbook. Although I woul
 
 VBA itself is not the stellar language to write solutions in one could hope or wish for, and my knowledge on how it works is a bit less than comprehensive. Therefore, someone following me in trying to maintain/fix the code may wonder at some of the kludges I employed. As I learn more on how to do this all properly, the kludges are being removed/replaced, but whilst I try to be as professional as I could developing this tool, Home Inventory is pedestrian code at best.
 
-The developer of this tool makes no claims as to the accuracy or reliability of the data, nor are there any guarantees, implied or real, as to the document's fitness for purpose. I.e., it is presented and delivered as-is. Please keep this in mind when using this tool. I ask the user's patience with the code... it is what it is.
+The developer of this product makes no claims as to the accuracy or reliability of the code, nor are there any guarantees, implied or real, as to the document's fitness for purpose. I.e., it is presented and delivered as-is. Please keep this in mind when using this product. I ask the user's patience with the code... it is what it is.
 
 The code supporting the use of this document - i.e., the "software" - is FOSS: free/open-source software. Please see the :ref:`am-licence` page for the licence agreement associated with this software.
 
@@ -191,9 +198,9 @@ When you open "Home Inventory" the first time in Excel, security settings on you
    
 Next to this warning is a button labelled [Enable Content]. This button must be clicked in order for the forms to appear and the macros (scripts) to work. When you click this button, another security warning may appear, asking whether you wish to make this file a Trusted Document. If you wish to no longer see these warnings, click [Yes]. If you wish to disable warnings for networked files (any files that live on the server instead of on the PC you're working on), tick the box in the lower left-hand corner.
 
-You should see a new Menu tab in the Excel Menu: Home Inventory. This tab contains a number of buttons:
+You should see a new Menu tab in the Excel Menu near the Help menu tab: Home Inventory. This tab contains a number of buttons:
 
-    * View Inventory
+    * Show Inventory
     
 and:
 
@@ -227,16 +234,12 @@ These numbers identify items in Home Inventory, as Item numbers are unique for e
 
 **Updating Home Inventory--Reviewing**
 
-To enter the item into Home Inventoryis a simple process: conduct a search for the item by Item by entering the Item into the search field and pressing <ENTER>. As a new item will have an Item that does not exist in DEVDATA, the user simply follows the prompts to enter item information and save the information into a new record.
+To enter the item into Home Inventory is a simple process: conduct a search for the item by Item by entering the Item name into the search field and pressing <ENTER>. If the item does not exist, the user simply follows the prompts to enter new item information and save the information into a new record.
 
 
 ==================
 The Main Item Form
 ==================
-
-The main form in Home Inventory is launched via the large button on the "Top" sheet.
-
-.. image:: https://www.tightbytes.com/images/pubimages/appmgr/am01Launch02.png
 
 The main Home Inventory form...
 
@@ -262,7 +265,7 @@ has six basic areas:
 The Edit Item Form
 ==================
 
-This form is launched by the main form when adding new equipment to the DevData sheet or editing existing equipment information on the DevData and EventData sheets. It can be launched from two buttons - to either add or edit a item - from the :ref:`hi-buttonbar` or from the "Manage Items" section of :ref:`hi-menu`.
+This form is launched by the main form when adding new equipment to the Items sheet or editing existing item information on the Items and Boxes sheets. It can be launched from two buttons - to either add or edit a item - from the :ref:`hi-buttonbar` or from the "Manage Items" section of :ref:`hi-menu`.
 
 The Edit Item form has five basic areas:
 
@@ -308,7 +311,7 @@ Note:
 
    *the entry into the search field is checked for non-numeric (alphabet letters) characters, and then that the entry is eight digits long. If the entry does not meet those conditions, the user is notified; otherwise, a search is performed.*
 
-If the number was entered correctly and the corresponding Item exists in the DevData worksheet (a record exists for the item in DEVDATA) in Home Inventory, the software will find it and display it in a list of similar items. If the Item number cannot not be found, the user will be prompted via a dialogue to add a new item using the entered Item number:
+If the number was entered correctly and the corresponding Item exists in the Items worksheet (a record exists for the item in Items) in Home Inventory, the software will find it and display it in a list of similar items. If the Item number cannot not be found, the user will be prompted via a dialogue to add a new item using the entered Item number:
 
 .. image:: https://www.tightbytes.com/images/pubimages/appmgr/am02AddNew.png
 
@@ -329,11 +332,11 @@ Next to the Search field and button is a dropdown box with a list of item types.
 
 Select from this dropdown to display items that correspond to the selected item type in the list below. Possible types include: 
 
-   * Antithrombotic
-   * Gases-Medical
-   * Medication Delivery
-   * Patient Warming
-   * Monitoring
+   * Audio
+   * Appliance
+   * Maintenance
+   * PC
+   * Sundry
 
 and so on.
 
@@ -361,12 +364,7 @@ EditItem - The Edit Item button opens the Edit Item form to allow entry of infor
 .. image:: https://www.tightbytes.com/images/pubimages/appmgr/am02dBtnEdit.png
     
    
-Reports - The Reports button opens the Reports dialogue offering a number of item reports which print on to the BYTYPE (by type) and DEVHIST (item history) worksheets.
-   
-.. image:: https://www.tightbytes.com/images/pubimages/appmgr/am02dBtnRpts.png
-    
-   
-ShowSheet - The Show Sheet button closes the Manage Item form, makes the DEVDATA worksheet the active worksheet and drops the user onto the record in that sheet corresponding to the last selected item in the Item List.
+ShowSheet - The Show Sheet button closes the Manage Item form, makes the Items worksheet the active worksheet and drops the user onto the record in that sheet corresponding to the last selected item in the Item List.
    
 .. image:: https://www.tightbytes.com/images/pubimages/appmgr/am02dBtnShow.png
     
@@ -453,7 +451,7 @@ Caption         Description
 Save            Saves the workbook 
 Reports         Displays a list of reports 
 Print List      Prints the currently-visible list of items 
-Go To Record    Goes to the record on the DevData sheet 
+Go To Record    Goes to the record on the Items sheet 
 Exit            Closes the form (does not perform a Save) 
 ==============  =================================================
 
@@ -658,7 +656,7 @@ Save - The Save button saves the event information to the EventData worksheet. I
 .. image:: https://www.tightbytes.com/images/pubimages/appmgr/am02dBtnNew.png
     
    
-ShowSheet - The Show Sheet button closes the Manage Item form, makes the DEVDATA worksheet the active worksheet and drops the user onto the record in that sheet corresponding to the last selected item in the Item List.
+ShowSheet - The Show Sheet button closes the Manage Item form, makes the Items worksheet the active worksheet and drops the user onto the record in that sheet corresponding to the last selected item in the Item List.
    
 .. image:: https://www.tightbytes.com/images/pubimages/appmgr/am02dBtnShow.png
     
@@ -712,7 +710,7 @@ Main Worksheets
 
 Home Inventory is an Excel workbook comprised of several worksheets. 
 
-Two worksheets - DEVDATA and EVENTDATA - contain the actual data. The records are "linked" by a column (field) both sheets share: the Item number field. In DEVDATA, the Item Number field contains unique records: each Item represents one item. While in EVENTDATA, the Item references the item in DEVDATA, each record is a unique event for the items, so as a item can see numerous events, the Item number will not be a unique identifier for records in EVENTDATA.
+Two worksheets - Items and EVENTDATA - contain the actual data. The records are "linked" by a column (field) both sheets share: the Item number field. In Items, the Item Number field contains unique records: each Item represents one item. While in EVENTDATA, the Item references the item in Items, each record is a unique event for the items, so as a item can see numerous events, the Item number will not be a unique identifier for records in EVENTDATA.
 
 Unfortunately, Excel doesn't support SQL, so there is no way to set up data relationships as a proper relational database would, with key fields and SELECT statements, so relationships have to be done somewhat manually with code. Which mostly works, albeit much slower.
 
@@ -722,7 +720,7 @@ Unfortunately, Excel doesn't support SQL, so there is no way to set up data rela
 Item Data
 =========
 
-DEVDATA contains the item information originally supplied by Materiel Management. For that reason, several of the columns have little relevance for our purposes. The columns that are used by the program are the one in italics in the following list:
+Items contains the item information originally supplied by Materiel Management. For that reason, several of the columns have little relevance for our purposes. The columns that are used by the program are the one in italics in the following list:
 
 ================== ======================================================================
       Name                                      Description
