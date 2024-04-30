@@ -6,7 +6,7 @@ Home Inventory
 Introduction
 ************
 
-Home Inventory ia an Excel-based utility, designed to catalogue items in boxes you keedp in the shed or your office, as well as things like furniture and electronics. In short: everything you own in your home. It is designed to help you find stuff you need without having to look through a lot of boxes. The information lives on a main sheet: "Items", and a secondary sheet: "Boxes".
+Home Inventory ia an Excel-based utility, designed to catalogue items in boxes you keep in the shed or your office, as well as things like your furniture, appliance or electronics. In short: you can catalogue everything in your home. It is designed to help you find stuff you need without having to look through a lot of boxes. The information lives on a main sheet: "Items", and a secondary sheet: "Boxes".
 
 Home Inventory extends Excel through forms and code written in Visual-Basic for Applications, which is part of the Microsoft Excel product - it includes a form for easy cataloguing of your items.
 
@@ -169,7 +169,7 @@ To find the most current documentation - a (probably) updated version of this do
 
 
 
-
+Updating text for Home Inventory
 
 
 
