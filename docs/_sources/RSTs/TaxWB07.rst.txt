@@ -263,6 +263,14 @@ Otherwise, RunScript calls the routine refered to  ("s568", "s259" or "s972", fo
 
 The MsgBox() function actually calls (launches) the script (e.g., 'CreditcardCodes()'). 
 
+Also avaliable...
+
+.. code-block:: bash
+
+  mkdir MyDir
+
+
+
 
 
 ===================
