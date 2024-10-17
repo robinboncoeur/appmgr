@@ -72,8 +72,6 @@
 </li>
 <li class="toctree-l3"><a class="reference internal" href="#worksheet-udfs">Worksheet UDFs</a><ul>
 <li class="toctree-l4"><a class="reference internal" href="#calcabs">calcABS</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#sparseallwords-cellnumber">sParseAllWords({cellnumber})</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#creditcard-payments">Creditcard Payments</a></li>
 </ul>
 </li>
 </ul>
@@ -81,7 +79,6 @@
 <li class="toctree-l2"><a class="reference internal" href="#additional-notes">Additional Notes</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="#creating-categories-for-transactions">Creating Categories for Transactions</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#quick-note-on-savings">Quick Note on Savings</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#additional-discussion">Additional Discussion</a></li>
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="#licence-agreement">Licence Agreement</a><ul>
@@ -147,10 +144,10 @@
 <p>This workbook assumes three accounts: Checking, Savings and CreditCard. The process is as follows:</p>
 <blockquote>
 <div><ol class="arabic simple">
-<li><p>The data to populate the worksheets is downloaded from the banking institution’s website and saved in a CSV file, typically saved to a folder labelled with the download date. The files are named using the last 3 digits of the account name. Depending on how frequently this is done, one may wish to download 60, 90 or even 120 days worth of data to ensure no transactions are missed.</p></li>
-<li><p>Each CSV file is opened in (imported into) Excel. <strong>In the ribbon, select Data, then Get Data -&gt; From Text/CSV</strong>. After sorting the data from oldest to newest, the transactions that have not yet been copied to the corresponding worksheet are copied over using Copy Special: Values. Once the data has been copied, the CSV sheet can be deleted as well as the connection that was formed by Excel, as it is no longer needed.</p></li>
-<li><p>So that the original bank-generated transaction information is preserved, the transaction list is cut from column C and pasted into Column G.</p></li>
-<li><p>The transactions are identified - if they exist in the AList worksheet. <strong>Transaction Tracker -&gt; Click on the menu item</strong> respresenting that account, i.e., Checking, CredCard or Savings.</p></li>
+<li><p>The data to populate the worksheets is downloaded from the banking institution’s website via CSV file, ideally saved into a folder labelled with the download date. The files could be named using the last 3 digits of the account name. Depending on how frequently this is done, one may wish to download 60, 90 or even 120 days worth of data to ensure no transactions are missed.</p></li>
+<li><p><strong>In the ribbon, select Data, then Get Data -&gt; From Text/CSV</strong>. Each CSV file is opened in (imported into) Excel. After sorting the data from oldest to newest, the transactions that have not yet been copied to the corresponding worksheet are copied over using Copy Special: Values. Once the data has been copied, the CSV sheet can be deleted as well as the connection that was formed by Excel, as it is no longer needed.</p></li>
+<li><p>In order to preserve the original bank-generated transaction information, the transaction list is cut from column C and pasted into Column G.</p></li>
+<li><p><strong>Transaction Tracker -&gt; Click on the menu item respresenting that account, i.e., Checking, CredCard or Savings</strong>. The transactions are identified - if they exist in the AList worksheet.</p></li>
 <li><p>Any transactions not in the AList worksheet needs to be categorised by selecting the uncategorised Transaction Target fields and copying that list to the bottom of the AList column A. The approach to take is outlined here: <a class="reference internal" href="#tw9-txncategoring"><span class="std std-ref">Creating Categories for Transactions</span></a>. Once the new entries have been given categories, step 4 above is repeated, until all transactions have been categorised.</p></li>
 </ol>
 </div></blockquote>
@@ -174,7 +171,7 @@
 <hr style="height:2px;border-width:0;color:gray;background-color:gray"></section>
 <section id="credit-card">
 <h3>Credit Card<a class="headerlink" href="#credit-card" title="Permalink to this heading"></a></h3>
-<p>The <strong>568CreditCard</strong> Worksheet is a date-sorted, formatted Credit Card transaction worksheet. The data is imported from a CSV file downloaded from the bank’s website. The data is sorted oldest to newest and the most recent records are appended to the existing data.</p>
+<p>The <strong>CreditCard</strong> Worksheet is a date-sorted, formatted Credit Card transaction worksheet. The data is imported from a CSV file, sorted oldest to newest and the most recent records are appended to the existing data.</p>
 <p>The columns are as follows:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">A</span> <span class="o">-</span> <span class="n">Date</span>
 <span class="n">B</span> <span class="o">-</span> <span class="n">Transaction</span> <span class="n">Amount</span>
@@ -185,9 +182,9 @@
 <span class="n">G</span> <span class="o">-</span> <span class="n">Original</span> <span class="n">Transaction</span> <span class="n">Target</span> <span class="p">(</span><span class="n">moved</span> <span class="kn">from</span> <span class="nn">column</span> <span class="n">C</span><span class="p">)</span>
 </pre></div>
 </div>
-<p>After the transactions have been appended and the PAYMENT transaction categorised (see <a class="reference internal" href="#tw9-ccpayment"><span class="std std-ref">Creditcard Payments</span></a>), the Code Assignment script is invoked:</p>
+<p>After the transactions have been appended, the Code Assignment script is invoked:</p>
 <img alt="https://www.tightbytes.com/images/pubimages/appmgr/tw08Codes04.png" src="https://www.tightbytes.com/images/pubimages/appmgr/tw08Codes04.png" />
-<p>The script compares transaction target entries to those in the ‘AList’ worksheet, leaving the Code column [D] blank if it doesn’t find that tranaction. With time, ninety percent or more transactions are going to be with the same vendors, so it’s a simple matter of updating ‘AList’ and re-running the script.</p>
+<p>The script compares transaction target entries to those in the ‘AList’ worksheet, leaving the Description column [C] and Code column [D] blank if it doesn’t find that tranaction. With time, ninety percent or more transactions are going to be with the same vendors, so it’s a simple matter of updating ‘AList’ and re-running the script.</p>
 <p>For example, this is a typical credit card transaction listing:</p>
 <table class="docutils align-default">
 <thead>
@@ -270,7 +267,7 @@
 <hr style="height:2px;border-width:0;color:gray;background-color:gray"></section>
 <section id="savings">
 <h3>Savings<a class="headerlink" href="#savings" title="Permalink to this heading"></a></h3>
-<p>The <strong>972Savings</strong> Worksheet is a date-sorted, formatted Savings Account transaction worksheet. The data is imported from a CSV file downloaded from the bank’s website. The data is sorted oldest to newest and the most recent records are appended to the existing data. Prior to processing, the Transaction Target entries are moved to column G.</p>
+<p>The <strong>Savings</strong> Worksheet is a date-sorted, formatted Savings Account transaction worksheet. The data is imported from a CSV file, sorted oldest to newest and the most recent records are appended to the existing data. Prior to processing, the Transaction Target entries are moved to column G.</p>
 <p>The columns are as follows:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">A</span> <span class="o">-</span> <span class="n">Date</span>
 <span class="n">B</span> <span class="o">-</span> <span class="n">Transaction</span> <span class="n">Amount</span>
@@ -292,12 +289,12 @@
 <section id="budget-worksheets">
 <h3>Budget Worksheets<a class="headerlink" href="#budget-worksheets" title="Permalink to this heading"></a></h3>
 <p>See <a class="reference internal" href="#tw9-calcabs"><span class="std std-ref">calcABS</span></a> for an insight as to how quarterly budget sheets are maintained.</p>
-<hr style="height:4px;border-width:0;color:gray;background-color:gray"><hr style="height:8px;border-width:0;color:gray;background-color:blue"></section>
+<hr style="height:8px;border-width:0;color:gray;background-color:blue"></section>
 </section>
 <section id="the-code-running-the-workbook">
-<span id="tw9-corefcn"></span><h2>The Code Running The Workbook<a class="headerlink" href="#the-code-running-the-workbook" title="Permalink to this heading"></a></h2>
+<h2>The Code Running The Workbook<a class="headerlink" href="#the-code-running-the-workbook" title="Permalink to this heading"></a></h2>
 <section id="processing-code">
-<h3>Processing Code<a class="headerlink" href="#processing-code" title="Permalink to this heading"></a></h3>
+<span id="tw9-corefcn"></span><h3>Processing Code<a class="headerlink" href="#processing-code" title="Permalink to this heading"></a></h3>
 <p>For those who might be curious as to how certain features work, I offer the following as a bit of a discussion on my approach to solving these little problems. My code is quite basic and of course open-source: anyone can modify it to suit their needs. To view the code, press [Alt] [F11] and you will be presented with the Visual Basic Editor. These user-defined functions and sub-routines - <em>including those used on the worksheets</em> - are stored in the MdlT modules page.</p>
 <p>Some of this code is still under development, and doesn’t quite do as I’d like it to.</p>
 <section id="ribbon-code">
@@ -464,39 +461,6 @@
 </div>
 <p>and changing range values manually; again, another frequent source of error.</p>
 <p>The last word for this process remains to be said.</p>
-</section>
-<section id="sparseallwords-cellnumber">
-<h4>sParseAllWords({cellnumber})<a class="headerlink" href="#sparseallwords-cellnumber" title="Permalink to this heading"></a></h4>
-<p>Note, <em>as of 2024-10-17, this function has been rendered obsolete, and will be removed from the code</em>.</p>
-<div class="highlight-vbnet notranslate"><div class="highlight"><pre><span></span><span class="k">Public</span><span class="w"> </span><span class="k">Function</span><span class="w"> </span><span class="nf">ParseAllWords</span><span class="p">(</span><span class="n">StringToParse</span><span class="w"> </span><span class="ow">As</span><span class="w"> </span><span class="kt">String</span><span class="p">)</span><span class="w"> </span><span class="ow">As</span><span class="w"> </span><span class="kt">String</span>
-<span class="w">        </span><span class="k">If</span><span class="w"> </span><span class="n">Len</span><span class="p">(</span><span class="n">StringToParse</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="n">vbNullString</span><span class="p">)</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="w"> </span><span class="k">Then</span><span class="w"> </span><span class="k">Exit</span><span class="w"> </span><span class="k">Function</span>
-
-<span class="w">        </span><span class="nf">If</span><span class="w"> </span><span class="n">Trim</span><span class="p">(</span><span class="n">InStr</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="n">StringToParse</span><span class="p">,</span><span class="w"> </span><span class="s">&quot; &quot;</span><span class="p">))</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="w"> </span><span class="k">Then</span>
-<span class="w">                </span><span class="n">ParseAllWords</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">Trim</span><span class="p">(</span><span class="n">StringToParse</span><span class="p">)</span>
-<span class="w">        </span><span class="k">Else</span>
-<span class="w">                </span><span class="n">ParseAllWords</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">WorksheetFunction</span><span class="p">.</span><span class="n">Trim</span><span class="p">(</span><span class="n">StringToParse</span><span class="p">)</span>
-<span class="w">        </span><span class="k">End</span><span class="w"> </span><span class="k">If</span>
-<span class="k">End</span><span class="w"> </span><span class="k">Function</span>
-</pre></div>
-</div>
-</section>
-<section id="creditcard-payments">
-<span id="tw9-ccpayment"></span><h4>Creditcard Payments<a class="headerlink" href="#creditcard-payments" title="Permalink to this heading"></a></h4>
-<p>For the credit card, the app looks at the entry for “PAYMENT” - the only fairly ambiguous entries in this worksheet - and then checks the two-character code after the word “THANKYOU”… this code is entered prior to processing:</p>
-<table class="docutils align-default">
-<thead>
-<tr class="row-odd"><th class="head" colspan="2"><p>Codes and Suffixes</p></th>
-</tr>
-</thead>
-<tbody>
-<tr class="row-even"><td><p>cc</p></td>
-<td><p>Creditcard repayment</p></td>
-</tr>
-<tr class="row-odd"><td><p>ri</p></td>
-<td><p>Reimbursement for purchase</p></td>
-</tr>
-</tbody>
-</table>
 <hr style="height:8px;border-width:0;color:gray;background-color:blue"></section>
 </section>
 </section>
@@ -582,11 +546,7 @@
 </pre></div>
 </div>
 <p>To identify the transaction prior to running the script to assign categories involves opening GMail, PayPal and Ebay -&gt; Purchase History. Once it has been established who the payment went to and what for, I prefix the entry with a cryptic identifier (e.g., SSD) followed by a ‘-’, then include a categorised entry in the AList worksheet.</p>
-</section>
-<section id="additional-discussion">
-<h3>Additional Discussion<a class="headerlink" href="#additional-discussion" title="Permalink to this heading"></a></h3>
-<p>With v.8, I had endeavoured to create a somewhat cross-platform utility. I do most of what I do on a computer on a Macbook Pro (2015), running Windows 10 in a VM. Development of anything VBA occurs in this VM environment. However, I do need to get to the data at times on the Mac, so I load these workbooks in Excel 2016 for Mac. Help is a challenge: I can’t invoke a browser within Excel Mac like I can in Windows (to my knowledge, anyway). So, I just display the link in a MsgBox and have the Mac user copy/paste that into the browser.</p>
-<p>Yeah, a kludge, but it works.</p>
+<p>Strongly recommended is to <strong>NOT</strong> let too much time pass between workbook updating. Here in Oz, some vendor’s entries on your bank statement are like: “ZQRT &amp; Sons PTY LTD”. Doing a google search reveals nothing more than they exist - you have no idea what name they are trading under.</p>
 <hr style="height:8px;border-width:0;color:gray;background-color:blue"></section>
 </section>
 <section id="licence-agreement">

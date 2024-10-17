@@ -52,13 +52,13 @@ Process Overview
 
 This workbook assumes three accounts: Checking, Savings and CreditCard. The process is as follows:
 
-  1. The data to populate the worksheets is downloaded from the banking institution's website and saved in a CSV file, typically saved to a folder labelled with the download date. The files are named using the last 3 digits of the account name. Depending on how frequently this is done, one may wish to download 60, 90 or even 120 days worth of data to ensure no transactions are missed.
+  1. The data to populate the worksheets is downloaded from the banking institution's website via CSV file, ideally saved into a folder labelled with the download date. The files could be named using the last 3 digits of the account name. Depending on how frequently this is done, one may wish to download 60, 90 or even 120 days worth of data to ensure no transactions are missed.
 
-  2. Each CSV file is opened in (imported into) Excel. **In the ribbon, select Data, then Get Data -> From Text/CSV**. After sorting the data from oldest to newest, the transactions that have not yet been copied to the corresponding worksheet are copied over using Copy Special: Values. Once the data has been copied, the CSV sheet can be deleted as well as the connection that was formed by Excel, as it is no longer needed.
+  2. **In the ribbon, select Data, then Get Data -> From Text/CSV**. Each CSV file is opened in (imported into) Excel. After sorting the data from oldest to newest, the transactions that have not yet been copied to the corresponding worksheet are copied over using Copy Special: Values. Once the data has been copied, the CSV sheet can be deleted as well as the connection that was formed by Excel, as it is no longer needed.
 
-  3. So that the original bank-generated transaction information is preserved, the transaction list is cut from column C and pasted into Column G.
+  3. In order to preserve the original bank-generated transaction information, the transaction list is cut from column C and pasted into Column G.
   
-  4. The transactions are identified - if they exist in the AList worksheet. **Transaction Tracker -> Click on the menu item** respresenting that account, i.e., Checking, CredCard or Savings.
+  4. **Transaction Tracker -> Click on the menu item respresenting that account, i.e., Checking, CredCard or Savings**. The transactions are identified - if they exist in the AList worksheet.  
   
   5. Any transactions not in the AList worksheet needs to be categorised by selecting the uncategorised Transaction Target fields and copying that list to the bottom of the AList column A. The approach to take is outlined here: :REF:`tw9-txncategoring`. Once the new entries have been given categories, step 4 above is repeated, until all transactions have been categorised.
   
@@ -89,8 +89,6 @@ After the transactions have been copied, the Code Assignment script is invoked:
 
 At the end of processing, the user can determine if any entries lack a transaction code at the top-right of the worksheet, in column I. If the number is greater than 0, one or more transaction still needs categorising. During processing, the transaction target - column C - is given a standard description, leaving either a 'FROM' or 'TO' prefix if appropriate, and the appropriate code is entered for the transaction in column D.
 
-
-
 .. raw:: html
    
    <hr style="height:2px;border-width:0;color:gray;background-color:gray">
@@ -100,7 +98,7 @@ At the end of processing, the user can determine if any entries lack a transacti
 Credit Card
 ===========
 
-The **568CreditCard** Worksheet is a date-sorted, formatted Credit Card transaction worksheet. The data is imported from a CSV file downloaded from the bank's website. The data is sorted oldest to newest and the most recent records are appended to the existing data.
+The **CreditCard** Worksheet is a date-sorted, formatted Credit Card transaction worksheet. The data is imported from a CSV file, sorted oldest to newest and the most recent records are appended to the existing data.
 
 The columns are as follows::
 
@@ -112,11 +110,11 @@ The columns are as follows::
     F - (Empty)
     G - Original Transaction Target (moved from column C)
 
-After the transactions have been appended and the PAYMENT transaction categorised (see :REF:`tw9-ccpayment`), the Code Assignment script is invoked:
+After the transactions have been appended, the Code Assignment script is invoked:
 
 .. image:: https://www.tightbytes.com/images/pubimages/appmgr/tw08Codes04.png
 
-The script compares transaction target entries to those in the 'AList' worksheet, leaving the Code column [D] blank if it doesn't find that tranaction. With time, ninety percent or more transactions are going to be with the same vendors, so it's a simple matter of updating 'AList' and re-running the script.
+The script compares transaction target entries to those in the 'AList' worksheet, leaving the Description column [C] and Code column [D] blank if it doesn't find that tranaction. With time, ninety percent or more transactions are going to be with the same vendors, so it's a simple matter of updating 'AList' and re-running the script.
 
 For example, this is a typical credit card transaction listing:
 
@@ -165,7 +163,7 @@ At the end of processing, the user can determine if any entries lack a transacti
 Savings
 =======
 
-The **972Savings** Worksheet is a date-sorted, formatted Savings Account transaction worksheet. The data is imported from a CSV file downloaded from the bank's website. The data is sorted oldest to newest and the most recent records are appended to the existing data. Prior to processing, the Transaction Target entries are moved to column G.
+The **Savings** Worksheet is a date-sorted, formatted Savings Account transaction worksheet. The data is imported from a CSV file, sorted oldest to newest and the most recent records are appended to the existing data. Prior to processing, the Transaction Target entries are moved to column G.
 
 The columns are as follows::
 
@@ -188,9 +186,9 @@ At the end of processing, the user can determine if any entries lack a transacti
    <hr style="height:2px;border-width:0;color:gray;background-color:gray">
 
 
-=======
+=====
 AList
-=======
+=====
 
 The **AList** Worksheet is sorted by Column C - the codes column - and then column A - the transactions column. All worksheets that do processing refer to this sheet in order to assign codes to transactions.
 
@@ -207,20 +205,17 @@ See :REF:`tw9-calcABS` for an insight as to how quarterly budget sheets are main
 
 .. raw:: html
    
-   <hr style="height:4px;border-width:0;color:gray;background-color:gray">
-
-
-.. raw:: html
-   
    <hr style="height:8px;border-width:0;color:gray;background-color:blue">
 
 
 
-.. _tw9-corefcn:
+
 
 *****************************
 The Code Running The Workbook
 *****************************
+
+.. _tw9-corefcn:
 
 ===============
 Processing Code
@@ -418,42 +413,6 @@ and changing range values manually; again, another frequent source of error.
 
 The last word for this process remains to be said.
 
-
-----------------------------
-sParseAllWords({cellnumber})
-----------------------------
-
-Note, *as of 2024-10-17, this function has been rendered obsolete, and will be removed from the code*.
-
-.. code-block:: vbnet
-
-	Public Function ParseAllWords(StringToParse As String) As String
-		If Len(StringToParse & vbNullString) = 0 Then Exit Function
-
-		If Trim(InStr(1, StringToParse, " ")) = 0 Then
-			ParseAllWords = Trim(StringToParse)
-		Else
-			ParseAllWords = WorksheetFunction.Trim(StringToParse)
-		End If
-	End Function
-
-
-.. _tw9-ccpayment:
-
--------------------
-Creditcard Payments
--------------------
-
-For the credit card, the app looks at the entry for "PAYMENT" - the only fairly ambiguous entries in this worksheet - and then checks the two-character code after the word "THANKYOU"... this code is entered prior to processing:
-
-+-------------------------------------+
-| Codes and Suffixes                  |
-+======+==============================+
-|  cc  |  Creditcard repayment        |
-+------+------------------------------+
-|  ri  |  Reimbursement for purchase  |
-+------+------------------------------+
-
 .. raw:: html
    
    <hr style="height:8px;border-width:0;color:gray;background-color:blue">
@@ -523,14 +482,7 @@ Many transactions happen through Paypal. These are extremely difficult to keep t
 
 To identify the transaction prior to running the script to assign categories involves opening GMail, PayPal and Ebay -> Purchase History. Once it has been established who the payment went to and what for, I prefix the entry with a cryptic identifier (e.g., SSD) followed by a '-', then include a categorised entry in the AList worksheet.
 
-
-=====================
-Additional Discussion
-=====================
-
-With v.8, I had endeavoured to create a somewhat cross-platform utility. I do most of what I do on a computer on a Macbook Pro (2015), running Windows 10 in a VM. Development of anything VBA occurs in this VM environment. However, I do need to get to the data at times on the Mac, so I load these workbooks in Excel 2016 for Mac. Help is a challenge: I can't invoke a browser within Excel Mac like I can in Windows (to my knowledge, anyway). So, I just display the link in a MsgBox and have the Mac user copy/paste that into the browser.
-
-Yeah, a kludge, but it works.
+Strongly recommended is to **NOT** let too much time pass between workbook updating. Here in Oz, some vendor's entries on your bank statement are like: "ZQRT & Sons PTY LTD". Doing a google search reveals nothing more than they exist - you have no idea what name they are trading under.
 
 .. raw:: html
    
