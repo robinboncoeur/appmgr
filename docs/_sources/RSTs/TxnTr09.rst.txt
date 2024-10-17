@@ -41,7 +41,7 @@ The analysis worksheets are **TSy** and the **Overview** sheets. There are also 
 
 The data worksheets - **Checking**, **CreditCard** and **Savings** - use a naming convention of the last three digits of the account and the description. The data is categorised through codes, seen in this example:
 
-.. image:: https://www.tightbytes.com/images/pubimages/appmgr/tw01Codes01.png
+.. image:: https://www.tightbytes.com/images/pubimages/appmgr/tt09Codes01.png
 
 
 
@@ -85,7 +85,7 @@ The columns are as follows::
 
 After the transactions have been copied, the Code Assignment script is invoked:
 
-.. image:: https://www.tightbytes.com/images/pubimages/appmgr/tw08Codes06.png
+.. image:: https://www.tightbytes.com/images/pubimages/appmgr/tt09Codes06.png
 
 At the end of processing, the user can determine if any entries lack a transaction code at the top-right of the worksheet, in column I. If the number is greater than 0, one or more transaction still needs categorising. During processing, the transaction target - column C - is given a standard description, leaving either a 'FROM' or 'TO' prefix if appropriate, and the appropriate code is entered for the transaction in column D.
 
@@ -112,7 +112,7 @@ The columns are as follows::
 
 After the transactions have been appended, the Code Assignment script is invoked:
 
-.. image:: https://www.tightbytes.com/images/pubimages/appmgr/tw08Codes04.png
+.. image:: https://www.tightbytes.com/images/pubimages/appmgr/tt09Codes04.png
 
 The script compares transaction target entries to those in the 'AList' worksheet, leaving the Description column [C] and Code column [D] blank if it doesn't find that tranaction. With time, ninety percent or more transactions are going to be with the same vendors, so it's a simple matter of updating 'AList' and re-running the script.
 
@@ -177,7 +177,7 @@ The columns are as follows::
 
 After the transactions have been copied, the Code Assignment script is invoked:
 
-.. image:: https://www.tightbytes.com/images/pubimages/appmgr/tw08Codes06.png
+.. image:: https://www.tightbytes.com/images/pubimages/appmgr/tt09Codes06.png
 
 At the end of processing, the user can determine if any entries lack a transaction code at the top-right of the worksheet, in column I. If the number is greater than 0, one or more transaction still needs categorising.
 
@@ -234,7 +234,7 @@ The **Transaction Tracker** ribbon buttons code is stored under the **MSO Ribbon
 
 Using the menu option "CredCard" in the ribbon under **Transaction Tracker** as an example:
 
-.. image:: https://www.tightbytes.com/images/pubimages/appmgr/tw08Codes04.png
+.. image:: https://www.tightbytes.com/images/pubimages/appmgr/tt09Codes04.png
 
 invokes the _Click() event for that button, which runs the following code:
 
@@ -303,6 +303,52 @@ Process that Worksheet
 
 In the **PROCESS WORKSHEETS** section is the main code that assigns category codes to transactions. Generally, the contents of the AList worksheet are dumped into an array, and then column G of the target worksheet gets stepped through row by row. If a code already exists for that transaction in column D, that row is ignored. If the code is missing, then the entry in column G is run through the array until it finds a match, using the magic of regular expressions. Columns C and D are then given the values of that array item, and the process is repeated for the next row.
 
+Here's the code:
+
+.. code-block:: vbnet
+
+  Public Function TxnCodes(nShtN As Integer)
+    Dim regEx As regExp
+    Set regEx = New regExp
+
+    Dim sREPattern As String
+    With regEx
+      .Global = True
+      .IgnoreCase = True
+      sREPattern = "a-zA-Z"
+    End With
+
+    Dim rWorksheetRng As Range
+    Dim sEntry As String, sCode As String
+    Dim i As Integer, j As Integer
+
+    Set rWorksheetRng = Worksheets(nShtN).Range("A1").CurrentRegion
+
+    Dim arREList() As Variant
+    arREList = shAList.Range("A1").CurrentRegion
+
+    For j = 1 To UBound(arREList)
+      regEx.Pattern = arREList(j, 1)
+
+      For i = 2 To rWorksheetRng.Rows.Count
+
+        If Len(rWorksheetRng(i, "D").Value) > 0 Then
+          ' Do nothing
+        Else
+          sEntry = UCase(rWorksheetRng(i, "G").Value)
+          If regEx.Test(sEntry) = True Then
+            ' Debug.Print i, sEntry
+
+            Worksheets(nShtN).Range("C" & Trim(Str(i))).Value = arREList(j, 2)
+            Worksheets(nShtN).Range("D" & Trim(Str(i))).Value = arREList(j, 3)
+
+          End If
+        End If
+      Next i
+    Next j
+
+  End Function
+
 Note: the author realises that this is certainly not the fastest or most efficient mechanism ever designed, but it works, and it's reasonably fast. The use of an array and regular expressions ensures some improvements on processing speed.*
 
 
@@ -321,11 +367,11 @@ Note: *the use of SUMIF() has been largely replaced with a User-Defined Function
 
 Using the CreditCard worksheet as an example, the codes in column D are assigned via Excel's Visual-Basic for Applications functions (VBA), copied from the **AList Worksheet** which has an instance of the Transaction Target and an associated code:
 
-.. image:: https://www.tightbytes.com/images/pubimages/appmgr/tw01Codes03.png
+.. image:: https://www.tightbytes.com/images/pubimages/appmgr/tt09Codes03.png
 
 The script that copies the Transaction Code from the AList sheet to the **CreditCard** sheet is run from **Transaction Tracker** menu option under the main menu, i.e., the 'Ribbon':
 
-.. image:: https://www.tightbytes.com/images/pubimages/appmgr/tw08Codes04.png
+.. image:: https://www.tightbytes.com/images/pubimages/appmgr/tt09Codes04.png
 
 Much of the workbook's data is managed in this fashion.
 

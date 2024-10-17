@@ -137,7 +137,7 @@
 <p>The workbook is made up of several worksheets, some of which contain links to other worksheets. The main account worksheets (data) represent a checking account, creditcard account, and a personal savings account.</p>
 <p>The analysis worksheets are <strong>TSy</strong> and the <strong>Overview</strong> sheets. There are also sheets of analysis by Quarter (Qtr1-4 and Bud-Q1-4).</p>
 <p>The data worksheets - <strong>Checking</strong>, <strong>CreditCard</strong> and <strong>Savings</strong> - use a naming convention of the last three digits of the account and the description. The data is categorised through codes, seen in this example:</p>
-<img alt="https://www.tightbytes.com/images/pubimages/appmgr/tw01Codes01.png" src="https://www.tightbytes.com/images/pubimages/appmgr/tw01Codes01.png" />
+<img alt="https://www.tightbytes.com/images/pubimages/appmgr/tt09Codes01.png" src="https://www.tightbytes.com/images/pubimages/appmgr/tt09Codes01.png" />
 </section>
 <section id="process-overview">
 <h3>Process Overview<a class="headerlink" href="#process-overview" title="Permalink to this heading"></a></h3>
@@ -166,7 +166,7 @@
 </pre></div>
 </div>
 <p>After the transactions have been copied, the Code Assignment script is invoked:</p>
-<img alt="https://www.tightbytes.com/images/pubimages/appmgr/tw08Codes06.png" src="https://www.tightbytes.com/images/pubimages/appmgr/tw08Codes06.png" />
+<img alt="https://www.tightbytes.com/images/pubimages/appmgr/tt09Codes06.png" src="https://www.tightbytes.com/images/pubimages/appmgr/tt09Codes06.png" />
 <p>At the end of processing, the user can determine if any entries lack a transaction code at the top-right of the worksheet, in column I. If the number is greater than 0, one or more transaction still needs categorising. During processing, the transaction target - column C - is given a standard description, leaving either a ‘FROM’ or ‘TO’ prefix if appropriate, and the appropriate code is entered for the transaction in column D.</p>
 <hr style="height:2px;border-width:0;color:gray;background-color:gray"></section>
 <section id="credit-card">
@@ -183,7 +183,7 @@
 </pre></div>
 </div>
 <p>After the transactions have been appended, the Code Assignment script is invoked:</p>
-<img alt="https://www.tightbytes.com/images/pubimages/appmgr/tw08Codes04.png" src="https://www.tightbytes.com/images/pubimages/appmgr/tw08Codes04.png" />
+<img alt="https://www.tightbytes.com/images/pubimages/appmgr/tt09Codes04.png" src="https://www.tightbytes.com/images/pubimages/appmgr/tt09Codes04.png" />
 <p>The script compares transaction target entries to those in the ‘AList’ worksheet, leaving the Description column [C] and Code column [D] blank if it doesn’t find that tranaction. With time, ninety percent or more transactions are going to be with the same vendors, so it’s a simple matter of updating ‘AList’ and re-running the script.</p>
 <p>For example, this is a typical credit card transaction listing:</p>
 <table class="docutils align-default">
@@ -279,7 +279,7 @@
 </pre></div>
 </div>
 <p>After the transactions have been copied, the Code Assignment script is invoked:</p>
-<img alt="https://www.tightbytes.com/images/pubimages/appmgr/tw08Codes06.png" src="https://www.tightbytes.com/images/pubimages/appmgr/tw08Codes06.png" />
+<img alt="https://www.tightbytes.com/images/pubimages/appmgr/tt09Codes06.png" src="https://www.tightbytes.com/images/pubimages/appmgr/tt09Codes06.png" />
 <p>At the end of processing, the user can determine if any entries lack a transaction code at the top-right of the worksheet, in column I. If the number is greater than 0, one or more transaction still needs categorising.</p>
 <hr style="height:2px;border-width:0;color:gray;background-color:gray"></section>
 <section id="alist">
@@ -301,7 +301,7 @@
 <h4>Ribbon Code<a class="headerlink" href="#ribbon-code" title="Permalink to this heading"></a></h4>
 <p>The <strong>Transaction Tracker</strong> ribbon buttons code is stored under the <strong>MSO Ribbon Code</strong> and <strong>Callback Buttons Actions</strong> sections. When the button is clicked in the <strong>Transaction Tracker</strong> menu item, it first fires the corresponding code in the <strong>MSO Ribbon Code</strong> section, which calls the <strong>RunScript</strong> sub-routine with the value it receives from the <strong>CheckFilterMode</strong> function as well as the sheet number the button is associated with - 1: Checking / 2: Creditcard / 3: Savings - sent as parameters (arguments).  The <strong>CheckFilterMode</strong> function checks that no filters have been set on that sheet. The code cannot run against a sheet with filters set. If no filters have been set, then the <strong>TxnCodes</strong> function is called, with the sheet number sent as parameter.</p>
 <p>Using the menu option “CredCard” in the ribbon under <strong>Transaction Tracker</strong> as an example:</p>
-<img alt="https://www.tightbytes.com/images/pubimages/appmgr/tw08Codes04.png" src="https://www.tightbytes.com/images/pubimages/appmgr/tw08Codes04.png" />
+<img alt="https://www.tightbytes.com/images/pubimages/appmgr/tt09Codes04.png" src="https://www.tightbytes.com/images/pubimages/appmgr/tt09Codes04.png" />
 <p>invokes the _Click() event for that button, which runs the following code:</p>
 <div class="highlight-vbnet notranslate"><div class="highlight"><pre><span></span><span class="c">&#39;Callback for btnCreditCard onAction</span>
 <span class="k">Sub</span><span class="w"> </span><span class="nf">btnCC_Click</span><span class="p">(</span><span class="n">control</span><span class="w"> </span><span class="ow">As</span><span class="w"> </span><span class="n">IRibbonControl</span><span class="p">)</span>
@@ -355,6 +355,50 @@
 <section id="process-that-worksheet">
 <h4>Process that Worksheet<a class="headerlink" href="#process-that-worksheet" title="Permalink to this heading"></a></h4>
 <p>In the <strong>PROCESS WORKSHEETS</strong> section is the main code that assigns category codes to transactions. Generally, the contents of the AList worksheet are dumped into an array, and then column G of the target worksheet gets stepped through row by row. If a code already exists for that transaction in column D, that row is ignored. If the code is missing, then the entry in column G is run through the array until it finds a match, using the magic of regular expressions. Columns C and D are then given the values of that array item, and the process is repeated for the next row.</p>
+<p>Here’s the code:</p>
+<div class="highlight-vbnet notranslate"><div class="highlight"><pre><span></span><span class="k">Public</span><span class="w"> </span><span class="k">Function</span><span class="w"> </span><span class="nf">TxnCodes</span><span class="p">(</span><span class="n">nShtN</span><span class="w"> </span><span class="ow">As</span><span class="w"> </span><span class="kt">Integer</span><span class="p">)</span>
+<span class="w">  </span><span class="k">Dim</span><span class="w"> </span><span class="n">regEx</span><span class="w"> </span><span class="ow">As</span><span class="w"> </span><span class="n">regExp</span>
+<span class="w">  </span><span class="k">Set</span><span class="w"> </span><span class="n">regEx</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">New</span><span class="w"> </span><span class="n">regExp</span>
+
+<span class="w">  </span><span class="k">Dim</span><span class="w"> </span><span class="n">sREPattern</span><span class="w"> </span><span class="ow">As</span><span class="w"> </span><span class="kt">String</span>
+<span class="w">  </span><span class="k">With</span><span class="w"> </span><span class="n">regEx</span>
+<span class="w">    </span><span class="p">.</span><span class="n">Global</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">True</span>
+<span class="w">    </span><span class="p">.</span><span class="n">IgnoreCase</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">True</span>
+<span class="w">    </span><span class="n">sREPattern</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;a-zA-Z&quot;</span>
+<span class="w">  </span><span class="k">End</span><span class="w"> </span><span class="k">With</span>
+
+<span class="w">  </span><span class="k">Dim</span><span class="w"> </span><span class="n">rWorksheetRng</span><span class="w"> </span><span class="ow">As</span><span class="w"> </span><span class="n">Range</span>
+<span class="w">  </span><span class="k">Dim</span><span class="w"> </span><span class="n">sEntry</span><span class="w"> </span><span class="ow">As</span><span class="w"> </span><span class="kt">String</span><span class="p">,</span><span class="w"> </span><span class="n">sCode</span><span class="w"> </span><span class="ow">As</span><span class="w"> </span><span class="kt">String</span>
+<span class="w">  </span><span class="k">Dim</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="ow">As</span><span class="w"> </span><span class="kt">Integer</span><span class="p">,</span><span class="w"> </span><span class="n">j</span><span class="w"> </span><span class="ow">As</span><span class="w"> </span><span class="kt">Integer</span>
+
+<span class="w">  </span><span class="k">Set</span><span class="w"> </span><span class="n">rWorksheetRng</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">Worksheets</span><span class="p">(</span><span class="n">nShtN</span><span class="p">).</span><span class="n">Range</span><span class="p">(</span><span class="s">&quot;A1&quot;</span><span class="p">).</span><span class="n">CurrentRegion</span>
+
+<span class="w">  </span><span class="k">Dim</span><span class="w"> </span><span class="n">arREList</span><span class="p">()</span><span class="w"> </span><span class="ow">As</span><span class="w"> </span><span class="kt">Variant</span>
+<span class="w">  </span><span class="n">arREList</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">shAList</span><span class="p">.</span><span class="n">Range</span><span class="p">(</span><span class="s">&quot;A1&quot;</span><span class="p">).</span><span class="n">CurrentRegion</span>
+
+<span class="w">  </span><span class="k">For</span><span class="w"> </span><span class="n">j</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">1</span><span class="w"> </span><span class="k">To</span><span class="w"> </span><span class="n">UBound</span><span class="p">(</span><span class="n">arREList</span><span class="p">)</span>
+<span class="w">    </span><span class="n">regEx</span><span class="p">.</span><span class="n">Pattern</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">arREList</span><span class="p">(</span><span class="n">j</span><span class="p">,</span><span class="w"> </span><span class="mi">1</span><span class="p">)</span>
+
+<span class="w">    </span><span class="k">For</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">2</span><span class="w"> </span><span class="k">To</span><span class="w"> </span><span class="n">rWorksheetRng</span><span class="p">.</span><span class="n">Rows</span><span class="p">.</span><span class="n">Count</span>
+
+<span class="w">      </span><span class="k">If</span><span class="w"> </span><span class="n">Len</span><span class="p">(</span><span class="n">rWorksheetRng</span><span class="p">(</span><span class="n">i</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;D&quot;</span><span class="p">).</span><span class="n">Value</span><span class="p">)</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="mi">0</span><span class="w"> </span><span class="k">Then</span>
+<span class="w">        </span><span class="c">&#39; Do nothing</span>
+<span class="w">      </span><span class="k">Else</span>
+<span class="w">        </span><span class="n">sEntry</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">UCase</span><span class="p">(</span><span class="n">rWorksheetRng</span><span class="p">(</span><span class="n">i</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;G&quot;</span><span class="p">).</span><span class="n">Value</span><span class="p">)</span>
+<span class="w">        </span><span class="k">If</span><span class="w"> </span><span class="n">regEx</span><span class="p">.</span><span class="n">Test</span><span class="p">(</span><span class="n">sEntry</span><span class="p">)</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">True</span><span class="w"> </span><span class="k">Then</span>
+<span class="w">          </span><span class="c">&#39; Debug.Print i, sEntry</span>
+
+<span class="w">          </span><span class="n">Worksheets</span><span class="p">(</span><span class="n">nShtN</span><span class="p">).</span><span class="n">Range</span><span class="p">(</span><span class="s">&quot;C&quot;</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="n">Trim</span><span class="p">(</span><span class="n">Str</span><span class="p">(</span><span class="n">i</span><span class="p">))).</span><span class="n">Value</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">arREList</span><span class="p">(</span><span class="n">j</span><span class="p">,</span><span class="w"> </span><span class="mi">2</span><span class="p">)</span>
+<span class="w">          </span><span class="n">Worksheets</span><span class="p">(</span><span class="n">nShtN</span><span class="p">).</span><span class="n">Range</span><span class="p">(</span><span class="s">&quot;D&quot;</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="n">Trim</span><span class="p">(</span><span class="n">Str</span><span class="p">(</span><span class="n">i</span><span class="p">))).</span><span class="n">Value</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">arREList</span><span class="p">(</span><span class="n">j</span><span class="p">,</span><span class="w"> </span><span class="mi">3</span><span class="p">)</span>
+
+<span class="w">        </span><span class="k">End</span><span class="w"> </span><span class="k">If</span>
+<span class="w">      </span><span class="k">End</span><span class="w"> </span><span class="k">If</span>
+<span class="w">    </span><span class="k">Next</span><span class="w"> </span><span class="n">i</span>
+<span class="w">  </span><span class="k">Next</span><span class="w"> </span><span class="n">j</span>
+
+<span class="k">End</span><span class="w"> </span><span class="k">Function</span>
+</pre></div>
+</div>
 <p>Note: the author realises that this is certainly not the fastest or most efficient mechanism ever designed, but it works, and it’s reasonably fast. The use of an array and regular expressions ensures some improvements on processing speed.*</p>
 </section>
 </section>
@@ -366,9 +410,9 @@
 </div>
 <p>Note: <em>the use of SUMIF() has been largely replaced with a User-Defined Function (UDF) called calcABS(), particularly on the Budget worksheets. See</em> <a class="reference internal" href="#tw9-calcabs"><span class="std std-ref">calcABS</span></a> <em>for how this works</em>.</p>
 <p>Using the CreditCard worksheet as an example, the codes in column D are assigned via Excel’s Visual-Basic for Applications functions (VBA), copied from the <strong>AList Worksheet</strong> which has an instance of the Transaction Target and an associated code:</p>
-<img alt="https://www.tightbytes.com/images/pubimages/appmgr/tw01Codes03.png" src="https://www.tightbytes.com/images/pubimages/appmgr/tw01Codes03.png" />
+<img alt="https://www.tightbytes.com/images/pubimages/appmgr/tt09Codes03.png" src="https://www.tightbytes.com/images/pubimages/appmgr/tt09Codes03.png" />
 <p>The script that copies the Transaction Code from the AList sheet to the <strong>CreditCard</strong> sheet is run from <strong>Transaction Tracker</strong> menu option under the main menu, i.e., the ‘Ribbon’:</p>
-<img alt="https://www.tightbytes.com/images/pubimages/appmgr/tw08Codes04.png" src="https://www.tightbytes.com/images/pubimages/appmgr/tw08Codes04.png" />
+<img alt="https://www.tightbytes.com/images/pubimages/appmgr/tt09Codes04.png" src="https://www.tightbytes.com/images/pubimages/appmgr/tt09Codes04.png" />
 <p>Much of the workbook’s data is managed in this fashion.</p>
 <section id="calcabs">
 <span id="tw9-calcabs"></span><h4>calcABS<a class="headerlink" href="#calcabs" title="Permalink to this heading"></a></h4>
