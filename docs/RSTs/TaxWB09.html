@@ -1,0 +1,584 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en-English" >
+<head>
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Tax Workbook v.9 &mdash; App Manager 2.25 documentation</title>
+      <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  <!--[if lt IE 9]>
+    <script src="../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script src="../_static/jquery.js"></script>
+        <script src="../_static/_sphinx_javascript_frameworks_compat.js"></script>
+        <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
+        <script src="../_static/doctools.js"></script>
+        <script src="../_static/sphinx_highlight.js"></script>
+    <script src="../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="prev" title="Tax Workbook v.8" href="TaxWB08.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="../index.html" class="icon icon-home">
+            App Manager
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Contents:</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="About.html">About Applications Manager</a></li>
+<li class="toctree-l1"><a class="reference internal" href="AssetManager.html">OT-PACU Asset Manager</a></li>
+<li class="toctree-l1"><a class="reference internal" href="CallSheetp03.html">Call Sheet v.3</a></li>
+<li class="toctree-l1"><a class="reference internal" href="CallSheetp05.html">Call Sheet v.5</a></li>
+<li class="toctree-l1"><a class="reference internal" href="CallSheetp06.html">CallSheet v.6</a></li>
+<li class="toctree-l1"><a class="reference internal" href="HomeInventory.html">Home Inventory</a></li>
+<li class="toctree-l1"><a class="reference internal" href="ReabankEditor.html">Reabanks Editor</a></li>
+<li class="toctree-l1"><a class="reference internal" href="TaxWB07.html">Tax Workbook v.7</a></li>
+<li class="toctree-l1"><a class="reference internal" href="TaxWB08.html">Tax Workbook v.8</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Tax Workbook v.9</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#introduction">Introduction</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#tax-workbook-worksheets">Tax Workbook - Worksheets</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#worksheets-overview">Worksheets Overview</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#process-overview">Process Overview</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#checking">Checking</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#credit-card">Credit Card</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#savings">Savings</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#alist">AList</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#budget-worksheets">Budget Worksheets</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#the-about-form">The About Form</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#the-code-running-the-workbook">The Code Running The Workbook</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#menu-options">Menu Options</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#worksheet-functions">Worksheet Functions</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#calcabs">calcABS</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#sparseallwords-cellnumber">sParseAllWords({cellnumber})</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#creditcard-payments">Creditcard Payments</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#additional-notes">Additional Notes</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#category-ing-transactions">Category-ing Transactions</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#quick-note-on-972savings">Quick Note on 972Savings</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#additional-discussion">Additional Discussion</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#licence-agreement">Licence Agreement</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#gnu-general-public-licence-v3">GNU General Public Licence v3</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#how-to-contact-the-developer">How to Contact the Developer</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#currently-working-on">Currently Working on</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">App Manager</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../index.html" class="icon icon-home" aria-label="Home"></a></li>
+      <li class="breadcrumb-item active">Tax Workbook v.9</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="../_sources/RSTs/TaxWB09.rst.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="tax-workbook-v-9">
+<h1>Tax Workbook v.9<a class="headerlink" href="#tax-workbook-v-9" title="Permalink to this heading"></a></h1>
+<section id="introduction">
+<h2>Introduction<a class="headerlink" href="#introduction" title="Permalink to this heading"></a></h2>
+<p>This Excel-based utility is designed to manage creating and maintaining Banking Transactions Data for Tax Purposes and Budget Management in spreadsheet form. The workbook contains data inported from CSV files downloaded from the user’s banking institution, which is categorised in order to track revenue and expenses.</p>
+<p>It replaces a manually-managed ledger approach to tax-data figures. The tax accountant requested an income and expenditures summary worksheet in Excel. Using the power of Excel and VBA, data from downloaded CSV files populates the Accounts Worksheets, which inform fields on the Summary Sheet through links: this happens dynamically.</p>
+<p>This Tax Workbook is a living document, both from a data as well as a VBA standpoint. As income-and-expenses pictures change over time, this document - version 0.9 - is a much simplified version to previous versions.</p>
+<hr style="height:4px;border-width:0;color:gray;background-color:gray"></section>
+<section id="tax-workbook-worksheets">
+<h2>Tax Workbook - Worksheets<a class="headerlink" href="#tax-workbook-worksheets" title="Permalink to this heading"></a></h2>
+<section id="worksheets-overview">
+<h3>Worksheets Overview<a class="headerlink" href="#worksheets-overview" title="Permalink to this heading"></a></h3>
+<p>When “Tax Workbook” is first opened in Excel, security settings - commonly set by organisations to prevent malicious code from being executed - may issue a security warning:</p>
+<blockquote>
+<div><ul class="simple">
+<li><p><em>Some active content has been disabled. Click for more details.</em></p></li>
+</ul>
+</div></blockquote>
+<p>Next to this warning is a button labelled <strong>[Enable Content]</strong>. While the spreadsheet’s data can be viewed without “enabling content”, the menu and other features in this workbook will only run if the content is enabled.</p>
+<p>This only needs to be done the first time that particular workbook is opened.</p>
+<p>The workbook is made up of several worksheets, some of which contain links to other worksheets. The main account worksheets (data) represent a checking account, creditcard account, and a personal savings account.</p>
+<p>The analysis worksheets are <strong>TSy</strong> and the <strong>Overview</strong> sheets. There are also sheets of analysis by Quarter (Qtr1-4 and Bud-Q1-4).</p>
+<p>The data worksheets <strong>568CreditCard</strong>, <strong>259Checking</strong> and <strong>972Savings</strong>, where the naming convention is the last three digits of the account and the description.</p>
+<p>This workbook contains transaction data from bank accounts. The data is categorised through codes:</p>
+<img alt="https://www.tightbytes.com/images/pubimages/appmgr/tw01Codes01.png" src="https://www.tightbytes.com/images/pubimages/appmgr/tw01Codes01.png" />
+<p>Transaction amounts for a given category are tallied based on these Transaction Category Codes, a copy of which is saved in the ‘AList’ worksheet. The tallies are SUMIF()s of transaction amounts based on the codes in column D:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>=ABS(SUMIF(&#39;568CreditCard&#39;!$D165:$D399,&quot;HSHPHO&quot;,&#39;568CreditCard&#39;!$B165:$B399))
+</pre></div>
+</div>
+<p>Note: <em>the use of SUMIF() has been largely replaced with a User-Defined Function (UDF) called calcABS, particularly on the Budget worksheets. See</em> <a class="reference internal" href="#tw9-calcabs"><span class="std std-ref">calcABS</span></a> <em>for how this works</em>.</p>
+<p>Using the CreditCard worksheet as an example, the codes in column D are assigned via Excel’s Visual-Basic for Applications functions (VBA), copied from the <strong>AList Worksheet</strong> which has an instance of the Transaction Target and an associated code:</p>
+<img alt="https://www.tightbytes.com/images/pubimages/appmgr/tw01Codes03.png" src="https://www.tightbytes.com/images/pubimages/appmgr/tw01Codes03.png" />
+<p>The script that copies the Transaction Code from the AList sheet to the <strong>CreditCard</strong> sheet is run from <strong>Tax Workbook</strong> menu option under the main menu, i.e., the ‘Ribbon’:</p>
+<img alt="https://www.tightbytes.com/images/pubimages/appmgr/tw08Codes04.png" src="https://www.tightbytes.com/images/pubimages/appmgr/tw08Codes04.png" />
+<p>Much of the workbook’s data is managed in this fashion.</p>
+</section>
+<section id="process-overview">
+<h3>Process Overview<a class="headerlink" href="#process-overview" title="Permalink to this heading"></a></h3>
+<p>This workbook assumes  three accounts: Checking, Savings and CreditCard. The process is as follows:</p>
+<blockquote>
+<div><ol class="arabic simple">
+<li><p>The data to populate the worksheets is downloaded from the banking institution’s website and saved in a CSV file, typically saved to a folder labelled with the download date. The files are named using the last 3 digits of the account name. Depending on how frequently this is done, one may wish to download 60, 90 or even 120 days worth of data.</p></li>
+<li><p>Each CSV file is opened in (imported into) Excel. In the ribbon, select Data, then Get Data -&gt; From Text/CSV. After sorting the data from oldest to newest, the transactions that have not yet been copied to the corresponding worksheet are copied over using Copy Special: Values. Once the data has been copied, the CSV sheet can be deleted as well as the connection that was formed by Excel, as it is no longer needed.</p></li>
+<li><p>So that the original bank-generated transaction information is preserved, the transaction list is cut from column C and pasted into Column G.</p></li>
+<li><p>The transactions are identified - if they exist in the AList worksheet. <strong>Tax Workbook</strong> -&gt; Click on the menu item respresenting that account.</p></li>
+<li><p>Any transactions not in the AList worksheet can be added by selecting the uncategorised Transaction Target fields and copying that list to the bottom of the AList column A. The approach to take is outlined here <a class="reference internal" href="#tw9-txncategoring"><span class="std std-ref">Category-ing Transactions</span></a>.</p></li>
+</ol>
+</div></blockquote>
+<p>The <strong>Summary</strong> Worksheet is comprised of two main columns; Expenses and Revenue. The expenses are only those relevant to a tax accountant, such as home loan payments and professional fees and donations, while revenue is comprised of all income.</p>
+<p>The fields on this page are linked to specific fields on relevant account pages and update dynamically.</p>
+</section>
+<section id="checking">
+<h3>Checking<a class="headerlink" href="#checking" title="Permalink to this heading"></a></h3>
+<p>The Access <strong>259Checking</strong> Worksheet is a date-sorted, formatted Checking Account transaction worksheet. Payroll, home-loan and investment property data, as well as certain utilities transactions go through this account. The data is imported from a CSV file downloaded from the bank’s website. The data is sorted oldest to newest and the most recent records are appended to the existing data. Prior to processing, the Transaction Target entries are moved to column G.</p>
+<p>The columns are as follows:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">A</span> <span class="o">-</span> <span class="n">Date</span>
+<span class="n">B</span> <span class="o">-</span> <span class="n">Transaction</span> <span class="n">Amount</span>
+<span class="n">C</span> <span class="o">-</span> <span class="n">Processed</span> <span class="n">Transaction</span> <span class="n">Target</span> <span class="p">(</span><span class="n">Payee</span> <span class="ow">or</span> <span class="n">Payor</span><span class="p">)</span>
+<span class="n">D</span> <span class="o">-</span> <span class="n">Transaction</span> <span class="n">Code</span>
+<span class="n">E</span> <span class="o">-</span> <span class="n">Description</span>
+<span class="n">F</span> <span class="o">-</span> <span class="p">(</span><span class="n">Empty</span><span class="p">)</span>
+<span class="n">G</span> <span class="o">-</span> <span class="n">Original</span> <span class="n">Transaction</span> <span class="n">Target</span> <span class="p">(</span><span class="n">moved</span> <span class="kn">from</span> <span class="nn">column</span> <span class="n">C</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>After the transactions have been copied, the Code Assignment software is invoked:</p>
+<img alt="https://www.tightbytes.com/images/pubimages/appmgr/tw08Codes06.png" src="https://www.tightbytes.com/images/pubimages/appmgr/tw08Codes06.png" />
+<p>During processing, non-useful text is removed from the transaction target, leaving either a ‘FROM’ or ‘TO’ prefix, making transaction identification vastly easier to do visually.</p>
+</section>
+<section id="credit-card">
+<h3>Credit Card<a class="headerlink" href="#credit-card" title="Permalink to this heading"></a></h3>
+<p>The <strong>568CreditCard</strong> Worksheet is a date-sorted, formatted Credit Card transaction worksheet. The data is imported from a CSV file downloaded from the bank’s website. The data is sorted oldest to newest and the most recent records are appended to the existing data.</p>
+<p>The columns are as follows:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">A</span> <span class="o">-</span> <span class="n">Date</span>
+<span class="n">B</span> <span class="o">-</span> <span class="n">Transaction</span> <span class="n">Amount</span>
+<span class="n">C</span> <span class="o">-</span> <span class="n">Transaction</span> <span class="n">Target</span> <span class="p">(</span><span class="n">Payee</span> <span class="ow">or</span> <span class="n">Payor</span><span class="p">)</span>
+<span class="n">D</span> <span class="o">-</span> <span class="n">Transaction</span> <span class="n">Code</span>
+</pre></div>
+</div>
+<p>After the transactions have been appended and the PAYMENT transaction categorised (see <a class="reference internal" href="#tw9-ccpayment"><span class="std std-ref">Creditcard Payments</span></a>), the Code Assignment software is invoked:</p>
+<img alt="https://www.tightbytes.com/images/pubimages/appmgr/tw08Codes04.png" src="https://www.tightbytes.com/images/pubimages/appmgr/tw08Codes04.png" />
+<p>The script compares transaction target entries to those in the ‘AList’ worksheet, leaving the Code column [D] blank if it doesn’t find that tranaction. 90% or more transactions are going to be with the same vendors, so it’s a simple matter of updating ‘AList’ with the transactions missing a code.</p>
+<p>For example, this is a typical credit card transaction listing:</p>
+<table class="docutils align-default">
+<thead>
+<tr class="row-odd"><th class="head" colspan="4"><p>Listing without codes</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>06/12/2022</p></td>
+<td><p>-$80.35</p></td>
+<td><p>7-ELEVEN 4203 VICTORIA POIN</p></td>
+<td></td>
+</tr>
+<tr class="row-odd"><td><p>06/12/2022</p></td>
+<td><p>-$11.00</p></td>
+<td><p>7 ELEVEN 4297 REDLAND BAY</p></td>
+<td></td>
+</tr>
+<tr class="row-even"><td><p>06/12/2022</p></td>
+<td><p>-$22.45</p></td>
+<td><p>REDLAND BAY NEWS REDLAND BAY</p></td>
+<td></td>
+</tr>
+<tr class="row-odd"><td><p>07/12/2022</p></td>
+<td><p>-$51.25</p></td>
+<td><p>WOOLWORTHS/CNR COLBURNE A VICTORIA PNT</p></td>
+<td></td>
+</tr>
+<tr class="row-even"><td><p>07/12/2022</p></td>
+<td><p>-$21.50</p></td>
+<td><p>SQ  VILLAGE CREATIVE S Wellington Po</p></td>
+<td></td>
+</tr>
+<tr class="row-odd"><td><p>07/12/2022</p></td>
+<td><p>-$45.65</p></td>
+<td><p>LINCRAFT AUSTRALIA PTY VICTORIA POIN</p></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<p>After the codes are assigned:</p>
+<table class="docutils align-default">
+<thead>
+<tr class="row-odd"><th class="head" colspan="4"><p>Listing with codes</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>06/12/2022</p></td>
+<td><p>-$80.35</p></td>
+<td><p>7-ELEVEN 4203 VICTORIA POIN</p></td>
+<td><p>DLXALI</p></td>
+</tr>
+<tr class="row-odd"><td><p>06/12/2022</p></td>
+<td><p>-$11.00</p></td>
+<td><p>7 ELEVEN 4297 REDLAND BAY</p></td>
+<td><p>DLXALI</p></td>
+</tr>
+<tr class="row-even"><td><p>06/12/2022</p></td>
+<td><p>-$22.45</p></td>
+<td><p>REDLAND BAY NEWS REDLAND BAY</p></td>
+<td><p>HSHOTH</p></td>
+</tr>
+<tr class="row-odd"><td><p>07/12/2022</p></td>
+<td><p>-$51.25</p></td>
+<td><p>WOOLWORTHS/CNR COLBURNE A VICTORIA PNT</p></td>
+<td><p>DLXALI</p></td>
+</tr>
+<tr class="row-even"><td><p>07/12/2022</p></td>
+<td><p>-$21.50</p></td>
+<td><p>SQ  VILLAGE CREATIVE S Wellington Po</p></td>
+<td><p>OTHHOJ</p></td>
+</tr>
+<tr class="row-odd"><td><p>07/12/2022</p></td>
+<td><p>-$45.65</p></td>
+<td><p>LINCRAFT AUSTRALIA PTY VICTORIA POIN</p></td>
+<td><p>OTHHOJ</p></td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="savings">
+<h3>Savings<a class="headerlink" href="#savings" title="Permalink to this heading"></a></h3>
+<p>The <strong>972Savings</strong> Worksheet is a date-sorted, formatted Home Loan Account transaction worksheet. This account was mainly for personal transactions, historically. The data is imported from a CSV file downloaded from the bank’s website. The data is sorted oldest to newest and the most recent records are appended to the existing data. Prior to processing, the Transaction Target entries are moved to column G.</p>
+<p>The columns are as follows:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">A</span> <span class="o">-</span> <span class="n">Date</span>
+<span class="n">B</span> <span class="o">-</span> <span class="n">Transaction</span> <span class="n">Amount</span>
+<span class="n">C</span> <span class="o">-</span> <span class="n">Processed</span> <span class="n">Transaction</span> <span class="n">Target</span> <span class="p">(</span><span class="n">Payee</span> <span class="ow">or</span> <span class="n">Payor</span><span class="p">)</span>
+<span class="n">D</span> <span class="o">-</span> <span class="n">Transaction</span> <span class="n">Code</span>
+<span class="n">E</span> <span class="o">-</span> <span class="n">Description</span>
+<span class="n">F</span> <span class="o">-</span> <span class="p">(</span><span class="n">Empty</span><span class="p">)</span>
+<span class="n">G</span> <span class="o">-</span> <span class="n">Original</span> <span class="n">Transaction</span> <span class="n">Target</span> <span class="p">(</span><span class="n">moved</span> <span class="kn">from</span> <span class="nn">column</span> <span class="n">C</span><span class="p">)</span>
+<span class="n">H</span> <span class="o">-</span> <span class="n">Item</span> <span class="ow">or</span> <span class="n">service</span> <span class="n">purchase</span> <span class="p">(</span><span class="n">aid</span> <span class="ow">in</span> <span class="n">identifying</span> <span class="n">PayPal</span> <span class="n">transaction</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>After the transactions have been copied, the Code Assignment software is invoked:</p>
+<img alt="https://www.tightbytes.com/images/pubimages/appmgr/tw08Codes06.png" src="https://www.tightbytes.com/images/pubimages/appmgr/tw08Codes06.png" />
+<p>During processing, non-useful text is removed from the transaction target, leaving either a ‘FROM’ or ‘TO’ prefix if one existed in the original transaction target entry.</p>
+</section>
+<section id="alist">
+<h3>AList<a class="headerlink" href="#alist" title="Permalink to this heading"></a></h3>
+<p>The <strong>AList</strong> Worksheet is sorted by Column B - the codes column - and then column A - the transactions column. All worksheets that do processing refer to this sheet in order to assign codes to transactions.</p>
+<p>This sheet and the associated processes are being reviewed for refinement and streamlining.</p>
+</section>
+<section id="budget-worksheets">
+<h3>Budget Worksheets<a class="headerlink" href="#budget-worksheets" title="Permalink to this heading"></a></h3>
+<p>See <a class="reference internal" href="#tw9-calcabs"><span class="std std-ref">calcABS</span></a> for an insight as to how quarterly budget sheets are maintained.</p>
+<hr style="height:4px;border-width:0;color:gray;background-color:gray"></section>
+</section>
+<section id="the-about-form">
+<h2>The About Form<a class="headerlink" href="#the-about-form" title="Permalink to this heading"></a></h2>
+<p>In an effort be be somewhat cross-platform friendly, I only have one form: the “About”.</p>
+<hr style="height:4px;border-width:0;color:gray;background-color:gray"></section>
+<section id="the-code-running-the-workbook">
+<span id="tw9-corefcn"></span><h2>The Code Running The Workbook<a class="headerlink" href="#the-code-running-the-workbook" title="Permalink to this heading"></a></h2>
+<p>For those who might be curious as to how certain features work, I offer the following as a bit of a discussion on my approach to solving these little problems.</p>
+<p>To view the code, press [Alt] [F11] and you will be presented with the Visual Basic Editor. These user-defined functions and sub-routines are stored in the MdlT modules page. The Tax Workbook ribbon buttons code is stored here.</p>
+<section id="menu-options">
+<h3>Menu Options<a class="headerlink" href="#menu-options" title="Permalink to this heading"></a></h3>
+<p>Using the menu option “CreditCard” in the ribbon under <strong>Tax Workbook</strong> as an example:</p>
+<img alt="https://www.tightbytes.com/images/pubimages/appmgr/tw08Codes04.png" src="https://www.tightbytes.com/images/pubimages/appmgr/tw08Codes04.png" />
+<p>invokes the _Click() event for that button, which runs the following code:</p>
+<div class="highlight-vbnet notranslate"><div class="highlight"><pre><span></span><span class="k">Sub</span><span class="w"> </span><span class="nf">btnCC_Click</span><span class="p">(</span><span class="n">control</span><span class="w"> </span><span class="ow">As</span><span class="w"> </span><span class="n">IRibbonControl</span><span class="p">)</span>
+<span class="w">  </span><span class="k">Call</span><span class="w"> </span><span class="n">RunScript</span><span class="p">(</span><span class="n">CheckFilterMode</span><span class="p">(</span><span class="s">&quot;s568&quot;</span><span class="p">),</span><span class="w"> </span><span class="s">&quot;s568&quot;</span><span class="p">)</span>
+<span class="k">End</span><span class="w"> </span><span class="k">Sub</span>
+</pre></div>
+</div>
+<p>If a filter was set on the worksheet to be processed, the app notifies the user and processing is aborted.</p>
+<p>Otherwise, RunScript calls the routine refered to  (“s568”, “s259” or “s972”, for example - where ‘s’ stands for ‘sheet, and the numbers represent the last three digits of the account).</p>
+<div class="highlight-vbnet notranslate"><div class="highlight"><pre><span></span><span class="k">Public</span><span class="w"> </span><span class="k">Sub</span><span class="w"> </span><span class="nf">RunScript</span><span class="p">(</span><span class="n">FilterSet</span><span class="w"> </span><span class="ow">As</span><span class="w"> </span><span class="kt">Boolean</span><span class="p">,</span><span class="w"> </span><span class="n">ScriptToRun</span><span class="w"> </span><span class="ow">As</span><span class="w"> </span><span class="kt">String</span><span class="p">)</span>
+<span class="w">  </span><span class="k">If</span><span class="w"> </span><span class="n">FilterSet</span><span class="w"> </span><span class="k">Then</span>
+<span class="w">        </span><span class="c">&#39;Debug.Print FilterSet</span>
+<span class="w">        </span><span class="n">MsgBox</span><span class="w"> </span><span class="p">(</span><span class="s">&quot;Cannot run whilst a filter is set...&quot;</span><span class="p">)</span>
+<span class="w">  </span><span class="k">Else</span>
+
+<span class="w">  </span><span class="c">&#39; The name of the function (e.g., HomeloanCodes() but without the &quot;()&quot;)</span>
+<span class="w">  </span><span class="c">&#39;  placed within a Messagebox calls that function (i.e., runs the code</span>
+<span class="w">  </span><span class="c">&#39;  of that function)</span>
+<span class="w">        </span><span class="k">Select</span><span class="w"> </span><span class="k">Case</span><span class="w"> </span><span class="n">ScriptToRun</span>
+<span class="w">          </span><span class="k">Case</span><span class="w"> </span><span class="ow">Is</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;s568&quot;</span><span class="p">:</span><span class="w"> </span><span class="n">MsgBox</span><span class="w"> </span><span class="p">(</span><span class="n">CreditcardCodes</span><span class="p">)</span>
+<span class="w">          </span><span class="k">Case</span><span class="w"> </span><span class="ow">Is</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;s259&quot;</span><span class="p">:</span><span class="w"> </span><span class="n">MsgBox</span><span class="w"> </span><span class="p">(</span><span class="n">CheckingCodes</span><span class="p">)</span>
+<span class="w">          </span><span class="k">Case</span><span class="w"> </span><span class="ow">Is</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;s972&quot;</span><span class="p">:</span><span class="w"> </span><span class="n">MsgBox</span><span class="w"> </span><span class="p">(</span><span class="n">PersonalACodes</span><span class="p">)</span>
+<span class="w">          </span><span class="k">Case</span><span class="w"> </span><span class="ow">Is</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;s647&quot;</span><span class="p">:</span><span class="w"> </span><span class="n">MsgBox</span><span class="w"> </span><span class="p">(</span><span class="n">BeyondBankCodes</span><span class="p">)</span>
+<span class="w">          </span><span class="k">Case</span><span class="w"> </span><span class="ow">Is</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;About&quot;</span><span class="p">:</span><span class="w"> </span><span class="n">MsgBox</span><span class="w"> </span><span class="s">&quot;under Development&quot;</span>
+<span class="w">        </span><span class="k">End</span><span class="w"> </span><span class="k">Select</span>
+<span class="w">  </span><span class="k">End</span><span class="w"> </span><span class="k">If</span>
+<span class="k">End</span><span class="w"> </span><span class="k">Sub</span>
+</pre></div>
+</div>
+<p>The MsgBox() function actually calls (launches) the script (e.g., ‘CreditcardCodes()’).</p>
+</section>
+<section id="worksheet-functions">
+<h3>Worksheet Functions<a class="headerlink" href="#worksheet-functions" title="Permalink to this heading"></a></h3>
+<p>Note: the first function mentioned here, <strong>calcABS()</strong>, has much simplified maintaining and updating the budget worksheets. The second - sParseAllWords({cellnumber}) - needs work.</p>
+<section id="calcabs">
+<span id="tw9-calcabs"></span><h4>calcABS<a class="headerlink" href="#calcabs" title="Permalink to this heading"></a></h4>
+<p>This function is used on the <strong>TypeSummary</strong> worksheet as well as the Quarterly budget sheets (Qtr1, Qtr2, etc).</p>
+<div class="highlight-vbnet notranslate"><div class="highlight"><pre><span></span><span class="k">Public</span><span class="w"> </span><span class="k">Function</span><span class="w"> </span><span class="nf">calcABS</span><span class="p">(</span><span class="n">sSht</span><span class="w"> </span><span class="ow">As</span><span class="w"> </span><span class="kt">String</span><span class="p">,</span><span class="w"> </span><span class="n">tCode</span><span class="w"> </span><span class="ow">As</span><span class="w"> </span><span class="kt">String</span><span class="p">,</span><span class="w"> </span>_
+<span class="w">                        </span><span class="n">nRangeS</span><span class="w"> </span><span class="ow">As</span><span class="w"> </span><span class="kt">Integer</span><span class="p">,</span><span class="w"> </span><span class="n">nRangeE</span><span class="w"> </span><span class="ow">As</span><span class="w"> </span><span class="kt">Integer</span><span class="p">)</span><span class="w"> </span><span class="ow">As</span><span class="w"> </span><span class="kt">Double</span>
+<span class="k">Dim</span><span class="w"> </span><span class="n">sRangeD</span><span class="w"> </span><span class="ow">As</span><span class="w"> </span><span class="kt">String</span><span class="p">,</span><span class="w"> </span><span class="n">sRangeB</span><span class="w"> </span><span class="ow">As</span><span class="w"> </span><span class="kt">String</span>
+
+<span class="w">        </span><span class="n">sRangeD</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;D&quot;</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="n">stp</span><span class="p">(</span><span class="n">nRangeS</span><span class="p">)</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="s">&quot;:D&quot;</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="n">stp</span><span class="p">(</span><span class="n">nRangeE</span><span class="p">)</span>
+<span class="w">        </span><span class="n">sRangeB</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;B&quot;</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="n">stp</span><span class="p">(</span><span class="n">nRangeS</span><span class="p">)</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="s">&quot;:B&quot;</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="n">stp</span><span class="p">(</span><span class="n">nRangeE</span><span class="p">)</span>
+
+<span class="w">        </span><span class="k">Select</span><span class="w"> </span><span class="k">Case</span><span class="w"> </span><span class="n">sSht</span>
+<span class="w">                </span><span class="k">Case</span><span class="w"> </span><span class="ow">Is</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;ch&quot;</span>
+<span class="w">                        </span><span class="n">calcABS</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">Abs</span><span class="p">(</span><span class="n">WorksheetFunction</span><span class="p">.</span><span class="n">SumIf</span><span class="p">(</span><span class="n">sh259</span><span class="p">.</span><span class="n">Range</span><span class="p">(</span><span class="n">sRangeD</span><span class="p">),</span><span class="w"> </span><span class="n">tCode</span><span class="p">,</span><span class="w"> </span><span class="n">sh259</span><span class="p">.</span><span class="n">Range</span><span class="p">(</span><span class="n">sRangeB</span><span class="p">)))</span>
+<span class="w">                </span><span class="k">Case</span><span class="w"> </span><span class="ow">Is</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;cc&quot;</span>
+<span class="w">                        </span><span class="n">calcABS</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">Abs</span><span class="p">(</span><span class="n">WorksheetFunction</span><span class="p">.</span><span class="n">SumIf</span><span class="p">(</span><span class="n">sh568</span><span class="p">.</span><span class="n">Range</span><span class="p">(</span><span class="n">sRangeD</span><span class="p">),</span><span class="w"> </span><span class="n">tCode</span><span class="p">,</span><span class="w"> </span><span class="n">sh568</span><span class="p">.</span><span class="n">Range</span><span class="p">(</span><span class="n">sRangeB</span><span class="p">)))</span>
+<span class="w">                </span><span class="k">Case</span><span class="w"> </span><span class="ow">Is</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;sv&quot;</span>
+<span class="w">                        </span><span class="n">calcABS</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">Abs</span><span class="p">(</span><span class="n">WorksheetFunction</span><span class="p">.</span><span class="n">SumIf</span><span class="p">(</span><span class="n">sh972</span><span class="p">.</span><span class="n">Range</span><span class="p">(</span><span class="n">sRangeD</span><span class="p">),</span><span class="w"> </span><span class="n">tCode</span><span class="p">,</span><span class="w"> </span><span class="n">sh972</span><span class="p">.</span><span class="n">Range</span><span class="p">(</span><span class="n">sRangeB</span><span class="p">)))</span>
+<span class="w">        </span><span class="k">End</span><span class="w"> </span><span class="k">Select</span>
+<span class="k">End</span><span class="w"> </span><span class="k">Function</span>
+</pre></div>
+</div>
+<p>This is typically called thus (e.g., for ‘Phone/Internet’):</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">=</span><span class="n">calcABS</span><span class="p">(</span><span class="s2">&quot;ch&quot;</span><span class="p">,</span><span class="s2">&quot;HSHPHO&quot;</span><span class="p">,</span><span class="n">E13</span><span class="p">,</span><span class="n">E14</span><span class="p">)</span> <span class="o">+</span> <span class="n">calcABS</span><span class="p">(</span><span class="s2">&quot;cc&quot;</span><span class="p">,</span><span class="s2">&quot;HSHPHO&quot;</span><span class="p">,</span><span class="n">E15</span><span class="p">,</span><span class="n">E16</span><span class="p">)</span> <span class="o">+</span> <span class="n">calcABS</span><span class="p">(</span><span class="s2">&quot;sv&quot;</span><span class="p">,</span><span class="s2">&quot;HSHPHO&quot;</span><span class="p">,</span><span class="n">E17</span><span class="p">,</span><span class="n">E18</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>calcABS() replaced the following formulae:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>=ABS(SUMIF(&#39;568CreditCard&#39;!$D165:$D399,&quot;HSHPHO&quot;,&#39;568CreditCard&#39;!$B165:$B399) + SUMIF(&#39;259Checking&#39;!$D$65:$D159,&quot;HSHPHO&quot;,&#39;259Checking&#39;!$B$65:$B159))
+</pre></div>
+</div>
+<p>This approach expects the following table on the Qtr1 (and subsequent quarters) worksheet in a specific range - D13:E18 - and formatted in this manner:</p>
+<table class="docutils align-default">
+<thead>
+<tr class="row-odd"><th class="head" colspan="2"><p>Field Ranges</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>Checking Start</p></td>
+<td><p>2</p></td>
+</tr>
+<tr class="row-odd"><td><p>Checking End</p></td>
+<td><p>64</p></td>
+</tr>
+<tr class="row-even"><td><p>CreditCard Start</p></td>
+<td><p>2</p></td>
+</tr>
+<tr class="row-odd"><td><p>CCreditCard End</p></td>
+<td><p>164</p></td>
+</tr>
+<tr class="row-even"><td><p>Savings Start</p></td>
+<td><p>2</p></td>
+</tr>
+<tr class="row-odd"><td><p>Savings End</p></td>
+<td><p>66</p></td>
+</tr>
+</tbody>
+</table>
+<p>The ‘Start’ and ‘End’ numbers are references to the beginning and end of that quarter’s date range on that particular worksheet.</p>
+<p>Maintenance is easy: the following quarter, a copy is made of the current worksheet, the copy is renamed using ‘Qtr’ and {number of quarter}, i.e., <strong>Qtr2</strong>, and the table is updated thus:</p>
+<table class="docutils align-default">
+<thead>
+<tr class="row-odd"><th class="head" colspan="2"><p>Field Ranges</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>Checking Start</p></td>
+<td><p>65</p></td>
+</tr>
+<tr class="row-odd"><td><p>Checking End</p></td>
+<td><p>509</p></td>
+</tr>
+<tr class="row-even"><td><p>CreditCard Start</p></td>
+<td><p>165</p></td>
+</tr>
+<tr class="row-odd"><td><p>CCreditCard End</p></td>
+<td><p>519</p></td>
+</tr>
+<tr class="row-even"><td><p>Savings Start</p></td>
+<td><p>67</p></td>
+</tr>
+<tr class="row-odd"><td><p>Savings End</p></td>
+<td><p>529</p></td>
+</tr>
+</tbody>
+</table>
+<p>The start numbers are, of course, last quarter’s end number incremented by 1, and the end numbers for the last quarter’s date range - (e.g., 509, 519, 529) - are just arbitrarily assigned. At the end of the last month of the quarter, when the actual worksheet’s last cell row number is known, that number is entered. Then, a copy is made of that worksheet and the process is repeated.</p>
+<p>The advantage to this approach is that formula errors are avoided, or far more easily identifed and fixed. It also removes the tedium of having to go into each formula:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>=ABS(SUMIF(&#39;568CreditCard&#39;!$D165:$D399,&quot;HSHPHO&quot;,&#39;568CreditCard&#39;!$B165:$B399)
+</pre></div>
+</div>
+<p>and changing range values manually; again, another frequent source of error.</p>
+</section>
+<section id="sparseallwords-cellnumber">
+<h4>sParseAllWords({cellnumber})<a class="headerlink" href="#sparseallwords-cellnumber" title="Permalink to this heading"></a></h4>
+<p>Note, <em>as of 2203-01-06, this function is being reviewed and revised</em>.</p>
+<div class="highlight-vbnet notranslate"><div class="highlight"><pre><span></span><span class="k">Public</span><span class="w"> </span><span class="k">Function</span><span class="w"> </span><span class="nf">ParseAllWords</span><span class="p">(</span><span class="n">StringToParse</span><span class="w"> </span><span class="ow">As</span><span class="w"> </span><span class="kt">String</span><span class="p">)</span><span class="w"> </span><span class="ow">As</span><span class="w"> </span><span class="kt">String</span>
+<span class="w">        </span><span class="k">If</span><span class="w"> </span><span class="n">Len</span><span class="p">(</span><span class="n">StringToParse</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="n">vbNullString</span><span class="p">)</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="w"> </span><span class="k">Then</span><span class="w"> </span><span class="k">Exit</span><span class="w"> </span><span class="k">Function</span>
+
+<span class="w">        </span><span class="nf">If</span><span class="w"> </span><span class="n">Trim</span><span class="p">(</span><span class="n">InStr</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="n">StringToParse</span><span class="p">,</span><span class="w"> </span><span class="s">&quot; &quot;</span><span class="p">))</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="w"> </span><span class="k">Then</span>
+<span class="w">                </span><span class="n">ParseAllWords</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">Trim</span><span class="p">(</span><span class="n">StringToParse</span><span class="p">)</span>
+<span class="w">        </span><span class="k">Else</span>
+<span class="w">                </span><span class="n">ParseAllWords</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">WorksheetFunction</span><span class="p">.</span><span class="n">Trim</span><span class="p">(</span><span class="n">StringToParse</span><span class="p">)</span>
+<span class="w">        </span><span class="k">End</span><span class="w"> </span><span class="k">If</span>
+<span class="k">End</span><span class="w"> </span><span class="k">Function</span>
+</pre></div>
+</div>
+</section>
+<section id="creditcard-payments">
+<span id="tw9-ccpayment"></span><h4>Creditcard Payments<a class="headerlink" href="#creditcard-payments" title="Permalink to this heading"></a></h4>
+<p>For the credit card, the app looks at the entry for “PAYMENT” - the only fairly ambiguous entries in this worksheet - and then checks the two-character code after the word “THANKYOU”… this code is entered prior to processing:</p>
+<table class="docutils align-default">
+<thead>
+<tr class="row-odd"><th class="head" colspan="2"><p>Codes and Suffixes</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>cc</p></td>
+<td><p>Creditcard repayment</p></td>
+</tr>
+<tr class="row-odd"><td><p>ri</p></td>
+<td><p>Reimbursement for purchase</p></td>
+</tr>
+</tbody>
+</table>
+<hr style="height:4px;border-width:0;color:gray;background-color:gray"></section>
+</section>
+</section>
+<section id="additional-notes">
+<h2>Additional Notes<a class="headerlink" href="#additional-notes" title="Permalink to this heading"></a></h2>
+<section id="category-ing-transactions">
+<span id="tw9-txncategoring"></span><h3>Category-ing Transactions<a class="headerlink" href="#category-ing-transactions" title="Permalink to this heading"></a></h3>
+<p>To cate</p>
+</section>
+<section id="quick-note-on-972savings">
+<span id="tw9-savingscodes"></span><h3>Quick Note on 972Savings<a class="headerlink" href="#quick-note-on-972savings" title="Permalink to this heading"></a></h3>
+<p><em>New for version 0.8</em></p>
+<p>Many transactions happen through Paypal. These are extremely difficult to keep tabs on, as the entry in the worksheet is a mere:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">PAYMENT</span> <span class="n">TO</span> <span class="n">PAYPAL</span> <span class="n">AUSTRALIA</span> <span class="mi">1021851015462</span>
+</pre></div>
+</div>
+<p>To identify the transaction prior to running the script to assign categories involves opening GMail and Ebay -&gt; Purchases. Once it has been established who the payment went to and what for, I typically copy/paste the item - or service - purchased into column H. Column F receivs a 2-character code to identify the purchase as being of the following categories: the script then trims off the transaction number suffix and assigns a suffix to the Transaction Target based on the code I enter prior to processing in Column F:</p>
+</section>
+<section id="additional-discussion">
+<h3>Additional Discussion<a class="headerlink" href="#additional-discussion" title="Permalink to this heading"></a></h3>
+<p>With v.8, I have endeavoured to be somewhat cross-platform. I do most of what I do on a computer on a Macbook Pro (2015), running Windows 10 in a VM. Development of anything VBA occurs in this VM environment. However, I do need to get to the data at times on the Mac, so I load these workbooks in Excel 2016 for Mac. Help is a challenge: I can’t invoke a browser within Excel Mac like I can in Windows (to my knowledge, anyway). So, I just display the link in a MsgBox and have the Mac user copy/paste that into the browser.</p>
+<p>Yeah, a kludge, but it works.</p>
+<hr style="height:4px;border-width:0;color:gray;background-color:gray"></section>
+</section>
+<section id="licence-agreement">
+<h2>Licence Agreement<a class="headerlink" href="#licence-agreement" title="Permalink to this heading"></a></h2>
+<section id="gnu-general-public-licence-v3">
+<h3>GNU General Public Licence v3<a class="headerlink" href="#gnu-general-public-licence-v3" title="Permalink to this heading"></a></h3>
+<p>Terms of General Public Licence, version 3:</p>
+<p>This program is free software: you can redistribute it and/or modify it under the terms of the GNU General Public Licence as published by the Free Software Foundation, either version 3 of the Licence, or (at your option) any later version.</p>
+<p>This program is distributed in the hope that it will be useful, but WITHOUT ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public Licence for more details.</p>
+<p>You should have received a copy of the GNU General Public Licence along with this programme. If not, see:</p>
+<p><a class="reference external" href="http://www.gnu.org/licenses">Full GNU GPL</a>  (you will need online access to view this document).</p>
+</section>
+<section id="how-to-contact-the-developer">
+<h3>How to Contact the Developer<a class="headerlink" href="#how-to-contact-the-developer" title="Permalink to this heading"></a></h3>
+<p>Whilst software developers endeavour to write clean, robust software with consistent, predictable behaviour, bugs do happen. The TaxWorkbook developer is committed to supporting this workbook, hence this document and a web presence on github.</p>
+<p>A number of means exist to contact the developer:</p>
+<blockquote>
+<div><ul class="simple">
+<li><p>gmail: <a class="reference external" href="mailto:robinseahahn&#37;&#52;&#48;gmail&#46;com">robinseahahn<span>&#64;</span>gmail<span>&#46;</span>com</a></p></li>
+<li><p><a class="reference external" href="https://github.com/robinboncoeur/appmgr/issues">github issues page</a></p></li>
+</ul>
+</div></blockquote>
+<p>To find the most current documentation - a (probably) updated version of this document which is most likely this one - go to:</p>
+<blockquote>
+<div><ul class="simple">
+<li><p><a class="reference external" href="https://robinboncoeur.github.io/appmgr/">my Github TaxWorkbook page</a></p></li>
+</ul>
+</div></blockquote>
+</section>
+<section id="currently-working-on">
+<h3>Currently Working on<a class="headerlink" href="#currently-working-on" title="Permalink to this heading"></a></h3>
+<dl class="simple">
+<dt>FROM</dt><dd><p>“FROM RURAL A”: TruncSuffix = Mid(Tstr, 1, 29)
+“FROM QLD DEP”: TruncSuffix = Mid(Tstr, 1, 28)
+“FROM KHAD PT”: TruncSuffix = Mid(Tstr, 1, 28)
+“FROM REMITTE”: TruncSuffix = Mid(Tstr, 1, 28)
+“FROM PAYPAL “: TruncSuffix = Mid(Tstr, 1, 22)
+“FROM HANNAH “: TruncSuffix = Mid(Tstr, 1, 21)
+“FROM ONEPATH”: TruncSuffix = Mid(Tstr, 1, 21)
+“FROM       5”: TruncSuffix = Mid(Tstr, 1, 20)
+“FROM SPP TRU”: TruncSuffix = Mid(Tstr, 1, 18)
+“FROM US Covi”: TruncSuffix = Mid(Tstr, 1, 16)
+“FROM E338163”: TruncSuffix = Mid(Tstr, 1, 15)
+“FROM ATO    “: TruncSuffix = Mid(Tstr, 1, 8)
+“PYPL PAYIN4 “: TruncSuffix = Mid(Tstr, 1, 12)
+“PAYPAL AUSTR”: TruncSuffix = Mid(Tstr, 1, 17)</p>
+</dd>
+<dt>TO</dt><dd><p>“TO TELSTRA S”: TruncSuffix = Mid(Tstr, 1, 19)
+“TO TMR-PRODU”: TruncSuffix = Mid(Tstr, 1, 19)
+“TO ANZ INSUR”: TruncSuffix = Mid(Tstr, 1, 20)
+“TO NRMA INSU”: TruncSuffix = Mid(Tstr, 1, 21)
+“TO AMBERELEC”: TruncSuffix = Mid(Tstr, 1, 21)</p>
+</dd>
+</dl>
+</section>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="TaxWB08.html" class="btn btn-neutral float-left" title="Tax Workbook v.8" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2018, Robyn Hahn.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>
