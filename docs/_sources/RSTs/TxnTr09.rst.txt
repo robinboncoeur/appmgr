@@ -222,16 +222,20 @@ See :REF:`tw9-calcABS` for an insight as to how quarterly budget sheets are main
 The Code Running The Workbook
 *****************************
 
+===============
+Processing Code
+===============
+
 For those who might be curious as to how certain features work, I offer the following as a bit of a discussion on my approach to solving these little problems. My code is quite basic and of course open-source: anyone can modify it to suit their needs. To view the code, press [Alt] [F11] and you will be presented with the Visual Basic Editor. These user-defined functions and sub-routines - *including those used on the worksheets* - are stored in the MdlT modules page. 
 
 Some of this code is still under development, and doesn't quite do as I'd like it to.
 
 
-===========
+-----------
 Ribbon Code
-===========
+-----------
 
-The Transaction Tracker ribbon buttons code is stored under the **MSO Ribbon Code** and **Callback Buttons Actions** sections. When the button is clicked in the **Transaction Tracker** menu item, it first fires the corresponding code in the **MSO Ribbon Code** section, which calls the **RunScript** sub-routine with the value it receives from the **CheckFilterMode** function as well as the sheet number the button is associated with - 1: Checking / 2: Creditcard / 3: Savings - sent as parameters (arguments).  The **CheckFilterMode** function checks that no filters have been set on that sheet. The code cannot run against a sheet with filters set. If no filters have been set, then the **TxnCodes** function is called, with the sheet number sent as parameter.
+The **Transaction Tracker** ribbon buttons code is stored under the **MSO Ribbon Code** and **Callback Buttons Actions** sections. When the button is clicked in the **Transaction Tracker** menu item, it first fires the corresponding code in the **MSO Ribbon Code** section, which calls the **RunScript** sub-routine with the value it receives from the **CheckFilterMode** function as well as the sheet number the button is associated with - 1: Checking / 2: Creditcard / 3: Savings - sent as parameters (arguments).  The **CheckFilterMode** function checks that no filters have been set on that sheet. The code cannot run against a sheet with filters set. If no filters have been set, then the **TxnCodes** function is called, with the sheet number sent as parameter.
 
 Using the menu option "CredCard" in the ribbon under **Transaction Tracker** as an example:
 
@@ -298,25 +302,27 @@ Office behaves differently in Windows than on the Mac, so I had to provide some 
 In Windows, clicking on **Help** will bring up the Edge browser and these pages. On the Mac, I provide the link to this help file in a messagebox. {{{sigh}}} Sometimes the magic works.
 
 
-
-======================
+----------------------
 Process that Worksheet
-======================
+----------------------
 
-In the **PROCESS WORKSHEETS** is the main code that assigns category codes to transactions. Generally, the AList contents are pulled into an array, and then the sheet being examined is stepped through row by row. If a code already exists for that transaction, that row is ignored. If the code is missing, then the entry in column G is run through the array until it finds a match. Columns C and D are then given the values of that array item.
+In the **PROCESS WORKSHEETS** section is the main code that assigns category codes to transactions. Generally, the contents of the AList worksheet are dumped into an array, and then column G of the target worksheet gets stepped through row by row. If a code already exists for that transaction in column D, that row is ignored. If the code is missing, then the entry in column G is run through the array until it finds a match, using the magic of regular expressions. Columns C and D are then given the values of that array item, and the process is repeated for the next row.
 
 Note: the author realises that this is certainly not the fastest or most efficient mechanism ever designed, but it works, and it's reasonably fast. The use of an array and regular expressions ensures some improvements on processing speed.*
+
+
+
 
 
 ==============
 Worksheet UDFs
 ==============
 
-Transaction amounts for a given category are tallied based on these Transaction Category Codes, a copy of which is saved in the 'AList' worksheet. The tallies are SUMIF()s of transaction amounts based on the codes in column D::
+A UDF is a 'user-defined function': it can be used in place of Excel's own functions. Transaction tallies for a given category - based on Transaction Category Codes - are usually done using Excel's own SUMIF() function... for example::
 
 	=ABS(SUMIF('568CreditCard'!$D165:$D399,"HSHPHO",'568CreditCard'!$B165:$B399))
 
-Note: *the use of SUMIF() has been largely replaced with a User-Defined Function (UDF) called calcABS, particularly on the Budget worksheets. See* :ref:`tw9-calcABS` *for how this works*.
+Note: *the use of SUMIF() has been largely replaced with a User-Defined Function (UDF) called calcABS(), particularly on the Budget worksheets. See* :ref:`tw9-calcABS` *for how this works*.
 
 Using the CreditCard worksheet as an example, the codes in column D are assigned via Excel's Visual-Basic for Applications functions (VBA), copied from the **AList Worksheet** which has an instance of the Transaction Target and an associated code:
 
@@ -329,26 +335,9 @@ The script that copies the Transaction Code from the AList sheet to the **Credit
 Much of the workbook's data is managed in this fashion.
 
 
-
-
-
-
-============
-Menu Options
-============
-
-
-
-
-===================
-Worksheet Functions
-===================
-
-Note: the first function mentioned here, **calcABS()**, has much simplified maintaining and updating the budget worksheets. The second - sParseAllWords({cellnumber}) - needs work.
-
-
 .. _tw9-calcABS:
 
+-------
 calcABS
 -------
 
@@ -399,9 +388,9 @@ This approach expects the following table on the Qtr1 (and subsequent quarters) 
 | Savings End       |  66  |
 +-------------------+------+
 
-The 'Start' and 'End' numbers are references to the beginning and end of that quarter's date range on that particular worksheet.
+The 'Start' and 'End' numbers are references to the beginning and end of that quarter's date range on that particular worksheet, e.g., 01/07/2024 - 30/09/2024 (*using the normal DD/MM/YYYY format used everywhere BBUT in the US*)
 
-Maintenance is easy: the following quarter, a copy is made of the current worksheet, the copy is renamed using 'Qtr' and {number of quarter}, i.e., **Qtr2**, and the table is updated thus:
+Maintenance is easy, if a bit kludgy: the following quarter, a copy is made of the current worksheet, the copy is renamed using 'Qtr' and {number of quarter}, i.e., **Qtr2**, and the table is updated thus:
 
 +--------------------------+
 |      Field Ranges        |
@@ -427,11 +416,14 @@ The advantage to this approach is that formula errors are avoided, or far more e
 
 and changing range values manually; again, another frequent source of error.
 
+The last word for this process remains to be said.
 
+
+----------------------------
 sParseAllWords({cellnumber})
 ----------------------------
 
-Note, *as of 2203-01-06, this function is being reviewed and revised*.
+Note, *as of 2024-10-17, this function has been rendered obsolete, and will be removed from the code*.
 
 .. code-block:: vbnet
 
@@ -448,6 +440,7 @@ Note, *as of 2203-01-06, this function is being reviewed and revised*.
 
 .. _tw9-ccpayment:
 
+-------------------
 Creditcard Payments
 -------------------
 
@@ -463,7 +456,7 @@ For the credit card, the app looks at the entry for "PAYMENT" - the only fairly 
 
 .. raw:: html
    
-   <hr style="height:4px;border-width:0;color:gray;background-color:gray">
+   <hr style="height:8px;border-width:0;color:gray;background-color:blue">
 
 
 
@@ -519,7 +512,7 @@ Having only revenue with "REV" as prefix and 5-digit suffixes make that transact
 .. _tw9-SavingsCodes:
 
 ========================
-Quick Note on 972Savings
+Quick Note on Savings
 ========================
 
 *New for version 0.8*
@@ -528,29 +521,22 @@ Many transactions happen through Paypal. These are extremely difficult to keep t
 
 	PAYMENT TO PAYPAL AUSTRALIA 1021851015462
 
-To identify the transaction prior to running the script to assign categories involves opening GMail and Ebay -> Purchases. Once it has been established who the payment went to and what for, I typically copy/paste the item - or service - purchased into column H. Column F receivs a 2-character code to identify the purchase as being of the following categories: the script then trims off the transaction number suffix and assigns a suffix to the Transaction Target based on the code I enter prior to processing in Column F:
+To identify the transaction prior to running the script to assign categories involves opening GMail, PayPal and Ebay -> Purchase History. Once it has been established who the payment went to and what for, I prefix the entry with a cryptic identifier (e.g., SSD) followed by a '-', then include a categorised entry in the AList worksheet.
 
 
 =====================
 Additional Discussion
 =====================
 
-With v.8, I have endeavoured to be somewhat cross-platform. I do most of what I do on a computer on a Macbook Pro (2015), running Windows 10 in a VM. Development of anything VBA occurs in this VM environment. However, I do need to get to the data at times on the Mac, so I load these workbooks in Excel 2016 for Mac. Help is a challenge: I can't invoke a browser within Excel Mac like I can in Windows (to my knowledge, anyway). So, I just display the link in a MsgBox and have the Mac user copy/paste that into the browser.
+With v.8, I had endeavoured to create a somewhat cross-platform utility. I do most of what I do on a computer on a Macbook Pro (2015), running Windows 10 in a VM. Development of anything VBA occurs in this VM environment. However, I do need to get to the data at times on the Mac, so I load these workbooks in Excel 2016 for Mac. Help is a challenge: I can't invoke a browser within Excel Mac like I can in Windows (to my knowledge, anyway). So, I just display the link in a MsgBox and have the Mac user copy/paste that into the browser.
 
 Yeah, a kludge, but it works.
 
 .. raw:: html
    
-   <hr style="height:4px;border-width:0;color:gray;background-color:gray">
+   <hr style="height:8px;border-width:0;color:gray;background-color:blue">
 
 
-
-
-**************
-The About Form
-**************
-
-In an effort be be somewhat cross-platform friendly, I only have one form: the "About": containing the version number and a Help button which brings up the browser to display these Help pages.
 
 
 
@@ -589,30 +575,3 @@ To find the most current documentation - a (probably) updated version of this do
    
    * `my Github TaxWorkbook page <https://robinboncoeur.github.io/appmgr/>`_ 
 	 
-
-
-====================
-Currently Working on
-====================
-
-FROM
-   "FROM RURAL A": TruncSuffix = Mid(Tstr, 1, 29)
-   "FROM QLD DEP": TruncSuffix = Mid(Tstr, 1, 28)
-   "FROM KHAD PT": TruncSuffix = Mid(Tstr, 1, 28)
-   "FROM REMITTE": TruncSuffix = Mid(Tstr, 1, 28)
-   "FROM PAYPAL ": TruncSuffix = Mid(Tstr, 1, 22)
-   "FROM HANNAH ": TruncSuffix = Mid(Tstr, 1, 21)
-   "FROM ONEPATH": TruncSuffix = Mid(Tstr, 1, 21)
-   "FROM       5": TruncSuffix = Mid(Tstr, 1, 20)
-   "FROM SPP TRU": TruncSuffix = Mid(Tstr, 1, 18)
-   "FROM US Covi": TruncSuffix = Mid(Tstr, 1, 16)
-   "FROM E338163": TruncSuffix = Mid(Tstr, 1, 15)
-   "FROM ATO    ": TruncSuffix = Mid(Tstr, 1, 8)
-   "PYPL PAYIN4 ": TruncSuffix = Mid(Tstr, 1, 12)
-   "PAYPAL AUSTR": TruncSuffix = Mid(Tstr, 1, 17)
-TO
-   "TO TELSTRA S": TruncSuffix = Mid(Tstr, 1, 19)
-   "TO TMR-PRODU": TruncSuffix = Mid(Tstr, 1, 19)
-   "TO ANZ INSUR": TruncSuffix = Mid(Tstr, 1, 20)
-   "TO NRMA INSU": TruncSuffix = Mid(Tstr, 1, 21)
-   "TO AMBERELEC": TruncSuffix = Mid(Tstr, 1, 21)
