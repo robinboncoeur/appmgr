@@ -87,7 +87,9 @@ After the transactions have been copied, the Code Assignment script is invoked:
 
 .. image:: https://www.tightbytes.com/images/pubimages/appmgr/tw08Codes06.png
 
-During processing, the transaction target - column C - is given a standard description, leaving either a 'FROM' or 'TO' prefix if appropriate, and the appropriate code is entered for the transaction in column D.
+At the end of processing, the user can determine if any entries lack a transaction code at the top-right of the worksheet, in column I. If the number is greater than 0, one or more transaction still needs categorising. During processing, the transaction target - column C - is given a standard description, leaving either a 'FROM' or 'TO' prefix if appropriate, and the appropriate code is entered for the transaction in column D.
+
+
 
 .. raw:: html
    
@@ -152,6 +154,8 @@ After the codes are assigned:
 | 07/12/2022  |  -$45.65  | LINCRAFT AUSTRALIA PTY VICTORIA POIN   | OTHHOJ   |
 +-------------+-----------+----------------------------------------+----------+
 
+At the end of processing, the user can determine if any entries lack a transaction code at the top-right of the worksheet, in column I. If the number is greater than 0, one or more transaction still needs categorising. 
+
 .. raw:: html
    
    <hr style="height:2px;border-width:0;color:gray;background-color:gray">
@@ -176,6 +180,8 @@ The columns are as follows::
 After the transactions have been copied, the Code Assignment script is invoked:
 
 .. image:: https://www.tightbytes.com/images/pubimages/appmgr/tw08Codes06.png
+
+At the end of processing, the user can determine if any entries lack a transaction code at the top-right of the worksheet, in column I. If the number is greater than 0, one or more transaction still needs categorising.
 
 .. raw:: html
    
@@ -204,17 +210,9 @@ See :REF:`tw9-calcABS` for an insight as to how quarterly budget sheets are main
    <hr style="height:4px;border-width:0;color:gray;background-color:gray">
 
 
-
-
-**************
-The About Form
-**************
-
-In an effort be be somewhat cross-platform friendly, I only have one form: the "About": containing the version number and a Help button which brings up the browser to display these Help pages.
-
 .. raw:: html
    
-   <hr style="height:4px;border-width:0;color:gray;background-color:gray">
+   <hr style="height:8px;border-width:0;color:gray;background-color:blue">
 
 
 
@@ -519,6 +517,14 @@ Yeah, a kludge, but it works.
    
    <hr style="height:4px;border-width:0;color:gray;background-color:gray">
 
+
+
+
+**************
+The About Form
+**************
+
+In an effort be be somewhat cross-platform friendly, I only have one form: the "About": containing the version number and a Help button which brings up the browser to display these Help pages.
 
 
 

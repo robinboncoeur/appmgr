@@ -64,7 +64,6 @@
 <li class="toctree-l3"><a class="reference internal" href="#budget-worksheets">Budget Worksheets</a></li>
 </ul>
 </li>
-<li class="toctree-l2"><a class="reference internal" href="#the-about-form">The About Form</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#the-code-running-the-workbook">The Code Running The Workbook</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="#ribbon-code">Ribbon Code</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#process-that-worksheet">Process that Worksheet</a></li>
@@ -84,6 +83,7 @@
 <li class="toctree-l3"><a class="reference internal" href="#additional-discussion">Additional Discussion</a></li>
 </ul>
 </li>
+<li class="toctree-l2"><a class="reference internal" href="#the-about-form">The About Form</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#licence-agreement">Licence Agreement</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="#gnu-general-public-licence-v3">GNU General Public Licence v3</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#how-to-contact-the-developer">How to Contact the Developer</a></li>
@@ -171,7 +171,7 @@
 </div>
 <p>After the transactions have been copied, the Code Assignment script is invoked:</p>
 <img alt="https://www.tightbytes.com/images/pubimages/appmgr/tw08Codes06.png" src="https://www.tightbytes.com/images/pubimages/appmgr/tw08Codes06.png" />
-<p>During processing, the transaction target - column C - is given a standard description, leaving either a ‘FROM’ or ‘TO’ prefix if appropriate, and the appropriate code is entered for the transaction in column D.</p>
+<p>At the end of processing, the user can determine if any entries lack a transaction code at the top-right of the worksheet, in column I. If the number is greater than 0, one or more transaction still needs categorising. During processing, the transaction target - column C - is given a standard description, leaving either a ‘FROM’ or ‘TO’ prefix if appropriate, and the appropriate code is entered for the transaction in column D.</p>
 <hr style="height:2px;border-width:0;color:gray;background-color:gray"></section>
 <section id="credit-card">
 <h3>Credit Card<a class="headerlink" href="#credit-card" title="Permalink to this heading"></a></h3>
@@ -267,6 +267,7 @@
 </tr>
 </tbody>
 </table>
+<p>At the end of processing, the user can determine if any entries lack a transaction code at the top-right of the worksheet, in column I. If the number is greater than 0, one or more transaction still needs categorising.</p>
 <hr style="height:2px;border-width:0;color:gray;background-color:gray"></section>
 <section id="savings">
 <h3>Savings<a class="headerlink" href="#savings" title="Permalink to this heading"></a></h3>
@@ -283,6 +284,7 @@
 </div>
 <p>After the transactions have been copied, the Code Assignment script is invoked:</p>
 <img alt="https://www.tightbytes.com/images/pubimages/appmgr/tw08Codes06.png" src="https://www.tightbytes.com/images/pubimages/appmgr/tw08Codes06.png" />
+<p>At the end of processing, the user can determine if any entries lack a transaction code at the top-right of the worksheet, in column I. If the number is greater than 0, one or more transaction still needs categorising.</p>
 <hr style="height:2px;border-width:0;color:gray;background-color:gray"></section>
 <section id="alist">
 <h3>AList<a class="headerlink" href="#alist" title="Permalink to this heading"></a></h3>
@@ -291,12 +293,8 @@
 <section id="budget-worksheets">
 <h3>Budget Worksheets<a class="headerlink" href="#budget-worksheets" title="Permalink to this heading"></a></h3>
 <p>See <a class="reference internal" href="#tw9-calcabs"><span class="std std-ref">calcABS</span></a> for an insight as to how quarterly budget sheets are maintained.</p>
-<hr style="height:4px;border-width:0;color:gray;background-color:gray"></section>
+<hr style="height:4px;border-width:0;color:gray;background-color:gray"><hr style="height:8px;border-width:0;color:gray;background-color:blue"></section>
 </section>
-<section id="the-about-form">
-<h2>The About Form<a class="headerlink" href="#the-about-form" title="Permalink to this heading"></a></h2>
-<p>In an effort be be somewhat cross-platform friendly, I only have one form: the “About”: containing the version number and a Help button which brings up the browser to display these Help pages.</p>
-<hr style="height:4px;border-width:0;color:gray;background-color:gray"></section>
 <section id="the-code-running-the-workbook">
 <span id="tw9-corefcn"></span><h2>The Code Running The Workbook<a class="headerlink" href="#the-code-running-the-workbook" title="Permalink to this heading"></a></h2>
 <p>For those who might be curious as to how certain features work, I offer the following as a bit of a discussion on my approach to solving these little problems. My code is quite basic and of course open-source: anyone can modify it to suit their needs. To view the code, press [Alt] [F11] and you will be presented with the Visual Basic Editor. These user-defined functions and sub-routines - <em>including those used on the worksheets</em> - are stored in the MdlT modules page.</p>
@@ -574,6 +572,10 @@
 <p>With v.8, I have endeavoured to be somewhat cross-platform. I do most of what I do on a computer on a Macbook Pro (2015), running Windows 10 in a VM. Development of anything VBA occurs in this VM environment. However, I do need to get to the data at times on the Mac, so I load these workbooks in Excel 2016 for Mac. Help is a challenge: I can’t invoke a browser within Excel Mac like I can in Windows (to my knowledge, anyway). So, I just display the link in a MsgBox and have the Mac user copy/paste that into the browser.</p>
 <p>Yeah, a kludge, but it works.</p>
 <hr style="height:4px;border-width:0;color:gray;background-color:gray"></section>
+</section>
+<section id="the-about-form">
+<h2>The About Form<a class="headerlink" href="#the-about-form" title="Permalink to this heading"></a></h2>
+<p>In an effort be be somewhat cross-platform friendly, I only have one form: the “About”: containing the version number and a Help button which brings up the browser to display these Help pages.</p>
 </section>
 <section id="licence-agreement">
 <h2>Licence Agreement<a class="headerlink" href="#licence-agreement" title="Permalink to this heading"></a></h2>
