@@ -10,7 +10,7 @@ This Excel-based utility - *formerly the* **Tax Workbook** - is designed to mana
 
 This Excel-based approach replaces the paper ledger. It was originally designed to identify tax-data figures: the tax accountant requested an income and expenditures summary worksheet in Excel. Using the power of Excel and VBA, data from downloaded CSV files populated the Accounts Worksheets, which informed fields on the Summary Sheet through links: this happened dynamically. In this version, the Summary worksheet has been removed as it is no longer needed, replaced by budgeting worksheets. 
 
-This Tax Workbook is a living document, both from a data as well as a VBA standpoint. As income-and-expenses pictures change over time, this document - version 0.9 - is a much simplified version to previous versions.
+This Transaction Tracker is a living document, both from a data as well as a VBA standpoint. As income-and-expenses pictures change over time, this document - version 0.9 - is a much simplified version to previous versions.
 
 .. raw:: html
    
@@ -19,15 +19,15 @@ This Tax Workbook is a living document, both from a data as well as a VBA standp
 
 
 
-*************************
-Tax Workbook - Worksheets
-*************************
+********************************
+Transaction Tracker - Worksheets
+********************************
 
 ===================
 Worksheets Overview
 ===================
 
-When "Tax Workbook" is first opened in Excel, security settings - commonly set by organisations to prevent malicious code from being executed - may issue a security warning:
+When **Transaction Tracker** is first opened in Excel, security settings - commonly set by organisations to prevent malicious code from being executed - may issue a security warning:
    
    * *Some active content has been disabled. Click for more details.*
    
@@ -39,27 +39,10 @@ The workbook is made up of several worksheets, some of which contain links to ot
 
 The analysis worksheets are **TSy** and the **Overview** sheets. There are also sheets of analysis by Quarter (Qtr1-4 and Bud-Q1-4).
 
-The data worksheets **568CreditCard**, **259Checking** and **972Savings**, where the naming convention is the last three digits of the account and the description.
-
-This workbook contains transaction data from bank accounts. The data is categorised through codes:
+The data worksheets - **Checking**, **CreditCard** and **Savings** - use a naming convention of the last three digits of the account and the description. The data is categorised through codes, seen in this example:
 
 .. image:: https://www.tightbytes.com/images/pubimages/appmgr/tw01Codes01.png
 
-Transaction amounts for a given category are tallied based on these Transaction Category Codes, a copy of which is saved in the 'AList' worksheet. The tallies are SUMIF()s of transaction amounts based on the codes in column D::
-
-	=ABS(SUMIF('568CreditCard'!$D165:$D399,"HSHPHO",'568CreditCard'!$B165:$B399))
-
-Note: *the use of SUMIF() has been largely replaced with a User-Defined Function (UDF) called calcABS, particularly on the Budget worksheets. See* :ref:`tw9-calcABS` *for how this works*.
-
-Using the CreditCard worksheet as an example, the codes in column D are assigned via Excel's Visual-Basic for Applications functions (VBA), copied from the **AList Worksheet** which has an instance of the Transaction Target and an associated code:
-
-.. image:: https://www.tightbytes.com/images/pubimages/appmgr/tw01Codes03.png
-
-The script that copies the Transaction Code from the AList sheet to the **CreditCard** sheet is run from **Tax Workbook** menu option under the main menu, i.e., the 'Ribbon':
-
-.. image:: https://www.tightbytes.com/images/pubimages/appmgr/tw08Codes04.png
-
-Much of the workbook's data is managed in this fashion.
 
 
 
@@ -67,19 +50,22 @@ Much of the workbook's data is managed in this fashion.
 Process Overview
 ================
 
-This workbook assumes  three accounts: Checking, Savings and CreditCard. The process is as follows:
+This workbook assumes three accounts: Checking, Savings and CreditCard. The process is as follows:
 
-  1. The data to populate the worksheets is downloaded from the banking institution's website and saved in a CSV file, typically saved to a folder labelled with the download date. The files are named using the last 3 digits of the account name. Depending on how frequently this is done, one may wish to download 60, 90 or even 120 days worth of data.
+  1. The data to populate the worksheets is downloaded from the banking institution's website and saved in a CSV file, typically saved to a folder labelled with the download date. The files are named using the last 3 digits of the account name. Depending on how frequently this is done, one may wish to download 60, 90 or even 120 days worth of data to ensure no transactions are missed.
 
-  2. Each CSV file is opened in (imported into) Excel. In the ribbon, select Data, then Get Data -> From Text/CSV. After sorting the data from oldest to newest, the transactions that have not yet been copied to the corresponding worksheet are copied over using Copy Special: Values. Once the data has been copied, the CSV sheet can be deleted as well as the connection that was formed by Excel, as it is no longer needed.
+  2. Each CSV file is opened in (imported into) Excel. **In the ribbon, select Data, then Get Data -> From Text/CSV**. After sorting the data from oldest to newest, the transactions that have not yet been copied to the corresponding worksheet are copied over using Copy Special: Values. Once the data has been copied, the CSV sheet can be deleted as well as the connection that was formed by Excel, as it is no longer needed.
 
   3. So that the original bank-generated transaction information is preserved, the transaction list is cut from column C and pasted into Column G.
   
-  4. The transactions are identified - if they exist in the AList worksheet. **Tax Workbook** -> Click on the menu item respresenting that account.
+  4. The transactions are identified - if they exist in the AList worksheet. **Transaction Tracker -> Click on the menu item** respresenting that account, i.e., Checking, CredCard or Savings.
   
-  5. Any transactions not in the AList worksheet can be added by selecting the uncategorised Transaction Target fields and copying that list to the bottom of the AList column A. The approach to take is outlined here :REF:`tw9-txncategoring`. Once the new entries have been given categories, step 4 above is repeated, until all transactions have been categorised.
+  5. Any transactions not in the AList worksheet needs to be categorised by selecting the uncategorised Transaction Target fields and copying that list to the bottom of the AList column A. The approach to take is outlined here: :REF:`tw9-txncategoring`. Once the new entries have been given categories, step 4 above is repeated, until all transactions have been categorised.
   
 
+.. raw:: html
+   
+   <hr style="height:2px;border-width:0;color:gray;background-color:gray">
 
 
 ========
@@ -104,6 +90,9 @@ After the transactions have been copied, the Code Assignment script is invoked:
 
 During processing, the transaction target - column C - is given a standard description, leaving either a 'FROM' or 'TO' prefix if appropriate, and the appropriate code is entered for the transaction in column D.
 
+.. raw:: html
+   
+   <hr style="height:2px;border-width:0;color:gray;background-color:gray">
 
 
 ===========
@@ -233,7 +222,30 @@ The Code Running The Workbook
 
 For those who might be curious as to how certain features work, I offer the following as a bit of a discussion on my approach to solving these little problems.
 
-To view the code, press [Alt] [F11] and you will be presented with the Visual Basic Editor. These user-defined functions and sub-routines are stored in the MdlT modules page. The Tax Workbook ribbon buttons code is stored here.
+To view the code, press [Alt] [F11] and you will be presented with the Visual Basic Editor. These user-defined functions and sub-routines are stored in the MdlT modules page. The Transaction Tracker ribbon buttons code is stored here.
+
+
+
+
+
+Transaction amounts for a given category are tallied based on these Transaction Category Codes, a copy of which is saved in the 'AList' worksheet. The tallies are SUMIF()s of transaction amounts based on the codes in column D::
+
+	=ABS(SUMIF('568CreditCard'!$D165:$D399,"HSHPHO",'568CreditCard'!$B165:$B399))
+
+Note: *the use of SUMIF() has been largely replaced with a User-Defined Function (UDF) called calcABS, particularly on the Budget worksheets. See* :ref:`tw9-calcABS` *for how this works*.
+
+Using the CreditCard worksheet as an example, the codes in column D are assigned via Excel's Visual-Basic for Applications functions (VBA), copied from the **AList Worksheet** which has an instance of the Transaction Target and an associated code:
+
+.. image:: https://www.tightbytes.com/images/pubimages/appmgr/tw01Codes03.png
+
+The script that copies the Transaction Code from the AList sheet to the **CreditCard** sheet is run from **Transaction Tracker** menu option under the main menu, i.e., the 'Ribbon':
+
+.. image:: https://www.tightbytes.com/images/pubimages/appmgr/tw08Codes04.png
+
+Much of the workbook's data is managed in this fashion.
+
+
+
 
 
 
@@ -241,7 +253,7 @@ To view the code, press [Alt] [F11] and you will be presented with the Visual Ba
 Menu Options
 ============
 
-Using the menu option "CreditCard" in the ribbon under **Tax Workbook** as an example:
+Using the menu option "CreditCard" in the ribbon under **Transaction Tracker** as an example:
 
 .. image:: https://www.tightbytes.com/images/pubimages/appmgr/tw08Codes04.png
 
@@ -417,17 +429,43 @@ Additional Notes
 
 .. _tw9-txncategoring:
 
-============================
-Categoryies for Transactions
-============================
+====================================
+Creating Categories for Transactions
+====================================
 
-To categorise transactions, one needs to develop a labelling scheme that can work consistently throughout the worksheets.
+To categorise transactions, one needs to develop a naming scheme that can work consistently throughout the worksheets. Creating too many categories will lead to tedium, so avoid being too granular. For example:
 
++------+--------+---------+-----------------------------------------+
+| 3-char base code prefix - 3-char refinement suffix                |
++======+========+=========+=========================================+
+| DLX  |  -ALC  |  DLXALC | Daily Living expenses & Alcohol         |
++------+--------+---------+-----------------------------------------+
+| DLX  |  -ALI  |  DLXALI | Daily Living expenses & Alimentation    |
++------+--------+---------+-----------------------------------------+
+| DLX  |  -DIN  |  DLXDIN | Daily Living expenses & Dining Out      |
++------+--------+---------+-----------------------------------------+
+| DLX  |  -ENT  |  DLXENT | Daily Living expenses & Entertainment   |
++------+--------+---------+-----------------------------------------+
+| DLX  |  -HAI  |  DLXHAI | Daily Living expenses & Hair/Nails      |
++------+--------+---------+-----------------------------------------+
+| HSH  |  -FUR  |  HSHFUR | Household & Furnishings                 |
++------+--------+---------+-----------------------------------------+
+| HSH  |  -ITX  |  HSHITX | Household & IT Expenses                 |
++------+--------+---------+-----------------------------------------+
+| HSH  |  -MAI  |  HSHMAI | Household & Maintenance                 |
++------+--------+---------+-----------------------------------------+
 
+The user may wish to be more granular than the example shown above, but will find that doing so can render the categorising process more difficult in the end, as would not being granular enough. Planning this process carefully will ultimately make maintaining the workbook significantly less tedious. The above approach could be used for expenses, whilst revenue could use an "REV" prefix:
 
++------+----------+-----------+-------------------------------------+
+| 3-char base code prefix - 3-char refinement suffix                |
++======+==========+===========+=====================================+
+| REV  |  -REFND  |  REVREFND | Revenue: Refunds                    |
++------+----------+-----------+-------------------------------------+
+| REV  |  -AUPEN  |  REVAUPEN | Revenue: Australian Pension         |
++------+----------+-----------+-------------------------------------+
 
-
-
+Having only revenue with "REV" as prefix and 5-digit suffixes make that transaction quick and easy to identify in a worksheet.These are, of course, all only suggestions. No doubt the user will come up with an infinitely cleverer scheme.
 
 
 

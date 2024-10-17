@@ -54,7 +54,7 @@
 <li class="toctree-l1"><a class="reference internal" href="TaxWB08.html">Tax Workbook v.8</a></li>
 <li class="toctree-l1 current"><a class="current reference internal" href="#">Transaction Tracker v.9</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="#introduction">Introduction</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#tax-workbook-worksheets">Tax Workbook - Worksheets</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#transaction-tracker-worksheets">Transaction Tracker - Worksheets</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="#worksheets-overview">Worksheets Overview</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#process-overview">Process Overview</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#checking">Checking</a></li>
@@ -76,7 +76,7 @@
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="#additional-notes">Additional Notes</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="#categoryies-for-transactions">Categoryies for Transactions</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#creating-categories-for-transactions">Creating Categories for Transactions</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#quick-note-on-972savings">Quick Note on 972Savings</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#additional-discussion">Additional Discussion</a></li>
 </ul>
@@ -121,13 +121,13 @@
 <h2>Introduction<a class="headerlink" href="#introduction" title="Permalink to this heading"></a></h2>
 <p>This Excel-based utility - <em>formerly the</em> <strong>Tax Workbook</strong> - is designed to manage creating and maintaining Banking Transactions Data for Tax Purposes and Budget Management in spreadsheet form. The workbook contains transaction data imported from CSV files downloaded from the user’s banking institution, which are then categorised to enable revenue and expense tracking.</p>
 <p>This Excel-based approach replaces the paper ledger. It was originally designed to identify tax-data figures: the tax accountant requested an income and expenditures summary worksheet in Excel. Using the power of Excel and VBA, data from downloaded CSV files populated the Accounts Worksheets, which informed fields on the Summary Sheet through links: this happened dynamically. In this version, the Summary worksheet has been removed as it is no longer needed, replaced by budgeting worksheets.</p>
-<p>This Tax Workbook is a living document, both from a data as well as a VBA standpoint. As income-and-expenses pictures change over time, this document - version 0.9 - is a much simplified version to previous versions.</p>
+<p>This Transaction Tracker is a living document, both from a data as well as a VBA standpoint. As income-and-expenses pictures change over time, this document - version 0.9 - is a much simplified version to previous versions.</p>
 <hr style="height:4px;border-width:0;color:gray;background-color:gray"></section>
-<section id="tax-workbook-worksheets">
-<h2>Tax Workbook - Worksheets<a class="headerlink" href="#tax-workbook-worksheets" title="Permalink to this heading"></a></h2>
+<section id="transaction-tracker-worksheets">
+<h2>Transaction Tracker - Worksheets<a class="headerlink" href="#transaction-tracker-worksheets" title="Permalink to this heading"></a></h2>
 <section id="worksheets-overview">
 <h3>Worksheets Overview<a class="headerlink" href="#worksheets-overview" title="Permalink to this heading"></a></h3>
-<p>When “Tax Workbook” is first opened in Excel, security settings - commonly set by organisations to prevent malicious code from being executed - may issue a security warning:</p>
+<p>When <strong>Transaction Tracker</strong> is first opened in Excel, security settings - commonly set by organisations to prevent malicious code from being executed - may issue a security warning:</p>
 <blockquote>
 <div><ul class="simple">
 <li><p><em>Some active content has been disabled. Click for more details.</em></p></li>
@@ -137,33 +137,22 @@
 <p>This only needs to be done the first time that particular workbook is opened.</p>
 <p>The workbook is made up of several worksheets, some of which contain links to other worksheets. The main account worksheets (data) represent a checking account, creditcard account, and a personal savings account.</p>
 <p>The analysis worksheets are <strong>TSy</strong> and the <strong>Overview</strong> sheets. There are also sheets of analysis by Quarter (Qtr1-4 and Bud-Q1-4).</p>
-<p>The data worksheets <strong>568CreditCard</strong>, <strong>259Checking</strong> and <strong>972Savings</strong>, where the naming convention is the last three digits of the account and the description.</p>
-<p>This workbook contains transaction data from bank accounts. The data is categorised through codes:</p>
+<p>The data worksheets - <strong>Checking</strong>, <strong>CreditCard</strong> and <strong>Savings</strong> - use a naming convention of the last three digits of the account and the description. The data is categorised through codes, seen in this example:</p>
 <img alt="https://www.tightbytes.com/images/pubimages/appmgr/tw01Codes01.png" src="https://www.tightbytes.com/images/pubimages/appmgr/tw01Codes01.png" />
-<p>Transaction amounts for a given category are tallied based on these Transaction Category Codes, a copy of which is saved in the ‘AList’ worksheet. The tallies are SUMIF()s of transaction amounts based on the codes in column D:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>=ABS(SUMIF(&#39;568CreditCard&#39;!$D165:$D399,&quot;HSHPHO&quot;,&#39;568CreditCard&#39;!$B165:$B399))
-</pre></div>
-</div>
-<p>Note: <em>the use of SUMIF() has been largely replaced with a User-Defined Function (UDF) called calcABS, particularly on the Budget worksheets. See</em> <a class="reference internal" href="#tw9-calcabs"><span class="std std-ref">calcABS</span></a> <em>for how this works</em>.</p>
-<p>Using the CreditCard worksheet as an example, the codes in column D are assigned via Excel’s Visual-Basic for Applications functions (VBA), copied from the <strong>AList Worksheet</strong> which has an instance of the Transaction Target and an associated code:</p>
-<img alt="https://www.tightbytes.com/images/pubimages/appmgr/tw01Codes03.png" src="https://www.tightbytes.com/images/pubimages/appmgr/tw01Codes03.png" />
-<p>The script that copies the Transaction Code from the AList sheet to the <strong>CreditCard</strong> sheet is run from <strong>Tax Workbook</strong> menu option under the main menu, i.e., the ‘Ribbon’:</p>
-<img alt="https://www.tightbytes.com/images/pubimages/appmgr/tw08Codes04.png" src="https://www.tightbytes.com/images/pubimages/appmgr/tw08Codes04.png" />
-<p>Much of the workbook’s data is managed in this fashion.</p>
 </section>
 <section id="process-overview">
 <h3>Process Overview<a class="headerlink" href="#process-overview" title="Permalink to this heading"></a></h3>
-<p>This workbook assumes  three accounts: Checking, Savings and CreditCard. The process is as follows:</p>
+<p>This workbook assumes three accounts: Checking, Savings and CreditCard. The process is as follows:</p>
 <blockquote>
 <div><ol class="arabic simple">
-<li><p>The data to populate the worksheets is downloaded from the banking institution’s website and saved in a CSV file, typically saved to a folder labelled with the download date. The files are named using the last 3 digits of the account name. Depending on how frequently this is done, one may wish to download 60, 90 or even 120 days worth of data.</p></li>
-<li><p>Each CSV file is opened in (imported into) Excel. In the ribbon, select Data, then Get Data -&gt; From Text/CSV. After sorting the data from oldest to newest, the transactions that have not yet been copied to the corresponding worksheet are copied over using Copy Special: Values. Once the data has been copied, the CSV sheet can be deleted as well as the connection that was formed by Excel, as it is no longer needed.</p></li>
+<li><p>The data to populate the worksheets is downloaded from the banking institution’s website and saved in a CSV file, typically saved to a folder labelled with the download date. The files are named using the last 3 digits of the account name. Depending on how frequently this is done, one may wish to download 60, 90 or even 120 days worth of data to ensure no transactions are missed.</p></li>
+<li><p>Each CSV file is opened in (imported into) Excel. <strong>In the ribbon, select Data, then Get Data -&gt; From Text/CSV</strong>. After sorting the data from oldest to newest, the transactions that have not yet been copied to the corresponding worksheet are copied over using Copy Special: Values. Once the data has been copied, the CSV sheet can be deleted as well as the connection that was formed by Excel, as it is no longer needed.</p></li>
 <li><p>So that the original bank-generated transaction information is preserved, the transaction list is cut from column C and pasted into Column G.</p></li>
-<li><p>The transactions are identified - if they exist in the AList worksheet. <strong>Tax Workbook</strong> -&gt; Click on the menu item respresenting that account.</p></li>
-<li><p>Any transactions not in the AList worksheet can be added by selecting the uncategorised Transaction Target fields and copying that list to the bottom of the AList column A. The approach to take is outlined here <a class="reference internal" href="#tw9-txncategoring"><span class="std std-ref">Categoryies for Transactions</span></a>. Once the new entries have been given categories, step 4 above is repeated, until all transactions have been categorised.</p></li>
+<li><p>The transactions are identified - if they exist in the AList worksheet. <strong>Transaction Tracker -&gt; Click on the menu item</strong> respresenting that account, i.e., Checking, CredCard or Savings.</p></li>
+<li><p>Any transactions not in the AList worksheet needs to be categorised by selecting the uncategorised Transaction Target fields and copying that list to the bottom of the AList column A. The approach to take is outlined here: <a class="reference internal" href="#tw9-txncategoring"><span class="std std-ref">Creating Categories for Transactions</span></a>. Once the new entries have been given categories, step 4 above is repeated, until all transactions have been categorised.</p></li>
 </ol>
 </div></blockquote>
-</section>
+<hr style="height:2px;border-width:0;color:gray;background-color:gray"></section>
 <section id="checking">
 <h3>Checking<a class="headerlink" href="#checking" title="Permalink to this heading"></a></h3>
 <p>The Access <strong>259Checking</strong> Worksheet is a date-sorted, formatted Checking Account transaction worksheet. Payroll, home-loan and investment property data, as well as certain utilities transactions go through this account. The data is imported from a CSV file downloaded from the bank’s website. The data is sorted oldest to newest and the most recent records are appended to the existing data. Prior to processing, the Transaction Target entries are moved to column G.</p>
@@ -180,7 +169,7 @@
 <p>After the transactions have been copied, the Code Assignment script is invoked:</p>
 <img alt="https://www.tightbytes.com/images/pubimages/appmgr/tw08Codes06.png" src="https://www.tightbytes.com/images/pubimages/appmgr/tw08Codes06.png" />
 <p>During processing, the transaction target - column C - is given a standard description, leaving either a ‘FROM’ or ‘TO’ prefix if appropriate, and the appropriate code is entered for the transaction in column D.</p>
-</section>
+<hr style="height:2px;border-width:0;color:gray;background-color:gray"></section>
 <section id="credit-card">
 <h3>Credit Card<a class="headerlink" href="#credit-card" title="Permalink to this heading"></a></h3>
 <p>The <strong>568CreditCard</strong> Worksheet is a date-sorted, formatted Credit Card transaction worksheet. The data is imported from a CSV file downloaded from the bank’s website. The data is sorted oldest to newest and the most recent records are appended to the existing data.</p>
@@ -308,10 +297,20 @@
 <section id="the-code-running-the-workbook">
 <span id="tw9-corefcn"></span><h2>The Code Running The Workbook<a class="headerlink" href="#the-code-running-the-workbook" title="Permalink to this heading"></a></h2>
 <p>For those who might be curious as to how certain features work, I offer the following as a bit of a discussion on my approach to solving these little problems.</p>
-<p>To view the code, press [Alt] [F11] and you will be presented with the Visual Basic Editor. These user-defined functions and sub-routines are stored in the MdlT modules page. The Tax Workbook ribbon buttons code is stored here.</p>
+<p>To view the code, press [Alt] [F11] and you will be presented with the Visual Basic Editor. These user-defined functions and sub-routines are stored in the MdlT modules page. The Transaction Tracker ribbon buttons code is stored here.</p>
+<p>Transaction amounts for a given category are tallied based on these Transaction Category Codes, a copy of which is saved in the ‘AList’ worksheet. The tallies are SUMIF()s of transaction amounts based on the codes in column D:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>=ABS(SUMIF(&#39;568CreditCard&#39;!$D165:$D399,&quot;HSHPHO&quot;,&#39;568CreditCard&#39;!$B165:$B399))
+</pre></div>
+</div>
+<p>Note: <em>the use of SUMIF() has been largely replaced with a User-Defined Function (UDF) called calcABS, particularly on the Budget worksheets. See</em> <a class="reference internal" href="#tw9-calcabs"><span class="std std-ref">calcABS</span></a> <em>for how this works</em>.</p>
+<p>Using the CreditCard worksheet as an example, the codes in column D are assigned via Excel’s Visual-Basic for Applications functions (VBA), copied from the <strong>AList Worksheet</strong> which has an instance of the Transaction Target and an associated code:</p>
+<img alt="https://www.tightbytes.com/images/pubimages/appmgr/tw01Codes03.png" src="https://www.tightbytes.com/images/pubimages/appmgr/tw01Codes03.png" />
+<p>The script that copies the Transaction Code from the AList sheet to the <strong>CreditCard</strong> sheet is run from <strong>Transaction Tracker</strong> menu option under the main menu, i.e., the ‘Ribbon’:</p>
+<img alt="https://www.tightbytes.com/images/pubimages/appmgr/tw08Codes04.png" src="https://www.tightbytes.com/images/pubimages/appmgr/tw08Codes04.png" />
+<p>Much of the workbook’s data is managed in this fashion.</p>
 <section id="menu-options">
 <h3>Menu Options<a class="headerlink" href="#menu-options" title="Permalink to this heading"></a></h3>
-<p>Using the menu option “CreditCard” in the ribbon under <strong>Tax Workbook</strong> as an example:</p>
+<p>Using the menu option “CreditCard” in the ribbon under <strong>Transaction Tracker</strong> as an example:</p>
 <img alt="https://www.tightbytes.com/images/pubimages/appmgr/tw08Codes04.png" src="https://www.tightbytes.com/images/pubimages/appmgr/tw08Codes04.png" />
 <p>invokes the _Click() event for that button, which runs the following code:</p>
 <div class="highlight-vbnet notranslate"><div class="highlight"><pre><span></span><span class="k">Sub</span><span class="w"> </span><span class="nf">btnCC_Click</span><span class="p">(</span><span class="n">control</span><span class="w"> </span><span class="ow">As</span><span class="w"> </span><span class="n">IRibbonControl</span><span class="p">)</span>
@@ -474,9 +473,77 @@
 </section>
 <section id="additional-notes">
 <h2>Additional Notes<a class="headerlink" href="#additional-notes" title="Permalink to this heading"></a></h2>
-<section id="categoryies-for-transactions">
-<span id="tw9-txncategoring"></span><h3>Categoryies for Transactions<a class="headerlink" href="#categoryies-for-transactions" title="Permalink to this heading"></a></h3>
-<p>To categorise transactions, one needs to develop a labelling scheme that can work consistently throughout the worksheets.</p>
+<section id="creating-categories-for-transactions">
+<span id="tw9-txncategoring"></span><h3>Creating Categories for Transactions<a class="headerlink" href="#creating-categories-for-transactions" title="Permalink to this heading"></a></h3>
+<p>To categorise transactions, one needs to develop a naming scheme that can work consistently throughout the worksheets. Creating too many categories will lead to tedium, so avoid being too granular. For example:</p>
+<table class="docutils align-default">
+<thead>
+<tr class="row-odd"><th class="head" colspan="4"><p>3-char base code prefix - 3-char refinement suffix</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>DLX</p></td>
+<td><p>-ALC</p></td>
+<td><p>DLXALC</p></td>
+<td><p>Daily Living expenses &amp; Alcohol</p></td>
+</tr>
+<tr class="row-odd"><td><p>DLX</p></td>
+<td><p>-ALI</p></td>
+<td><p>DLXALI</p></td>
+<td><p>Daily Living expenses &amp; Alimentation</p></td>
+</tr>
+<tr class="row-even"><td><p>DLX</p></td>
+<td><p>-DIN</p></td>
+<td><p>DLXDIN</p></td>
+<td><p>Daily Living expenses &amp; Dining Out</p></td>
+</tr>
+<tr class="row-odd"><td><p>DLX</p></td>
+<td><p>-ENT</p></td>
+<td><p>DLXENT</p></td>
+<td><p>Daily Living expenses &amp; Entertainment</p></td>
+</tr>
+<tr class="row-even"><td><p>DLX</p></td>
+<td><p>-HAI</p></td>
+<td><p>DLXHAI</p></td>
+<td><p>Daily Living expenses &amp; Hair/Nails</p></td>
+</tr>
+<tr class="row-odd"><td><p>HSH</p></td>
+<td><p>-FUR</p></td>
+<td><p>HSHFUR</p></td>
+<td><p>Household &amp; Furnishings</p></td>
+</tr>
+<tr class="row-even"><td><p>HSH</p></td>
+<td><p>-ITX</p></td>
+<td><p>HSHITX</p></td>
+<td><p>Household &amp; IT Expenses</p></td>
+</tr>
+<tr class="row-odd"><td><p>HSH</p></td>
+<td><p>-MAI</p></td>
+<td><p>HSHMAI</p></td>
+<td><p>Household &amp; Maintenance</p></td>
+</tr>
+</tbody>
+</table>
+<p>The user may wish to be more granular than the example shown above, but will find that doing so can render the categorising process more difficult in the end, as would not being granular enough. Planning this process carefully will ultimately make maintaining the workbook significantly less tedious. The above approach could be used for expenses, whilst revenue could use an “REV” prefix:</p>
+<table class="docutils align-default">
+<thead>
+<tr class="row-odd"><th class="head" colspan="4"><p>3-char base code prefix - 3-char refinement suffix</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>REV</p></td>
+<td><p>-REFND</p></td>
+<td><p>REVREFND</p></td>
+<td><p>Revenue: Refunds</p></td>
+</tr>
+<tr class="row-odd"><td><p>REV</p></td>
+<td><p>-AUPEN</p></td>
+<td><p>REVAUPEN</p></td>
+<td><p>Revenue: Australian Pension</p></td>
+</tr>
+</tbody>
+</table>
+<p>Having only revenue with “REV” as prefix and 5-digit suffixes make that transaction quick and easy to identify in a worksheet.These are, of course, all only suggestions. No doubt the user will come up with an infinitely cleverer scheme.</p>
 </section>
 <section id="quick-note-on-972savings">
 <span id="tw9-savingscodes"></span><h3>Quick Note on 972Savings<a class="headerlink" href="#quick-note-on-972savings" title="Permalink to this heading"></a></h3>
