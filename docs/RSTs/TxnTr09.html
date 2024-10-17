@@ -4,7 +4,7 @@
   <meta charset="utf-8" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Tax Workbook v.9 &mdash; App Manager 2.25 documentation</title>
+  <title>Transaction Tracker v.9 &mdash; App Manager 2.25 documentation</title>
       <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
       <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
   <!--[if lt IE 9]>
@@ -52,7 +52,7 @@
 <li class="toctree-l1"><a class="reference internal" href="ReabankEditor.html">Reabanks Editor</a></li>
 <li class="toctree-l1"><a class="reference internal" href="TaxWB07.html">Tax Workbook v.7</a></li>
 <li class="toctree-l1"><a class="reference internal" href="TaxWB08.html">Tax Workbook v.8</a></li>
-<li class="toctree-l1 current"><a class="current reference internal" href="#">Tax Workbook v.9</a><ul>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Transaction Tracker v.9</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="#introduction">Introduction</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#tax-workbook-worksheets">Tax Workbook - Worksheets</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="#worksheets-overview">Worksheets Overview</a></li>
@@ -105,9 +105,9 @@
           <div role="navigation" aria-label="Page navigation">
   <ul class="wy-breadcrumbs">
       <li><a href="../index.html" class="icon icon-home" aria-label="Home"></a></li>
-      <li class="breadcrumb-item active">Tax Workbook v.9</li>
+      <li class="breadcrumb-item active">Transaction Tracker v.9</li>
       <li class="wy-breadcrumbs-aside">
-            <a href="../_sources/RSTs/TaxWB09.rst.txt" rel="nofollow"> View page source</a>
+            <a href="../_sources/RSTs/TxnTr09.rst.txt" rel="nofollow"> View page source</a>
       </li>
   </ul>
   <hr/>
@@ -115,11 +115,11 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
              
-  <section id="tax-workbook-v-9">
-<h1>Tax Workbook v.9<a class="headerlink" href="#tax-workbook-v-9" title="Permalink to this heading"></a></h1>
+  <section id="transaction-tracker-v-9">
+<h1>Transaction Tracker v.9<a class="headerlink" href="#transaction-tracker-v-9" title="Permalink to this heading"></a></h1>
 <section id="introduction">
 <h2>Introduction<a class="headerlink" href="#introduction" title="Permalink to this heading"></a></h2>
-<p>This Excel-based utility is designed to manage creating and maintaining Banking Transactions Data for Tax Purposes and Budget Management in spreadsheet form. The workbook contains transaction data imported from CSV files downloaded from the user’s banking institution, which are then categorised to enable revenue and expense tracking.</p>
+<p>This Excel-based utility - <em>formerly the</em> <strong>Tax Workbook</strong> - is designed to manage creating and maintaining Banking Transactions Data for Tax Purposes and Budget Management in spreadsheet form. The workbook contains transaction data imported from CSV files downloaded from the user’s banking institution, which are then categorised to enable revenue and expense tracking.</p>
 <p>This Excel-based approach replaces the paper ledger. It was originally designed to identify tax-data figures: the tax accountant requested an income and expenditures summary worksheet in Excel. Using the power of Excel and VBA, data from downloaded CSV files populated the Accounts Worksheets, which informed fields on the Summary Sheet through links: this happened dynamically. In this version, the Summary worksheet has been removed as it is no longer needed, replaced by budgeting worksheets.</p>
 <p>This Tax Workbook is a living document, both from a data as well as a VBA standpoint. As income-and-expenses pictures change over time, this document - version 0.9 - is a much simplified version to previous versions.</p>
 <hr style="height:4px;border-width:0;color:gray;background-color:gray"></section>
@@ -172,14 +172,14 @@
 <span class="n">B</span> <span class="o">-</span> <span class="n">Transaction</span> <span class="n">Amount</span>
 <span class="n">C</span> <span class="o">-</span> <span class="n">Processed</span> <span class="n">Transaction</span> <span class="n">Target</span> <span class="p">(</span><span class="n">Payee</span> <span class="ow">or</span> <span class="n">Payor</span><span class="p">)</span>
 <span class="n">D</span> <span class="o">-</span> <span class="n">Transaction</span> <span class="n">Code</span>
-<span class="n">E</span> <span class="o">-</span> <span class="n">Description</span>
+<span class="n">E</span> <span class="o">-</span> <span class="p">(</span><span class="n">Empty</span><span class="p">)</span>
 <span class="n">F</span> <span class="o">-</span> <span class="p">(</span><span class="n">Empty</span><span class="p">)</span>
 <span class="n">G</span> <span class="o">-</span> <span class="n">Original</span> <span class="n">Transaction</span> <span class="n">Target</span> <span class="p">(</span><span class="n">moved</span> <span class="kn">from</span> <span class="nn">column</span> <span class="n">C</span><span class="p">)</span>
 </pre></div>
 </div>
-<p>After the transactions have been copied, the Code Assignment software is invoked:</p>
+<p>After the transactions have been copied, the Code Assignment script is invoked:</p>
 <img alt="https://www.tightbytes.com/images/pubimages/appmgr/tw08Codes06.png" src="https://www.tightbytes.com/images/pubimages/appmgr/tw08Codes06.png" />
-<p>During processing, non-useful text is removed from the transaction target, leaving either a ‘FROM’ or ‘TO’ prefix, making transaction identification vastly easier to do visually.</p>
+<p>During processing, the transaction target - column C - is given a standard description, leaving either a ‘FROM’ or ‘TO’ prefix if appropriate, and the appropriate code is entered for the transaction in column D.</p>
 </section>
 <section id="credit-card">
 <h3>Credit Card<a class="headerlink" href="#credit-card" title="Permalink to this heading"></a></h3>
@@ -187,13 +187,16 @@
 <p>The columns are as follows:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">A</span> <span class="o">-</span> <span class="n">Date</span>
 <span class="n">B</span> <span class="o">-</span> <span class="n">Transaction</span> <span class="n">Amount</span>
-<span class="n">C</span> <span class="o">-</span> <span class="n">Transaction</span> <span class="n">Target</span> <span class="p">(</span><span class="n">Payee</span> <span class="ow">or</span> <span class="n">Payor</span><span class="p">)</span>
+<span class="n">C</span> <span class="o">-</span> <span class="n">Processed</span> <span class="n">Transaction</span> <span class="n">Target</span> <span class="p">(</span><span class="n">Payee</span> <span class="ow">or</span> <span class="n">Payor</span><span class="p">)</span>
 <span class="n">D</span> <span class="o">-</span> <span class="n">Transaction</span> <span class="n">Code</span>
+<span class="n">E</span> <span class="o">-</span> <span class="p">(</span><span class="n">Empty</span><span class="p">)</span>
+<span class="n">F</span> <span class="o">-</span> <span class="p">(</span><span class="n">Empty</span><span class="p">)</span>
+<span class="n">G</span> <span class="o">-</span> <span class="n">Original</span> <span class="n">Transaction</span> <span class="n">Target</span> <span class="p">(</span><span class="n">moved</span> <span class="kn">from</span> <span class="nn">column</span> <span class="n">C</span><span class="p">)</span>
 </pre></div>
 </div>
-<p>After the transactions have been appended and the PAYMENT transaction categorised (see <a class="reference internal" href="#tw9-ccpayment"><span class="std std-ref">Creditcard Payments</span></a>), the Code Assignment software is invoked:</p>
+<p>After the transactions have been appended and the PAYMENT transaction categorised (see <a class="reference internal" href="#tw9-ccpayment"><span class="std std-ref">Creditcard Payments</span></a>), the Code Assignment script is invoked:</p>
 <img alt="https://www.tightbytes.com/images/pubimages/appmgr/tw08Codes04.png" src="https://www.tightbytes.com/images/pubimages/appmgr/tw08Codes04.png" />
-<p>The script compares transaction target entries to those in the ‘AList’ worksheet, leaving the Code column [D] blank if it doesn’t find that tranaction. 90% or more transactions are going to be with the same vendors, so it’s a simple matter of updating ‘AList’ with the transactions missing a code.</p>
+<p>The script compares transaction target entries to those in the ‘AList’ worksheet, leaving the Code column [D] blank if it doesn’t find that tranaction. With time, ninety percent or more transactions are going to be with the same vendors, so it’s a simple matter of updating ‘AList’ and re-running the script.</p>
 <p>For example, this is a typical credit card transaction listing:</p>
 <table class="docutils align-default">
 <thead>
@@ -275,26 +278,23 @@
 </section>
 <section id="savings">
 <h3>Savings<a class="headerlink" href="#savings" title="Permalink to this heading"></a></h3>
-<p>The <strong>972Savings</strong> Worksheet is a date-sorted, formatted Home Loan Account transaction worksheet. This account was mainly for personal transactions, historically. The data is imported from a CSV file downloaded from the bank’s website. The data is sorted oldest to newest and the most recent records are appended to the existing data. Prior to processing, the Transaction Target entries are moved to column G.</p>
+<p>The <strong>972Savings</strong> Worksheet is a date-sorted, formatted Savings Account transaction worksheet. The data is imported from a CSV file downloaded from the bank’s website. The data is sorted oldest to newest and the most recent records are appended to the existing data. Prior to processing, the Transaction Target entries are moved to column G.</p>
 <p>The columns are as follows:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">A</span> <span class="o">-</span> <span class="n">Date</span>
 <span class="n">B</span> <span class="o">-</span> <span class="n">Transaction</span> <span class="n">Amount</span>
 <span class="n">C</span> <span class="o">-</span> <span class="n">Processed</span> <span class="n">Transaction</span> <span class="n">Target</span> <span class="p">(</span><span class="n">Payee</span> <span class="ow">or</span> <span class="n">Payor</span><span class="p">)</span>
 <span class="n">D</span> <span class="o">-</span> <span class="n">Transaction</span> <span class="n">Code</span>
-<span class="n">E</span> <span class="o">-</span> <span class="n">Description</span>
+<span class="n">E</span> <span class="o">-</span> <span class="p">(</span><span class="n">Empty</span><span class="p">)</span>
 <span class="n">F</span> <span class="o">-</span> <span class="p">(</span><span class="n">Empty</span><span class="p">)</span>
 <span class="n">G</span> <span class="o">-</span> <span class="n">Original</span> <span class="n">Transaction</span> <span class="n">Target</span> <span class="p">(</span><span class="n">moved</span> <span class="kn">from</span> <span class="nn">column</span> <span class="n">C</span><span class="p">)</span>
-<span class="n">H</span> <span class="o">-</span> <span class="n">Item</span> <span class="ow">or</span> <span class="n">service</span> <span class="n">purchase</span> <span class="p">(</span><span class="n">aid</span> <span class="ow">in</span> <span class="n">identifying</span> <span class="n">PayPal</span> <span class="n">transaction</span><span class="p">)</span>
 </pre></div>
 </div>
-<p>After the transactions have been copied, the Code Assignment software is invoked:</p>
+<p>After the transactions have been copied, the Code Assignment script is invoked:</p>
 <img alt="https://www.tightbytes.com/images/pubimages/appmgr/tw08Codes06.png" src="https://www.tightbytes.com/images/pubimages/appmgr/tw08Codes06.png" />
-<p>During processing, non-useful text is removed from the transaction target, leaving either a ‘FROM’ or ‘TO’ prefix if one existed in the original transaction target entry.</p>
 </section>
 <section id="alist">
 <h3>AList<a class="headerlink" href="#alist" title="Permalink to this heading"></a></h3>
-<p>The <strong>AList</strong> Worksheet is sorted by Column B - the codes column - and then column A - the transactions column. All worksheets that do processing refer to this sheet in order to assign codes to transactions.</p>
-<p>This sheet and the associated processes are being reviewed for refinement and streamlining.</p>
+<p>The <strong>AList</strong> Worksheet is sorted by Column C - the codes column - and then column A - the transactions column. All worksheets that do processing refer to this sheet in order to assign codes to transactions.</p>
 </section>
 <section id="budget-worksheets">
 <h3>Budget Worksheets<a class="headerlink" href="#budget-worksheets" title="Permalink to this heading"></a></h3>
@@ -303,7 +303,7 @@
 </section>
 <section id="the-about-form">
 <h2>The About Form<a class="headerlink" href="#the-about-form" title="Permalink to this heading"></a></h2>
-<p>In an effort be be somewhat cross-platform friendly, I only have one form: the “About”.</p>
+<p>In an effort be be somewhat cross-platform friendly, I only have one form: the “About”: containing the version number and a Help button which brings up the browser to display these Help pages.</p>
 <hr style="height:4px;border-width:0;color:gray;background-color:gray"></section>
 <section id="the-code-running-the-workbook">
 <span id="tw9-corefcn"></span><h2>The Code Running The Workbook<a class="headerlink" href="#the-code-running-the-workbook" title="Permalink to this heading"></a></h2>

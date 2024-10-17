@@ -20,7 +20,7 @@ My Applications-Help Manager
    RSTs/ReabankEditor.rst
    RSTs/TaxWB07.rst
    RSTs/TaxWB08.rst
-   RSTs/TaxWB09.rst
+   RSTs/TxnTr09.rst
 
 
 
