@@ -76,7 +76,7 @@
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="#additional-notes">Additional Notes</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="#category-ing-transactions">Category-ing Transactions</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#categoryies-for-transactions">Categoryies for Transactions</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#quick-note-on-972savings">Quick Note on 972Savings</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#additional-discussion">Additional Discussion</a></li>
 </ul>
@@ -119,8 +119,8 @@
 <h1>Tax Workbook v.9<a class="headerlink" href="#tax-workbook-v-9" title="Permalink to this heading"></a></h1>
 <section id="introduction">
 <h2>Introduction<a class="headerlink" href="#introduction" title="Permalink to this heading"></a></h2>
-<p>This Excel-based utility is designed to manage creating and maintaining Banking Transactions Data for Tax Purposes and Budget Management in spreadsheet form. The workbook contains data inported from CSV files downloaded from the user’s banking institution, which is categorised in order to track revenue and expenses.</p>
-<p>It replaces a manually-managed ledger approach to tax-data figures. The tax accountant requested an income and expenditures summary worksheet in Excel. Using the power of Excel and VBA, data from downloaded CSV files populates the Accounts Worksheets, which inform fields on the Summary Sheet through links: this happens dynamically.</p>
+<p>This Excel-based utility is designed to manage creating and maintaining Banking Transactions Data for Tax Purposes and Budget Management in spreadsheet form. The workbook contains transaction data imported from CSV files downloaded from the user’s banking institution, which are then categorised to enable revenue and expense tracking.</p>
+<p>This Excel-based approach replaces the paper ledger. It was originally designed to identify tax-data figures: the tax accountant requested an income and expenditures summary worksheet in Excel. Using the power of Excel and VBA, data from downloaded CSV files populated the Accounts Worksheets, which informed fields on the Summary Sheet through links: this happened dynamically. In this version, the Summary worksheet has been removed as it is no longer needed, replaced by budgeting worksheets.</p>
 <p>This Tax Workbook is a living document, both from a data as well as a VBA standpoint. As income-and-expenses pictures change over time, this document - version 0.9 - is a much simplified version to previous versions.</p>
 <hr style="height:4px;border-width:0;color:gray;background-color:gray"></section>
 <section id="tax-workbook-worksheets">
@@ -160,11 +160,9 @@
 <li><p>Each CSV file is opened in (imported into) Excel. In the ribbon, select Data, then Get Data -&gt; From Text/CSV. After sorting the data from oldest to newest, the transactions that have not yet been copied to the corresponding worksheet are copied over using Copy Special: Values. Once the data has been copied, the CSV sheet can be deleted as well as the connection that was formed by Excel, as it is no longer needed.</p></li>
 <li><p>So that the original bank-generated transaction information is preserved, the transaction list is cut from column C and pasted into Column G.</p></li>
 <li><p>The transactions are identified - if they exist in the AList worksheet. <strong>Tax Workbook</strong> -&gt; Click on the menu item respresenting that account.</p></li>
-<li><p>Any transactions not in the AList worksheet can be added by selecting the uncategorised Transaction Target fields and copying that list to the bottom of the AList column A. The approach to take is outlined here <a class="reference internal" href="#tw9-txncategoring"><span class="std std-ref">Category-ing Transactions</span></a>.</p></li>
+<li><p>Any transactions not in the AList worksheet can be added by selecting the uncategorised Transaction Target fields and copying that list to the bottom of the AList column A. The approach to take is outlined here <a class="reference internal" href="#tw9-txncategoring"><span class="std std-ref">Categoryies for Transactions</span></a>. Once the new entries have been given categories, step 4 above is repeated, until all transactions have been categorised.</p></li>
 </ol>
 </div></blockquote>
-<p>The <strong>Summary</strong> Worksheet is comprised of two main columns; Expenses and Revenue. The expenses are only those relevant to a tax accountant, such as home loan payments and professional fees and donations, while revenue is comprised of all income.</p>
-<p>The fields on this page are linked to specific fields on relevant account pages and update dynamically.</p>
 </section>
 <section id="checking">
 <h3>Checking<a class="headerlink" href="#checking" title="Permalink to this heading"></a></h3>
@@ -476,9 +474,9 @@
 </section>
 <section id="additional-notes">
 <h2>Additional Notes<a class="headerlink" href="#additional-notes" title="Permalink to this heading"></a></h2>
-<section id="category-ing-transactions">
-<span id="tw9-txncategoring"></span><h3>Category-ing Transactions<a class="headerlink" href="#category-ing-transactions" title="Permalink to this heading"></a></h3>
-<p>To cate</p>
+<section id="categoryies-for-transactions">
+<span id="tw9-txncategoring"></span><h3>Categoryies for Transactions<a class="headerlink" href="#categoryies-for-transactions" title="Permalink to this heading"></a></h3>
+<p>To categorise transactions, one needs to develop a labelling scheme that can work consistently throughout the worksheets.</p>
 </section>
 <section id="quick-note-on-972savings">
 <span id="tw9-savingscodes"></span><h3>Quick Note on 972Savings<a class="headerlink" href="#quick-note-on-972savings" title="Permalink to this heading"></a></h3>

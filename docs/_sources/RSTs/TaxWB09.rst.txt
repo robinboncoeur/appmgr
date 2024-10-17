@@ -6,9 +6,9 @@ Tax Workbook v.9
 Introduction
 ************
 
-This Excel-based utility is designed to manage creating and maintaining Banking Transactions Data for Tax Purposes and Budget Management in spreadsheet form. The workbook contains data inported from CSV files downloaded from the user's banking institution, which is categorised in order to track revenue and expenses.
+This Excel-based utility is designed to manage creating and maintaining Banking Transactions Data for Tax Purposes and Budget Management in spreadsheet form. The workbook contains transaction data imported from CSV files downloaded from the user's banking institution, which are then categorised to enable revenue and expense tracking.
 
-It replaces a manually-managed ledger approach to tax-data figures. The tax accountant requested an income and expenditures summary worksheet in Excel. Using the power of Excel and VBA, data from downloaded CSV files populates the Accounts Worksheets, which inform fields on the Summary Sheet through links: this happens dynamically. 
+This Excel-based approach replaces the paper ledger. It was originally designed to identify tax-data figures: the tax accountant requested an income and expenditures summary worksheet in Excel. Using the power of Excel and VBA, data from downloaded CSV files populated the Accounts Worksheets, which informed fields on the Summary Sheet through links: this happened dynamically. In this version, the Summary worksheet has been removed as it is no longer needed, replaced by budgeting worksheets. 
 
 This Tax Workbook is a living document, both from a data as well as a VBA standpoint. As income-and-expenses pictures change over time, this document - version 0.9 - is a much simplified version to previous versions.
 
@@ -77,11 +77,8 @@ This workbook assumes  three accounts: Checking, Savings and CreditCard. The pro
   
   4. The transactions are identified - if they exist in the AList worksheet. **Tax Workbook** -> Click on the menu item respresenting that account.
   
-  5. Any transactions not in the AList worksheet can be added by selecting the uncategorised Transaction Target fields and copying that list to the bottom of the AList column A. The approach to take is outlined here :REF:`tw9-txncategoring`.
+  5. Any transactions not in the AList worksheet can be added by selecting the uncategorised Transaction Target fields and copying that list to the bottom of the AList column A. The approach to take is outlined here :REF:`tw9-txncategoring`. Once the new entries have been given categories, step 4 above is repeated, until all transactions have been categorised.
   
-The **Summary** Worksheet is comprised of two main columns; Expenses and Revenue. The expenses are only those relevant to a tax accountant, such as home loan payments and professional fees and donations, while revenue is comprised of all income.
-
-The fields on this page are linked to specific fields on relevant account pages and update dynamically.
 
 
 
@@ -419,11 +416,20 @@ Additional Notes
 
 .. _tw9-txncategoring:
 
-=========================
-Category-ing Transactions
-=========================
+============================
+Categoryies for Transactions
+============================
 
-To cate
+To categorise transactions, one needs to develop a labelling scheme that can work consistently throughout the worksheets.
+
+
+
+
+
+
+
+
+
 
 .. _tw9-SavingsCodes:
 
