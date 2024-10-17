@@ -231,9 +231,9 @@ Some of this code is still under development, and doesn't quite do as I'd like i
 Ribbon Code
 ===========
 
-The Transaction Tracker ribbon buttons code is also stored here, under the **MSO Ribbon Code** and **Callback Buttons Actions** sections. When the button is clicked in the **Transaction Tracker** menu item, it fires first the corresponding code in the **MSO Ribbon Code** section, which calls the **RunScript** sub-routine with the value it receives from the **CheckFilterMode** function as well as the sheet number the button is associated with - 1: Checking / 2: Creditcard / 3: Savings - sent as parameters (arguments).  The **CheckFilterMode** function checks that no filters have been set on that sheet. The code cannot run against a sheet with filters set.
+The Transaction Tracker ribbon buttons code is stored under the **MSO Ribbon Code** and **Callback Buttons Actions** sections. When the button is clicked in the **Transaction Tracker** menu item, it first fires the corresponding code in the **MSO Ribbon Code** section, which calls the **RunScript** sub-routine with the value it receives from the **CheckFilterMode** function as well as the sheet number the button is associated with - 1: Checking / 2: Creditcard / 3: Savings - sent as parameters (arguments).  The **CheckFilterMode** function checks that no filters have been set on that sheet. The code cannot run against a sheet with filters set. If no filters have been set, then the **TxnCodes** function is called, with the sheet number sent as parameter.
 
-If no filters have been set, then the **TxnCodes** function is called, with the sheet number sent as parameter. Here's the code. Using the menu option "CreditCard" in the ribbon under **Transaction Tracker** as an example:
+Using the menu option "CredCard" in the ribbon under **Transaction Tracker** as an example:
 
 .. image:: https://www.tightbytes.com/images/pubimages/appmgr/tw08Codes04.png
 
@@ -246,30 +246,56 @@ invokes the _Click() event for that button, which runs the following code:
     Call RunScript(CheckFilterMode(2), 2)
   End Sub
 
-In the process of calling **RunScript**, **CheckFilterMode** is called first with the sheet number as parameter. That function checks to see if a filter was set on that worksheet, and returns the filter status, which the **RunScript** call sends as first parameter along with the sheet number. **RunScript** checks the filter status and if it is set the user is notified and processing is aborted. 
+In the process of calling **RunScript**, **CheckFilterMode** is called first with the sheet number as parameter. That function checks to see if a filter was set on that worksheet, and returns the filter status, which status is sent as first parameter, along with the sheet number. **RunScript** checks the filter status and if it is set the user is notified and processing is aborted. 
 
-Barring a set filter, **RunScript** calls the **TxnCodes** routine with the sheet number as parameter.
+Barring a set filter, **RunScript** calls the **TxnCodes** routine with the sheet number as parameter:
 
 .. code-block:: vbnet
 
-	Public Sub RunScript(FilterSet As Boolean, ScriptToRun As String)
-	  If FilterSet Then
-		'Debug.Print FilterSet
-		MsgBox ("Cannot run whilst a filter is set...")
-	  Else
+  Public Sub RunScript(FilterSet As Boolean, sShtNo As Integer)
+    If sShtNo = 100 Then Call ChecksOS:  Exit Sub
 
-	  ' The name of the function (e.g., HomeloanCodes() but without the "()")
-	  '  placed within a Messagebox calls that function (i.e., runs the code
-	  '  of that function)
-		Select Case ScriptToRun
-		  Case Is = "s568": MsgBox (CreditcardCodes)
-		  Case Is = "s259": MsgBox (CheckingCodes)
-		  Case Is = "s972": MsgBox (PersonalACodes)
-		  Case Is = "s647": MsgBox (BeyondBankCodes)
-		  Case Is = "About": MsgBox "under Development"
-		End Select
-	  End If
-	End Sub
+    If FilterSet Then
+      MsgBox ThisWorkbook.collMsgs("msgFilter")
+    Else
+      Call TxnCodes(sShtNo)
+    End If
+  End Sub
+
+Note: *you may see pre-processor directives - stuff preceded by a '#' - that's for debugging and doesn't really affect the code itself*. 
+
+The first line of the **RunScript** sub actually calls **Help** - this document you are reading - via the browser. If the number 100 is sent instead of 1, 2 or 3, the **CheckOS** function is called: 
+
+.. code-block:: vbnet
+
+  Public Function ChecksOS()
+
+    '  first 3 chars will be either Win or Mac
+    Dim sOS As String
+    sOS = Mid(Application.OperatingSystem, 1, 3)
+
+    Dim sLink As String
+    sLink = ThisWorkbook.collMsgs("linkHelp")
+
+    If sOS = "Win" Then
+      Call bOpenInEdge(sLink)
+    End If
+    If sOS = "Mac" Then
+      MsgBox ThisWorkbook.collMsgs("msgHelpLink")
+    End If
+  End Function
+
+Office behaves differently in Windows than on the Mac, so I had to provide some - rather awkward - solution for Mac users:
+
+.. code-block:: vbnet
+
+  Public Function bOpenInEdge(sURL As String) As Boolean
+  Dim sFullURL As String
+    sFullURL = ThisWorkbook.collMsgs("linkURL") & sURL
+    CreateObject("Shell.Application").ShellExecute sFullURL
+  End Function
+
+In Windows, clicking on **Help** will bring up the Edge browser and these pages. On the Mac, I provide the link to this help file in a messagebox. {{{sigh}}} Sometimes the magic works.
 
 
 
