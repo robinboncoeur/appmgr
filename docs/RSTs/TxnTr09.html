@@ -66,6 +66,9 @@
 </li>
 <li class="toctree-l2"><a class="reference internal" href="#the-about-form">The About Form</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#the-code-running-the-workbook">The Code Running The Workbook</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#ribbon-code">Ribbon Code</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#process-that-worksheet">Process that Worksheet</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#worksheet-udfs">Worksheet UDFs</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#menu-options">Menu Options</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#worksheet-functions">Worksheet Functions</a><ul>
 <li class="toctree-l4"><a class="reference internal" href="#calcabs">calcABS</a></li>
@@ -155,7 +158,7 @@
 <hr style="height:2px;border-width:0;color:gray;background-color:gray"></section>
 <section id="checking">
 <h3>Checking<a class="headerlink" href="#checking" title="Permalink to this heading"></a></h3>
-<p>The Access <strong>259Checking</strong> Worksheet is a date-sorted, formatted Checking Account transaction worksheet. Payroll, home-loan and investment property data, as well as certain utilities transactions go through this account. The data is imported from a CSV file downloaded from the bank’s website. The data is sorted oldest to newest and the most recent records are appended to the existing data. Prior to processing, the Transaction Target entries are moved to column G.</p>
+<p>The <strong>Checking</strong> Worksheet is a date-sorted, formatted Checking Account transaction worksheet. Typically, payroll, home-loan and investment property transactions, as well as certain utilities payments were recorded in this account. After the data is imported from a CSV file downloaded from the bank’s website and sorted oldest to newest, the most recent records are appended to the existing data. Prior to processing, the Transaction Target entries are moved to column G.</p>
 <p>The columns are as follows:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">A</span> <span class="o">-</span> <span class="n">Date</span>
 <span class="n">B</span> <span class="o">-</span> <span class="n">Transaction</span> <span class="n">Amount</span>
@@ -163,7 +166,7 @@
 <span class="n">D</span> <span class="o">-</span> <span class="n">Transaction</span> <span class="n">Code</span>
 <span class="n">E</span> <span class="o">-</span> <span class="p">(</span><span class="n">Empty</span><span class="p">)</span>
 <span class="n">F</span> <span class="o">-</span> <span class="p">(</span><span class="n">Empty</span><span class="p">)</span>
-<span class="n">G</span> <span class="o">-</span> <span class="n">Original</span> <span class="n">Transaction</span> <span class="n">Target</span> <span class="p">(</span><span class="n">moved</span> <span class="kn">from</span> <span class="nn">column</span> <span class="n">C</span><span class="p">)</span>
+<span class="n">G</span> <span class="o">-</span> <span class="n">Original</span> <span class="n">Transaction</span> <span class="n">Target</span> <span class="p">(</span><span class="o">**</span><span class="n">moved</span><span class="o">**</span> <span class="kn">from</span> <span class="nn">column</span> <span class="n">C</span><span class="p">)</span>
 </pre></div>
 </div>
 <p>After the transactions have been copied, the Code Assignment script is invoked:</p>
@@ -264,7 +267,7 @@
 </tr>
 </tbody>
 </table>
-</section>
+<hr style="height:2px;border-width:0;color:gray;background-color:gray"></section>
 <section id="savings">
 <h3>Savings<a class="headerlink" href="#savings" title="Permalink to this heading"></a></h3>
 <p>The <strong>972Savings</strong> Worksheet is a date-sorted, formatted Savings Account transaction worksheet. The data is imported from a CSV file downloaded from the bank’s website. The data is sorted oldest to newest and the most recent records are appended to the existing data. Prior to processing, the Transaction Target entries are moved to column G.</p>
@@ -280,11 +283,11 @@
 </div>
 <p>After the transactions have been copied, the Code Assignment script is invoked:</p>
 <img alt="https://www.tightbytes.com/images/pubimages/appmgr/tw08Codes06.png" src="https://www.tightbytes.com/images/pubimages/appmgr/tw08Codes06.png" />
-</section>
+<hr style="height:2px;border-width:0;color:gray;background-color:gray"></section>
 <section id="alist">
 <h3>AList<a class="headerlink" href="#alist" title="Permalink to this heading"></a></h3>
 <p>The <strong>AList</strong> Worksheet is sorted by Column C - the codes column - and then column A - the transactions column. All worksheets that do processing refer to this sheet in order to assign codes to transactions.</p>
-</section>
+<hr style="height:2px;border-width:0;color:gray;background-color:gray"></section>
 <section id="budget-worksheets">
 <h3>Budget Worksheets<a class="headerlink" href="#budget-worksheets" title="Permalink to this heading"></a></h3>
 <p>See <a class="reference internal" href="#tw9-calcabs"><span class="std std-ref">calcABS</span></a> for an insight as to how quarterly budget sheets are maintained.</p>
@@ -296,30 +299,22 @@
 <hr style="height:4px;border-width:0;color:gray;background-color:gray"></section>
 <section id="the-code-running-the-workbook">
 <span id="tw9-corefcn"></span><h2>The Code Running The Workbook<a class="headerlink" href="#the-code-running-the-workbook" title="Permalink to this heading"></a></h2>
-<p>For those who might be curious as to how certain features work, I offer the following as a bit of a discussion on my approach to solving these little problems.</p>
-<p>To view the code, press [Alt] [F11] and you will be presented with the Visual Basic Editor. These user-defined functions and sub-routines are stored in the MdlT modules page. The Transaction Tracker ribbon buttons code is stored here.</p>
-<p>Transaction amounts for a given category are tallied based on these Transaction Category Codes, a copy of which is saved in the ‘AList’ worksheet. The tallies are SUMIF()s of transaction amounts based on the codes in column D:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>=ABS(SUMIF(&#39;568CreditCard&#39;!$D165:$D399,&quot;HSHPHO&quot;,&#39;568CreditCard&#39;!$B165:$B399))
-</pre></div>
-</div>
-<p>Note: <em>the use of SUMIF() has been largely replaced with a User-Defined Function (UDF) called calcABS, particularly on the Budget worksheets. See</em> <a class="reference internal" href="#tw9-calcabs"><span class="std std-ref">calcABS</span></a> <em>for how this works</em>.</p>
-<p>Using the CreditCard worksheet as an example, the codes in column D are assigned via Excel’s Visual-Basic for Applications functions (VBA), copied from the <strong>AList Worksheet</strong> which has an instance of the Transaction Target and an associated code:</p>
-<img alt="https://www.tightbytes.com/images/pubimages/appmgr/tw01Codes03.png" src="https://www.tightbytes.com/images/pubimages/appmgr/tw01Codes03.png" />
-<p>The script that copies the Transaction Code from the AList sheet to the <strong>CreditCard</strong> sheet is run from <strong>Transaction Tracker</strong> menu option under the main menu, i.e., the ‘Ribbon’:</p>
-<img alt="https://www.tightbytes.com/images/pubimages/appmgr/tw08Codes04.png" src="https://www.tightbytes.com/images/pubimages/appmgr/tw08Codes04.png" />
-<p>Much of the workbook’s data is managed in this fashion.</p>
-<section id="menu-options">
-<h3>Menu Options<a class="headerlink" href="#menu-options" title="Permalink to this heading"></a></h3>
-<p>Using the menu option “CreditCard” in the ribbon under <strong>Transaction Tracker</strong> as an example:</p>
+<p>For those who might be curious as to how certain features work, I offer the following as a bit of a discussion on my approach to solving these little problems. My code is quite basic and of course open-source: anyone can modify it to suit their needs. To view the code, press [Alt] [F11] and you will be presented with the Visual Basic Editor. These user-defined functions and sub-routines - <em>including those used on the worksheets</em> - are stored in the MdlT modules page.</p>
+<p>Some of this code is still under development, and doesn’t quite do as I’d like it to.</p>
+<section id="ribbon-code">
+<h3>Ribbon Code<a class="headerlink" href="#ribbon-code" title="Permalink to this heading"></a></h3>
+<p>The Transaction Tracker ribbon buttons code is also stored here, under the <strong>MSO Ribbon Code</strong> and <strong>Callback Buttons Actions</strong> sections. When the button is clicked in the <strong>Transaction Tracker</strong> menu item, it fires first the corresponding code in the <strong>MSO Ribbon Code</strong> section, which calls the <strong>RunScript</strong> sub-routine with the value it receives from the <strong>CheckFilterMode</strong> function as well as the sheet number the button is associated with - 1: Checking / 2: Creditcard / 3: Savings - sent as parameters (arguments).  The <strong>CheckFilterMode</strong> function checks that no filters have been set on that sheet. The code cannot run against a sheet with filters set.</p>
+<p>If no filters have been set, then the <strong>TxnCodes</strong> function is called, with the sheet number sent as parameter. Here’s the code. Using the menu option “CreditCard” in the ribbon under <strong>Transaction Tracker</strong> as an example:</p>
 <img alt="https://www.tightbytes.com/images/pubimages/appmgr/tw08Codes04.png" src="https://www.tightbytes.com/images/pubimages/appmgr/tw08Codes04.png" />
 <p>invokes the _Click() event for that button, which runs the following code:</p>
-<div class="highlight-vbnet notranslate"><div class="highlight"><pre><span></span><span class="k">Sub</span><span class="w"> </span><span class="nf">btnCC_Click</span><span class="p">(</span><span class="n">control</span><span class="w"> </span><span class="ow">As</span><span class="w"> </span><span class="n">IRibbonControl</span><span class="p">)</span>
-<span class="w">  </span><span class="k">Call</span><span class="w"> </span><span class="n">RunScript</span><span class="p">(</span><span class="n">CheckFilterMode</span><span class="p">(</span><span class="s">&quot;s568&quot;</span><span class="p">),</span><span class="w"> </span><span class="s">&quot;s568&quot;</span><span class="p">)</span>
+<div class="highlight-vbnet notranslate"><div class="highlight"><pre><span></span><span class="c">&#39;Callback for btnCreditCard onAction</span>
+<span class="k">Sub</span><span class="w"> </span><span class="nf">btnCC_Click</span><span class="p">(</span><span class="n">control</span><span class="w"> </span><span class="ow">As</span><span class="w"> </span><span class="n">IRibbonControl</span><span class="p">)</span>
+<span class="w">  </span><span class="k">Call</span><span class="w"> </span><span class="n">RunScript</span><span class="p">(</span><span class="n">CheckFilterMode</span><span class="p">(</span><span class="mi">2</span><span class="p">),</span><span class="w"> </span><span class="mi">2</span><span class="p">)</span>
 <span class="k">End</span><span class="w"> </span><span class="k">Sub</span>
 </pre></div>
 </div>
-<p>If a filter was set on the worksheet to be processed, the app notifies the user and processing is aborted.</p>
-<p>Otherwise, RunScript calls the routine refered to  (“s568”, “s259” or “s972”, for example - where ‘s’ stands for ‘sheet, and the numbers represent the last three digits of the account).</p>
+<p>In the process of calling <strong>RunScript</strong>, <strong>CheckFilterMode</strong> is called first with the sheet number as parameter. That function checks to see if a filter was set on that worksheet, and returns the filter status, which the <strong>RunScript</strong> call sends as first parameter along with the sheet number. <strong>RunScript</strong> checks the filter status and if it is set the user is notified and processing is aborted.</p>
+<p>Barring a set filter, <strong>RunScript</strong> calls the <strong>TxnCodes</strong> routine with the sheet number as parameter.</p>
 <div class="highlight-vbnet notranslate"><div class="highlight"><pre><span></span><span class="k">Public</span><span class="w"> </span><span class="k">Sub</span><span class="w"> </span><span class="nf">RunScript</span><span class="p">(</span><span class="n">FilterSet</span><span class="w"> </span><span class="ow">As</span><span class="w"> </span><span class="kt">Boolean</span><span class="p">,</span><span class="w"> </span><span class="n">ScriptToRun</span><span class="w"> </span><span class="ow">As</span><span class="w"> </span><span class="kt">String</span><span class="p">)</span>
 <span class="w">  </span><span class="k">If</span><span class="w"> </span><span class="n">FilterSet</span><span class="w"> </span><span class="k">Then</span>
 <span class="w">        </span><span class="c">&#39;Debug.Print FilterSet</span>
@@ -340,7 +335,27 @@
 <span class="k">End</span><span class="w"> </span><span class="k">Sub</span>
 </pre></div>
 </div>
-<p>The MsgBox() function actually calls (launches) the script (e.g., ‘CreditcardCodes()’).</p>
+</section>
+<section id="process-that-worksheet">
+<h3>Process that Worksheet<a class="headerlink" href="#process-that-worksheet" title="Permalink to this heading"></a></h3>
+<p>In the <strong>PROCESS WORKSHEETS</strong> is the main code that assigns category codes to transactions. Generally, the AList contents are pulled into an array, and then the sheet being examined is stepped through row by row. If a code already exists for that transaction, that row is ignored. If the code is missing, then the entry in column G is run through the array until it finds a match. Columns C and D are then given the values of that array item.</p>
+<p>Note: the author realises that this is certainly not the fastest or most efficient mechanism ever designed, but it works, and it’s reasonably fast. The use of an array and regular expressions ensures some improvements on processing speed.*</p>
+</section>
+<section id="worksheet-udfs">
+<h3>Worksheet UDFs<a class="headerlink" href="#worksheet-udfs" title="Permalink to this heading"></a></h3>
+<p>Transaction amounts for a given category are tallied based on these Transaction Category Codes, a copy of which is saved in the ‘AList’ worksheet. The tallies are SUMIF()s of transaction amounts based on the codes in column D:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>=ABS(SUMIF(&#39;568CreditCard&#39;!$D165:$D399,&quot;HSHPHO&quot;,&#39;568CreditCard&#39;!$B165:$B399))
+</pre></div>
+</div>
+<p>Note: <em>the use of SUMIF() has been largely replaced with a User-Defined Function (UDF) called calcABS, particularly on the Budget worksheets. See</em> <a class="reference internal" href="#tw9-calcabs"><span class="std std-ref">calcABS</span></a> <em>for how this works</em>.</p>
+<p>Using the CreditCard worksheet as an example, the codes in column D are assigned via Excel’s Visual-Basic for Applications functions (VBA), copied from the <strong>AList Worksheet</strong> which has an instance of the Transaction Target and an associated code:</p>
+<img alt="https://www.tightbytes.com/images/pubimages/appmgr/tw01Codes03.png" src="https://www.tightbytes.com/images/pubimages/appmgr/tw01Codes03.png" />
+<p>The script that copies the Transaction Code from the AList sheet to the <strong>CreditCard</strong> sheet is run from <strong>Transaction Tracker</strong> menu option under the main menu, i.e., the ‘Ribbon’:</p>
+<img alt="https://www.tightbytes.com/images/pubimages/appmgr/tw08Codes04.png" src="https://www.tightbytes.com/images/pubimages/appmgr/tw08Codes04.png" />
+<p>Much of the workbook’s data is managed in this fashion.</p>
+</section>
+<section id="menu-options">
+<h3>Menu Options<a class="headerlink" href="#menu-options" title="Permalink to this heading"></a></h3>
 </section>
 <section id="worksheet-functions">
 <h3>Worksheet Functions<a class="headerlink" href="#worksheet-functions" title="Permalink to this heading"></a></h3>
@@ -478,7 +493,7 @@
 <p>To categorise transactions, one needs to develop a naming scheme that can work consistently throughout the worksheets. Creating too many categories will lead to tedium, so avoid being too granular. For example:</p>
 <table class="docutils align-default">
 <thead>
-<tr class="row-odd"><th class="head" colspan="4"><p>3-char base code prefix - 3-char refinement suffix</p></th>
+<tr class="row-odd"><th class="head" colspan="4"><p>3-char base code prefix &amp; 3-char refinement suffix</p></th>
 </tr>
 </thead>
 <tbody>
@@ -527,7 +542,7 @@
 <p>The user may wish to be more granular than the example shown above, but will find that doing so can render the categorising process more difficult in the end, as would not being granular enough. Planning this process carefully will ultimately make maintaining the workbook significantly less tedious. The above approach could be used for expenses, whilst revenue could use an “REV” prefix:</p>
 <table class="docutils align-default">
 <thead>
-<tr class="row-odd"><th class="head" colspan="4"><p>3-char base code prefix - 3-char refinement suffix</p></th>
+<tr class="row-odd"><th class="head" colspan="4"><p>3-char base code prefix &amp; 5-char refinement suffix</p></th>
 </tr>
 </thead>
 <tbody>

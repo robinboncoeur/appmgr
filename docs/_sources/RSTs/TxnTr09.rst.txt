@@ -62,7 +62,6 @@ This workbook assumes three accounts: Checking, Savings and CreditCard. The proc
   
   5. Any transactions not in the AList worksheet needs to be categorised by selecting the uncategorised Transaction Target fields and copying that list to the bottom of the AList column A. The approach to take is outlined here: :REF:`tw9-txncategoring`. Once the new entries have been given categories, step 4 above is repeated, until all transactions have been categorised.
   
-
 .. raw:: html
    
    <hr style="height:2px;border-width:0;color:gray;background-color:gray">
@@ -72,7 +71,7 @@ This workbook assumes three accounts: Checking, Savings and CreditCard. The proc
 Checking
 ========
 
-The Access **259Checking** Worksheet is a date-sorted, formatted Checking Account transaction worksheet. Payroll, home-loan and investment property data, as well as certain utilities transactions go through this account. The data is imported from a CSV file downloaded from the bank's website. The data is sorted oldest to newest and the most recent records are appended to the existing data. Prior to processing, the Transaction Target entries are moved to column G.
+The **Checking** Worksheet is a date-sorted, formatted Checking Account transaction worksheet. Typically, payroll, home-loan and investment property transactions, as well as certain utilities payments were recorded in this account. After the data is imported from a CSV file downloaded from the bank's website and sorted oldest to newest, the most recent records are appended to the existing data. Prior to processing, the Transaction Target entries are moved to column G.
 
 The columns are as follows::
 
@@ -82,7 +81,7 @@ The columns are as follows::
 	D - Transaction Code
 	E - (Empty)
 	F - (Empty)
-	G - Original Transaction Target (moved from column C)
+	G - Original Transaction Target (**moved** from column C)
 
 After the transactions have been copied, the Code Assignment script is invoked:
 
@@ -153,6 +152,9 @@ After the codes are assigned:
 | 07/12/2022  |  -$45.65  | LINCRAFT AUSTRALIA PTY VICTORIA POIN   | OTHHOJ   |
 +-------------+-----------+----------------------------------------+----------+
 
+.. raw:: html
+   
+   <hr style="height:2px;border-width:0;color:gray;background-color:gray">
 
 
 =======
@@ -175,9 +177,9 @@ After the transactions have been copied, the Code Assignment script is invoked:
 
 .. image:: https://www.tightbytes.com/images/pubimages/appmgr/tw08Codes06.png
 
-
-
-
+.. raw:: html
+   
+   <hr style="height:2px;border-width:0;color:gray;background-color:gray">
 
 
 =======
@@ -186,7 +188,9 @@ AList
 
 The **AList** Worksheet is sorted by Column C - the codes column - and then column A - the transactions column. All worksheets that do processing refer to this sheet in order to assign codes to transactions.
 
-
+.. raw:: html
+   
+   <hr style="height:2px;border-width:0;color:gray;background-color:gray">
 
 
 =================
@@ -220,13 +224,69 @@ In an effort be be somewhat cross-platform friendly, I only have one form: the "
 The Code Running The Workbook
 *****************************
 
-For those who might be curious as to how certain features work, I offer the following as a bit of a discussion on my approach to solving these little problems.
+For those who might be curious as to how certain features work, I offer the following as a bit of a discussion on my approach to solving these little problems. My code is quite basic and of course open-source: anyone can modify it to suit their needs. To view the code, press [Alt] [F11] and you will be presented with the Visual Basic Editor. These user-defined functions and sub-routines - *including those used on the worksheets* - are stored in the MdlT modules page. 
 
-To view the code, press [Alt] [F11] and you will be presented with the Visual Basic Editor. These user-defined functions and sub-routines are stored in the MdlT modules page. The Transaction Tracker ribbon buttons code is stored here.
-
-
+Some of this code is still under development, and doesn't quite do as I'd like it to.
 
 
+===========
+Ribbon Code
+===========
+
+The Transaction Tracker ribbon buttons code is also stored here, under the **MSO Ribbon Code** and **Callback Buttons Actions** sections. When the button is clicked in the **Transaction Tracker** menu item, it fires first the corresponding code in the **MSO Ribbon Code** section, which calls the **RunScript** sub-routine with the value it receives from the **CheckFilterMode** function as well as the sheet number the button is associated with - 1: Checking / 2: Creditcard / 3: Savings - sent as parameters (arguments).  The **CheckFilterMode** function checks that no filters have been set on that sheet. The code cannot run against a sheet with filters set.
+
+If no filters have been set, then the **TxnCodes** function is called, with the sheet number sent as parameter. Here's the code. Using the menu option "CreditCard" in the ribbon under **Transaction Tracker** as an example:
+
+.. image:: https://www.tightbytes.com/images/pubimages/appmgr/tw08Codes04.png
+
+invokes the _Click() event for that button, which runs the following code:
+
+.. code-block:: vbnet
+
+  'Callback for btnCreditCard onAction
+  Sub btnCC_Click(control As IRibbonControl)
+    Call RunScript(CheckFilterMode(2), 2)
+  End Sub
+
+In the process of calling **RunScript**, **CheckFilterMode** is called first with the sheet number as parameter. That function checks to see if a filter was set on that worksheet, and returns the filter status, which the **RunScript** call sends as first parameter along with the sheet number. **RunScript** checks the filter status and if it is set the user is notified and processing is aborted. 
+
+Barring a set filter, **RunScript** calls the **TxnCodes** routine with the sheet number as parameter.
+
+.. code-block:: vbnet
+
+	Public Sub RunScript(FilterSet As Boolean, ScriptToRun As String)
+	  If FilterSet Then
+		'Debug.Print FilterSet
+		MsgBox ("Cannot run whilst a filter is set...")
+	  Else
+
+	  ' The name of the function (e.g., HomeloanCodes() but without the "()")
+	  '  placed within a Messagebox calls that function (i.e., runs the code
+	  '  of that function)
+		Select Case ScriptToRun
+		  Case Is = "s568": MsgBox (CreditcardCodes)
+		  Case Is = "s259": MsgBox (CheckingCodes)
+		  Case Is = "s972": MsgBox (PersonalACodes)
+		  Case Is = "s647": MsgBox (BeyondBankCodes)
+		  Case Is = "About": MsgBox "under Development"
+		End Select
+	  End If
+	End Sub
+
+
+
+======================
+Process that Worksheet
+======================
+
+In the **PROCESS WORKSHEETS** is the main code that assigns category codes to transactions. Generally, the AList contents are pulled into an array, and then the sheet being examined is stepped through row by row. If a code already exists for that transaction, that row is ignored. If the code is missing, then the entry in column G is run through the array until it finds a match. Columns C and D are then given the values of that array item.
+
+Note: the author realises that this is certainly not the fastest or most efficient mechanism ever designed, but it works, and it's reasonably fast. The use of an array and regular expressions ensures some improvements on processing speed.*
+
+
+==============
+Worksheet UDFs
+==============
 
 Transaction amounts for a given category are tallied based on these Transaction Category Codes, a copy of which is saved in the 'AList' worksheet. The tallies are SUMIF()s of transaction amounts based on the codes in column D::
 
@@ -253,44 +313,6 @@ Much of the workbook's data is managed in this fashion.
 Menu Options
 ============
 
-Using the menu option "CreditCard" in the ribbon under **Transaction Tracker** as an example:
-
-.. image:: https://www.tightbytes.com/images/pubimages/appmgr/tw08Codes04.png
-
-invokes the _Click() event for that button, which runs the following code:
-
-.. code-block:: vbnet
-
-	Sub btnCC_Click(control As IRibbonControl)
-	  Call RunScript(CheckFilterMode("s568"), "s568")
-	End Sub
-
-If a filter was set on the worksheet to be processed, the app notifies the user and processing is aborted. 
-
-Otherwise, RunScript calls the routine refered to  ("s568", "s259" or "s972", for example - where 's' stands for 'sheet, and the numbers represent the last three digits of the account).
-
-.. code-block:: vbnet
-
-	Public Sub RunScript(FilterSet As Boolean, ScriptToRun As String)
-	  If FilterSet Then
-		'Debug.Print FilterSet
-		MsgBox ("Cannot run whilst a filter is set...")
-	  Else
-
-	  ' The name of the function (e.g., HomeloanCodes() but without the "()")
-	  '  placed within a Messagebox calls that function (i.e., runs the code
-	  '  of that function)
-		Select Case ScriptToRun
-		  Case Is = "s568": MsgBox (CreditcardCodes)
-		  Case Is = "s259": MsgBox (CheckingCodes)
-		  Case Is = "s972": MsgBox (PersonalACodes)
-		  Case Is = "s647": MsgBox (BeyondBankCodes)
-		  Case Is = "About": MsgBox "under Development"
-		End Select
-	  End If
-	End Sub
-
-The MsgBox() function actually calls (launches) the script (e.g., 'CreditcardCodes()'). 
 
 
 
@@ -436,7 +458,7 @@ Creating Categories for Transactions
 To categorise transactions, one needs to develop a naming scheme that can work consistently throughout the worksheets. Creating too many categories will lead to tedium, so avoid being too granular. For example:
 
 +------+--------+---------+-----------------------------------------+
-| 3-char base code prefix - 3-char refinement suffix                |
+| 3-char base code prefix & 3-char refinement suffix                |
 +======+========+=========+=========================================+
 | DLX  |  -ALC  |  DLXALC | Daily Living expenses & Alcohol         |
 +------+--------+---------+-----------------------------------------+
@@ -458,7 +480,7 @@ To categorise transactions, one needs to develop a naming scheme that can work c
 The user may wish to be more granular than the example shown above, but will find that doing so can render the categorising process more difficult in the end, as would not being granular enough. Planning this process carefully will ultimately make maintaining the workbook significantly less tedious. The above approach could be used for expenses, whilst revenue could use an "REV" prefix:
 
 +------+----------+-----------+-------------------------------------+
-| 3-char base code prefix - 3-char refinement suffix                |
+| 3-char base code prefix & 5-char refinement suffix                |
 +======+==========+===========+=====================================+
 | REV  |  -REFND  |  REVREFND | Revenue: Refunds                    |
 +------+----------+-----------+-------------------------------------+
