@@ -190,7 +190,7 @@ At the end of processing, the user can determine if any entries lack a transacti
 AList
 =====
 
-The **AList** Worksheet is sorted by Column C - the codes column - and then column A - the transactions column. All worksheets that do processing refer to this sheet in order to assign codes to transactions.
+The **AList** Worksheet is sorted by Column C - the codes column - and then column A - the transactions column. Note: *sorting this worksheet is not strictly necessary: I do it because I'm pedantic and sometimes search for stuff visually. Sorting makes stuff easier to find.* The function that assigns transaction codes refers to this worksheet.
 
 .. raw:: html
    
@@ -201,7 +201,7 @@ The **AList** Worksheet is sorted by Column C - the codes column - and then colu
 Budget Worksheets
 =================
 
-See :REF:`tw9-calcABS` for an insight as to how quarterly budget sheets are maintained.
+See :REF:`tw9-calcABS` for an insight as to how quarterly budget sheets are maintained. This bit of the worksheets are still being tweaked, so documentation will happen closer to the final inception.
 
 .. raw:: html
    
@@ -337,7 +337,6 @@ Here's the code:
         Else
           sEntry = UCase(rWorksheetRng(i, "G").Value)
           If regEx.Test(sEntry) = True Then
-            ' Debug.Print i, sEntry
 
             Worksheets(nShtN).Range("C" & Trim(Str(i))).Value = arREList(j, 2)
             Worksheets(nShtN).Range("D" & Trim(Str(i))).Value = arREList(j, 3)
@@ -349,7 +348,7 @@ Here's the code:
 
   End Function
 
-Note: the author realises that this is certainly not the fastest or most efficient mechanism ever designed, but it works, and it's reasonably fast. The use of an array and regular expressions ensures some improvements on processing speed.*
+Note: *the author realises that this is certainly not the fastest or most efficient mechanism ever designed, but it works, and it's reasonably fast. The use of an array and regular expressions ensures some improvements on processing speed*.
 
 
 
@@ -477,7 +476,7 @@ Additional Notes
 Creating Categories for Transactions
 ====================================
 
-To categorise transactions, one needs to develop a naming scheme that can work consistently throughout the worksheets. Creating too many categories will lead to tedium, so avoid being too granular. For example:
+To categorise transactions, one needs to develop a naming scheme that can work consistently throughout the worksheets. Creating too many categories will lead to tedium, so avoid being too granular. Early days, I came up with this approach:
 
 +------+--------+---------+-----------------------------------------+
 | 3-char base code prefix & 3-char refinement suffix                |
@@ -499,7 +498,7 @@ To categorise transactions, one needs to develop a naming scheme that can work c
 | HSH  |  -MAI  |  HSHMAI | Household & Maintenance                 |
 +------+--------+---------+-----------------------------------------+
 
-The user may wish to be more granular than the example shown above, but will find that doing so can render the categorising process more difficult in the end, as would not being granular enough. Planning this process carefully will ultimately make maintaining the workbook significantly less tedious. The above approach could be used for expenses, whilst revenue could use an "REV" prefix:
+Some may consider this too lost-in-the-details, some may find it's not detailed enough. The reader may wish to be more granular than this. I would caution that doing so can render the categorising process more difficult in the end. Planning this process carefully will ultimately make maintaining the workbook significantly less tedious. The above approach could be used for expenses, whilst revenue could use an "REV" prefix:
 
 +------+----------+-----------+-------------------------------------+
 | 3-char base code prefix & 5-char refinement suffix                |
@@ -509,16 +508,51 @@ The user may wish to be more granular than the example shown above, but will fin
 | REV  |  -AUPEN  |  REVAUPEN | Revenue: Australian Pension         |
 +------+----------+-----------+-------------------------------------+
 
-Having only revenue with "REV" as prefix and 5-digit suffixes make that transaction quick and easy to identify in a worksheet.These are, of course, all only suggestions. No doubt the user will come up with an infinitely cleverer scheme.
+Having only revenue with "REV" as prefix and 5-digit suffixes make that transaction quick and easy to identify in a worksheet.These are, of course, all only suggestions. No doubt the user will come up with an infinitely cleverer scheme. 
 
+
+
+===========================
+Dealing with PayPal Entries
+===========================
+
+The approach to dealing with low-information bank transaction entries involves, unfortunately, adding text to each entry so that the script has an identifier to work with. A typical statement entry would look like this:
+
++------------+----------+----------------------------------------------------------------------+
+| Date         Amount      Transaction description                                             |
++============+==========+======================================================================+
+| 03/10/2024 | $41.94   |  PAYMENT TO PAYPAL AUSTRALIA 1037326410727                           |
++------------+----------+----------------------------------------------------------------------+
+
+There is very little to go on, here. One approach is to go into saved emails from PayPal and find the record by date. Logging into PayPal itself can be useful if too much time hasn't elapsed since the date of transaction.
+
+After establishing the vendor and, hopefully, the purpose of the transaction, it would be prudent to keep your note fairly generic. I append the following string to the statement for the script to find (and to keep me informed as well):
+
++------------+----------+----------------------------------------------------------------------+
+| Date         Amount      Transaction description                                             |
++============+==========+======================================================================+
+| 03/10/2024 | $41.94   |  PAYMENT TO PAYPAL AUSTRALIA 1037326410727 [Attire: Jeans-Ebay]      |
++------------+----------+----------------------------------------------------------------------+
+
+"ATTIRE:" is added to the AList worksheet if not already there... the "Jeans-Ebay" bit is for me to remember what it was I purchased. Notice it can be in mixed case: RegEx is really good that way finding stuff.
+
+Too good, one may say. Being too generic can result in mis-identification. For example, the word "PAYMENT" as an entry in AList will have the script look at the entry above and the one below: 
+
++------------+----------+----------------------------------------------------------------------+
+| Date         Amount      Transaction description                                             |
++============+==========+======================================================================+
+| 11/06/2024 | $6502.88 |  PAYMENT THANKYOU 123456789080                                       |
++------------+----------+----------------------------------------------------------------------+
+
+(*which is an automated bank transfer to early-pay the credit card*) and will mis-identify either one or the other. So, the entry in AList for the Credit Card payment will be: **PAYMENT THANKYOU**, in order to avoid any ambiguity.
 
 
 
 .. _tw9-SavingsCodes:
 
-========================
+=====================
 Quick Note on Savings
-========================
+=====================
 
 *New for version 0.8*
 
