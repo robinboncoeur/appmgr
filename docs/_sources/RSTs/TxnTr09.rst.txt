@@ -81,7 +81,7 @@ The columns are as follows::
 	D - Transaction Code
 	E - (Empty)
 	F - (Empty)
-	G - Original Transaction Target (**moved** from column C)
+	G - Original Transaction Target (moved from column C)
 
 After the transactions have been copied, the Code Assignment script is invoked:
 
